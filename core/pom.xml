@@ -32,9 +32,9 @@
 	</issueManagement>
 
 	<scm>
-		<connection>scm:svn:http://kite9.svn.sourceforge.net/svnroot/kite9/java/org.kite9.java/core/tags/1.0</connection>
-		<developerConnection>scm:svn:http://kite9.svn.sourceforge.net/svnroot/kite9/java/org.kite9.java/core/tags/1.0</developerConnection>
-		<url>http://kite9.svn.sourceforge.net/viewvc/kite9/java/org.kite9.java/core/tags/1.0</url>
+		<connection>scm:git:git@bitbucket.org:robmoffat/org.kite9.java.git</connection>
+		<developerConnection>scm:git:git@bitbucket.org:robmoffat/org.kite9.java.git</developerConnection>
+		<url>https://bitbucket.org/robmoffat/org.kite9.java</url>
 	</scm>
 
 	<licenses>
