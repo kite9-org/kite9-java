@@ -62,14 +62,6 @@
 				<configuration>
 					<attach>true</attach>
 				</configuration>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>	
-							<goal>aggregate</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 
