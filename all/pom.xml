@@ -66,6 +66,9 @@
 					<execution>
 						<phase>install</phase>
 					</execution>
+					<goals>	
+						<goal>aggregate</goal>
+					</goals>
 				</executions>
 			</plugin>
 
