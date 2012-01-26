@@ -1,0 +1,18 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test1Class/test_1_3_ClassVisibilityAsSymbol()">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class" stereotype="class" label="Test1Class">
+  <text-lines></text-lines>
+  <symbols>
+   <symbol text="visibility: public" theChar="P" shape="HEXAGON"></symbol>
+  </symbols>
+ </glyph>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass" stereotype="class" label="DummyClass">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <label xsi:type="key">
+  <symbols>
+   <symbol text="visibility: public" theChar="P" shape="HEXAGON"></symbol>
+  </symbols>
+ </label>
+ <allLinks></allLinks>
+</diagram>

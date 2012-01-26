@@ -1,0 +1,35 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test1Class/test_1_4_ClassInterfacesAsArrows()">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class" stereotype="class" label="Test1Class">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass" stereotype="class" label="DummyClass">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <glyph id="java_class:java.io.Serializable" stereotype="interface" label="Serializable">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass/rel_implements" label="implements"></arrow>
+ <glyph id="java_class:java.lang.Cloneable" stereotype="interface" label="Cloneable">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <allLinks>
+  <link id="auto:0" drawDirection="UP">
+   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass"></from>
+   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass/rel_implements"></to>
+  </link>
+  <link id="auto:1" drawDirection="UP">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass/rel_implements"></from>
+   <to xsi:type="glyph" reference="java_class:java.io.Serializable"></to>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+  <link id="auto:2" drawDirection="UP">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass/rel_implements"></from>
+   <to xsi:type="glyph" reference="java_class:java.lang.Cloneable"></to>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+ </allLinks>
+</diagram>

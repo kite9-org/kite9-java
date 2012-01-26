@@ -1,0 +1,24 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test12Primitives/test_12_1_AsText()">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test12Primitives" stereotype="class" label="Test12Primitives">
+  <text-lines>
+   <text-line>
+    <text>field: a, is a: int</text>
+    <symbols></symbols>
+   </text-line>
+   <text-line>
+    <text>field: b, is a: float</text>
+    <symbols></symbols>
+   </text-line>
+   <text-line>
+    <text>field: c, is a: long</text>
+    <symbols></symbols>
+   </text-line>
+   <text-line>
+    <text>field: d, is a: char</text>
+    <symbols></symbols>
+   </text-line>
+  </text-lines>
+  <symbols></symbols>
+ </glyph>
+ <allLinks></allLinks>
+</diagram>

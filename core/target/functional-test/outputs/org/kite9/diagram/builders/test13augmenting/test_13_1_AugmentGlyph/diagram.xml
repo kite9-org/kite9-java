@@ -1,0 +1,12 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test13Augmenting/test_13_1_AugmentGlyph()">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass" stereotype="class" label="SomeClass">
+  <text-lines>
+   <text-line>
+    <text>This is a favourite of John's</text>
+    <symbols></symbols>
+   </text-line>
+  </text-lines>
+  <symbols></symbols>
+ </glyph>
+ <allLinks></allLinks>
+</diagram>

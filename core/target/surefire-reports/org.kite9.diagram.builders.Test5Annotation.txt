@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.kite9.diagram.builders.Test5Annotation
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.079 sec

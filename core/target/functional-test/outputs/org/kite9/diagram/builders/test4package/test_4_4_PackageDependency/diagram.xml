@@ -1,0 +1,22 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test4Package/test_4_4_PackageDependency()">
+ <glyph id="project_java_package:org.kite9.diagram.builders" stereotype="package" label="org.kite9.diagram.builders">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <glyph id="java_package:org.kite9.diagram.builders.formats" stereotype="package" label="org.kite9.diagram.builders.formats">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <arrow id="project_java_package:org.kite9.diagram.builders/rel_requires" label="requires"></arrow>
+ <allLinks>
+  <link id="auto:0" drawDirection="UP">
+   <from xsi:type="glyph" reference="project_java_package:org.kite9.diagram.builders"></from>
+   <to xsi:type="arrow" reference="project_java_package:org.kite9.diagram.builders/rel_requires"></to>
+  </link>
+  <link id="auto:1" drawDirection="UP">
+   <from xsi:type="arrow" reference="project_java_package:org.kite9.diagram.builders/rel_requires"></from>
+   <to xsi:type="glyph" reference="java_package:org.kite9.diagram.builders.formats"></to>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+ </allLinks>
+</diagram>

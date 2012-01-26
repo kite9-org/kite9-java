@@ -1,0 +1,9 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test9Aliases/test_9_2_ContextAlias()">
+ <context id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeClass" bordered="true">
+  <label xsi:type="text-line">
+   <text>aliased_some_class</text>
+   <symbols></symbols>
+  </label>
+ </context>
+ <allLinks></allLinks>
+</diagram>

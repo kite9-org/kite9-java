@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>org.kite9</groupId>
+		<artifactId>kite9-java</artifactId>
+		<version>1.0.RC1_SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>		
+	</parent>
+	
+	<artifactId>kite9-java-maven-hello-world</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Kite9 Maven Hello World Tutorial</name>
+	<url>http://www.kite9.org/maven-hello-world</url>
+	<description>Simple example project showing how to use the Maven plugin to generate Kite9 diagrams</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<repositories>
+		<repository>
+			<id>kite9</id>
+			<name>Maven Repository for Kite9</name>
+			<url>http://server.kite9.org/m2_repo/snapshot</url>
+		</repository>
+
+		<repository>
+			<id>maven.central</id>
+			<name>Maven Central Repo</name>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+	</repositories>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>kite9</id>
+			<name>Maven Repository for Kite9</name>
+			<url>http://server.kite9.org/m2_repo/snapshot</url>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>maven.central</id>
+			<name>Maven Central Repo</name>
+			<url>http://repo1.maven.org/maven2</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>project</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>attached</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
+			</plugin> 			
+			<plugin>
+				<groupId>org.kite9</groupId>
+				<artifactId>kite9-java-maven-plugin</artifactId>
+				<version>1.0.RC1</version>
+				<configuration>
+					<userProperties>
+						<property>
+							<name>context.classPath</name>
+							<value>${project.build.outputDirectory}</value>
+						</property>
+						<property>
+							<name>class-scanner.basePackage</name>
+							<value>com.helloworld</value>
+						</property>
+						<property>
+							<name>context.projectId</name>
+							<value>35</value>
+						</property>
+						<property>
+							<name>context.secretKey</name>
+							<value>PFB9T1V97AK96WFK</value>
+						</property>
+					</userProperties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.kite9</groupId>
+			<artifactId>kite9-java-core</artifactId>
+			<version>1.0.RC1</version>
+		</dependency>
+
+	</dependencies>
+
+</project>

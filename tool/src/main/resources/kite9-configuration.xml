@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation=
+       "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+   
+    <bean name="runner" class="org.kite9.tool.BasicKite9Runner">
+    	<property name="scanners">
+    		<list>
+	    		<ref bean="class-scanner" />
+	    		<ref bean="file-scanner" />
+    		</list>
+    	</property>
+    	<property name="context" ref="context" />
+    	<property name="listeners">
+    		<list>
+    			<ref bean="server-calling-listener" />
+    			<ref bean="javadoc-listener" />
+    		</list>
+    	</property>
+    </bean>
+    
+    
+    <!-- Context -->
+    
+    <bean name="context" class="org.kite9.tool.context.Kite9ContextImpl">
+    	<constructor-arg ref="aliaser" />
+    	<constructor-arg ref="repo" />
+    	<property name="classPath" value="" />
+    	<property name="projectId" value="-1" />
+    	<property name="secretKey" value="" />
+    </bean>
+    
+    <bean name="repo" class="org.kite9.framework.repository.BasicFileRepository">
+    </bean>
+    
+    <bean name="aliaser" class="org.kite9.framework.alias.PropertyAliaser">
+    </bean>
+    
+    <bean id="model-factory" class="org.kite9.tool.model.SpringProjectModelFactory">
+    	<property name="context" ref="context" />
+    </bean>
+    
+    <bean id="model" factory-bean="model-factory" factory-method="createProjectModel" />
+    
+    <!-- Scanners -->
+    
+    <bean name="class-scanner" class="org.kite9.tool.scanner.SpringClassScanner">
+    	<property name="context" ref="context" />
+    	<property name="projectModel" ref="model" />
+    </bean>
+    
+    <bean name="file-scanner" class="org.kite9.tool.scanner.XMLFileScanner">
+    	<property name="context" ref="context" />
+    	<property name="baseFolder" value="adl" />   	
+    </bean>
+    
+    <!-- Listeners -->
+    
+    <bean name="server-calling-listener" class="org.kite9.tool.listener.ServerCallingBuildListener">
+    	<property name="context" ref="context" />
+		<property name="server" ref="diagram-server" />
+    </bean>
+    
+    <bean name="diagram-server" class="org.kite9.tool.server.HttpItemServer">
+    </bean>
+    
+    <bean name="javadoc-listener" class="org.kite9.tool.listener.Kite9DiagramJavadocListener">
+    	<property name="context" ref="context" />
+		<property name="docRoot" value="" />
+    </bean>
+
+</beans>

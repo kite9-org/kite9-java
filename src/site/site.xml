@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Kite9">
+	<bannerLeft>
+		<name>${project.name}</name>
+		<href>http://www.kite9.com</href>
+	</bannerLeft>
+	<!-- skin>
+		<groupId>com.googlecode.fluido-skin</groupId>
+		<artifactId>fluido-skin</artifactId>
+		<version>1.3</version>
+	</skin -->
+
+	<body>
+		<menu ref="parent" />
+		<menu name="Modules" inherit="top">
+			<item name="Java Toolkit Project" href="/" />
+			<item name="Java Core API" href="/kite9-java-core" />
+			<item name="Java Tool" href="/kite9-java-tool" />
+			<item name="Maven Plugin" href="/kite9-java-maven-plugin" />
+			<item name="Java Examples" href="/tutorials/JavaExamples" />
+			<item name="Java Hello World" href="/tutorials/HelloWorld" />
+			<item name="Maven Hello World" href="/tutorials/MavenHelloWorld" />
+		</menu>
+		<menu ref="reports" />
+		<menu name="Links">
+			<item name="Kite9.com Homepage" href="http://www.kite9.com" />
+		</menu>
+	</body>
+</project>

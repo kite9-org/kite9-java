@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.kite9</groupId>
+		<artifactId>kite9-java</artifactId>
+		<version>1.0.RC1_SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.kite9</groupId>
+	<artifactId>kite9-java-all</artifactId>
+	<version>1.0.RC1</version>
+	<packaging>jar</packaging>
+
+	<name>Kite9 Java Combined Core and Tool</name>
+	<url>http://www.kite9.com</url>
+	<description>This project combines the core and the tool in a single runnable jar</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<!-- make sure dependencies are available in lib -->
+					<execution>
+						<id>main_dependencies</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<!--  puts them in target/classes/lib -->
+							<outputDirectory>${project.build.outputDirectory}/lib</outputDirectory>
+						</configuration>
+					</execution>
+
+					<!-- unpack the classes needed in a combined jar -->
+					<execution>
+						<id>unpack-dependencies</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includes>*.xsd,*.xml,*.txt,com/thoughtworks/xstream/annotations/*.class,org/kite9/diagram/**/*.class,org/kite9/framework/**/*.class,org/kite9/tool/Main.class</includes>
+							<excludes>org/kite9/framework/serialization/XMLHelper*.class</excludes>
+							<outputDirectory>${project.build.outputDirectory}</outputDirectory>
+							<excludeTransitive>true</excludeTransitive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>org.kite9.tool.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.kite9</groupId>
+			<artifactId>kite9-java-tool</artifactId>
+			<version>1.0.RC1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kite9</groupId>
+			<artifactId>kite9-java-core</artifactId>
+			<version>1.0.RC1</version>
+		</dependency>
+	</dependencies>
+
+
+</project>
