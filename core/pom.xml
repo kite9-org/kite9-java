@@ -2,15 +2,13 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>org.kite9</groupId>
 	<artifactId>kite9-java-core</artifactId>
-	<version>1.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	
 	<parent>
 		<groupId>org.kite9</groupId>
 		<artifactId>kite9-java</artifactId>
-		<version>1.3-SNAPSHOT</version>
+                <version>1.3-SNAPSHOT</version>
 	</parent>
 
 	<name>Kite9 Java Core</name>

@@ -3,15 +3,13 @@
 	<parent>
 		<groupId>org.kite9</groupId>
 		<artifactId>kite9-java</artifactId>
-		<version>1.0.RC1_SNAPSHOT</version>
+		<version>1.3-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.kite9</groupId>
 	<artifactId>kite9-java-maven-plugin</artifactId>
-	<version>1.0.RC1</version>
 	<packaging>maven-plugin</packaging>
 	<name>Kite9 Maven Mojo</name>
 	<url>http://maven.apache.org</url>
@@ -37,8 +35,8 @@
 		<dependency>
 			<groupId>org.kite9</groupId>
 			<artifactId>kite9-java-tool</artifactId>
-			<version>1.0.RC1</version>
-			<scope />
+			<version>1.3-SNAPSHOT</version>
+			<scope/>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.plexus</groupId>
