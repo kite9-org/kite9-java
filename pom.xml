@@ -15,12 +15,12 @@
 
 	<modules>
 		<module>core</module>
-		<module>tool</module>
+		<!--module>tool</module>
 		<module>all</module>
 		<module>maven-plugin</module>
 		<module>tutorials/HelloWorld</module>
 		<module>tutorials/MavenHelloWorld</module>
-		<module>tutorials/JavaExamples</module>
+		<module>tutorials/JavaExamples</module-->
 	</modules>
 
 	<developers>
@@ -41,11 +41,11 @@
 		<url>http://www.kite9.com/project/issues/</url>
 	</issueManagement>
 
-	<scm>
-		<connection>scm:svn:http://kite9.svn.sourceforge.net/svnroot/kite9/java/org.kite9.java/tags/kite9-java-1.0.RC1</connection>
-		<developerConnection>scm:svn:http://kite9.svn.sourceforge.net/svnroot/kite9/java/org.kite9.java/tags/kite9-java-1.0.RC1</developerConnection>
-		<url>http://kite9.svn.sourceforge.net/viewvc/kite9/java/org.kite9.java/tags/kite9-java-1.0.RC1</url>
-	</scm>
+        <scm>
+                <connection>scm:git:git@bitbucket.org:robmoffat/org.kite9.java.git</connection>
+                <developerConnection>scm:git:git@bitbucket.org:robmoffat/org.kite9.java.git</developerConnection>
+                <url>https://bitbucket.org/robmoffat/org.kite9.java</url>
+        </scm>
 
 	<licenses>
 		<license>

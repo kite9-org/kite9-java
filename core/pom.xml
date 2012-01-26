@@ -8,43 +8,11 @@
 	<packaging>jar</packaging>
 	
 	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
+		<groupId>org.kite9</groupId>
+		<artifactId>kite9-java</artifactId>
+		<version>1.0.RC1_SNAPSHOT</version>
 	</parent>
 
-	<developers>
-		<developer>
-			<id>robm</id>
-			<name>Rob Moffat</name>
-			<email>robm@kite9.org</email>
-			<roles>
-				<role>Developer</role>
-			</roles>
-			<organization>kite9.com</organization>
-			<timezone>0</timezone>
-		</developer>
-	</developers>
-	
-	<issueManagement>
-		<system>Kite9.com Issues Page</system>
-		<url>http://www.kite9.com/project/issues/</url>
-	</issueManagement>
-
-	<scm>
-		<connection>scm:git:git@bitbucket.org:robmoffat/org.kite9.java.git</connection>
-		<developerConnection>scm:git:git@bitbucket.org:robmoffat/org.kite9.java.git</developerConnection>
-		<url>https://bitbucket.org/robmoffat/org.kite9.java</url>
-	</scm>
-
-	<licenses>
-		<license>
-			<name>Apache 2</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-	
 	<name>Kite9 Java Core</name>
 	<url>http://www.kite9.org/org.kite9.core</url>
 	<description>API code for creating ADL diagrams within a Java project.</description>
