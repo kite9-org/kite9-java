@@ -65,10 +65,10 @@
 				<executions>
 					<execution>
 						<phase>install</phase>
+						<goals>	
+							<goal>aggregate</goal>
+						</goals>
 					</execution>
-					<goals>	
-						<goal>aggregate</goal>
-					</goals>
 				</executions>
 			</plugin>
 
