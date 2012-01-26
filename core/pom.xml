@@ -4,7 +4,7 @@
 	
 	<groupId>org.kite9</groupId>
 	<artifactId>kite9-java-core</artifactId>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	
 	<parent>
