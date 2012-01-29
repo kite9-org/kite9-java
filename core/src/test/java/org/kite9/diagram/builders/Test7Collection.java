@@ -30,13 +30,15 @@ public class Test7Collection extends AbstractBuilderTest {
     @K9OnDiagram
     public Set<Set<String>>[] compoundString2;
     
+    @K9OnDiagram
+    public Iterable<String> someStrings;
 
     @Kite9Item
     @Test
     public void test_7_1_AsText() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test7Collection.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 		.withFields(db.onlyAnnotated(), false).show(db.asTextLines()).withType(null).show(db.asTextLines());
 
 	renderDiagram(db.getDiagram());
@@ -47,8 +49,8 @@ public class Test7Collection extends AbstractBuilderTest {
     public void test_7_2_AsGlyphs() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test7Collection.class)
-		.show(db.asGlyphs())
-		.withFields(db.onlyAnnotated(), false).show(db.asGlyphs()).withType(null).show(db.asGlyphs());
+		.show(db.asConnectedGlyphs())
+		.withFields(db.onlyAnnotated(), false).show(db.asConnectedGlyphs()).withType(null).show(db.asConnectedGlyphs());
 
 	renderDiagram(db.getDiagram());
     }
@@ -58,8 +60,8 @@ public class Test7Collection extends AbstractBuilderTest {
     public void test_7_3_AsLabels() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test7Collection.class)
-		.show(db.asGlyphs())
-		.withFields(db.onlyAnnotated(), false).withType(null).show(db.asGlyphs());
+		.show(db.asConnectedGlyphs())
+		.withFields(db.onlyAnnotated(), false).withType(null).show(db.asConnectedGlyphs());
 
 	renderDiagram(db.getDiagram());
     }

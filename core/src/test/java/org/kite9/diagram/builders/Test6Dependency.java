@@ -32,7 +32,7 @@ public class Test6Dependency extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_6_1_ClassCalledClassRelationship() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(A.class).show(db.asGlyphs()).withCalledClasses(null, true).show(db.asGlyphs());
+		db.withClasses(A.class).show(db.asConnectedGlyphs()).withCalledClasses(null, true).show(db.asConnectedGlyphs());
 
 		renderDiagram(db.getDiagram());
 	}
@@ -41,8 +41,8 @@ public class Test6Dependency extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_6_2_MethodCalledClassRelationship() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(A.class).withMethods(db.onlyAnnotated(), true).show(db.asGlyphs()).withCalledClasses(null).show(
-				db.asGlyphs());
+		db.withClasses(A.class).withMethods(db.onlyAnnotated(), true).show(db.asConnectedGlyphs()).withCalledClasses(null).show(
+				db.asConnectedGlyphs());
 		renderDiagram(db.getDiagram());
 	}
 
@@ -50,7 +50,7 @@ public class Test6Dependency extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_6_3_ClassCallerClassRelationship() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(B.class).show(db.asGlyphs()).withCallingClasses(null, true).show(db.asGlyphs());
+		db.withClasses(B.class).show(db.asConnectedGlyphs()).withCallingClasses(null, true).show(db.asConnectedGlyphs());
 
 		renderDiagram(db.getDiagram());
 	}
@@ -59,8 +59,8 @@ public class Test6Dependency extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_6_4_MethodCallerClassRelationship() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(B.class).withMethods(db.onlyAnnotated(), true).show(db.asGlyphs()).withCallingClasses(null)
-				.show(db.asGlyphs());
+		db.withClasses(B.class).withMethods(db.onlyAnnotated(), true).show(db.asConnectedGlyphs()).withCallingClasses(null)
+				.show(db.asConnectedGlyphs());
 		renderDiagram(db.getDiagram());
 	}
 
@@ -68,7 +68,7 @@ public class Test6Dependency extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_6_5_ClassCalledMethodRelationship() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(A.class).show(db.asGlyphs()).withCalledMethods(null, true).show(db.asGlyphs());
+		db.withClasses(A.class).show(db.asConnectedGlyphs()).withCalledMethods(null, true).show(db.asConnectedGlyphs());
 
 		renderDiagram(db.getDiagram());
 	}
@@ -77,7 +77,7 @@ public class Test6Dependency extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_6_6_ClassCallerMethodRelationship() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(B.class).show(db.asGlyphs()).withCallingMethods(null, true).show(db.asGlyphs());
+		db.withClasses(B.class).show(db.asConnectedGlyphs()).withCallingMethods(null, true).show(db.asConnectedGlyphs());
 
 		renderDiagram(db.getDiagram());
 	}
@@ -86,8 +86,8 @@ public class Test6Dependency extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_6_7_MethodCalledMethodRelationship() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(A.class).withMethods(db.onlyAnnotated(), true).show(db.asGlyphs()).withCalledMethods(null).show(
-				db.asGlyphs());
+		db.withClasses(A.class).withMethods(db.onlyAnnotated(), true).show(db.asConnectedGlyphs()).withCalledMethods(null).show(
+				db.asConnectedGlyphs());
 		renderDiagram(db.getDiagram());
 	}
 
@@ -95,8 +95,8 @@ public class Test6Dependency extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_6_8_MethodCallerMethodRelationship() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(B.class).withMethods(db.onlyAnnotated(), true).show(db.asGlyphs()).withCallingMethods(null)
-				.show(db.asGlyphs());
+		db.withClasses(B.class).withMethods(db.onlyAnnotated(), true).show(db.asConnectedGlyphs()).withCallingMethods(null)
+				.show(db.asConnectedGlyphs());
 		renderDiagram(db.getDiagram());
 	}
 
@@ -117,7 +117,7 @@ public class Test6Dependency extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_6_9_ClassDependencyRelationship() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(C.class, A.class).show(db.asGlyphs()).withDependencies(null, true).show(db.asGlyphs());
+		db.withClasses(C.class, A.class).show(db.asConnectedGlyphs()).withDependencies(null, true).show(db.asConnectedGlyphs());
 		renderDiagram(db.getDiagram());
 	}
 	
@@ -125,7 +125,7 @@ public class Test6Dependency extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_6_10_ClassDependantsRelationship() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(B.class).show(db.asGlyphs()).withDependants(null, true).show(db.asGlyphs());
+		db.withClasses(B.class).show(db.asConnectedGlyphs()).withDependants(null, true).show(db.asConnectedGlyphs());
 		renderDiagram(db.getDiagram());
 	}
 

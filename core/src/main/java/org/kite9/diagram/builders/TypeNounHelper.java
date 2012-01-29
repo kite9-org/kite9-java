@@ -46,7 +46,7 @@ public class TypeNounHelper {
 				ParameterizedType pt = (ParameterizedType) to;
 				Type raw = pt.getRawType();
 				Type[] args = pt.getActualTypeArguments();
-				if ((raw instanceof Class<?>) && (Collection.class.isAssignableFrom((Class<?>) raw))) {
+				if ((raw instanceof Class<?>) && (Iterable.class.isAssignableFrom((Class<?>) raw))) {
 					if (args.length != 1) {
 						throw new Kite9ProcessingException(
 								"Could not handle collection with more than one type argument: " + to);
@@ -66,7 +66,7 @@ public class TypeNounHelper {
 				ParameterizedType pt = (ParameterizedType) t;
 				Type rt = pt.getRawType();
 				if (rt instanceof Class<?>) {
-					if ((Collection.class.isAssignableFrom((Class<?>) rt))) {
+					if ((Iterable.class.isAssignableFrom((Class<?>) rt))) {
 						return true;
 					}
 				}

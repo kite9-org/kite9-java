@@ -15,11 +15,17 @@ import java.io.OutputStream;
  * @author moffatr
  *
  */
-public interface Repository {
+public interface Repository<K> {
 
     public OutputStream store(String subjectId, String name, String type) throws IOException;
     
     public InputStream retrieve(String subjectId, String name, String type) throws IOException;
+    
+    public K getAddress(String subjectId, String name, String type, boolean create) throws IOException;
+    
+    public OutputStream store(K address) throws IOException;
+    
+    public InputStream retrieve(K address) throws IOException;
     
     public void clear(String subjectId, String name) throws IOException;
 }

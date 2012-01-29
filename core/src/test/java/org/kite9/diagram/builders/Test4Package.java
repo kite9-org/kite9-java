@@ -16,9 +16,9 @@ public class Test4Package extends AbstractBuilderTest {
     public void test_4_1_PackageAsContext() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withPackages(Test4Package.class)
-		.show(db.asContexts())
+		.show(db.asConnectedContexts())
 		.withMembers(Test4Package.class)
-			.show(db.asGlyphs());
+			.show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
 	
     }
@@ -28,9 +28,9 @@ public class Test4Package extends AbstractBuilderTest {
     public void test_4_2_PackageAsContextWithClassContents1() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withPackages(Test4Package.class)
-		.show(db.asContexts())
+		.show(db.asConnectedContexts())
 		.withMemberClasses(null)
-			.show(db.asGlyphs());
+			.show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
     
@@ -39,9 +39,9 @@ public class Test4Package extends AbstractBuilderTest {
     public void test_4_3_PackageAsContextWithClassContents2() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withPackages(Test4Package.class)
-		.show(db.asContexts())
+		.show(db.asConnectedContexts())
 		.withMemberClasses(null).reduce(db.only(Test4Package.class))
-			.show(db.asGlyphs());
+			.show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
     
@@ -51,9 +51,9 @@ public class Test4Package extends AbstractBuilderTest {
     public void test_4_4_PackageDependency() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withPackages(Test4Package.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 		.withDependencies(null)
-			.show(db.asGlyphs());
+			.show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
     

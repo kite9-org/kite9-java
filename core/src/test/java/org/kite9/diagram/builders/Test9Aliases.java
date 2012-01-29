@@ -46,7 +46,7 @@ public class Test9Aliases extends AbstractBuilderTest {
     @Kite9Item
     public void test_9_1_GlyphAlias() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(SomeClass.class).show(db.asGlyphs());
+	db.withClasses(SomeClass.class).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
     
@@ -54,7 +54,7 @@ public class Test9Aliases extends AbstractBuilderTest {
     @Kite9Item
     public void test_9_2_ContextAlias() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(SomeClass.class).show(db.asContexts());
+	db.withClasses(SomeClass.class).show(db.asConnectedContexts());
 	renderDiagram(db.getDiagram());
     }
     
@@ -63,7 +63,7 @@ public class Test9Aliases extends AbstractBuilderTest {
     public void test_9_3_MethodTextLineAlias() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeClass.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 		.withMethods(db.onlyAnnotated(), false).show(db.asTextLines());
 	renderDiagram(db.getDiagram());
     }
@@ -74,7 +74,7 @@ public class Test9Aliases extends AbstractBuilderTest {
     public void test_9_4_FieldTextLineAlias() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeClass.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 		.withFields(db.onlyAnnotated(), false).show(db.asTextLines());
 	renderDiagram(db.getDiagram());
     }
@@ -84,7 +84,7 @@ public class Test9Aliases extends AbstractBuilderTest {
     public void test_9_5_AnnotationGlyphs() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeClass.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 		.withAnnotations(null).show(db.asTextLines());
 	renderDiagram(db.getDiagram());
     }
@@ -94,8 +94,8 @@ public class Test9Aliases extends AbstractBuilderTest {
     public void test_9_6_AnnotationText() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeClass.class)
-		.show(db.asGlyphs())
-		.withAnnotations(null).show(db.asGlyphs());
+		.show(db.asConnectedGlyphs())
+		.withAnnotations(null).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
     
@@ -108,7 +108,7 @@ public class Test9Aliases extends AbstractBuilderTest {
 	PropertyAliaser a = new PropertyAliaser();
 	a.setProperties(p);
 	DiagramBuilder db = new DiagramBuilder(a, m, pmi);
-	db.withClasses(SomeOtherClass.class).show(db.asGlyphs());
+	db.withClasses(SomeOtherClass.class).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
     

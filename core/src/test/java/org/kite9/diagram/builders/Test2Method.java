@@ -44,8 +44,8 @@ public class Test2Method extends AbstractBuilderTest {
     @Test
     public void test_2_1_MethodsAsGlyphs() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test2Method.class).show(db.asGlyphs())
-		.withMethods(db.onlyAnnotated(), false).show(db.asGlyphs());
+	db.withClasses(Test2Method.class).show(db.asConnectedGlyphs())
+		.withMethods(db.onlyAnnotated(), false).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
     
@@ -53,7 +53,7 @@ public class Test2Method extends AbstractBuilderTest {
     @Test
     public void test_2_2_MethodsAsTextLine() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test2Method.class).show(db.asGlyphs())
+	db.withClasses(Test2Method.class).show(db.asConnectedGlyphs())
 		.withMethods(db.onlyAnnotated(), false).show(db.asTextLines());
 	renderDiagram(db.getDiagram());
     }
@@ -63,9 +63,9 @@ public class Test2Method extends AbstractBuilderTest {
     public void test_2_3_MethodAsLabelWithReturn() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test2Method.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 		.withMethods(db.onlyAnnotated(), false)
-			.withReturns(null).show(db.asGlyphs());
+			.withReturns(null).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
     
@@ -74,9 +74,9 @@ public class Test2Method extends AbstractBuilderTest {
     public void test_2_4_MethodsInContext() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test2Method.class)
-		.show(db.asContexts())
+		.show(db.asConnectedContexts())
 		.withMethods(db.onlyAnnotated(), false)
-			.show(db.asGlyphs("method"));
+			.show(db.asConnectedGlyphs("method"));
 	renderDiagram(db.getDiagram());
     }
     
@@ -85,10 +85,10 @@ public class Test2Method extends AbstractBuilderTest {
     public void test_2_5_MethodParams() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test2Method.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 		.withMethods(db.onlyAnnotated(), false)
-			.show(db.asGlyphs())
-			.withParameters(null).show(db.asGlyphs());
+			.show(db.asConnectedGlyphs())
+			.withParameters(null).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
     
@@ -97,9 +97,9 @@ public class Test2Method extends AbstractBuilderTest {
     public void test_2_6_MethodVisibilityAndParams() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test2Method.class)
-		.show(db.asContexts())
+		.show(db.asConnectedContexts())
 		.withMethods(db.onlyAnnotated(), false)
-			.show(db.asGlyphs())
+			.show(db.asConnectedGlyphs())
 			.showVisibility(db.asTextLines())
 			.withParameters(null).show(db.asTextLines());
 	renderDiagram(db.getDiagram());
@@ -109,10 +109,10 @@ public class Test2Method extends AbstractBuilderTest {
     @Test
     public void test_2_7_MethodMethodCaller() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test2Method.class).show(db.asGlyphs())
+	db.withClasses(Test2Method.class).show(db.asConnectedGlyphs())
 		.withMethods(db.onlyAnnotated(), false)
-			.show(db.asGlyphs())
-			.withCallingMethods(null).show(db.asGlyphs());
+			.show(db.asConnectedGlyphs())
+			.withCallingMethods(null).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
 	
     }
@@ -121,10 +121,10 @@ public class Test2Method extends AbstractBuilderTest {
     @Test
     public void test_2_8_MethodClassCaller() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test2Method.class).show(db.asGlyphs())
+	db.withClasses(Test2Method.class).show(db.asConnectedGlyphs())
 		.withMethods(db.onlyAnnotated(), false)
-			.show(db.asGlyphs())
-			.withCallingClasses(null).show(db.asGlyphs());
+			.show(db.asConnectedGlyphs())
+			.withCallingClasses(null).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
 	
     }
@@ -135,8 +135,8 @@ public class Test2Method extends AbstractBuilderTest {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(CallerClass.class)
 		.withMethods(db.onlyAnnotated(), false)
-			.show(db.asGlyphs())
-			.withCalledMethods(null).show(db.asGlyphs());
+			.show(db.asConnectedGlyphs())
+			.withCalledMethods(null).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
 	
     }
@@ -147,9 +147,9 @@ public class Test2Method extends AbstractBuilderTest {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(CallerClass.class)
 		.withMethods(db.onlyAnnotated(), false)
-			.show(db.asGlyphs())
-			.withCalledMethods(null).show(db.asGlyphs())
-				.withDeclaringClasses(null).show(db.asGlyphs());
+			.show(db.asConnectedGlyphs())
+			.withCalledMethods(null).show(db.asConnectedGlyphs())
+				.withDeclaringClasses(null).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
 	
     }

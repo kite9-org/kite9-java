@@ -20,7 +20,7 @@ public interface Kite9Context {
 
     public ClassLoader getUserClassLoader();
     
-    public Repository getRepository();
+    public Repository<?> getRepository();
     
     public int getProjectId();
     

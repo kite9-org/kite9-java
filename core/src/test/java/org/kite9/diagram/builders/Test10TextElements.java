@@ -14,7 +14,7 @@ public class Test10TextElements extends AbstractBuilderTest{
 	@Kite9Item
 	public void test_10_1_StringGlyph() throws IOException {
 	    DiagramBuilder db = createBuilder();
-	    db.withStrings("a", "b", "c").show(db.asGlyphs());
+	    db.withStrings("a", "b", "c").show(db.asConnectedGlyphs());
 	    renderDiagram(db.getDiagram());
 	}
 	
@@ -23,9 +23,9 @@ public class Test10TextElements extends AbstractBuilderTest{
 	public void test_10_1_StringContext() throws IOException {
 	    DiagramBuilder db = createBuilder();
 	    db.withStrings("m context")
-	    	.show(db.asContexts())
+	    	.show(db.asConnectedContexts())
 	    	.withClasses(HasRelationship.CLASS, SomeClassA.class)
-	    		.show(db.asGlyphs());
+	    		.show(db.asConnectedGlyphs());
 	    renderDiagram(db.getDiagram());
 	}
 	
@@ -34,9 +34,9 @@ public class Test10TextElements extends AbstractBuilderTest{
 	public void test_10_3_Note() throws IOException {
 	    DiagramBuilder db = createBuilder();
 	    db.withClasses(SomeClassA.class, SomeClassB.class)
-	    	.show(db.asGlyphs())
+	    	.show(db.asConnectedGlyphs())
 	    	.withStrings(new Relationship("observes"), "The 10 second rule")
-	    	.show(db.asGlyphs("note"));
+	    	.show(db.asConnectedGlyphs("note"));
 	    renderDiagram(db.getDiagram());
 	}
 }

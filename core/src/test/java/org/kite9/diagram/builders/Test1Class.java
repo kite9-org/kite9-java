@@ -28,7 +28,7 @@ public class Test1Class extends AbstractBuilderTest {
     @Kite9Item
     public void test_1_1_ClassName() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test1Class.class).show(db.asGlyphs());
+	db.withClasses(Test1Class.class).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
 
@@ -36,7 +36,7 @@ public class Test1Class extends AbstractBuilderTest {
     @Kite9Item
     public void test_1_2_ClassExtendsAsSymbol() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test1Class.class).show(db.asGlyphs()).withSuperClasses(null).show(db.asSymbols());
+	db.withClasses(Test1Class.class).show(db.asConnectedGlyphs()).withSuperClasses(null).show(db.asSymbols());
 	renderDiagram(db.getDiagram());
     }
 
@@ -44,7 +44,7 @@ public class Test1Class extends AbstractBuilderTest {
     @Kite9Item
     public void test_1_3_ClassVisibilityAsSymbol() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test1Class.class, DummyClass.class).show(db.asGlyphs()).showVisibility(db.asSymbols());
+	db.withClasses(Test1Class.class, DummyClass.class).show(db.asConnectedGlyphs()).showVisibility(db.asSymbols());
 	renderDiagram(db.getDiagram());
     }
 
@@ -52,8 +52,8 @@ public class Test1Class extends AbstractBuilderTest {
     @Kite9Item
     public void test_1_4_ClassInterfacesAsArrows() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test1Class.class, DummyClass.class).show(db.asGlyphs()).withInterfaces(null, false).show(
-		db.asGlyphs());
+	db.withClasses(Test1Class.class, DummyClass.class).show(db.asConnectedGlyphs()).withInterfaces(null, false).show(
+		db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
 
@@ -61,7 +61,7 @@ public class Test1Class extends AbstractBuilderTest {
     @Kite9Item
     public void test_1_5_InnerClassAsGlyph() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test1Class.class).show(db.asGlyphs()).withInnerClasses(null, false).show(db.asGlyphs());
+	db.withClasses(Test1Class.class).show(db.asConnectedGlyphs()).withInnerClasses(null, false).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
 
@@ -69,7 +69,7 @@ public class Test1Class extends AbstractBuilderTest {
     @Kite9Item
     public void test_1_6_InnerClassAsGlyphsInContext() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test1Class.class).show(db.asContexts()).withInnerClasses(null, false).show(db.asGlyphs());
+	db.withClasses(Test1Class.class).show(db.asConnectedContexts()).withInnerClasses(null, false).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
 
@@ -77,7 +77,7 @@ public class Test1Class extends AbstractBuilderTest {
     @Kite9Item
     public void test_1_7_SubClassesAsExtends() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(DummyClass.class).show(db.asGlyphs()).withSubClasses(null, false).show(db.asGlyphs());
+	db.withClasses(DummyClass.class).show(db.asConnectedGlyphs()).withSubClasses(null, false).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
 

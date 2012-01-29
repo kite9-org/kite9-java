@@ -26,7 +26,7 @@ public class Test12Primitives extends AbstractBuilderTest {
     public void test_12_1_AsText() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test12Primitives.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 		.withFields(db.onlyAnnotated(), false).show(db.asTextLines()).withType(null).show(db.asTextLines());
 
 	renderDiagram(db.getDiagram());
@@ -37,8 +37,8 @@ public class Test12Primitives extends AbstractBuilderTest {
     public void test_12_2_AsGlyphs() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test12Primitives.class)
-		.show(db.asGlyphs())
-		.withFields(db.onlyAnnotated(), false).show(db.asGlyphs()).withType(null).show(db.asGlyphs());
+		.show(db.asConnectedGlyphs())
+		.withFields(db.onlyAnnotated(), false).show(db.asConnectedGlyphs()).withType(null).show(db.asConnectedGlyphs());
 
 	renderDiagram(db.getDiagram());
     }
@@ -49,8 +49,8 @@ public class Test12Primitives extends AbstractBuilderTest {
     public void test_12_3_AsLabels() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test12Primitives.class)
-		.show(db.asGlyphs())
-		.withFields(db.onlyAnnotated(), false).withType(null).show(db.asGlyphs());
+		.show(db.asConnectedGlyphs())
+		.withFields(db.onlyAnnotated(), false).withType(null).show(db.asConnectedGlyphs());
 
 	renderDiagram(db.getDiagram());
     }

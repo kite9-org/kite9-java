@@ -49,6 +49,7 @@ public class Test8Map extends AbstractBuilderTest {
 	 */
 	class Example3<W, V> {
 
+		@SuppressWarnings("unused")
 		@K9OnDiagram
 		private Map<W, V> someMap = new HashMap<W, V>();
 
@@ -81,11 +82,11 @@ public class Test8Map extends AbstractBuilderTest {
 	public void test_8_1_MapExample1() throws IOException {
 		 DiagramBuilder db = createBuilder();
 		 db.withClasses(Example1.class)
-		 .show(db.asGlyphs())
+		 .show(db.asConnectedGlyphs())
 		 .withFields(db.onlyAnnotated(), false)
-		 .show(db.asGlyphs())
+		 .show(db.asConnectedGlyphs())
 		 .withType(null)
-		 .show(db.asGlyphs());
+		 .show(db.asConnectedGlyphs());
 		 renderDiagram(db.getDiagram());
 	}
 
@@ -93,8 +94,8 @@ public class Test8Map extends AbstractBuilderTest {
 	@Test
 	public void test_8_2_MapExample2() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(Example2.class).show(db.asGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asGlyphs())
-				.withType(null).show(db.asGlyphs());
+		db.withClasses(Example2.class).show(db.asConnectedGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asConnectedGlyphs())
+				.withType(null).show(db.asConnectedGlyphs());
 		renderDiagram(db.getDiagram());
 	}
 
@@ -102,8 +103,8 @@ public class Test8Map extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_8_3_MapExample3() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(Example3.class).show(db.asGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asGlyphs())
-				.withType(null).show(db.asGlyphs());
+		db.withClasses(Example3.class).show(db.asConnectedGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asConnectedGlyphs())
+				.withType(null).show(db.asConnectedGlyphs());
 		renderDiagram(db.getDiagram());
 	}
 
@@ -111,8 +112,8 @@ public class Test8Map extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_8_4_MapExample4() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(Example4.class).show(db.asGlyphs()).withFields(db.onlyAnnotated(), true).show(db.asGlyphs())
-				.withType(null).show(db.asGlyphs());
+		db.withClasses(Example4.class).show(db.asConnectedGlyphs()).withFields(db.onlyAnnotated(), true).show(db.asConnectedGlyphs())
+				.withType(null).show(db.asConnectedGlyphs());
 		renderDiagram(db.getDiagram());
 	}
 	
@@ -120,8 +121,8 @@ public class Test8Map extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_8_5_MapExample5() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(Example5.class).show(db.asGlyphs()).withFields(db.onlyAnnotated(), true).show(db.asGlyphs())
-				.withType(null).show(db.asGlyphs());
+		db.withClasses(Example5.class).show(db.asConnectedGlyphs()).withFields(db.onlyAnnotated(), true).show(db.asConnectedGlyphs())
+				.withType(null).show(db.asConnectedGlyphs());
 		renderDiagram(db.getDiagram());
 	}
 	
@@ -129,7 +130,7 @@ public class Test8Map extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_8_6_MapExample4AsText() throws IOException {
 		DiagramBuilder db = createBuilder();
-		db.withClasses(Example4.class).show(db.asGlyphs()).withFields(db.onlyAnnotated(), true).show(db.asTextLines())
+		db.withClasses(Example4.class).show(db.asConnectedGlyphs()).withFields(db.onlyAnnotated(), true).show(db.asTextLines())
 				.withType(null).show(db.asTextLines());
 		renderDiagram(db.getDiagram());
 	}

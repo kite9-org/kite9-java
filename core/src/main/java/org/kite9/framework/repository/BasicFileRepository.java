@@ -11,53 +11,63 @@ import java.io.OutputStream;
 
 import org.kite9.framework.common.RepositoryHelp;
 
+public class BasicFileRepository implements Repository<File> {
 
-public class BasicFileRepository implements Repository {
-
-    public InputStream retrieve(String subjectId, String name, String type) throws IOException {
-	File f=prepareFileName(subjectId, name, type, false);
-	if (!f.exists()) {
-	    throw new IOException("File does not exist: "+f);
+	public InputStream retrieve(String subjectId, String name, String type)
+			throws IOException {
+		return retrieve(getAddress(subjectId, name, type, false));
 	}
+
+	public OutputStream store(String subjectId, String name, String type)
+			throws FileNotFoundException {
+		return store(getAddress(subjectId, name, type, true));
+	}
+
 	
-	return new FileInputStream(f);
-    }
+	public InputStream retrieve(File f)
+			throws IOException {
+		if (!f.exists()) {
+			throw new IOException("File does not exist: " + f);
+		}
 
-    public OutputStream store(String subjectId, String name, String type) throws FileNotFoundException {
-	File f=prepareFileName(subjectId, name, type, true);
-	return new FileOutputStream(f);
-    }
+		return new FileInputStream(f);
+	}
 
-    public File prepareFileName(String id, String name, String extension, boolean createDir) {
-	return RepositoryHelp.prepareFileName(id, name==null ? null : name+"."+extension, getBaseDir(), createDir);
-    }
+	public OutputStream store(File f) throws FileNotFoundException {
+		return new FileOutputStream(f);
+	}
 
-    protected String getBaseDir() {
-	return baseDir;
-    }
+	public File getAddress(String id, String name, String extension,
+			boolean createDir) {
+		return RepositoryHelp.prepareFileName(id, name == null ? null : name
+				+ "." + extension, getBaseDir(), createDir);
+	}
 
-    private String baseDir = "target/kite9-repo";
+	protected String getBaseDir() {
+		return baseDir;
+	}
 
-    public void setBaseDir(String baseDir) {
-        this.baseDir = baseDir;
-    }
+	private String baseDir = "target/kite9-repo";
 
-    public void clear(String subjectId, final String name) throws IOException {
-	File f = prepareFileName(subjectId, null, null, false);
-	File[] matches = f.listFiles(new FilenameFilter() {
+	public void setBaseDir(String baseDir) {
+		this.baseDir = baseDir;
+	}
 
-	    public boolean accept(File dir, String name1) {
-		return (name1.startsWith(name));
-	    }
-	    
-	});
-	
-	if (matches != null)
-        	for (File file : matches) {
-        	    file.delete();
-        	}
+	public void clear(String subjectId, final String name) throws IOException {
+		File f = getAddress(subjectId, null, null, false);
+		File[] matches = f.listFiles(new FilenameFilter() {
 
-    }
-    
+			public boolean accept(File dir, String name1) {
+				return (name1.startsWith(name));
+			}
+
+		});
+
+		if (matches != null)
+			for (File file : matches) {
+				file.delete();
+			}
+
+	}
 
 }

@@ -9,7 +9,7 @@ public class Hello {
     
     @Kite9Item
     public Diagram helloWorldClassDiagram(DiagramBuilder db) {
-	db.withClasses(Hello.class, World.class).show(db.asGlyphs());
+	db.withClasses(Hello.class, World.class).show(db.asConnectedGlyphs());
 	return db.getDiagram();
     }
 }

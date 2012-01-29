@@ -14,10 +14,10 @@ import org.springframework.beans.factory.InitializingBean;
 
 public class Kite9ContextImpl implements Kite9Context, Logable, InitializingBean {
 
-	public Kite9ContextImpl(Aliaser a, Repository r) {
+	public <A> Kite9ContextImpl(Aliaser a, Repository<A> r) {
 		super();
 		this.a = a;
-		this.repo = r;
+		this.repo = new LoggingRepository<A>(this, r);
 	}
 
 	Aliaser a;
@@ -58,6 +58,8 @@ public class Kite9ContextImpl implements Kite9Context, Logable, InitializingBean
 		}
 	}
 
+
+	@SuppressWarnings("deprecation")
 	public synchronized ClassLoader setupUserClassLoader() {
 		try {
 			if (userClassLoader == null) {
@@ -92,9 +94,9 @@ public class Kite9ContextImpl implements Kite9Context, Logable, InitializingBean
 		return classPath;
 	}
 
-	private Repository repo;
+	private Repository<?> repo;
 
-	public Repository getRepository() {
+	public Repository<?> getRepository() {
 		return repo;
 	}
 	

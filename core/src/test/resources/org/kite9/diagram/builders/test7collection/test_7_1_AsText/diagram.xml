@@ -25,6 +25,10 @@
     <text>field: compoundString2, is a: array of Set of Set of String</text>
     <symbols></symbols>
    </text-line>
+   <text-line>
+    <text>field: someStrings, is a: Iterable of String</text>
+    <symbols></symbols>
+   </text-line>
   </text-lines>
   <symbols></symbols>
  </glyph>

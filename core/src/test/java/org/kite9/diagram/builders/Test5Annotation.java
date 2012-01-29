@@ -54,7 +54,7 @@ public class Test5Annotation extends AbstractBuilderTest {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Test5Annotation.class)
 		.withMethods(db.onlyAnnotated(), false)
-			.show(db.asGlyphs())
+			.show(db.asConnectedGlyphs())
 			.withAnnotations(null)
 				.show(db.asTextLines());
 	renderDiagram(db.getDiagram());
@@ -65,9 +65,9 @@ public class Test5Annotation extends AbstractBuilderTest {
     public void test_5_2_ReferencedByAnnotation() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeReferencedClassB.class, SomeReferencedClassC.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 			.withReferencingAnnotations(null)
-			.show(db.asGlyphs());
+			.show(db.asConnectedGlyphs());
 	
 	renderDiagram(db.getDiagram());
     }
@@ -78,9 +78,9 @@ public class Test5Annotation extends AbstractBuilderTest {
     public void test_5_3_AnnotationAsSubject() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(Reference.class, Useless.class)
-		.show(db.asGlyphs("annotation"))
+		.show(db.asConnectedGlyphs("annotation"))
 		.withAnnotatedClasses(null)
-			.show(db.asGlyphs());
+			.show(db.asConnectedGlyphs());
 	
 	renderDiagram(db.getDiagram());
     }
@@ -90,9 +90,9 @@ public class Test5Annotation extends AbstractBuilderTest {
     public void test_5_4_ReferencedByAnnotationElement() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeReferencedClassB.class, SomeReferencedClassC.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 			.withReferencingAnnotatedElements(null)
-			.show(db.asGlyphs());
+			.show(db.asConnectedGlyphs());
 	
 	renderDiagram(db.getDiagram());
     }

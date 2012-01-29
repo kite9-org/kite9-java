@@ -119,7 +119,7 @@ public class AbstractRunnerTest extends HelpMethods {
 
 	protected static Kite9Context createContext() {
 		Aliaser a = new PropertyAliaser();
-		Repository r = new BasicFileRepository();
+		Repository<File> r = new BasicFileRepository();
 		Kite9ContextImpl out = new Kite9ContextImpl(a, r);
 		out.setClassPath("target/classes" + File.pathSeparator + "target/test-classes");
 		out.setProjectId("35");

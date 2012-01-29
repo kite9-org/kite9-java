@@ -44,11 +44,11 @@ public class Test14Hierarchy extends AbstractBuilderTest {
 	public void test_14_1_TestHierarchy() throws IOException {
 		DiagramBuilder db = createBuilder();
 		String rh = "Rob's Hierarchy";
-		db.withStrings(rh).show(db.asContexts());
+		db.withStrings(rh).show(db.asConnectedContexts());
 		HierarchyWizard hb = new HierarchyWizard(rh, db);
 		hb.add(true, Top.class);
-		hb.showClasses(db.asContexts(false, Layout.HORIZONTAL), db.asGlyphs(""));
-		hb.showInheritance(db.asGlyphs(""));
+		hb.showClasses(db.asConnectedContexts(false, Layout.HORIZONTAL), db.asConnectedGlyphs(""));
+		hb.showInheritance(db.asConnectedGlyphs(""));
 		renderDiagram(db.getDiagram());
 	}
 

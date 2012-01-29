@@ -21,7 +21,7 @@ public class Test13Augmenting extends AbstractBuilderTest {
     @Test
     public void test_13_1_AugmentGlyph() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(SomeClass.class).show(db.asGlyphs());
+	db.withClasses(SomeClass.class).show(db.asConnectedGlyphs());
 	Glyph g = (Glyph) db.getElement(SomeClass.class);
 	g.getText().add(new TextLine("This is a favourite of John's"));
 	renderDiagram(db.getDiagram());
@@ -32,9 +32,9 @@ public class Test13Augmenting extends AbstractBuilderTest {
     public void test_13_2_DirectedArrow() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeClass.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 		.withClasses(new Relationship("inherits", Direction.LEFT), SomeInterface.class)
-		.show(db.asGlyphs());
+		.show(db.asConnectedGlyphs());
 	
 	renderDiagram(db.getDiagram());
     }
@@ -44,9 +44,9 @@ public class Test13Augmenting extends AbstractBuilderTest {
     public void test_13_3_AugmentLinks() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeClass.class)
-		.show(db.asGlyphs())
+		.show(db.asConnectedGlyphs())
 		.withInterfaces(null, false)
-		.show(db.asGlyphs());
+		.show(db.asConnectedGlyphs());
 	
 	Arrow a = (Arrow) db.getRelationshipElement(SomeClass.class, Relationship.IMPLEMENTS);
 	Glyph sc = (Glyph) db.getElement(SomeClass.class);

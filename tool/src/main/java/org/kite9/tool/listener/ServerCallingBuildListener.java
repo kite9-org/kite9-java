@@ -22,23 +22,20 @@ public class ServerCallingBuildListener extends AbstractContextualizable impleme
 	
 	int successful;
 	int failed;
-	int total;
 
 	public boolean canProcess(WorkItem designItem) {
 		return true;
 	}
 
 	public void finished() {
-	    getContext().getLogger().send("Server processed "+successful+" successful calls and "+failed+" failures out of "+total);
+	    getContext().getLogger().send("Server processed "+successful+" successful calls and "+failed+" failures out of "+(failed+successful));
 	}
 
-	public Repository getRepository() {
+	public Repository<?> getRepository() {
 		return getContext().getRepository();
 	}
 
 	private void processItem(WorkItem i) {
-		total++;
-
 		try {
 			getRepository().clear(i.getSubjectId(), i.getName());
 			ZipInputStream zis = server.serve(i);
@@ -64,8 +61,10 @@ public class ServerCallingBuildListener extends AbstractContextualizable impleme
 					throw new Kite9ProcessingException("An exception occurred in processing the work item:  "+i.getSubjectId()+" "+i.getName()+"\n"+problemText);
 				}
 				
-				successful++;
 			}
+			
+			successful++;
+
 		} catch (IOException e) {
 			failed ++;
 			throw new Kite9ProcessingException("Could not process server response: " + e);

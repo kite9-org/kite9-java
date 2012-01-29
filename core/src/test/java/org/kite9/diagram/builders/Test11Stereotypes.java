@@ -50,7 +50,7 @@ public class Test11Stereotypes extends AbstractBuilderTest {
     @Kite9Item
     public void test_11_1_GlyphStereotype() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(SomeClass.class).show(db.asGlyphs());
+	db.withClasses(SomeClass.class).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
  
@@ -59,8 +59,8 @@ public class Test11Stereotypes extends AbstractBuilderTest {
     public void test_11_2_MethodStereotype() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeClass.class)
-		.show(db.asGlyphs())
-		.withMethods(db.onlyAnnotated(), false).show(db.asGlyphs());
+		.show(db.asConnectedGlyphs())
+		.withMethods(db.onlyAnnotated(), false).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
 
@@ -70,8 +70,8 @@ public class Test11Stereotypes extends AbstractBuilderTest {
     public void test_11_3_FieldStereotype() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeClass.class)
-		.show(db.asGlyphs())
-		.withFields(db.onlyAnnotated(), false).show(db.asGlyphs());
+		.show(db.asConnectedGlyphs())
+		.withFields(db.onlyAnnotated(), false).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
     
@@ -79,7 +79,7 @@ public class Test11Stereotypes extends AbstractBuilderTest {
     @Kite9Item
     public void test_11_4_GlyphInheritedStereotype() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(SomeOtherClass.class).show(db.asGlyphs());
+	db.withClasses(SomeOtherClass.class).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
  

@@ -13,6 +13,7 @@
  <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringCollection/rel_is a" label="is a"></arrow>
  <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString1/rel_is a" label="is a"></arrow>
  <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2/rel_is a" label="is a"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings/rel_is a" label="is a"></arrow>
  <allLinks>
   <link id="auto:0">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>
@@ -59,6 +60,14 @@
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2/rel_is a"></to>
    <fromLabel xsi:type="text-line">
     <text>compoundString2</text>
+    <symbols></symbols>
+   </fromLabel>
+  </link>
+  <link id="auto:12">
+   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>
+   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings/rel_is a"></to>
+   <fromLabel xsi:type="text-line">
+    <text>someStrings</text>
     <symbols></symbols>
    </fromLabel>
   </link>
@@ -112,6 +121,15 @@
    <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
    <toLabel xsi:type="text-line">
     <text>array of Set of Set of </text>
+    <symbols></symbols>
+   </toLabel>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+  <link id="auto:13">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings/rel_is a"></from>
+   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
+   <toLabel xsi:type="text-line">
+    <text>Iterable of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>

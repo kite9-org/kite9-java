@@ -157,13 +157,9 @@ public class ClassFileModelBuilder {
 			}
 
 			public void visitEnd() {
-				int i = 0;
-				i++;
 			}
 
 			public void visitEnum(String arg0, String arg1, String arg2) {
-				int i = 0;
-				i++;
 			}
 
 		};

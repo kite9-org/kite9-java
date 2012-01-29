@@ -31,7 +31,6 @@ import org.kite9.diagram.builders.noun.NounPart;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.Connected;
-import org.kite9.diagram.primitives.Connection;
 import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
@@ -132,12 +131,7 @@ public class DiagramBuilder extends AbstractBuilder {
 				if ((from instanceof Connected) && (to instanceof Connected)) {
 					Connected cfrom = (Connected) from;
 					Connected cto = (Connected) to;
-					Connection out = cfrom.getConnectionTo(cto);
-					if (out == null) {
-						return new Link(cfrom, cto, null, fromLabel, arrowHead ? LinkEndStyle.ARROW : null, toLabel, d);
-					} else {
-						return (Link) out;
-					}
+					return new Link(cfrom, cto, null, fromLabel, arrowHead ? LinkEndStyle.ARROW : null, toLabel, d);
 				} else {
 					throw new Kite9ProcessingException("Could not link between: " + from + " and " + to);
 				}
@@ -436,28 +430,28 @@ public class DiagramBuilder extends AbstractBuilder {
 		}
 	}
 
-	public Format asGlyphs() {
-		return BasicFormats.asArrows(getInsertionInterface(), BasicFormats.asGlyph(null), null);
+	public Format asConnectedGlyphs() {
+		return BasicFormats.asConnected(getInsertionInterface(), BasicFormats.asGlyph(null), null);
 	}
 
-	public Format asGlyphs(String stereotypeOverride) {
-		return BasicFormats.asArrows(getInsertionInterface(), BasicFormats.asGlyph(stereotypeOverride), null);
+	public Format asConnectedGlyphs(String stereotypeOverride) {
+		return BasicFormats.asConnected(getInsertionInterface(), BasicFormats.asGlyph(stereotypeOverride), null);
 	}
 
-	public Format asGlyphs(String stereotypeOverride, Direction d) {
-		return BasicFormats.asArrows(getInsertionInterface(), BasicFormats.asGlyph(stereotypeOverride), d);
+	public Format asConnectedGlyphs(String stereotypeOverride, Direction d) {
+		return BasicFormats.asConnected(getInsertionInterface(), BasicFormats.asGlyph(stereotypeOverride), d);
 	}
 
-	public Format asContexts() {
-		return BasicFormats.asArrows(getInsertionInterface(), BasicFormats.asContext(true, null, null), null);
+	public Format asConnectedContexts() {
+		return BasicFormats.asConnected(getInsertionInterface(), BasicFormats.asContext(true, null, null), null);
 	}
 
-	public Format asContexts(boolean border, Layout l) {
-		return BasicFormats.asArrows(getInsertionInterface(), BasicFormats.asContext(border, l, null), null);
+	public Format asConnectedContexts(boolean border, Layout l) {
+		return BasicFormats.asConnected(getInsertionInterface(), BasicFormats.asContext(border, l, null), null);
 	}
 
-	public Format asContexts(boolean border, Layout l, Direction d) {
-		return BasicFormats.asArrows(getInsertionInterface(), BasicFormats.asContext(border, l, null), d);
+	public Format asConnectedContexts(boolean border, Layout l, Direction d) {
+		return BasicFormats.asConnected(getInsertionInterface(), BasicFormats.asContext(border, l, null), d);
 	}
 
 	public Format asSymbols() {

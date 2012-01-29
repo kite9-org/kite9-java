@@ -20,7 +20,7 @@ public class Test3Field extends AbstractBuilderTest {
     @Test
     public void test_3_1_FieldAliasesAsGlyphsFromClass() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test3Field.class).show(db.asGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asGlyphs());
+	db.withClasses(Test3Field.class).show(db.asConnectedGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
 
@@ -28,7 +28,7 @@ public class Test3Field extends AbstractBuilderTest {
     @Test
     public void test_3_2_FieldAliasesAsTextLine() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test3Field.class).show(db.asGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asTextLines());
+	db.withClasses(Test3Field.class).show(db.asConnectedGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asTextLines());
 	renderDiagram(db.getDiagram());
     }
 
@@ -36,9 +36,9 @@ public class Test3Field extends AbstractBuilderTest {
     @Test
     public void test_3_3_FieldsAsLabelledEdges() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test3Field.class).show(db.asGlyphs())
+	db.withClasses(Test3Field.class).show(db.asConnectedGlyphs())
 		.withFields(db.onlyAnnotated(), false)
-			.withType(null).show(db.asGlyphs());
+			.withType(null).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
 
@@ -47,8 +47,8 @@ public class Test3Field extends AbstractBuilderTest {
     @Test
     public void test_3_4_FieldAsGlyphWithType() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test3Field.class).show(db.asGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asGlyphs())
-		.withType(null).show(db.asGlyphs());
+	db.withClasses(Test3Field.class).show(db.asConnectedGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asConnectedGlyphs())
+		.withType(null).show(db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
 
@@ -56,8 +56,8 @@ public class Test3Field extends AbstractBuilderTest {
     @Test
     public void test_3_5_FieldsInContext() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test3Field.class).show(db.asContexts()).withFields(db.onlyAnnotated(), false).show(
-		db.asGlyphs());
+	db.withClasses(Test3Field.class).show(db.asConnectedContexts()).withFields(db.onlyAnnotated(), false).show(
+		db.asConnectedGlyphs());
 	renderDiagram(db.getDiagram());
     }
 
@@ -65,7 +65,7 @@ public class Test3Field extends AbstractBuilderTest {
     @Test
     public void test_3_6_FieldVisibility() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test3Field.class).show(db.asContexts()).withFields(db.onlyAnnotated(), false).show(db.asGlyphs())
+	db.withClasses(Test3Field.class).show(db.asConnectedContexts()).withFields(db.onlyAnnotated(), false).show(db.asConnectedGlyphs())
 		.showVisibility(db.asTextLines());
 	renderDiagram(db.getDiagram());
     }
@@ -74,7 +74,7 @@ public class Test3Field extends AbstractBuilderTest {
     @Test
     public void test_3_7_FieldReturnTypesAsTextLine() throws IOException {
 	DiagramBuilder db = createBuilder();
-	db.withClasses(Test3Field.class).show(db.asGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asTextLines())
+	db.withClasses(Test3Field.class).show(db.asConnectedGlyphs()).withFields(db.onlyAnnotated(), false).show(db.asTextLines())
 		.withType(null).show(db.asTextLines());
 	renderDiagram(db.getDiagram());
     }
