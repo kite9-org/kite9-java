@@ -2,7 +2,7 @@ package org.kite9.framework.model;
 
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +23,7 @@ public class ProjectModelImpl implements ProjectModel {
 	private Map<String, Set<String>> packageContents = new HashMap<String, Set<String>>(100);
 	private Map<String, Set<AnnotationHandle>> annotationReferences = new HashMap<String, Set<AnnotationHandle>>(100);
 
-	private Set<String> classes = new HashSet<String>(100);
+	private LinkedHashSet<String> classes = new LinkedHashSet<String>(100);
 
 	public List<MemberHandle> getCalls(MemberHandle m) {
 		return checkListGet(calls.get(m));
@@ -158,5 +158,9 @@ public class ProjectModelImpl implements ProjectModel {
 
 	public boolean packageWithinModel(String packageName) {
 		return packageContents.containsKey(packageName);
+	}
+
+	public Iterable<String> getAllClasses() {
+		return classes;
 	}
 }

@@ -23,8 +23,9 @@ import org.kite9.tool.context.Kite9Context;
 import org.kite9.tool.context.Kite9ContextImpl;
 import org.kite9.tool.listener.ServerCallingBuildListener;
 import org.kite9.tool.model.SpringProjectModelFactory;
+import org.kite9.tool.scanner.BasicClassScanner;
+import org.kite9.tool.scanner.DefaultingClassScanner;
 import org.kite9.tool.scanner.MockBuildListener;
-import org.kite9.tool.scanner.SpringClassScanner;
 import org.kite9.tool.scanner.XMLFileScanner;
 
 public class AbstractRunnerTest extends HelpMethods {
@@ -136,8 +137,8 @@ public class AbstractRunnerTest extends HelpMethods {
 		return fact.createProjectModel();
 	    }
 
-	protected SpringClassScanner createLocalClassScanner(ProjectModel pm) {
-		SpringClassScanner scs = new SpringClassScanner();
+	protected BasicClassScanner createLocalClassScanner(ProjectModel pm) {
+		DefaultingClassScanner scs = new DefaultingClassScanner();
 		scs.setContext(ctx);
 		scs.setProjectModel(pm);
 		scs.setBasePackage(this.getClass().getPackage().getName());

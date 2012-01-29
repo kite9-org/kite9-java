@@ -13,8 +13,8 @@ import org.kite9.framework.common.FileDiff;
 import org.kite9.framework.common.HelpMethods;
 import org.kite9.tool.AbstractRunnerTest;
 import org.kite9.tool.BasicKite9Runner;
+import org.kite9.tool.scanner.BasicClassScanner;
 import org.kite9.tool.scanner.Scanner;
-import org.kite9.tool.scanner.SpringClassScanner;
 
 /**
  * Tests that diagrams can be added to class-level javadocs
@@ -49,8 +49,8 @@ public class Test1JavadocDiagram extends AbstractRunnerTest {
 		generateJavadocs();
 
 		BasicKite9Runner bkr = new BasicKite9Runner();
-		SpringClassScanner scs = createLocalClassScanner(createModel());
-		scs.setPattern("**/"+Test1JavadocDiagram.class.getSimpleName()+".class");
+		BasicClassScanner scs = createLocalClassScanner(createModel());
+		scs.setBasePackage(Test1JavadocDiagram.class.getName());
 		bkr.setScanners(HelpMethods.createList((Scanner) scs));
 		bkr.setContext(ctx);
 		Kite9DiagramJavadocListener mbl = new Kite9DiagramJavadocListener();

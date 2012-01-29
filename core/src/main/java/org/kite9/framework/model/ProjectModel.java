@@ -75,6 +75,11 @@ public interface ProjectModel {
     public Set<String> getClassesInPackage(String packageName);
     
     /**
+     * Returns the classes in the model, in the order they were added
+     */
+    public Iterable<String> getAllClasses();
+    
+    /**
      * Returns the annotations that refer to this class
      */
     public Set<AnnotationHandle> getAnnotationReferences(String className);

@@ -1,12 +1,11 @@
 package org.kite9.tool.scanner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.kite9.diagram.builders.ClassBuilder;
 import org.kite9.diagram.builders.DiagramBuilder;
 import org.kite9.diagram.builders.wizards.er.EntityRelationshipWizard;
-import org.kite9.framework.common.ClassHelp;
+import org.kite9.framework.model.ClassHandle;
 import org.kite9.framework.server.BasicWorkItem;
 import org.kite9.framework.server.WorkItem;
 
@@ -15,9 +14,7 @@ import org.kite9.framework.server.WorkItem;
  * case arises where there actually wouldn't be any at all. This is so that we
  * produce at least one item for our efforts.
  */
-public class DefaultingClassScanner extends SpringClassScanner {
-
-	List<String> firstFive = new ArrayList<String>();
+public class DefaultingClassScanner extends BasicClassScanner {
 
 	private boolean provideDefault = true;
 
@@ -32,16 +29,20 @@ public class DefaultingClassScanner extends SpringClassScanner {
 
 	private void addDefaultWorkItem(List<WorkItem> out) {
 		try {
+			Class<?>[] items = new Class[5];
+			int i = 0;
+			
+			for (String string : getProjectModel().getAllClasses()) {
+				if (i < 5) {
+					items[i++] = ClassHandle.hydrateClass(string, getContext().getUserClassLoader());
+				} else {
+					break;
+				}
+			}
+			
 			DiagramBuilder db = new DiagramBuilder(getContext().getAliaser(),
 					"Default Diagram", getProjectModel());
 			EntityRelationshipWizard erw = new EntityRelationshipWizard(db);
-			Class<?>[] items = new Class[5];
-			int i = 0;
-			for (String className : firstFive) {
-				Class<?> c = ClassHelp.loadClass(className, getContext()
-						.getUserClassLoader());
-				items[i++] = c;
-			}
 
 			ClassBuilder cb = db.withClasses(items);
 
@@ -57,14 +58,4 @@ public class DefaultingClassScanner extends SpringClassScanner {
 					"Could not generate a default diagram", e);
 		}
 	}
-
-	@Override
-	public List<WorkItem> getWorkItems(String className) {
-		if (firstFive.size() < 5) {
-			firstFive.add(className);
-		}
-
-		return super.getWorkItems(className);
-	}
-
 }
