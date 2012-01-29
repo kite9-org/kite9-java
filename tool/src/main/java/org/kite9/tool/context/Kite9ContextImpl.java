@@ -51,7 +51,7 @@ public class Kite9ContextImpl implements Kite9Context, Logable, InitializingBean
 		
 		// check that the secret key and id have been set.
 		if ((secretKey==null) || (secretKey.length()==0) || (projectId<=0)) {
-			throw new Kite9ProcessingException("Secret key and project ID not provided. \n"+
+			logger.error("Secret key and project ID not provided. \n"+
 					"These must be set in your kite9.properties file or in the maven plugin configuration");
 			
 			
@@ -98,14 +98,17 @@ public class Kite9ContextImpl implements Kite9Context, Logable, InitializingBean
 		return repo;
 	}
 	
-	private int projectId;
+	private int projectId = -1;
 	
 	public int getProjectId() {
 		return projectId;
 	}
 
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
+	public void setProjectId(String projectId) {
+		try {
+			this.projectId = Integer.parseInt(projectId);
+		} catch (NumberFormatException e) {
+		}
 	}
 
 	public String getSecretKey() {

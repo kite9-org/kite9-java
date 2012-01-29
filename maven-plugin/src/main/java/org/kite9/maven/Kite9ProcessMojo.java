@@ -41,6 +41,7 @@ import org.apache.maven.wagon.proxy.ProxyInfo;
 import org.kite9.framework.common.RepositoryHelp;
 import org.kite9.framework.server.WorkItem;
 import org.kite9.tool.BasicKite9Runner;
+import org.kite9.tool.PreferenceLoader;
 import org.kite9.tool.Tool;
 import org.kite9.tool.context.Kite9Context;
 import org.kite9.tool.listener.BuildListener;
@@ -98,13 +99,29 @@ public class Kite9ProcessMojo extends AbstractMavenReport {
 	private Properties userProperties;
 
 	public void executeReport(Locale arg) throws MavenReportException {
+		// this sets up sensible default property settings, based on values from system properties
 		Properties propsToUse = new Properties(System.getProperties());
-		addMavenDefaults(propsToUse);
-		addProxySettings(propsToUse);
-		addProjectSettings(propsToUse);
-		addJavadocReportLocation(propsToUse);
-		addKite9ReportLocation(propsToUse);
-
+		
+		// add any properties in the kite9.properties file
+		boolean loadedOK = loadPropertyFile(propsToUse);
+		
+		// get maven to override with maven-specific properties
+		addKite9ReportDefaultLocation(propsToUse);
+		addMavenProxySettings(propsToUse);
+		addMavenClasspathSettings(propsToUse);
+		addMavenJavadocReportLocation(propsToUse);
+		
+		if (!loadedOK  && ((userProperties == null) || (userProperties.size() ==0))) {
+			// no preferences given - create the defaults
+			try {
+				PreferenceLoader.createDefaultPreferences("kite9.properties");
+				getLog().warn("Created kite9.properties - please edit");
+			} catch (IOException e) {
+				getLog().warn("Could not create kite9.properties", e);
+			}
+		}
+		
+		// add specific maven configuration overrides
 		propsToUse.putAll(userProperties);
 		getLog().info("Using Properties: " + propsToUse);
 
@@ -138,6 +155,17 @@ public class Kite9ProcessMojo extends AbstractMavenReport {
 			createReport(getSink(), toInclude, kite9Context, addMap);
 		} catch (IOException e) {
 			throw new MavenReportException("Could not generate maven kite9 report: ", e);
+		}
+	}
+
+	private boolean loadPropertyFile(Properties propsToUse) {
+		// allow overriding of these properties from a kite9.properties file
+		try {
+			Properties kite9Properties = PreferenceLoader.getPreferences("kite9.properties");
+			propsToUse.putAll(kite9Properties);
+			return true;
+		} catch (IOException e) {
+			return false;
 		}
 	}
 
@@ -237,19 +265,19 @@ public class Kite9ProcessMojo extends AbstractMavenReport {
 
 	}
 
-	private void addKite9ReportLocation(Properties propsToUse) {
+	private void addKite9ReportDefaultLocation(Properties propsToUse) {
 		propsToUse.put("repo.baseDir", reportingDir.toString() + File.separatorChar + repositoryDirectory);
 	}
 
-	private void addMavenDefaults(Properties propsToUse) {
+	private void addMavenStaticDefaults(Properties propsToUse) {
 		propsToUse.put("file-scanner.basePackage", "src/main/adl");
 	}
 
-	private void addJavadocReportLocation(Properties propsToUse) {
+	private void addMavenJavadocReportLocation(Properties propsToUse) {
 		propsToUse.put("javadoc-listener.docRoot", reportingDir.toString() + File.separatorChar + javadocDirectory);
 	}
 
-	private void addProjectSettings(Properties propsToUse) {
+	private void addMavenClasspathSettings(Properties propsToUse) {
 		String output = project.getBuild().getOutputDirectory();
 		String testOutput = project.getBuild().getTestOutputDirectory();
 
@@ -257,7 +285,7 @@ public class Kite9ProcessMojo extends AbstractMavenReport {
 		propsToUse.put("context.classPath", prop);
 	}
 
-	private void addProxySettings(Properties propsToUse) {
+	private void addMavenProxySettings(Properties propsToUse) {
 		ProxyInfo pi = wagonManager.getProxy("http");
 		if (pi != null) {
 			propsToUse.put("diagram-server.proxyHost", pi.getHost());

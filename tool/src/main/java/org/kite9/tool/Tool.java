@@ -82,6 +82,13 @@ public class Tool {
 	}
 
 	protected Properties getPreferences() throws IOException {
-		return PreferenceLoader.getPreferences(propertiesName);
+		Properties p = PreferenceLoader.getPreferences(propertiesName);
+		if (p==null) {
+			PreferenceLoader.createDefaultPreferences(propertiesName);
+			System.err.println("kite9.properties does not exist, created one.  Please edit it to set your project details.");
+			return PreferenceLoader.getPreferences(propertiesName);
+		} else {
+			return p;
+		}
 	}
 }

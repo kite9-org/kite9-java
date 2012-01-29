@@ -47,7 +47,7 @@
     
     <!-- Scanners -->
     
-    <bean name="class-scanner" class="org.kite9.tool.scanner.SpringClassScanner">
+    <bean name="class-scanner" class="org.kite9.tool.scanner.DefaultingClassScanner">
     	<property name="context" ref="context" />
     	<property name="projectModel" ref="model" />
     </bean>

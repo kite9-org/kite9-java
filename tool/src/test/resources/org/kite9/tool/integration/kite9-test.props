@@ -2,3 +2,4 @@ class-scanner.basePackage=org.kite9.tool.integration
 context.classPath=target/test-classes
 context.projectId=206
 context.secretKey=766TCETYFW14G6N9
+diagram-server.url=http://www.kite9.com/kite9/image.zip

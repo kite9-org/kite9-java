@@ -101,11 +101,11 @@ public class Kite9Log {
 	}
 
 	public void error(String string) {
-	    System.err.println(logFor.getPrefix()+string);
+	    System.err.println(logFor.getPrefix()+" "+string);
 	}
 
 	public void error(String string, Throwable e) {
-	    System.err.println(logFor.getPrefix()+string);
+	    System.err.println(logFor.getPrefix()+" "+string);
 	    e.printStackTrace();
 	}
 }

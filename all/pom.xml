@@ -46,7 +46,7 @@
 							<goal>unpack-dependencies</goal>
 						</goals>
 						<configuration>
-							<includes>*.xsd,*.xml,*.txt,com/thoughtworks/xstream/annotations/*.class,org/kite9/diagram/**/*.class,org/kite9/framework/**/*.class,org/kite9/tool/Main.class</includes>
+							<includes>*.xsd,*.properties,*.xml,*.txt,com/thoughtworks/xstream/annotations/*.class,org/kite9/diagram/**/*.class,org/kite9/framework/**/*.class,org/kite9/tool/Main.class</includes>
 							<excludes>org/kite9/framework/serialization/XMLHelper*.class</excludes>
 							<outputDirectory>${project.build.outputDirectory}</outputDirectory>
 							<excludeTransitive>true</excludeTransitive>

@@ -2,14 +2,34 @@ package org.kite9.tool;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.Properties;
 
-public class PreferenceLoader {
+import org.kite9.framework.common.RepositoryHelp;
 
-	public static Properties getPreferences(String fileName) throws FileNotFoundException, IOException {
+public class PreferenceLoader {
+	
+	/**
+	 * Creates a default preferences file that the user can edit
+	 */
+	public static void createDefaultPreferences(String fileName) throws IOException {
+		File out = new File(fileName);
+		
+		if (out.exists()) {
+			throw new IOException("Preferences file: "+out.toString()+" already exists");
+		}
+		
+		InputStream defaults = PreferenceLoader.class.getResourceAsStream("/default.properties"); 
+		OutputStream os = new FileOutputStream(out);
+		
+		RepositoryHelp.streamCopy(defaults, os, true);
+	}
+
+	public static Properties getPreferences(String fileName) throws IOException {
 
 		File out = getPreferencesFileFromUserHome(fileName);
 		if (out == null)
@@ -20,7 +40,7 @@ public class PreferenceLoader {
 		}
 
 		if (out == null)
-			throw new FileNotFoundException("Could not find default preferences: " + fileName);
+			return null;
 
 		Properties p = new Properties();
 		p.load(new FileInputStream(out));

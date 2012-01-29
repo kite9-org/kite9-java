@@ -58,7 +58,7 @@ public class DiagramBuilder extends AbstractBuilder {
 	protected TypeNounHelper typeHelper = new TypeNounHelper();
 	protected KeyHelper kh = new KeyHelper();
 
-	private Method creator;
+	private Object creator;
 	private Diagram d;
 	private Map<Object, DiagramElement> contents = new HashMap<Object, DiagramElement>();
 	private Map<Object, Symbol> symbols = new HashMap<Object, Symbol>();
@@ -68,6 +68,13 @@ public class DiagramBuilder extends AbstractBuilder {
 		this.idHelper = new IdHelper(pm);
 		this.d = createRepresentation(getId(creator));
 		this.creator = creator;
+	}
+	
+	public DiagramBuilder(Aliaser a, String id, ProjectModel pm) {
+		super(pm, a);
+		this.idHelper = new IdHelper(pm);
+		this.d = createRepresentation(id);
+		this.creator = id;
 	}
 
 	public ProjectModel getProjectModel() {
@@ -326,7 +333,7 @@ public class DiagramBuilder extends AbstractBuilder {
 				return true;
 
 			for (Class<?> on1 : on.on()) {
-				if (on1.equals(creator.getDeclaringClass())) {
+				if (on1.equals((creator instanceof Method) ? ((Method)creator).getDeclaringClass() : null)) {
 					return true;
 				}
 			}
