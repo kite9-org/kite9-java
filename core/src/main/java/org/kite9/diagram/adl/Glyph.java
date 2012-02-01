@@ -7,6 +7,7 @@ import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnectedContained;
 import org.kite9.diagram.primitives.Leaf;
+import org.kite9.diagram.primitives.SymbolTarget;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
@@ -21,7 +22,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
  *
  */
 @XStreamAlias("glyph")
-public class Glyph extends AbstractConnectedContained implements Leaf {
+public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTarget {
 
 	private static final long serialVersionUID = -6572545083931316651L;
 	
@@ -83,6 +84,10 @@ public class Glyph extends AbstractConnectedContained implements Leaf {
 
 	public List<Symbol> getSymbols() {
 		return symbols;
+	}
+	
+	public void setSymbols(List<Symbol> syms) {
+		this.symbols = syms;
 	}
 
 	public boolean hasDimension() {

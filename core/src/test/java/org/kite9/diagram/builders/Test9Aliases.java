@@ -9,6 +9,7 @@ import java.util.Properties;
 import org.junit.Before;
 import org.junit.Test;
 import org.kite9.diagram.annotation.K9OnDiagram;
+import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.framework.Kite9Item;
 import org.kite9.framework.alias.PropertyAliaser;
 import org.kite9.framework.common.StackHelp;

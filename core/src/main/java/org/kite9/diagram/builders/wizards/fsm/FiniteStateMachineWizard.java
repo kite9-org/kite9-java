@@ -1,16 +1,14 @@
 package org.kite9.diagram.builders.wizards.fsm;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.kite9.diagram.builders.DiagramBuilder;
-import org.kite9.diagram.builders.InsertionInterface;
-import org.kite9.diagram.builders.noun.NounFactory;
-import org.kite9.diagram.builders.noun.SimpleNoun;
-import org.kite9.diagram.primitives.Connected;
+import org.kite9.diagram.builders.formats.BasicFormats;
+import org.kite9.diagram.builders.formats.NounFormat;
+import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.java.DiagramBuilder;
+import org.kite9.diagram.builders.krmodel.NounFactory;
+import org.kite9.diagram.builders.krmodel.Relationship;
+import org.kite9.diagram.builders.krmodel.SimpleNoun;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
-import org.kite9.framework.common.Kite9ProcessingException;
 
 /**
  * Finite state machine format has a number of glyphs representing states, and
@@ -21,15 +19,23 @@ import org.kite9.framework.common.Kite9ProcessingException;
  */
 public class FiniteStateMachineWizard {
 
-	InsertionInterface ii;
+	NounFormat stateFormat;
 	NounFactory nf;
+	NounFormat transitionFormat;
+	Container c;
+	DiagramBuilder db;
+	Relationship stateTransitionRelationship;
 
-	public FiniteStateMachineWizard(DiagramBuilder db) {
-		this(db.getInsertionInterface(), db.getNounFactory());
+	public FiniteStateMachineWizard(DiagramBuilder db, Container c) {
+		this(db.getNounFactory());
+		stateFormat = BasicFormats.asGlyph(null);
+		transitionFormat = BasicFormats.asConnectionBody();
+		stateTransitionRelationship = new Relationship("transits to");
+		this.c = c;
+		this.db = db;
 	}
 
-	public FiniteStateMachineWizard(InsertionInterface ii, NounFactory nf) {
-		this.ii = ii;
+	public FiniteStateMachineWizard(NounFactory nf) {
 		this.nf = nf;
 	}
 
@@ -37,40 +43,26 @@ public class FiniteStateMachineWizard {
 	 * Formats the information in the provider, putting all of the created
 	 * elements into the container.
 	 */
-	public void write(FSMDataProvider provider, Container c) {
-		Map<Object, DiagramElement> stateMap = new HashMap<Object, DiagramElement>();
-
+	public void write(FSMDataProvider provider) {
 		for (SimpleNoun o : provider.getStates()) {
-			DiagramElement de = ii.returnGlyph(c, o, o.getLabel(), o.getStereotype());
-			if (!(de instanceof Connected)) {
-				throw new Kite9ProcessingException(o + " already exists in the diagram as a " + de.getClass()
-						+ " (Connected needed)");
-			}
-			stateMap.put(o, de);
+			stateFormat.returnElement(c, o, db.getInsertionInterface());
 		}
 
 		for (Transition t : provider.getTransitions()) {
 			if (t != null) {
 				SimpleNoun o = t.getTransition();
-				DiagramElement de = ii.returnArrow(c, o, o.getLabel());
-				if (!(de instanceof Connected)) {
-					throw new Kite9ProcessingException(o + " already exists in the diagram as a " + de.getClass()
-							+ " (Connected needed)");
+				DiagramElement body = transitionFormat.returnElement(c, o, db.getInsertionInterface());
+			
+				for (SimpleNoun from : t.getFromStates()) {
+					DiagramElement fromEl = db.getInsertionInterface().returnExisting(from);
+					db.getInsertionInterface().returnConnection(fromEl, body, null, null, null, false, null);
 				}
 
-				stateMap.put(o, de);
-
-				for (Object from : t.getFromStates()) {
-					DiagramElement deFrom = stateMap.get(from);
-					ii.returnLink(deFrom, de, null, null, false, null);
-				}
-
-				for (Object to : t.getToStates()) {
-					DiagramElement deTo = stateMap.get(to);
-					ii.returnLink(de, deTo, null, null, true, null);
+				for (SimpleNoun to : t.getToStates()) {
+					DiagramElement toEl = db.getInsertionInterface().returnExisting(to);
+					db.getInsertionInterface().returnConnection(body, toEl, null, null, null, true, null);
 				}
 			}
 		}
 	}
-
 }

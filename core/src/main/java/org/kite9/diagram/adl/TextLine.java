@@ -7,12 +7,13 @@ import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractLabel;
 import org.kite9.diagram.primitives.Label;
+import org.kite9.diagram.primitives.SymbolTarget;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 @XStreamAlias("text-line")
-public class TextLine extends AbstractLabel implements Label {
+public class TextLine extends AbstractLabel implements Label, SymbolTarget {
 
 	private static final long serialVersionUID = -1917135065467101779L;
 	

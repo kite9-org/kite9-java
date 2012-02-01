@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.framework.Kite9Item;
 
 /**

@@ -7,11 +7,11 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.kite9.diagram.builders.DiagramBuilder;
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.noun.NounFactory;
-import org.kite9.diagram.builders.noun.NounPart;
-import org.kite9.diagram.builders.noun.SimpleNoun;
+import org.kite9.diagram.builders.java.DiagramBuilder;
+import org.kite9.diagram.builders.krmodel.NounFactory;
+import org.kite9.diagram.builders.krmodel.NounPart;
+import org.kite9.diagram.builders.krmodel.SimpleNoun;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.kite9.framework.model.ProjectModel;

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.diagram.builders.wizards.hierarchy.HierarchyWizard;
 import org.kite9.diagram.position.Layout;
 import org.kite9.framework.Kite9Item;
@@ -44,7 +45,7 @@ public class Test14Hierarchy extends AbstractBuilderTest {
 	public void test_14_1_TestHierarchy() throws IOException {
 		DiagramBuilder db = createBuilder();
 		String rh = "Rob's Hierarchy";
-		db.withStrings(rh).show(db.asConnectedContexts());
+		db.withObjects(rh).show(db.asConnectedContexts());
 		HierarchyWizard hb = new HierarchyWizard(rh, db);
 		hb.add(true, Top.class);
 		hb.showClasses(db.asConnectedContexts(false, Layout.HORIZONTAL), db.asConnectedGlyphs(""));

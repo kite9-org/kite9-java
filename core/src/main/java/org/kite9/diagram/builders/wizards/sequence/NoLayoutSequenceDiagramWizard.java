@@ -6,10 +6,10 @@ import java.util.Stack;
 
 import org.kite9.diagram.adl.Link;
 import org.kite9.diagram.adl.TextLine;
-import org.kite9.diagram.builders.DiagramBuilder;
-import org.kite9.diagram.builders.InsertionInterface;
-import org.kite9.diagram.builders.noun.NounFactory;
-import org.kite9.diagram.builders.noun.SimpleNoun;
+import org.kite9.diagram.builders.WithHelperMethodsDiagramBuilder;
+import org.kite9.diagram.builders.formats.InsertionInterface;
+import org.kite9.diagram.builders.krmodel.NounFactory;
+import org.kite9.diagram.builders.krmodel.SimpleNoun;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
@@ -18,7 +18,7 @@ import org.kite9.framework.alias.Aliaser;
 
 public class NoLayoutSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 
-	public NoLayoutSequenceDiagramWizard(DiagramBuilder db) {
+	public NoLayoutSequenceDiagramWizard(WithHelperMethodsDiagramBuilder db) {
 		super(db);
 	}
 
@@ -93,19 +93,24 @@ public class NoLayoutSequenceDiagramWizard extends AbstractSequenceDiagramWizard
 
 		if (existing == null) {
 			DiagramElement out = ii.returnGlyph(container, from, from.getLabel(), from.getStereotype());
-			return out;
-		} else {
-			return existing;
-		}
+			existing = out;
+		} 
+		
+		return existing;
 	}
 
 	protected void createLink(Step s, DiagramElement from, DiagramElement to, Direction d) {
-		Link l = ii.returnLink(from, to, null, null, true, d);
+		DiagramElement out = ii.returnConnection(from, to, s, null, null, true, d);
 		System.out.println("Link from " + from + " to " + to + " in " + d);
 
-		Label fromLabel = buildFromLabel(s, l.getFromLabel());
-		Label toLabel = buildToLabel(s, l.getToLabel());
-		l.setFromLabel(fromLabel);
-		l.setToLabel(toLabel);
+		if (out instanceof Link) {
+			Link l = (Link) out;
+			Label fromLabel = buildFromLabel(s, l.getFromLabel());
+			Label toLabel = buildToLabel(s, l.getToLabel());
+			l.setFromLabel(fromLabel);
+			l.setToLabel(toLabel);
+			
+		}
+		
 	}
 }

@@ -11,11 +11,11 @@ import org.kite9.diagram.adl.Context;
 import org.kite9.diagram.adl.Link;
 import org.kite9.diagram.adl.LinkLineStyle;
 import org.kite9.diagram.adl.TextLine;
-import org.kite9.diagram.builders.DiagramBuilder;
-import org.kite9.diagram.builders.InsertionInterface;
-import org.kite9.diagram.builders.noun.NounFactory;
-import org.kite9.diagram.builders.noun.SimpleNoun;
-import org.kite9.diagram.builders.noun.SimpleNounImpl;
+import org.kite9.diagram.builders.WithHelperMethodsDiagramBuilder;
+import org.kite9.diagram.builders.formats.InsertionInterface;
+import org.kite9.diagram.builders.java.ProjectStaticSimpleNoun;
+import org.kite9.diagram.builders.krmodel.NounFactory;
+import org.kite9.diagram.builders.krmodel.SimpleNoun;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.Connected;
@@ -36,7 +36,7 @@ import org.kite9.framework.common.Kite9ProcessingException;
  */
 public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 
-	public ColumnSequenceDiagramWizard(DiagramBuilder db) {
+	public ColumnSequenceDiagramWizard(WithHelperMethodsDiagramBuilder db) {
 		super(db);
 	}
 
@@ -188,13 +188,13 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 		}
 		int newLength = lengths.get(glyph) == null ? 0 : lengths.get(glyph);
 
-		DiagramElement extension = ii.returnArrow(c, new SimpleNounImpl(((IdentifiableDiagramElement)glyph).getID()+newLength, a), "");
+		DiagramElement extension = ii.returnConnectionBody(c, new ProjectStaticSimpleNoun(((IdentifiableDiagramElement)glyph).getID()+newLength, a), "");
 		lengths.put(glyph, newLength + 1);
 		lastArrows.put(glyph, extension);
-		Link l = ii.returnLink(existing, extension, null, null, false, getDirectionFor(getGlyphLayout()));
+		DiagramElement de = ii.returnConnection(existing, extension, null, null, null, false, getDirectionFor(getGlyphLayout()));
 
-		if (!active) {
-			l.setStyle(LinkLineStyle.DOTTED);
+		if ((!active) && (de instanceof Link)) {
+			((Link)de).setStyle(LinkLineStyle.DOTTED);
 		}
 		
 		return extension;
@@ -218,7 +218,7 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 			if (elementStack.contains(existing)) {
 				// need to create an arrow, as this is a
 				// second/nth call
-				DiagramElement out = ii.returnArrow(container, new SimpleNounImpl(from.getRepresented()+" SL="+elementStack.size(), a), "");
+				DiagramElement out = ii.returnConnectionBody(container, new ProjectStaticSimpleNoun(from.getRepresented()+" SL="+elementStack.size(), a), "");
 
 				// ensure ordering makes some kind of sense
 				rootElements.put(out, existing);
@@ -237,12 +237,16 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 	}
 
 	protected void createLink(Step s, DiagramElement from, DiagramElement to, Direction d) {
-		Link l = ii.returnLink(from, to, null, null, true, d);
+		DiagramElement out = ii.returnConnection(from, to, s, null, null, true, d);
 		System.out.println("Link from " + from + " to " + to + " in " + d);
+		
+		if (out instanceof Link) {
+			Link l = (Link) out;
+			Label fromLabel = buildFromLabel(s, l.getFromLabel());
+			Label toLabel = buildToLabel(s, l.getToLabel());
+			l.setFromLabel(fromLabel);
+			l.setToLabel(toLabel);
+		}
 
-		Label fromLabel = buildFromLabel(s, l.getFromLabel());
-		Label toLabel = buildToLabel(s, l.getToLabel());
-		l.setFromLabel(fromLabel);
-		l.setToLabel(toLabel);
 	}
 }

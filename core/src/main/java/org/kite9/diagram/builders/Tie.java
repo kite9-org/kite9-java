@@ -3,7 +3,8 @@
  */
 package org.kite9.diagram.builders;
 
-import org.kite9.diagram.builders.noun.NounPart;
+import org.kite9.diagram.builders.krmodel.NounPart;
+import org.kite9.diagram.builders.krmodel.Relationship;
 import org.kite9.framework.alias.AliasEnabled;
 
 /**

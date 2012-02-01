@@ -1,11 +1,18 @@
 package org.kite9.diagram.adl;
 
+import java.io.Serializable;
+
+import org.kite9.diagram.position.RenderingInformation;
+import org.kite9.diagram.primitives.CompositionalDiagramElement;
+import org.kite9.diagram.primitives.DiagramElement;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 
 @XStreamAlias("symbol")
-public class Symbol implements Comparable<Symbol> {
+public class Symbol implements Serializable, CompositionalDiagramElement {
 
 	private static final long serialVersionUID = 3578883565482903409L;
 	
@@ -65,13 +72,32 @@ public class Symbol implements Comparable<Symbol> {
 		this.shape = shape;
 	}
 
-	public int compareTo(Symbol o) {
-		int out = ((Character)this.theChar).compareTo(o.theChar);
-		if (out==0) {
-			return this.shape.compareTo(o.shape);
+	public int compareTo(DiagramElement o) {
+		if (o instanceof Symbol) {
+			int out = ((Character)this.theChar).compareTo(((Symbol) o).theChar);
+			if (out==0) {
+				return this.shape.compareTo(((Symbol) o).shape);
+			} else {
+				return out;
+			}
 		} else {
-			return out;
+			return 1;
 		}
+	}
+	
+	@XStreamOmitField
+	Object parent;
+	
+	public void setParent(Object el) {
+		this.parent = el;
+	}
+
+	public Object getParent() {
+		return parent;
+	}
+
+	public RenderingInformation getRenderingInformation() {
+		return null;
 	}
 	
 	

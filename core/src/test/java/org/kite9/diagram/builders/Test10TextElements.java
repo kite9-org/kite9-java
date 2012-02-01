@@ -3,6 +3,9 @@ package org.kite9.diagram.builders;
 import java.io.IOException;
 
 import org.junit.Test;
+import org.kite9.diagram.builders.java.DiagramBuilder;
+import org.kite9.diagram.builders.java.JavaRelationships;
+import org.kite9.diagram.builders.krmodel.Relationship;
 import org.kite9.framework.Kite9Item;
 
 public class Test10TextElements extends AbstractBuilderTest{
@@ -14,7 +17,7 @@ public class Test10TextElements extends AbstractBuilderTest{
 	@Kite9Item
 	public void test_10_1_StringGlyph() throws IOException {
 	    DiagramBuilder db = createBuilder();
-	    db.withStrings("a", "b", "c").show(db.asConnectedGlyphs());
+	    db.withObjects("a", "b", "c").show(db.asConnectedGlyphs());
 	    renderDiagram(db.getDiagram());
 	}
 	
@@ -22,9 +25,9 @@ public class Test10TextElements extends AbstractBuilderTest{
 	@Kite9Item
 	public void test_10_1_StringContext() throws IOException {
 	    DiagramBuilder db = createBuilder();
-	    db.withStrings("m context")
+	    db.withObjects("m context")
 	    	.show(db.asConnectedContexts())
-	    	.withClasses(HasRelationship.CLASS, SomeClassA.class)
+	    	.withClasses(JavaRelationships.CLASS, SomeClassA.class)
 	    		.show(db.asConnectedGlyphs());
 	    renderDiagram(db.getDiagram());
 	}
@@ -35,7 +38,7 @@ public class Test10TextElements extends AbstractBuilderTest{
 	    DiagramBuilder db = createBuilder();
 	    db.withClasses(SomeClassA.class, SomeClassB.class)
 	    	.show(db.asConnectedGlyphs())
-	    	.withStrings(new Relationship("observes"), "The 10 second rule")
+	    	.withObjects(new Relationship("observes"), "The 10 second rule")
 	    	.show(db.asConnectedGlyphs("note"));
 	    renderDiagram(db.getDiagram());
 	}

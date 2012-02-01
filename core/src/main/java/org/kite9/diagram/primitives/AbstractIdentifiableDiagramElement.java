@@ -1,11 +1,16 @@
 package org.kite9.diagram.primitives;
 
+import java.io.Serializable;
+
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.framework.logging.LogicException;
 
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
-public abstract class AbstractIdentifiableDiagramElement implements IdentifiableDiagramElement {
+public abstract class AbstractIdentifiableDiagramElement implements IdentifiableDiagramElement, Serializable {
+
+	private static final long serialVersionUID = -3154895826494435557L;
+
 
 	public AbstractIdentifiableDiagramElement() {
 		super();

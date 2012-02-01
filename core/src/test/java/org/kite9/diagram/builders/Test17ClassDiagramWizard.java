@@ -5,6 +5,10 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.kite9.diagram.annotation.K9OnDiagram;
+import org.kite9.diagram.builders.java.DiagramBuilder;
+import org.kite9.diagram.builders.java.JavaRelationships;
+import org.kite9.diagram.builders.java.ObjectBuilder;
 import org.kite9.diagram.builders.wizards.classdiagram.ClassDiagramWizard;
 import org.kite9.framework.Kite9Item;
 
@@ -12,15 +16,20 @@ public class Test17ClassDiagramWizard extends AbstractBuilderTest {
 
 	interface MySite {
 		
+		@K9OnDiagram
 		String getName();
 		
 	}
 	
 	abstract class Server implements MySite {
 		
+		@K9OnDiagram
 		Sat1 hasSat1;
+		
+		@K9OnDiagram
 		List<Sat2> allTheSat2s;
 		
+		@K9OnDiagram
 		public abstract Sat3 getSat3();
 	}
 	
@@ -29,6 +38,7 @@ public class Test17ClassDiagramWizard extends AbstractBuilderTest {
 	
 	abstract class Sat1 implements Satellite {
 		
+		@K9OnDiagram
 		Sat1 parent;	// reflexive relationship
 	}
 	
@@ -43,9 +53,9 @@ public class Test17ClassDiagramWizard extends AbstractBuilderTest {
 	public void test_17_1_TestArchitectureWizard() throws IOException {
 		DiagramBuilder db = createBuilder();
 		String rh = "Rob's Architecture";
-		StringBuilder context = db.withStrings(rh).show(db.asConnectedContexts());
+		ObjectBuilder context = db.withObjects(rh).show(db.asConnectedContexts());
 		ClassDiagramWizard erw = new ClassDiagramWizard(db);
-		erw.show(context.withClasses(HasRelationship.CLASS_GROUP, Test17ClassDiagramWizard.class).withInnerClasses(null, false));
+		erw.show(context.withClasses(JavaRelationships.CLASS_GROUP, Test17ClassDiagramWizard.class).withInnerClasses(null, false));
 		renderDiagram(db.getDiagram());
 	}
 	

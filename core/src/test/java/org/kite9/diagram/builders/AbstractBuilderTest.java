@@ -15,6 +15,7 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 import org.kite9.diagram.adl.Diagram;
+import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.diagram.primitives.AbstractIdentifiableDiagramElement;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.alias.PropertyAliaser;

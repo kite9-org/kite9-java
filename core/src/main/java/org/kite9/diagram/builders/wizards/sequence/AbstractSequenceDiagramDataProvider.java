@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.kite9.diagram.adl.TextLine;
-import org.kite9.diagram.builders.DiagramBuilder;
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.noun.NounFactory;
-import org.kite9.diagram.builders.noun.SimpleNoun;
+import org.kite9.diagram.builders.java.DiagramBuilder;
+import org.kite9.diagram.builders.krmodel.NounFactory;
+import org.kite9.diagram.builders.krmodel.SimpleNoun;
 import org.kite9.diagram.primitives.Label;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.common.Kite9ProcessingException;

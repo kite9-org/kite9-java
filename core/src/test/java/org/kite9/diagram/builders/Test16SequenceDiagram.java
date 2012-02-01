@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import org.junit.Before;
 import org.junit.Test;
 import org.kite9.diagram.adl.Context;
+import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.diagram.builders.wizards.sequence.ClassBasedSequenceDiagramDataProvider;
 import org.kite9.diagram.builders.wizards.sequence.ColumnSequenceDiagramWizard;
 import org.kite9.diagram.builders.wizards.sequence.MethodBasedSequenceDiagramDataProvider;

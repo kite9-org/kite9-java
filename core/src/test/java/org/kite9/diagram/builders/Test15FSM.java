@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.diagram.builders.wizards.fsm.EnumWithAnnotationFSMDataProvider;
 import org.kite9.diagram.builders.wizards.fsm.FiniteStateMachineWizard;
 import org.kite9.framework.Kite9Item;
@@ -59,11 +60,11 @@ public class Test15FSM extends AbstractBuilderTest {
 	@Kite9Item
 	public void test_15_1_CreateFSMModel() throws Exception {
 		DiagramBuilder db = createBuilder();
-		FiniteStateMachineWizard fsmf = new FiniteStateMachineWizard(db);
+		FiniteStateMachineWizard fsmf = new FiniteStateMachineWizard(db, null);
 		Field f = StateMovingClass.class.getDeclaredField("current");
 		EnumWithAnnotationFSMDataProvider provider 
 			= new EnumWithAnnotationFSMDataProvider(db.getNounFactory(), db.getProjectModel(), f , State.class, State.class.getClassLoader(), BeforeState.class, "value", AfterState.class, "value");
-		fsmf.write(provider, db.getDiagram());
+		fsmf.write(provider);
 		renderDiagram(db.getDiagram());
 	}
 	

@@ -53,6 +53,15 @@ public abstract class AbstractAliaser implements Aliaser {
 
 		return getAlias(cl);
 	}
+	
+	protected String getInstanceAlias(Object o) {
+		Class<?> cl = o.getClass();
+		String aa = getAliasFromAnnotation(cl);
+		if (aa != null)
+			return aa;
+
+		return getAlias(cl);
+	}
 
 	protected String getAlias(Method m) {
 		String aa = getAliasFromAnnotation(m);
@@ -170,7 +179,7 @@ public abstract class AbstractAliaser implements Aliaser {
 		} else if (o instanceof Type) {
 			return getAlias((Type) o);
 		} else {
-			throw new Kite9ProcessingException("Could not determine Alias for " + o.toString());
+			return getInstanceAlias(o);
 		}
 	}
 
@@ -202,7 +211,7 @@ public abstract class AbstractAliaser implements Aliaser {
 		} else if (o instanceof Type) {
 			return getStereotype((Type) o);
 		} else {
-			throw new Kite9ProcessingException("Could not determine Alias for " + o.toString());
+			return getInstanceStereotype(o);
 		}
 	}
 
@@ -222,6 +231,10 @@ public abstract class AbstractAliaser implements Aliaser {
 		} else {
 			throw new Kite9ProcessingException("Not handled yet");
 		}
+	}
+	
+	protected String getInstanceStereotype(Object o) {
+		return getAlias("instance");
 	}
 
 	protected String getStereotype(Class<?> o) {

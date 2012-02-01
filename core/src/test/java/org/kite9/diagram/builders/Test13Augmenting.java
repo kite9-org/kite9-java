@@ -8,6 +8,9 @@ import org.kite9.diagram.adl.Arrow;
 import org.kite9.diagram.adl.Glyph;
 import org.kite9.diagram.adl.Link;
 import org.kite9.diagram.adl.TextLine;
+import org.kite9.diagram.builders.java.DiagramBuilder;
+import org.kite9.diagram.builders.java.JavaRelationships;
+import org.kite9.diagram.builders.krmodel.Relationship;
 import org.kite9.diagram.position.Direction;
 import org.kite9.framework.Kite9Item;
 
@@ -22,7 +25,7 @@ public class Test13Augmenting extends AbstractBuilderTest {
     public void test_13_1_AugmentGlyph() throws IOException {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeClass.class).show(db.asConnectedGlyphs());
-	Glyph g = (Glyph) db.getElement(SomeClass.class);
+	Glyph g = (Glyph) db.getNounElement(SomeClass.class);
 	g.getText().add(new TextLine("This is a favourite of John's"));
 	renderDiagram(db.getDiagram());
     }
@@ -48,9 +51,9 @@ public class Test13Augmenting extends AbstractBuilderTest {
 		.withInterfaces(null, false)
 		.show(db.asConnectedGlyphs());
 	
-	Arrow a = (Arrow) db.getRelationshipElement(SomeClass.class, Relationship.IMPLEMENTS);
-	Glyph sc = (Glyph) db.getElement(SomeClass.class);
-	Glyph si = (Glyph) db.getElement(SomeInterface.class);
+	Arrow a = (Arrow) db.getRelationshipElement(SomeClass.class, JavaRelationships.IMPLEMENTS);
+	Glyph sc = (Glyph) db.getNounElement(SomeClass.class);
+	Glyph si = (Glyph) db.getNounElement(SomeInterface.class);
 	
 	Link top = (Link) a.getConnectionTo(si);
 	Link bottom = (Link) a.getConnectionTo(sc);

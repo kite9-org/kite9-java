@@ -8,7 +8,7 @@ package org.kite9.diagram.primitives;
  * @author robmoffat
  *
  */
-public interface IdentifiableDiagramElement extends DiagramElement {
+public interface IdentifiableDiagramElement extends PositionableDiagramElement {
 
 	/**
 	 * ID should be a project-unique ID to describe this element.  It is also used within the 

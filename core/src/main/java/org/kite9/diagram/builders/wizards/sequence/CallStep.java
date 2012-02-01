@@ -1,6 +1,6 @@
 package org.kite9.diagram.builders.wizards.sequence;
 
-import org.kite9.diagram.builders.noun.SimpleNoun;
+import org.kite9.diagram.builders.krmodel.SimpleNoun;
 import org.kite9.diagram.primitives.Label;
 
 public class CallStep extends Step {

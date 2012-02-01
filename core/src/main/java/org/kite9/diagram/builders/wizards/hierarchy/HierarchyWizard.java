@@ -11,15 +11,13 @@ import java.util.Set;
 import org.kite9.diagram.adl.Arrow;
 import org.kite9.diagram.adl.Context;
 import org.kite9.diagram.adl.Glyph;
-import org.kite9.diagram.builders.AbstractBuilder;
-import org.kite9.diagram.builders.DiagramBuilder;
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.HasRelationship;
-import org.kite9.diagram.builders.InsertionInterface;
-import org.kite9.diagram.builders.Relationship;
-import org.kite9.diagram.builders.formats.Format;
-import org.kite9.diagram.builders.noun.NounFactory;
-import org.kite9.diagram.builders.noun.NounPart;
+import org.kite9.diagram.builders.formats.InsertionInterface;
+import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.java.DiagramBuilder;
+import org.kite9.diagram.builders.java.JavaRelationships;
+import org.kite9.diagram.builders.krmodel.NounFactory;
+import org.kite9.diagram.builders.krmodel.NounPart;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
@@ -33,18 +31,17 @@ import org.kite9.framework.model.MemberHandle;
  * @author moffatr
  * 
  */
-public class HierarchyWizard extends AbstractBuilder {
+public class HierarchyWizard {
 
 	protected Set<Class<?>> classes = new HashSet<Class<?>>();
 	protected List<List<Class<?>>> sortedClasses;
 	protected Object container;
 	protected boolean sorted = false;
-	protected NounFactory nf;
 	protected Set<DiagramElement> hierarchyContainers = new HashSet<DiagramElement>();
 	protected DiagramBuilder db;
+	protected NounFactory nf;
 	
 	public HierarchyWizard(Object container, DiagramBuilder db) {
-		super(db.getProjectModel(), db.getAliaser());
 		this.db = db;
 		this.nf = db.getNounFactory();
 		this.container = container;
@@ -52,7 +49,7 @@ public class HierarchyWizard extends AbstractBuilder {
 
 
 	public void add(boolean traverseDownwards, Class<?>... classesToAdd) {
-		ClassLoader cl = getCurrentClassLoader();
+		ClassLoader cl = db.getCurrentClassLoader();
 		for (Class<?> class1 : classesToAdd) {
 			addClass(traverseDownwards, class1, cl);
 		}
@@ -62,7 +59,7 @@ public class HierarchyWizard extends AbstractBuilder {
 			ClassLoader cl) {
 		classes.add(class1);
 		if (traverseDownwards) {
-			for (String name : model.getSubclasses(MemberHandle
+			for (String name : db.getProjectModel().getSubclasses(MemberHandle
 					.convertClassName(class1))) {
 				Class<?> class2 = MemberHandle.hydrateClass(name, cl);
 				addClass(traverseDownwards, class2, cl);
@@ -79,17 +76,17 @@ public class HierarchyWizard extends AbstractBuilder {
 	 * Adds the classes to the diagram, as well as level-groups, so that classes
 	 * with the hierarchical depth are shown on the same level.
 	 */
-	public void showClasses(Format containerFormat, Format classFormat) {
+	public void showClasses(PropositionFormat containerFormat, PropositionFormat classFormat) {
 		List<List<Class<?>>> sortedClasses = sortClassesByLevel();
 		// create the containers
 		int i = 1;
 		for (List<Class<?>> list : sortedClasses) {
 			String name = "level " + i++;
 			NounPart containerNoun = getNoun(name);
-			containerFormat.write(getNoun(container), HasRelationship.CLASS_GROUP, containerNoun);
-			hierarchyContainers.add(db.getElement(containerNoun));
+			containerFormat.write(getNoun(container), JavaRelationships.CLASS_GROUP, containerNoun);
+			hierarchyContainers.add(db.getNounElement(name));
 			for (Class<?> class1 : list) {
-				classFormat.write(containerNoun, HasRelationship.CLASS, getNoun(class1));
+				classFormat.write(containerNoun, JavaRelationships.CLASS, getNoun(class1));
 			}
 		}
 	}
@@ -98,22 +95,22 @@ public class HierarchyWizard extends AbstractBuilder {
 	 * Shows the EXTENDS/IMPLEMENTS relationships between the classes. Will add
 	 * any classes that are not already on the diagram.
 	 */
-	public void showInheritance(Format classFormat) {
+	public void showInheritance(PropositionFormat classFormat) {
 		// ensure classes are on diagram somewhere
 		for (Class<?> class1 : classes) {
-			classFormat.write(getNoun(container), HasRelationship.CLASS, getNoun(class1));
+			classFormat.write(getNoun(container), JavaRelationships.CLASS, getNoun(class1));
 		}
 
 		// add the inheritance / extension relationships
 		for (Class<?> c : classes) {
 			Class<?> super1 = c.getSuperclass();
 			if (classes.contains(super1)) {
-				classFormat.write(getNoun(c), Relationship.EXTENDS, getNoun(super1));
+				classFormat.write(getNoun(c), JavaRelationships.EXTENDS, getNoun(super1));
 			}
 
 			for (Class<?> if1 : c.getInterfaces()) {
 				if (classes.contains(if1)) {
-					classFormat.write(getNoun(c), Relationship.IMPLEMENTS, getNoun(if1));
+					classFormat.write(getNoun(c), JavaRelationships.IMPLEMENTS, getNoun(if1));
 				}
 			}
 		}
@@ -121,7 +118,7 @@ public class HierarchyWizard extends AbstractBuilder {
 		Filter<Object> includedArrows = new Filter<Object>() {
 
 			public boolean accept(Object o) {
-				DiagramElement de = db.getElement(o);
+				DiagramElement de = db.getNounElement(o);
 				if ((de instanceof Arrow) && (hierarchyContainers.contains(((Arrow)de).getContainer()))) {
 					return true;
 				} else {
@@ -132,7 +129,7 @@ public class HierarchyWizard extends AbstractBuilder {
 		
 		Filter<Object> includedGlyphs = new Filter<Object>() {
 			public boolean accept(Object o) {
-				DiagramElement de = db.getElement(o);
+				DiagramElement de = db.getNounElement(o);
 				if ((de instanceof Glyph) && (hierarchyContainers.contains(((Glyph)de).getContainer()))) {
 					return true;
 				} else {

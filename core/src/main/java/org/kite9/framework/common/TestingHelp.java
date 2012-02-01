@@ -26,6 +26,7 @@ import org.kite9.diagram.primitives.Connected;
 import org.kite9.diagram.primitives.Connection;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.diagram.primitives.IdentifiableDiagramElement;
+import org.kite9.diagram.primitives.PositionableDiagramElement;
 import org.kite9.diagram.visitors.DiagramElementVisitor;
 import org.kite9.diagram.visitors.VisitorAction;
 import org.kite9.framework.logging.LogicException;
@@ -179,7 +180,7 @@ public class TestingHelp {
 			    	int connections = (o instanceof Connected) ? ((Connected)o).getLinks().size() : 0;
 			    
 			    	String id = (o instanceof IdentifiableDiagramElement) ? ((IdentifiableDiagramElement)o).getID() : o.toString().replace("\n", "");
-			    	RenderingInformation ri = ((DiagramElement)o).getRenderingInformation();
+			    	RenderingInformation ri = ((PositionableDiagramElement)o).getRenderingInformation();
 			    	if (ri instanceof RectangleRenderingInformation) {
 			    		RectangleRenderingInformation rri = (RectangleRenderingInformation) ri;
 			    		double width = rri.getSize().getWidth();
