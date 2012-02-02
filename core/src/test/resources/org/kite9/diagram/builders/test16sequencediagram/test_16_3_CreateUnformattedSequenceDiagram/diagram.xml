@@ -63,7 +63,7 @@
    </fromLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:7">
+  <link id="auto:8">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()"></to>
    <fromLabel xsi:type="text-line">
@@ -79,13 +79,18 @@
     <text>1, method3()</text>
     <symbols></symbols>
    </fromLabel>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+  <link id="auto:3">
+   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()"></from>
+   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()"></to>
    <toLabel xsi:type="text-line">
     <text>returns int</text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:3">
+  <link id="auto:4">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value"></to>
    <fromLabel xsi:type="text-line">
@@ -94,7 +99,7 @@
    </fromLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:4">
+  <link id="auto:5">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set"></to>
    <fromLabel xsi:type="text-line">
@@ -103,7 +108,7 @@
    </fromLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:5">
+  <link id="auto:6">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()"></to>
    <fromLabel xsi:type="text-line">
@@ -121,7 +126,7 @@
    </fromLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:6">
+  <link id="auto:7">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()"></to>
    <fromLabel xsi:type="text-line">

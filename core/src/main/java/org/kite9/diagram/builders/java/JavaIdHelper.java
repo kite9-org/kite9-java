@@ -59,7 +59,7 @@ public class JavaIdHelper implements IdHelper {
 		} else if (o instanceof NounPart){
 		    	return getId(((NounPart)o).getRepresented());
 		} else if (o instanceof Object) {
-				return getDiagramEntityId(o.toString());
+				return getDiagramEntityId(o.getClass().toString());
 		} else {
 			throw new Kite9ProcessingException("Could not get id for " + o.getClass().toString());
 		}

@@ -2,7 +2,6 @@ package org.kite9.diagram.builders.wizards.fsm;
 
 import org.kite9.diagram.builders.formats.BasicFormats;
 import org.kite9.diagram.builders.formats.NounFormat;
-import org.kite9.diagram.builders.formats.PropositionFormat;
 import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.Relationship;

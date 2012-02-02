@@ -1,14 +1,16 @@
 package org.kite9.diagram.builders.java;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.Tie;
 import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.Relationship;
+import org.kite9.diagram.builders.krmodel.Tie;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.model.ProjectModel;
 
@@ -98,5 +100,11 @@ public abstract class AbstractElementBuilder<X> extends AbstractJavaBuilder {
 
 		return null;
 	}
+	
+	public List<Tie> createTies(Collection<Tie> old, Relationship r,
+			Object... to) {
+		return NounFactory.createTies(old, r, getNounFactory(), to);
+	}
+
 
 }

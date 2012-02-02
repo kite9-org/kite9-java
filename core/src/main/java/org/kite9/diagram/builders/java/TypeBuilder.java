@@ -4,8 +4,8 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.Tie;
 import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.krmodel.Tie;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.model.ProjectModel;
 

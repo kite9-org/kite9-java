@@ -16,14 +16,14 @@ import org.kite9.framework.logging.LogicException;
 
 /**
  * This helps build nouns from Java Types, especially with regard to arrays, collections and generics.
- *
+ * @see ObjectNounHelper
  * @author robmoffat
  *
  */
 public class TypeNounHelper {
 
 	Unraveller[] unravellers = new Unraveller[] { new CollectionUnraveller(), new ArrayUnraveller(), new MapUnraveller(),
-			new BasicUnraveller(), new TypeVariableUnraveller()};
+			new BasicUnraveller(), new TypeVariableUnraveller(), new ParameterizedTypeUnraveller()};
 
 	protected static interface Unraveller {
 
@@ -158,6 +158,18 @@ public class TypeNounHelper {
 
 		public NounPart unravel(Type t, Aliaser a) {
 			return new ProjectStaticSimpleNoun("<"+((TypeVariable<?>) t).getName()+">", a);
+		}
+
+	}
+	
+	public static class ParameterizedTypeUnraveller implements Unraveller {
+
+		public boolean handles(Type t) {
+			return (t instanceof ParameterizedType);
+		}
+
+		public NounPart unravel(Type t, Aliaser a) {
+			return new ProjectStaticSimpleNoun(((ParameterizedType)t).getRawType(), a);
 		}
 
 	}

@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.Tie;
 import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.NounPart;
+import org.kite9.diagram.builders.krmodel.Tie;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.model.MemberHandle;
 import org.kite9.framework.model.MethodHandle;
@@ -31,7 +32,7 @@ public class MethodBuilder extends AnnotatedElementBuilder<Method> {
 		for (Tie t : ties) {
 		    Method m = getRepresented(t);
 		    if (f==null || f.accept(m)) {
-			ties2.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.RETURNS, createNoun(m.getGenericReturnType())));
+			ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.RETURNS, createNoun(m.getGenericReturnType())));
 		    }
 		}
 		return new TypeBuilder(ties2, model, a);
@@ -42,7 +43,7 @@ public class MethodBuilder extends AnnotatedElementBuilder<Method> {
 		List<Tie> ties2 = new ArrayList<Tie>();
 		for (Tie t : ties) {
 		    Method m = getRepresented(t);
-		    NounPart subject = createNewSubjectNounPart(t);
+		    NounPart subject = NounFactory.createNewSubjectNounPart(t);
 			for (Type ty : m.getGenericParameterTypes()) {
 			    if (f==null || f.accept(ty)) {
 				ties2.add(new Tie(subject, JavaRelationships.PARAMETER, createNoun(ty)));
@@ -55,7 +56,7 @@ public class MethodBuilder extends AnnotatedElementBuilder<Method> {
 	public MethodBuilder showVisibility(PropositionFormat f) {
 		for (Tie t : ties) {
 		    Method m = getRepresented(t);
-		    NounPart sub = createNewSubjectNounPart(t);
+		    NounPart sub = NounFactory.createNewSubjectNounPart(t);
 			if (Modifier.isPublic(m.getModifiers())) {
 				f.write(sub, JavaRelationships.VISIBILITY, createNoun(new JavaModifier("public")));
 			} else if (Modifier.isPrivate(m.getModifiers())) {
@@ -83,7 +84,7 @@ public class MethodBuilder extends AnnotatedElementBuilder<Method> {
 			    if (mh instanceof MethodHandle) {
 				Method m2 = ((MethodHandle)mh).hydrate(cl);
 				if ((f == null) || (f.accept(m2))) {
-					ties2.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.CALLED_BY, createNoun(m2)));
+					ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.CALLED_BY, createNoun(m2)));
 				}
 			    }
 			}
@@ -105,7 +106,7 @@ public class MethodBuilder extends AnnotatedElementBuilder<Method> {
 				Method m2 = ((MethodHandle)mh).hydrate(cl);
 				Class<?> c2 = m2.getDeclaringClass();
 				if ((f == null) || (f.accept(c2))) {
-					ties2.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.CALLED_BY, createNoun(c2)));
+					ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.CALLED_BY, createNoun(c2)));
 				}
 			    }
 			}
@@ -126,7 +127,7 @@ public class MethodBuilder extends AnnotatedElementBuilder<Method> {
 			    	if (mh instanceof MethodHandle) {
         				Method m2 = ((MethodHandle)mh).hydrate(cl);
         				if ((f == null) || (f.accept(m2))) {
-        					ties2.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.CALLS, createNoun(m2)));
+        					ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.CALLS, createNoun(m2)));
         				}
 			    	}
 			}
@@ -148,7 +149,7 @@ public class MethodBuilder extends AnnotatedElementBuilder<Method> {
         				Method m2 = ((MethodHandle)mh).hydrate(cl);
         				Class<?> dc = ((MethodHandle)mh).hydrateClass(cl);
         				if ((f == null) || (f.accept(dc))) {
-        					ties2.add(new Tie(createNewSubjectNounPart(t), new MethodCallRelationship(m2), createNoun(dc)));
+        					ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), new MethodCallRelationship(m2), createNoun(dc)));
         				}
 			    	}
 			}
@@ -166,7 +167,7 @@ public class MethodBuilder extends AnnotatedElementBuilder<Method> {
 		    Method m = getRepresented(t);
 			Class<?> c2 = m.getDeclaringClass();
 			if ((f == null) || (f.accept(c2))) {
-				ties2.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.METHOD_OF, createNoun(c2)));
+				ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.METHOD_OF, createNoun(c2)));
 			}
 
 		}

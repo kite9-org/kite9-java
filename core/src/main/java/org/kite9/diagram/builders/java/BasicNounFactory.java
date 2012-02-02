@@ -10,7 +10,7 @@ import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.NounPart;
 import org.kite9.framework.alias.Aliaser;
 
-public class BasicNounFactory implements NounFactory {
+public class BasicNounFactory extends NounFactory {
 
 	private Aliaser a;
 

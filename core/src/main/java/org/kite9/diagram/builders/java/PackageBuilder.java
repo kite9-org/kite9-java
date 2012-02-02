@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.Set;
 
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.Tie;
 import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.NounPart;
+import org.kite9.diagram.builders.krmodel.Tie;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.model.MemberHandle;
 import org.kite9.framework.model.PackageHandle;
@@ -30,7 +31,7 @@ public class PackageBuilder extends AnnotatedElementBuilder<Package> {
 	    Package p = c.getPackage();
 	    Tie t = getTieForRepresentation(p);
 	    if (t!=null) {
-		ties2.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.CLASS, createNoun(c)));
+		ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.CLASS, createNoun(c)));
 	    }
 	}
 	ClassBuilder ch = new ClassBuilder(ties2, model, a);
@@ -42,7 +43,7 @@ public class PackageBuilder extends AnnotatedElementBuilder<Package> {
 	final ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
 	for (Tie t : ties) {
-	    NounPart sub = createNewSubjectNounPart(t);
+	    NounPart sub = NounFactory.createNewSubjectNounPart(t);
 	    Package p = getRepresented(t);
 	    Set<String> classNames = model.getClassesInPackage(MemberHandle.convertPackageName(p));
 	    for (Class<?> c : MemberHandle.hydrateClasses(classNames, cl)) {
@@ -60,7 +61,7 @@ public class PackageBuilder extends AnnotatedElementBuilder<Package> {
     	final ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
     	for (Tie t : ties) {
-    	    NounPart sub = createNewSubjectNounPart(t);
+    	    NounPart sub = NounFactory.createNewSubjectNounPart(t);
     	    Package p = getRepresented(t);
     	    Set<PackageHandle> packNames = model.getDependsOnPackages(new PackageHandle(MemberHandle.convertPackageName(p), null));
     	    for (Package p2 : MemberHandle.hydratePackages(packNames, cl)) {

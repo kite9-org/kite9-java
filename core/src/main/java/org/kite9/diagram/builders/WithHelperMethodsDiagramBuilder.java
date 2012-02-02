@@ -16,7 +16,6 @@ import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
-import org.kite9.framework.alias.Aliaser;
 
 /**
  * This includes some as... methods which provide some simple functionality to help you create basic layouts.
@@ -27,6 +26,10 @@ import org.kite9.framework.alias.Aliaser;
  *
  */
 public class WithHelperMethodsDiagramBuilder extends BasicDiagramBuilder {
+
+	public WithHelperMethodsDiagramBuilder(String diagramId, IdHelper helper) {
+		super(diagramId, helper);
+	}
 
 	/**
 	 * Helper interface for introduceContexts method, so you can describe exactly the style of context you want to create.
@@ -58,10 +61,6 @@ public class WithHelperMethodsDiagramBuilder extends BasicDiagramBuilder {
 				return !only.accept(o);
 			}
 		};
-	}
-
-	public WithHelperMethodsDiagramBuilder(Aliaser a) {
-		super(a);
 	}
 
 	/**

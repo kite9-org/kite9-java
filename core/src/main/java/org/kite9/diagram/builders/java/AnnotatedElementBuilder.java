@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.Tie;
+import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.NounPart;
+import org.kite9.diagram.builders.krmodel.Tie;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.model.ProjectModel;
 
@@ -23,7 +24,7 @@ public class AnnotatedElementBuilder<X extends AnnotatedElement> extends Abstrac
 		for (Tie t : ties) {
 			X anEl = (X) t.getObject().getRepresented();
 			Annotation[] anns = anEl.getAnnotations();
-			NounPart subject = createNewSubjectNounPart(t);
+			NounPart subject = NounFactory.createNewSubjectNounPart(t);
 			for (Annotation annotation : anns) {
 				if ((f == null) || (f.accept(annotation))) {
 					NounPart object = createNoun(annotation);

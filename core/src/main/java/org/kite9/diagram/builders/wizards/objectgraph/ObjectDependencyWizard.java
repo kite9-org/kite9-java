@@ -15,11 +15,13 @@ import org.kite9.diagram.primitives.Container;
 public class ObjectDependencyWizard {
 
 	DiagramBuilder db;
-	PropositionFormat objectFormat;  
+	PropositionFormat objectFormatNew;  
+	PropositionFormat objectFormatExisting;  
 	
 	public ObjectDependencyWizard(DiagramBuilder db, Container c) {
 		this.db = db;
-		objectFormat = BasicFormats.asConnectionWithBody(db.getInsertionInterface(), BasicFormats.asGlyph(null), Direction.RIGHT, c);
+		objectFormatNew = BasicFormats.asConnectionWithBody(db.getInsertionInterface(), BasicFormats.asGlyph(null), Direction.RIGHT, c);
+		objectFormatExisting = BasicFormats.asConnectionWithBody(db.getInsertionInterface(), BasicFormats.asGlyph(null), null, c);
 	}
 	
 	public void show(Object o) {
@@ -29,8 +31,11 @@ public class ObjectDependencyWizard {
 			AbstractBuilder ob = s.pop();
 			if (ob instanceof ObjectBuilder) {
 				if (((ObjectBuilder) ob).size()>0) {
-					((ObjectBuilder)ob).show(objectFormat);
-					s.add(((ObjectBuilder)ob).withFieldValues(null));
+					ObjectBuilder notDoneYet = ((ObjectBuilder)ob).reduce(db.not(db.onlyOnDiagram()));
+					ObjectBuilder alreadyDone = ((ObjectBuilder)ob).reduce(db.onlyOnDiagram());
+					notDoneYet.show(objectFormatNew);
+					alreadyDone.show(objectFormatExisting);
+					s.add(notDoneYet.withFieldValues(null));
 				}
 			} else if (ob instanceof FieldValueBuilder) {
 				s.add(((FieldValueBuilder)ob).withValues(null));

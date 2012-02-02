@@ -5,9 +5,9 @@ import org.kite9.diagram.adl.Glyph;
 import org.kite9.diagram.adl.TextLine;
 import org.kite9.diagram.builders.krmodel.AnnotatedNounPart;
 import org.kite9.diagram.builders.krmodel.HasRelationship;
+import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.NounPart;
 import org.kite9.diagram.builders.krmodel.NounRelationshipBinding;
-import org.kite9.diagram.builders.krmodel.NounTools;
 import org.kite9.diagram.builders.krmodel.OwnedNoun;
 import org.kite9.diagram.builders.krmodel.PropositionBinding;
 import org.kite9.diagram.builders.krmodel.Relationship;
@@ -128,7 +128,7 @@ public class BasicFormats {
 				PropositionBinding or = new PropositionBinding(subject, verb, object);
 				
 
-				SimpleNoun to = NounTools.getRawSimpleNoun(object);
+				SimpleNoun to = NounFactory.getRawSimpleNoun(object);
 				Container cont = c == null ? getContainerFor(from, verb, ii) : c;
 				DiagramElement toEl = toElementFormat.returnElement(cont, to,
 						ii);
@@ -206,7 +206,7 @@ public class BasicFormats {
 		return new PropositionFormat() {
 
 			public void write(NounPart context, Relationship key, NounPart value) {
-				SimpleNoun from = NounTools.getRawSimpleNoun(context);
+				SimpleNoun from = NounFactory.getRawSimpleNoun(context);
 				DiagramElement de = ii.returnExisting(from);
 
 				String fromLabel = getLabel(context, from, ii);

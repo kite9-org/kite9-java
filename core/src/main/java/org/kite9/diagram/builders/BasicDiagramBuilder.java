@@ -18,7 +18,6 @@ import org.kite9.diagram.adl.LinkEndStyle;
 import org.kite9.diagram.adl.Symbol;
 import org.kite9.diagram.adl.TextLine;
 import org.kite9.diagram.builders.formats.InsertionInterface;
-import org.kite9.diagram.builders.krmodel.AbstractBuilder;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.Connected;
@@ -27,7 +26,6 @@ import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.diagram.primitives.Label;
 import org.kite9.diagram.primitives.SymbolTarget;
-import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.common.Kite9ProcessingException;
 
 /**
@@ -40,18 +38,18 @@ import org.kite9.framework.common.Kite9ProcessingException;
  * Note that this extends AbstractBuilder just for convenience later on.  It doesn't use 
  * any of its methods.
  */
-public class BasicDiagramBuilder extends AbstractBuilder {
+public class BasicDiagramBuilder {
 
 	public static final Object THE_DIAGRAM = new Object();
 	protected IdHelper idHelper;
 	protected KeyHelper kh = new KeyHelper();
-	protected Object creator;
 	protected Diagram d;
 	protected Map<Object, DiagramElement> contents = new HashMap<Object, DiagramElement>();
 	private Map<String, Symbol> symbols = new HashMap<String, Symbol>();
 
-	public BasicDiagramBuilder(Aliaser a) {	
-		super(a);
+	public BasicDiagramBuilder(String diagramId, IdHelper helper) {
+		this.idHelper = helper;
+		this.d = createRepresentation(diagramId);
 	}
 
 	public Diagram getDiagram() {
@@ -59,7 +57,7 @@ public class BasicDiagramBuilder extends AbstractBuilder {
 		return d;
 	}
 
-	public Diagram createRepresentation(String id) {
+	private Diagram createRepresentation(String id) {
 		return new Diagram(id, new ArrayList<Contained>(), null);
 	}
 

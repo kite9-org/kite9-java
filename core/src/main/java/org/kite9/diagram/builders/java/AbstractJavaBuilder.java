@@ -4,12 +4,14 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.kite9.diagram.builders.krmodel.AbstractBuilder;
+import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.model.ProjectModel;
 
 public abstract class AbstractJavaBuilder extends AbstractBuilder {
 
 	protected ProjectModel model;
+	protected NounFactory nf;
 
 	public AbstractJavaBuilder(ProjectModel model, Aliaser a) {
 		super(a);
@@ -26,6 +28,14 @@ public abstract class AbstractJavaBuilder extends AbstractBuilder {
 
 	public ClassLoader getCurrentClassLoader() {
 		return Thread.currentThread().getContextClassLoader();
+	}
+	
+	public NounFactory getNounFactory() {
+		if (nf==null) {
+			nf = new BasicNounFactory(getAliaser());
+		}
+		
+		return nf;
 	}
 
 }

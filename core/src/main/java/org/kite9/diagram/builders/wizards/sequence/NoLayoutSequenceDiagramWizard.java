@@ -6,8 +6,8 @@ import java.util.Stack;
 
 import org.kite9.diagram.adl.Link;
 import org.kite9.diagram.adl.TextLine;
-import org.kite9.diagram.builders.WithHelperMethodsDiagramBuilder;
 import org.kite9.diagram.builders.formats.InsertionInterface;
+import org.kite9.diagram.builders.krmodel.KRDiagramBuilder;
 import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.SimpleNoun;
 import org.kite9.diagram.position.Direction;
@@ -18,7 +18,7 @@ import org.kite9.framework.alias.Aliaser;
 
 public class NoLayoutSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 
-	public NoLayoutSequenceDiagramWizard(WithHelperMethodsDiagramBuilder db) {
+	public NoLayoutSequenceDiagramWizard(KRDiagramBuilder db) {
 		super(db);
 	}
 

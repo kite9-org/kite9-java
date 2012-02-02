@@ -1,7 +1,7 @@
 package org.kite9.diagram.builders.wizards.sequence;
 
-import org.kite9.diagram.builders.WithHelperMethodsDiagramBuilder;
 import org.kite9.diagram.builders.formats.InsertionInterface;
+import org.kite9.diagram.builders.krmodel.KRDiagramBuilder;
 import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.Layout;
@@ -22,7 +22,7 @@ public abstract class AbstractSequenceDiagramWizard {
 	NounFactory nf;
 	Aliaser a;
 
-	public AbstractSequenceDiagramWizard(WithHelperMethodsDiagramBuilder db) {
+	public AbstractSequenceDiagramWizard(KRDiagramBuilder db) {
 		this(db.getInsertionInterface(), db.getNounFactory(), db.getAliaser());
 	}
 

@@ -13,10 +13,11 @@ import java.util.List;
 import java.util.Set;
 
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.Tie;
 import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.NounPart;
 import org.kite9.diagram.builders.krmodel.Relationship;
+import org.kite9.diagram.builders.krmodel.Tie;
 import org.kite9.diagram.builders.krmodel.Relationship.RelationshipType;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.model.AbstractHandle;
@@ -33,7 +34,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 
 	public ClassBuilder showVisibility(PropositionFormat f) {
 		for (Tie t : ties) {
-			NounPart subject = createNewSubjectNounPart(t);
+			NounPart subject = NounFactory.createNewSubjectNounPart(t);
 			Class<?> c = getRepresented(t);
 			if (Modifier.isPublic(c.getModifiers())) {
 				f.write(subject, JavaRelationships.VISIBILITY, createNoun(new JavaModifier("public")));
@@ -49,7 +50,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 	public ClassBuilder showStatic(PropositionFormat f) {
 		for (Tie t : ties) {
 			Class<?> c = getRepresented(t);
-			NounPart subject = createNewSubjectNounPart(t);
+			NounPart subject = NounFactory.createNewSubjectNounPart(t);
 			if (c.getEnclosingClass() != null) {
 				// inner class
 				if (Modifier.isStatic(c.getModifiers())) {
@@ -67,7 +68,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 	public ClassBuilder showFinal(PropositionFormat f) {
 		for (Tie t : ties) {
 			Class<?> c = getRepresented(t);
-			NounPart subject = createNewSubjectNounPart(t);
+			NounPart subject = NounFactory.createNewSubjectNounPart(t);
 			if (Modifier.isFinal(c.getModifiers())) {
 				f.write(subject, JavaRelationships.MODIFIER, createNoun(new JavaModifier("final")));
 			}
@@ -244,7 +245,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 			boolean traverse, Relationship r, List<Tie> out) {
 		for (Tie t : in) {
 			Class<?> c = getRepresented(t);
-			NounPart subject = createNewSubjectNounPart(t);
+			NounPart subject = NounFactory.createNewSubjectNounPart(t);
 			if (model.withinModel(MemberHandle.convertClassName(c))) {
 				for (Y y : ccs.contents(c)) {
 					if ((y!=null) && ((f == null) || (f.accept(y)))) {
@@ -340,7 +341,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 		List<Tie> out = new ArrayList<Tie>();
 		for (Tie t : ties) {
 			Class<?> c = getRepresented(t);
-			NounPart subject = createNewSubjectNounPart(t);
+			NounPart subject = NounFactory.createNewSubjectNounPart(t);
 			Set<AnnotationHandle> handles = model.getAnnotationReferences(MemberHandle.convertClassName(c));
 			for (AnnotationHandle h : handles) {
 				AnnotatedElement object = h.getAnnotatedItem().hydrate(cl);
@@ -373,7 +374,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 						if (mh instanceof MethodHandle) {
 							Class<?> dc = ((MethodHandle) mh).hydrateClass(cl);
 							if ((f == null) || (f.accept(dc))) {
-								ties2.add(new Tie(createNewSubjectNounPart(t), new MethodCallRelationship(m,
+								ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), new MethodCallRelationship(m,
 										RelationshipType.PASSIVE), createNoun(dc)));
 							}
 						}
@@ -402,7 +403,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 						if (mh instanceof MethodHandle) {
 							Method dc = ((MethodHandle) mh).hydrate(cl);
 							if ((f == null) || (f.accept(dc))) {
-								ties2.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.CALLED_BY, createNoun(dc)));
+								ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.CALLED_BY, createNoun(dc)));
 							}
 						}
 					}
@@ -431,7 +432,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 							Method m2 = ((MethodHandle) mh).hydrate(cl);
 							Class<?> dc = ((MethodHandle) mh).hydrateClass(cl);
 							if ((f == null) || (f.accept(dc))) {
-								ties2.add(new Tie(createNewSubjectNounPart(t), new MethodCallRelationship(m2),
+								ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), new MethodCallRelationship(m2),
 										createNoun(dc)));
 							}
 						}
@@ -459,7 +460,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 						if (mh instanceof MethodHandle) {
 							Method m2 = ((MethodHandle) mh).hydrate(cl);
 							if ((f == null) || (f.accept(m2))) {
-								ties2.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.CALLS, createNoun(m2)));
+								ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.CALLS, createNoun(m2)));
 							}
 						}
 					}
@@ -485,7 +486,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 				for (String depName : model.getDependsOnClasses(className)) {
 					Class<?> depClass = AbstractHandle.hydrateClass(depName, cl);
 					if ((f == null) || (f.accept(depClass))) {
-						ties2.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.REQUIRES,
+						ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.REQUIRES,
 								createNoun(depClass)));
 					}
 				}
@@ -510,7 +511,7 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 				for (String depName : model.getDependedOnClasses(className)) {
 					Class<?> depClass = AbstractHandle.hydrateClass(depName, cl);
 					if ((f == null) || (f.accept(depClass))) {
-						ties2.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.REQUIRED_BY,
+						ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.REQUIRED_BY,
 								createNoun(depClass)));
 					}
 				}

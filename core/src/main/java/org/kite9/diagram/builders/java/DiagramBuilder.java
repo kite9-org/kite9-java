@@ -10,11 +10,12 @@ import java.util.Set;
 
 import org.kite9.diagram.annotation.K9OnDiagram;
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.Tie;
-import org.kite9.diagram.builders.WithHelperMethodsDiagramBuilder;
+import org.kite9.diagram.builders.krmodel.KRDiagramBuilder;
+import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.NounPart;
 import org.kite9.diagram.builders.krmodel.NounRelationshipBinding;
 import org.kite9.diagram.builders.krmodel.Relationship;
+import org.kite9.diagram.builders.krmodel.Tie;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.common.HelpMethods;
@@ -29,22 +30,25 @@ import org.kite9.framework.model.ProjectModel;
  * @author robmoffat
  * 
  */
-public class DiagramBuilder extends WithHelperMethodsDiagramBuilder {
+public class DiagramBuilder extends KRDiagramBuilder {
 
 	ProjectModel model;
+	Object creator;
 
-	public DiagramBuilder(Aliaser a, Method creator, ProjectModel pm) {
-		super(a);
+	public DiagramBuilder(Aliaser a, Method creator, ProjectModel pm, JavaIdHelper helper) {
+		super(helper.getId(creator), helper, a);
 		this.model = pm;
-		this.idHelper = new JavaIdHelper(pm);
-		this.d = createRepresentation(getId(creator));
 		this.creator = creator;
+	}
+	
+	public DiagramBuilder(Aliaser a, Method creator, ProjectModel pm) {
+		this(a, creator, pm, new JavaIdHelper(pm));
+		this.model = pm;
 	}
 
 	public DiagramBuilder(Aliaser a, String id, ProjectModel pm) {
-		super(a);
+		super(id, new JavaIdHelper(pm), a);
 		this.model = pm;
-		this.d = createRepresentation(id);
 		this.creator = id;
 	}
 
@@ -181,4 +185,21 @@ public class DiagramBuilder extends WithHelperMethodsDiagramBuilder {
 		NounRelationshipBinding nrb = new NounRelationshipBinding(getNounFactory().createNoun(o), r);
 		return contents.get(nrb);
 	}
+	
+	protected NounFactory nf;
+	
+	public NounFactory getNounFactory() {
+		if (nf==null) {
+			nf = new BasicNounFactory(getAliaser());
+		}
+		
+		return nf;
+	}
+
+	@Override
+	public DiagramBuilder withKeyText(String boldtext, String body) {
+		super.withKeyText(boldtext, body);
+		return this;
+	}
+	
 }

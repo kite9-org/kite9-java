@@ -23,6 +23,7 @@ import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.framework.model.MemberHandle;
+import org.kite9.framework.model.ProjectModel;
 
 /**
  * This class is used to quickly generate a class hierarchy, provided the top
@@ -31,20 +32,22 @@ import org.kite9.framework.model.MemberHandle;
  * @author moffatr
  * 
  */
-public class HierarchyWizard {
+public class HierarchyWizard  {
 
 	protected Set<Class<?>> classes = new HashSet<Class<?>>();
 	protected List<List<Class<?>>> sortedClasses;
 	protected Object container;
 	protected boolean sorted = false;
+	protected NounFactory nf;
 	protected Set<DiagramElement> hierarchyContainers = new HashSet<DiagramElement>();
 	protected DiagramBuilder db;
-	protected NounFactory nf;
+	protected ProjectModel model;
 	
 	public HierarchyWizard(Object container, DiagramBuilder db) {
 		this.db = db;
 		this.nf = db.getNounFactory();
 		this.container = container;
+		this.model = db.getProjectModel();
 	}
 
 
@@ -59,7 +62,7 @@ public class HierarchyWizard {
 			ClassLoader cl) {
 		classes.add(class1);
 		if (traverseDownwards) {
-			for (String name : db.getProjectModel().getSubclasses(MemberHandle
+			for (String name : model.getSubclasses(MemberHandle
 					.convertClassName(class1))) {
 				Class<?> class2 = MemberHandle.hydrateClass(name, cl);
 				addClass(traverseDownwards, class2, cl);
@@ -84,7 +87,7 @@ public class HierarchyWizard {
 			String name = "level " + i++;
 			NounPart containerNoun = getNoun(name);
 			containerFormat.write(getNoun(container), JavaRelationships.CLASS_GROUP, containerNoun);
-			hierarchyContainers.add(db.getNounElement(name));
+			hierarchyContainers.add(db.getInsertionInterface().returnExisting(containerNoun));
 			for (Class<?> class1 : list) {
 				classFormat.write(containerNoun, JavaRelationships.CLASS, getNoun(class1));
 			}
@@ -118,7 +121,7 @@ public class HierarchyWizard {
 		Filter<Object> includedArrows = new Filter<Object>() {
 
 			public boolean accept(Object o) {
-				DiagramElement de = db.getNounElement(o);
+				DiagramElement de = db.getInsertionInterface().returnExisting(o);
 				if ((de instanceof Arrow) && (hierarchyContainers.contains(((Arrow)de).getContainer()))) {
 					return true;
 				} else {
@@ -129,7 +132,7 @@ public class HierarchyWizard {
 		
 		Filter<Object> includedGlyphs = new Filter<Object>() {
 			public boolean accept(Object o) {
-				DiagramElement de = db.getNounElement(o);
+				DiagramElement de = db.getInsertionInterface().returnExisting(o);
 				if ((de instanceof Glyph) && (hierarchyContainers.contains(((Glyph)de).getContainer()))) {
 					return true;
 				} else {

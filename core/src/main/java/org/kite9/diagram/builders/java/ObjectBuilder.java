@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.Tie;
 import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.krmodel.NounFactory;
+import org.kite9.diagram.builders.krmodel.Tie;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.model.ProjectModel;
 
@@ -18,7 +19,7 @@ public class ObjectBuilder extends AbstractElementBuilder<Object> {
 
 	@Override
 	public ObjectBuilder reduce(Filter<? super Object> f) {
-		return (ObjectBuilder) reduceInner(f);
+		return new ObjectBuilder(reduceInner(f), model, a);
 	}
 
 	public ObjectBuilder show(PropositionFormat f) {
@@ -33,13 +34,14 @@ public class ObjectBuilder extends AbstractElementBuilder<Object> {
 		for (Field field : c.getDeclaredFields()) {
 			FieldValue value = null;
 			try {
+				field.setAccessible(true);
 				Object o2 = field.get(o);
 				value = new FieldValue(field, o2, o);
 			} catch (IllegalArgumentException e) {
 			} catch (IllegalAccessException e) {
 			}
 			if ((value!=null) && ((f == null) || (f.accept(value)))) {
-				ties.add(new Tie(createNewSubjectNounPart(t), JavaRelationships.FIELD,
+				ties.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.FIELD,
 						createNoun(value)));
 			}
 		}
