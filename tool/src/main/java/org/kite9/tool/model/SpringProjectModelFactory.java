@@ -28,8 +28,18 @@ public class SpringProjectModelFactory extends AbstractContextualizable {
 		for (int i = 0; i < paths.length; i++) {
 			FileSystemResourceLoader loader = new FileSystemResourceLoader();
 			ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver(loader);
+			String ending = "/"+ ((basePackage.length() > 0) ? basePackage.replace(".", "/") + "/" : "") + pattern;
+			
+			if (paths[i].startsWith("/")) {
+				paths[i] = "file:" + paths[i];
+			}
+			
+			if (paths[i].endsWith(".jar")) {
+				paths[i] = "jar:"+ paths[i] + "!";
+			} 
+			
+			String packageSearchPath =paths[i]+ending;
 
-			String packageSearchPath =(paths[i].startsWith("/") ? "file:/" : "" ) + paths[i] + "/" + ((basePackage.length() > 0) ? basePackage.replace(".", "/") + "/" : "") + pattern;
 			getContext().getLogger().send("Searching: "+packageSearchPath);
 			Resource[] resources = resourcePatternResolver.getResources(packageSearchPath);
 
@@ -37,6 +47,8 @@ public class SpringProjectModelFactory extends AbstractContextualizable {
 				fileCount++;
 				cfmb.visit(resource);
 			}
+
+			getContext().getLogger().send("Found: "+resources.length+" matches");
 
 		}
 

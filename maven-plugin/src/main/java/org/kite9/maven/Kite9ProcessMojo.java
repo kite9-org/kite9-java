@@ -29,7 +29,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 
+import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.manager.WagonManager;
+import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.doxia.sink.Sink;
 import org.apache.maven.doxia.sink.SinkEventAttributeSet;
 import org.apache.maven.doxia.sink.SinkEventAttributes;
@@ -53,11 +55,19 @@ import org.springframework.context.support.GenericXmlApplicationContext;
  * many maven properties as possible.
  * 
  * @goal kite9diagrams
+ * @requiresDependencyCollection runtime
  * @phase
  * 
  */
 public class Kite9ProcessMojo extends AbstractMavenReport {
 
+    /**
+     * @parameter expression="${localRepository}"
+     * @readonly
+     * @required
+     */
+    protected ArtifactRepository local;
+	
 	/**
 	 * @parameter
 	 */
@@ -271,10 +281,6 @@ public class Kite9ProcessMojo extends AbstractMavenReport {
 		propsToUse.put("repo.baseDir", reportingDir.toString() + File.separatorChar + repositoryDirectory);
 	}
 
-	private void addMavenStaticDefaults(Properties propsToUse) {
-		propsToUse.put("file-scanner.basePackage", "src/main/adl");
-	}
-
 	private void addMavenJavadocReportLocation(Properties propsToUse) {
 		propsToUse.put("javadoc-listener.docRoot", reportingDir.toString() + File.separatorChar + javadocDirectory);
 	}
@@ -282,9 +288,16 @@ public class Kite9ProcessMojo extends AbstractMavenReport {
 	private void addMavenClasspathSettings(Properties propsToUse) {
 		String output = project.getBuild().getOutputDirectory();
 		String testOutput = project.getBuild().getTestOutputDirectory();
+		StringBuilder prop = new StringBuilder();
+		prop.append(output+ File.pathSeparator + testOutput);
+		
+		for (Object a : project.getArtifacts()) {
+			String s = local.getBasedir()+"/"+local.pathOf((Artifact) a);
+			System.out.println(a+" ---> "+s);
+			prop.append(File.pathSeparator+s);
+		}
 
-		String prop = output + File.pathSeparator + testOutput;
-		propsToUse.put("context.classPath", prop);
+		propsToUse.put("context.classPath", prop.toString());
 	}
 
 	private void addMavenProxySettings(Properties propsToUse) {
