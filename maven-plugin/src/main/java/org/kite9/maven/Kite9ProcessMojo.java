@@ -162,7 +162,9 @@ public class Kite9ProcessMojo extends AbstractMavenReport {
 		// allow overriding of these properties from a kite9.properties file
 		try {
 			Properties kite9Properties = PreferenceLoader.getPreferences("kite9.properties");
-			propsToUse.putAll(kite9Properties);
+			if (kite9Properties != null) {
+				propsToUse.putAll(kite9Properties);
+			}
 			return true;
 		} catch (IOException e) {
 			return false;

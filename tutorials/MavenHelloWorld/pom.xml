@@ -93,7 +93,7 @@
 			<plugin>
 				<groupId>org.kite9</groupId>
 				<artifactId>kite9-java-maven-plugin</artifactId>
-	                        <version>${project.version}</version>
+	            <version>${project.version}</version>
 				<configuration>
 					<userProperties>
 						<property>
@@ -122,7 +122,7 @@
 		<dependency>
 			<groupId>org.kite9</groupId>
 			<artifactId>kite9-java-core</artifactId>
-                        <version>${project.version}</version>
+            <version>${project.version}</version>
  		</dependency>
 
 	</dependencies>
