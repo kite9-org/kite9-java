@@ -106,11 +106,8 @@ public class Kite9ContextImpl implements Kite9Context, Logable, InitializingBean
 		return projectId;
 	}
 
-	public void setProjectId(String projectId) {
-		try {
-			this.projectId = Integer.parseInt(projectId);
-		} catch (NumberFormatException e) {
-		}
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
 	}
 
 	public String getSecretKey() {

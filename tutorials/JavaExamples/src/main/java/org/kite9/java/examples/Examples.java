@@ -15,12 +15,12 @@ import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.Glyph;
 import org.kite9.diagram.adl.Link;
 import org.kite9.diagram.adl.LinkEndStyle;
-import org.kite9.diagram.builders.ClassBuilder;
-import org.kite9.diagram.builders.DiagramBuilder;
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.PackageBuilder;
-import org.kite9.diagram.builders.Relationship;
-import org.kite9.diagram.builders.StringBuilder;
+import org.kite9.diagram.builders.java.ClassBuilder;
+import org.kite9.diagram.builders.java.DiagramBuilder;
+import org.kite9.diagram.builders.java.ObjectBuilder;
+import org.kite9.diagram.builders.java.PackageBuilder;
+import org.kite9.diagram.builders.krmodel.Relationship;
 import org.kite9.diagram.builders.wizards.fsm.EnumWithAnnotationFSMDataProvider;
 import org.kite9.diagram.builders.wizards.fsm.FSMDataProvider;
 import org.kite9.diagram.builders.wizards.fsm.FiniteStateMachineWizard;
@@ -93,30 +93,30 @@ public class Examples {
 
 	@Kite9Item
 	public Diagram example_1_3_FlowChart(DiagramBuilder builder) throws IOException {
-		StringBuilder checkLaundry = builder.withStrings("Check Laundry Basket").show(builder.asGlyphs("choice"));
-		checkLaundry.withStrings(null, "Is it empty?").show(builder.asTextLines());
-		checkLaundry.withStrings(new Relationship("yes", Direction.RIGHT), "All Done!").show(builder.asGlyphs());
+		ObjectBuilder checkLaundry = builder.withObjects("Check Laundry Basket").show(builder.asConnectedGlyphs("choice"));
+		checkLaundry.withObjects(null, "Is it empty?").show(builder.asTextLines());
+		checkLaundry.withObjects(new Relationship("yes", Direction.RIGHT), "All Done!").show(builder.asConnectedGlyphs());
 
 		Relationship no1 = new Relationship("no", Direction.DOWN);
-		StringBuilder loadLaundry = checkLaundry.withStrings(no1, "Load Laundry Into Machine").show(
-				builder.asGlyphs("action"));
-		loadLaundry.withStrings(null, "Ensure machine is empty first", "Add powder, close door", "Start programme")
+		ObjectBuilder loadLaundry = checkLaundry.withObjects(no1, "Load Laundry Into Machine").show(
+				builder.asConnectedGlyphs("action"));
+		loadLaundry.withObjects(null, "Ensure machine is empty first", "Add powder, close door", "Start programme")
 				.show(builder.asTextLines());
 
 		String finished = "Is Cycle Finished?";
-		StringBuilder isFinished = loadLaundry.withStrings(new Relationship("wait"), finished).show(
-				builder.asGlyphs("choice"));
+		ObjectBuilder isFinished = loadLaundry.withObjects(new Relationship("wait"), finished).show(
+				builder.asConnectedGlyphs("choice"));
 
-		StringBuilder waiting = isFinished.withStrings(new Relationship("no"), "Have a Coffee")
-				.show(builder.asGlyphs());
+		ObjectBuilder waiting = isFinished.withObjects(new Relationship("no"), "Have a Coffee")
+				.show(builder.asConnectedGlyphs());
 
-		waiting.withStrings(new Relationship("check again"), finished).show(builder.asGlyphs());
+		waiting.withObjects(new Relationship("check again"), finished).show(builder.asConnectedGlyphs());
 
 		Relationship yes = new Relationship("yes");
-		StringBuilder sunny = isFinished.withStrings(yes, "Is it Sunny?").show(builder.asGlyphs("choice"));
+		ObjectBuilder sunny = isFinished.withObjects(yes, "Is it Sunny?").show(builder.asConnectedGlyphs("choice"));
 
-		sunny.withStrings(new Relationship("it's fine"), "Hang on the Line").show(builder.asGlyphs("action"));
-		sunny.withStrings(new Relationship("it's wet"), "Hang on the Dryer").show(builder.asGlyphs("action"));
+		sunny.withObjects(new Relationship("it's fine"), "Hang on the Line").show(builder.asConnectedGlyphs("action"));
+		sunny.withObjects(new Relationship("it's wet"), "Hang on the Dryer").show(builder.asConnectedGlyphs("action"));
 
 		return builder.getDiagram();
 	}
@@ -125,20 +125,20 @@ public class Examples {
 	public Diagram example_1_5_UseCases(DiagramBuilder builder) throws IOException {
 		// show use cases inside a context
 		PackageBuilder ucp = builder.withPackages(UseCase.class);
-		ucp.show(builder.asContexts());
+		ucp.show(builder.asConnectedContexts());
 		ClassBuilder uc = ucp.withMemberClasses(builder.not(builder.only(UseCase.class, Uses.class)));
-		uc.show(builder.asGlyphs(null));
+		uc.show(builder.asConnectedGlyphs(null));
 
 		// show actors inside context
 		PackageBuilder ac = builder.withPackages(Actor.class);
-		ac.show(builder.asContexts(true, Layout.VERTICAL));
+		ac.show(builder.asConnectedContexts(true, Layout.VERTICAL));
 		ClassBuilder contents = ac.withMembers(Person.class);
-		contents.show(builder.asGlyphs());
+		contents.show(builder.asConnectedGlyphs());
 		contents.withMethods(null, false).show(builder.asTextLines());
-		contents.withSubClasses(builder.onlyAnnotated(), true).show(builder.asGlyphs())
+		contents.withSubClasses(builder.onlyAnnotated(), true).show(builder.asConnectedGlyphs())
 			.withMethods(null, false).show(builder.asTextLines());
 		// show references between the two
-		uc.withReferencingAnnotatedElements(builder.only(Uses.class)).show(builder.asGlyphs(null,Direction.RIGHT));
+		uc.withReferencingAnnotatedElements(builder.only(Uses.class)).show(builder.asConnectedGlyphs(null,Direction.RIGHT));
 		
 
 		Diagram d = builder.getDiagram();
@@ -149,7 +149,7 @@ public class Examples {
 	@Kite9Item
 	public Diagram example_1_6_Packaging(DiagramBuilder db) throws IOException {
 		PackageBuilder p1 = db.withPackages(UseCase.class, Actor.class, Uses.class);
-		p1.show(db.asGlyphs());
+		p1.show(db.asConnectedGlyphs());
 		p1.withMemberClasses(null).show(db.asTextLines());
 		p1.withDependencies(new Filter<Package>() {
 
@@ -157,7 +157,7 @@ public class Examples {
 				return o.getName().startsWith("org.kite9.java.examples");
 			}
 
-		}).show(db.asGlyphs());
+		}).show(db.asConnectedGlyphs());
 
 		return db.getDiagram();
 	}
@@ -165,21 +165,21 @@ public class Examples {
 	@Kite9Item
 	public Diagram example_1_7_ClassDependency(DiagramBuilder db) throws IOException {
 		ClassBuilder cb = db.withClasses(Book.class, Member.class);
-		cb.show(db.asGlyphs());
-		cb.withDependencies(db.not(db.only(Object.class)), true).show(db.asGlyphs());
+		cb.show(db.asConnectedGlyphs());
+		cb.withDependencies(db.not(db.only(Object.class)), true).show(db.asConnectedGlyphs());
 		return db.getDiagram();
 	}
 
 	@Kite9Item
 	public Diagram example_1_8_StateTransition(DiagramBuilder db) throws Exception {
 		ClassBuilder cb = db.withClasses(Book.class);
-		cb.show(db.asContexts());
-		Context c = (Context) db.getElement(Book.class);
-		FiniteStateMachineWizard fsmFormat = new FiniteStateMachineWizard(db);
+		cb.show(db.asConnectedContexts());
+		Context c = (Context) db.getNounElement(Book.class);
+		FiniteStateMachineWizard fsmFormat = new FiniteStateMachineWizard(db, c);
 		Field f = Book.class.getDeclaredField("state");
 		FSMDataProvider provider = new EnumWithAnnotationFSMDataProvider(db, f, BookState.class, BeforeState.class,
 				AfterState.class);
-		fsmFormat.write(provider, c);
+		fsmFormat.write(provider);
 
 		return db.getDiagram();
 	}

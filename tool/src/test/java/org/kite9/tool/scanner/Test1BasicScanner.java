@@ -1,7 +1,7 @@
 package org.kite9.tool.scanner;
 
 import org.junit.Test;
-import org.kite9.diagram.builders.DiagramBuilder;
+import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.framework.Kite9Item;
 import org.kite9.tool.AbstractRunnerTest;
 import org.kite9.tool.BasicKite9Runner;

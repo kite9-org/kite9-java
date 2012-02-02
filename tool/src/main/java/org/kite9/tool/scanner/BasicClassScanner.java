@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.kite9.diagram.builders.DiagramBuilder;
+import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.framework.Kite9Item;
 import org.kite9.framework.common.ClassHelp;
 import org.kite9.framework.common.Kite9ProcessingException;
@@ -41,35 +41,34 @@ public class BasicClassScanner extends AbstractContextualizable implements
 
 		for (MemberHandle mh : members) {
 			if (mh instanceof MethodHandle) {
-
-				Method method = MethodHandle.hydrateMethod((MethodHandle) mh,
-						getContext().getUserClassLoader());
-				Class<?> testClass = method.getDeclaringClass();
-				String className = testClass.getName();
-
-				if ((basePackage == null)
-						|| (className.startsWith(basePackage))) {
-
-					String id = testClass.getName();
-					String name = getContext().getAliaser().getObjectAlias(
-							method);
-					Object[] args = null;
-					Object instance = null;
-
-					if (method.getParameterTypes().length == 0) {
-						args = new Object[0];
-					} else if ((method.getParameterTypes().length == 1)
-							&& (method.getParameterTypes()[0]
-									.equals(DiagramBuilder.class))) {
-						args = new Object[] { createDiagramBuilder(
-								getContext(), method) };
-					} else {
-						throw new Kite9ProcessingException(
-								"Could not determine arguments for " + id);
-					}
-
-					WorkItem item = null;
-					try {
+				try {
+					Method method = MethodHandle.hydrateMethod((MethodHandle) mh,
+							getContext().getUserClassLoader());
+					Class<?> testClass = method.getDeclaringClass();
+					String className = testClass.getName();
+	
+					if ((basePackage == null)
+							|| (className.startsWith(basePackage))) {
+	
+						String id = testClass.getName();
+						String name = getContext().getAliaser().getObjectAlias(
+								method);
+						Object[] args = null;
+						Object instance = null;
+	
+						if (method.getParameterTypes().length == 0) {
+							args = new Object[0];
+						} else if ((method.getParameterTypes().length == 1)
+								&& (method.getParameterTypes()[0]
+										.equals(DiagramBuilder.class))) {
+							args = new Object[] { createDiagramBuilder(
+									getContext(), method) };
+						} else {
+							throw new Kite9ProcessingException(
+									"Could not determine arguments for " + id);
+						}
+	
+						WorkItem item = null;
 						if (Modifier.isStatic(method.getModifiers())) {
 							Object diagram = method.invoke(null, args);
 							if (diagram != null) {
@@ -96,11 +95,9 @@ public class BasicClassScanner extends AbstractContextualizable implements
 									"No work item defined for: " + id + " "
 											+ name);
 						}
-					} catch (Exception e) {
-						getContext().getLogger().error(
-								"Could not process design items for " + id
-										+ " " + name, e);
 					}
+				} catch (Throwable e) {
+					getContext().getLogger().error("Could not process design item for " + mh.getName(), e);
 				}
 			}
 		}

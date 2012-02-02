@@ -9,7 +9,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.Glyph;
-import org.kite9.diagram.builders.DiagramBuilder;
+import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.diagram.primitives.Contained;
 import org.kite9.framework.Kite9Item;
 import org.kite9.framework.common.DiffException;

@@ -8,8 +8,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.kite9.diagram.annotation.K9OnDiagram;
-import org.kite9.diagram.builders.ClassBuilder;
-import org.kite9.diagram.builders.DiagramBuilder;
+import org.kite9.diagram.builders.java.ClassBuilder;
+import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.diagram.builders.wizards.classdiagram.ClassDiagramWizard;
 import org.kite9.framework.model.ClassHandle;
 import org.kite9.framework.server.BasicWorkItem;

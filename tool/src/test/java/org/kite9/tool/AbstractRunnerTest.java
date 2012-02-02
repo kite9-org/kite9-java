@@ -122,7 +122,7 @@ public class AbstractRunnerTest extends HelpMethods {
 		Repository<File> r = new BasicFileRepository();
 		Kite9ContextImpl out = new Kite9ContextImpl(a, r);
 		out.setClassPath("target/classes" + File.pathSeparator + "target/test-classes");
-		out.setProjectId("35");
+		out.setProjectId(35);
 		out.setSecretKey("PFB9T1V97AK96WFK");
 		out.afterPropertiesSet();
 		return out;
