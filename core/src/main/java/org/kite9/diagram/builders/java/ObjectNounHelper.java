@@ -37,6 +37,10 @@ public class ObjectNounHelper {
 
 
 	private void unravelMain(Object t, Aliaser a, Set<NounPart> out) {
+		if (t==null) {
+			return;
+		}
+		
 		for (Unraveller u : unravellers) {
 			if (u.handles(t)) {
 				u.unravel(t, a, out);
