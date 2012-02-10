@@ -239,4 +239,5 @@ public class BasicDiagramBuilder {
 	public boolean isOnDiagram(Object o) {
 		return contents.get(o) != null;
 	}
+	
 }

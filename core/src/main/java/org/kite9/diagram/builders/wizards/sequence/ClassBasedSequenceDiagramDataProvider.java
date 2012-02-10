@@ -7,14 +7,10 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.kite9.diagram.builders.Filter;
 import org.kite9.diagram.builders.java.DiagramBuilder;
-import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.NounPart;
 import org.kite9.diagram.builders.krmodel.SimpleNoun;
-import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.common.Kite9ProcessingException;
-import org.kite9.framework.model.ProjectModel;
 
 /**
  * This class examines the method-call hierarchy and produces a sequence diagram
@@ -24,18 +20,11 @@ import org.kite9.framework.model.ProjectModel;
  */
 public class ClassBasedSequenceDiagramDataProvider extends AbstractSequenceDiagramDataProvider {
 
-	public ClassBasedSequenceDiagramDataProvider(DiagramBuilder db, Method m,
-			Filter<? super AccessibleObject> limitFilter) {
-		this(db.getNounFactory(), db.getProjectModel(), db.getCurrentClassLoader(), m, limitFilter, db.getAliaser());
+	public ClassBasedSequenceDiagramDataProvider(DiagramBuilder db, Method m) {
+		super(db, m);
 	}
 		
 	Map<SimpleNoun, SimpleNoun> containers = new HashMap<SimpleNoun, SimpleNoun>();
-
-		
-	public ClassBasedSequenceDiagramDataProvider(NounFactory nf, ProjectModel pm, ClassLoader cl, Method m,
-			Filter<? super AccessibleObject> limitFilter, Aliaser a) {
-		super(nf, pm, cl, m, limitFilter, a);
-	}
 
 	protected SimpleNoun ensureNoun(AccessibleObject m2) {
 		Class<?> declaringClass = getDeclaringClass(m2);

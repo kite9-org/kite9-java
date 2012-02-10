@@ -42,7 +42,18 @@ public class HierarchyWizard  {
 	protected Set<DiagramElement> hierarchyContainers = new HashSet<DiagramElement>();
 	protected DiagramBuilder db;
 	protected ProjectModel model;
+	protected Filter<? super Class<?>> classFilter = null;
 	
+	public Filter<? super Class<?>> getClassFilter() {
+		return classFilter;
+	}
+
+
+	public void setClassFilter(Filter<? super Class<?>> classFilter) {
+		this.classFilter = classFilter;
+	}
+
+
 	public HierarchyWizard(Object container, DiagramBuilder db) {
 		this.db = db;
 		this.nf = db.getNounFactory();
@@ -65,7 +76,9 @@ public class HierarchyWizard  {
 			for (String name : model.getSubclasses(MemberHandle
 					.convertClassName(class1))) {
 				Class<?> class2 = MemberHandle.hydrateClass(name, cl);
-				addClass(traverseDownwards, class2, cl);
+				if ((classFilter == null) || (classFilter.accept(class2))) {
+					addClass(traverseDownwards, class2, cl);
+				}
 			}
 		}
 		sorted = false;

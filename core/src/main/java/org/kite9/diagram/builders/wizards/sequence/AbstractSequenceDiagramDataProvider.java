@@ -28,29 +28,33 @@ import org.kite9.framework.model.ProjectModel;
 public abstract class AbstractSequenceDiagramDataProvider implements SequenceDiagramDataProvider {
 
 
-	public AbstractSequenceDiagramDataProvider(DiagramBuilder db, Method m,
-			Filter<? super AccessibleObject> limitFilter) {
-		this(db.getNounFactory(), db.getProjectModel(), db.getCurrentClassLoader(), m, limitFilter, db.getAliaser());
+	public AbstractSequenceDiagramDataProvider(DiagramBuilder db, Method m) {
+		this.nf = db.getNounFactory();
+		this.pm = db.getProjectModel();
+		this.m = m;
+		this.limitFilter = db.onlyNotExcluded();
+		this.cl = db.getCurrentClassLoader();
+		this.a = db.getAliaser();
 	}
 
 	protected NounFactory nf;
 	protected ProjectModel pm;
 	protected Method m;
+	
 	protected Filter<? super AccessibleObject> limitFilter;
+	
+	public Filter<? super AccessibleObject> getLimitFilter() {
+		return limitFilter;
+	}
+
+	public void setLimitFilter(Filter<? super AccessibleObject> limitFilter) {
+		this.limitFilter = limitFilter;
+	}
+
 	protected List<SimpleNoun> groups = new ArrayList<SimpleNoun>();
 	protected List<Step> steps = new ArrayList<Step>();
 	protected ClassLoader cl;
 	protected Aliaser a;
-
-	public AbstractSequenceDiagramDataProvider(NounFactory nf, ProjectModel pm, ClassLoader cl, Method m,
-			Filter<? super AccessibleObject> limitFilter, Aliaser a) {
-		this.nf = nf;
-		this.pm = pm;
-		this.m = m;
-		this.limitFilter = limitFilter;
-		this.cl = cl;
-		this.a = a;
-	}
 
 	protected void buildSteps(SimpleNoun caller, AccessibleObject m2) {
 		SimpleNoun np = createCallStep(m2);

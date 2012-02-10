@@ -137,8 +137,7 @@ public class BasicFormats {
 					DiagramElement fromEl = ii.returnExisting(from);
 
 					if ((fromEl instanceof Container)
-							&& (((Container) fromEl).getContents()
-									.contains(toEl))) {
+							&& (contains(toEl, fromEl))) {
 						return;
 					}
 
@@ -176,6 +175,18 @@ public class BasicFormats {
 						ii.returnConnection(arrowEl, toEl, or, null,  toLabelTL, false, direction);
 					}
 				}
+			}
+
+			private boolean contains(DiagramElement toEl, DiagramElement fromEl) {
+				for (Contained c : ((Container)fromEl).getContents()) {
+					if (c==toEl) {
+						return true;
+					} else if ((c instanceof Container) && (contains(toEl, c))) {
+						return true;
+					}
+				}
+				
+				return false;
 			}
 
 		};

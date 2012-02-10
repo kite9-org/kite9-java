@@ -1,5 +1,6 @@
 package org.kite9.diagram.builders.java;
 
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -68,10 +69,9 @@ public class ObjectNounHelper {
 	public class ArrayUnraveller implements Unraveller {
 
 		public void unravel(Object to, Aliaser a, Set<NounPart> out) {
-			Object[] ob = (Object[]) to;
-			for (Object aa : ob) {
-				unravelMain(aa, a, out);
-				
+			int len = Array.getLength(to);
+			for (int i = 0; i < len; i++) {
+				unravelMain(Array.get(to, i), a, out);
 			}
 		}
 

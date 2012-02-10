@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.kite9.diagram.annotation.K9Exclude;
 import org.kite9.diagram.annotation.K9OnDiagram;
 import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.diagram.builders.wizards.objectgraph.ObjectDependencyWizard;
@@ -43,6 +44,23 @@ public class Test18ObjectDependencyWizard extends AbstractBuilderTest {
 		}
 		
 		Thing t = new Gizmo();
+		
+		public Thing getT() {
+			return t;
+		}
+		
+		public Helper getThisShouldBeHidden() {
+			return new AHelper();
+		}
+		
+		char[] someChars = {'a', 'c'};
+		
+		Thing[] thingArray = new Thing[] { t };
+		
+		static String rob = "hello";
+		
+		@K9Exclude
+		Thing k = new Gizmo();
 	}
 	
 	static interface Helper {
@@ -104,6 +122,21 @@ public class Test18ObjectDependencyWizard extends AbstractBuilderTest {
 		MyOb ob = getTheObject();
 		DiagramBuilder db = createBuilder();
 		ObjectDependencyWizard odw = new ObjectDependencyWizard(db, null);
+		odw.show(ob);
+		renderDiagram(db.getDiagram());
+	}
+	
+	@Test
+	@Kite9Item
+	public void test18_2_ObjectDependencyWizardGetterValues() throws IOException {
+		MyOb ob = getTheObject();
+		DiagramBuilder db = createBuilder();
+		ObjectDependencyWizard odw = new ObjectDependencyWizard(db, null);
+		odw.setShowFieldValues(false);
+		odw.setShowMethodReturnValues(true);
+		odw.setValueFilter(db.and(
+				db.onlyInModel(this.getClass().getPackage()),
+				db.not(db.only(AHelper.class))));
 		odw.show(ob);
 		renderDiagram(db.getDiagram());
 	}

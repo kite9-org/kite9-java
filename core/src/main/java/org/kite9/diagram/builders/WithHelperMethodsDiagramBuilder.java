@@ -62,6 +62,17 @@ public class WithHelperMethodsDiagramBuilder extends BasicDiagramBuilder {
 			}
 		};
 	}
+	
+	/**
+	 * Returns only elements matching both criteria
+	 */
+	public <X> Filter<X> and(final Filter<X> a, final Filter<X> b) {
+		return new Filter<X>() {
+			public boolean accept(X o) {
+				return a.accept(o) && b.accept(o);
+			}
+		};
+	}
 
 	/**
 	 * For each container in the diagram (including the diagram itself) containing elements N, create a context containing F elements out of N, 

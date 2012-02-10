@@ -228,7 +228,8 @@ public class Examples {
 
 	private ClassBasedSequenceDiagramDataProvider createClassProvider(DiagramBuilder db, Method m,
 			final String packageLimit) {
-		return new ClassBasedSequenceDiagramDataProvider(db, m,
+		ClassBasedSequenceDiagramDataProvider out =  new ClassBasedSequenceDiagramDataProvider(db, m);
+		out.setLimitFilter(
 				new Filter<AccessibleObject>() {
 
 					public boolean accept(AccessibleObject o) {
@@ -244,13 +245,16 @@ public class Examples {
 					}
 
 				});
+		
+		return out;
 	}
 	
 	
 	
 	private MethodBasedSequenceDiagramDataProvider createMethodProvider(DiagramBuilder db, Method m,
 			final String packageLimit) {
-		return new MethodBasedSequenceDiagramDataProvider(db, m,
+		MethodBasedSequenceDiagramDataProvider out = new MethodBasedSequenceDiagramDataProvider(db, m);
+		out.setLimitFilter(
 				new Filter<AccessibleObject>() {
 
 					public boolean accept(AccessibleObject o) {
@@ -264,6 +268,7 @@ public class Examples {
 					}
 
 				});
+		return out;
 	}
 	
 	

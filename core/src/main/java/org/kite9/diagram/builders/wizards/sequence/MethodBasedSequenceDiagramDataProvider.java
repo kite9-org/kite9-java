@@ -7,14 +7,10 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.kite9.diagram.builders.Filter;
 import org.kite9.diagram.builders.java.DiagramBuilder;
-import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.NounPart;
 import org.kite9.diagram.builders.krmodel.SimpleNoun;
-import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.common.Kite9ProcessingException;
-import org.kite9.framework.model.ProjectModel;
 
 /**
  * This class examines the method-call hierarchy and produces a sequence diagram, where 
@@ -25,18 +21,11 @@ import org.kite9.framework.model.ProjectModel;
  */
 public class MethodBasedSequenceDiagramDataProvider extends AbstractSequenceDiagramDataProvider {
 
-	public MethodBasedSequenceDiagramDataProvider(DiagramBuilder db, Method m,
-			Filter<? super AccessibleObject> limitFilter) {
-		super(db.getNounFactory(), db.getProjectModel(), db.getCurrentClassLoader(), m, limitFilter, db.getAliaser());
+	public MethodBasedSequenceDiagramDataProvider(DiagramBuilder db, Method m) {
+		super(db, m);
 	}
 	
-	Map<SimpleNoun, SimpleNoun> containers = new HashMap<SimpleNoun, SimpleNoun>();
-
-	public MethodBasedSequenceDiagramDataProvider(NounFactory nf, ProjectModel pm, ClassLoader cl, Method m,
-			Filter<? super AccessibleObject> limitFilter, Aliaser a) {
-		super(nf, pm, cl, m, limitFilter, a);
-	}
-
+	Map<SimpleNoun, SimpleNoun> containers = new HashMap<SimpleNoun, SimpleNoun>(); 
 
 	protected ReturnStep createReturnStep(SimpleNoun to,
 			AccessibleObject m2) {

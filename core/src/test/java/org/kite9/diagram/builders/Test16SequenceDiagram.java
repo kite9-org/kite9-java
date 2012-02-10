@@ -62,8 +62,7 @@ public class Test16SequenceDiagram extends AbstractBuilderTest {
 	public void test_16_1_CreateSequenceDiagram() throws Exception {
 		DiagramBuilder db = createBuilder();
 		Method m = this.getClass().getDeclaredMethod("someMethod1");
-		MethodBasedSequenceDiagramDataProvider mbsddp = new MethodBasedSequenceDiagramDataProvider(db, m, 
-				null);
+		MethodBasedSequenceDiagramDataProvider mbsddp = new MethodBasedSequenceDiagramDataProvider(db, m);
 		ColumnSequenceDiagramWizard format = new ColumnSequenceDiagramWizard(db);
 		format.write(mbsddp, db.getDiagram());
 		renderDiagram(db.getDiagram());
@@ -75,8 +74,7 @@ public class Test16SequenceDiagram extends AbstractBuilderTest {
 		DiagramBuilder db = createBuilder();
 		Context c = (Context) db.getInsertionInterface().returnContext(db.getDiagram(), db.getNounFactory().createNoun("Some context"), null, true, null);
 		Method m = this.getClass().getDeclaredMethod("someMethod1");
-		MethodBasedSequenceDiagramDataProvider mbsddp = new MethodBasedSequenceDiagramDataProvider(db, m, 
-				null);
+		MethodBasedSequenceDiagramDataProvider mbsddp = new MethodBasedSequenceDiagramDataProvider(db, m);
 		ColumnSequenceDiagramWizard format = new ColumnSequenceDiagramWizard(db);
 		format.write(mbsddp, c);
 		renderDiagram(db.getDiagram());
@@ -88,8 +86,7 @@ public class Test16SequenceDiagram extends AbstractBuilderTest {
 		DiagramBuilder db = createBuilder();
 		Context c = (Context) db.getInsertionInterface().returnContext(db.getDiagram(), db.getNounFactory().createNoun("Some context"), null, true, null);
 		Method m = this.getClass().getDeclaredMethod("someMethod1");
-		MethodBasedSequenceDiagramDataProvider mbsddp = new MethodBasedSequenceDiagramDataProvider(db, m, 
-				null);
+		MethodBasedSequenceDiagramDataProvider mbsddp = new MethodBasedSequenceDiagramDataProvider(db, m);
 		NoLayoutSequenceDiagramWizard format = new NoLayoutSequenceDiagramWizard(db);
 		format.write(mbsddp, c);
 		renderDiagram(db.getDiagram());
@@ -101,8 +98,7 @@ public class Test16SequenceDiagram extends AbstractBuilderTest {
 		DiagramBuilder db = createBuilder();
 		Context c = (Context) db.getInsertionInterface().returnContext(db.getDiagram(), db.getNounFactory().createNoun("Some context"), null, true, null);
 		Method m = this.getClass().getDeclaredMethod("someMethod1");
-		ClassBasedSequenceDiagramDataProvider mbsddp = new ClassBasedSequenceDiagramDataProvider(db, m, 
-				null);
+		ClassBasedSequenceDiagramDataProvider mbsddp = new ClassBasedSequenceDiagramDataProvider(db, m);
 		ColumnSequenceDiagramWizard format = new ColumnSequenceDiagramWizard(db);
 		format.write(mbsddp, c);
 		renderDiagram(db.getDiagram());

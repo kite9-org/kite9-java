@@ -13,7 +13,7 @@ import org.kite9.diagram.builders.krmodel.NounPart;
 import org.kite9.diagram.builders.krmodel.Relationship;
 
 /**
- * Helper wizard for creating links for an entity relationship diagram.
+ * Helper wizard for creating links for an entity relationship diagram based on static analysis.
  * 
  * @author robmoffat
  * 
@@ -106,6 +106,9 @@ public class ClassDiagramWizard {
 		this.classFormat = relationshipFormat;
 		this.implementsFormat = relationshipFormat;
 		this.extendsFormat = relationshipFormat;
+		this.fieldAttributeFilter = db.onlyAnnotated();
+		this.methodAttributeFilter = db.onlyAnnotated();
+		this.fieldRelationshipFilter = db.onlyNotExcluded();
 	}
 	
 	/**
@@ -113,23 +116,59 @@ public class ClassDiagramWizard {
 	 */
 	public void show(ClassBuilder classBuilder) {
 		showGlyphs(classBuilder);
-		showFieldRelationships(classBuilder, null);
+		showFieldRelationships(classBuilder);
 		showInheritance(classBuilder, interfaceTraversal);
 		showExtends(classBuilder);
-		showFieldAttributes(classBuilder, db.onlyAnnotated());
-		showMethodAttributes(classBuilder, db.onlyAnnotated());
+		showFieldAttributes(classBuilder);
+		showMethodAttributes(classBuilder);
 	}
 	
 	public void showGlyphs(ClassBuilder classBuilder) {
 		classBuilder.show(classFormat);
 	}
+	
+	Filter<? super Field> fieldAttributeFilter;
+	Filter<? super Field> fieldRelationshipFilter;
 
-	public void showFieldRelationships(ClassBuilder classBuilder, final Filter<Field> fieldFilter) {
+
+	public Filter<? super Field> getFieldAttributeFilter() {
+		return fieldAttributeFilter;
+	}
+
+
+	public void setFieldAttributeFilter(Filter<? super Field> fieldAttributeFilter) {
+		this.fieldAttributeFilter = fieldAttributeFilter;
+	}
+
+
+	public Filter<? super Field> getFieldRelationshipFilter() {
+		return fieldRelationshipFilter;
+	}
+
+
+	public void setFieldRelationshipFilter(Filter<? super Field> fieldRelationshipFilter) {
+		this.fieldRelationshipFilter = fieldRelationshipFilter;
+	}
+
+	public Filter<? super Method> getMethodAttributeFilter() {
+		return methodAttributeFilter;
+	}
+
+
+	public void setMethodAttributeFilter(Filter<? super Method> methodAttributeFilter) {
+		this.methodAttributeFilter = methodAttributeFilter;
+	}
+
+
+	Filter<? super Method> methodAttributeFilter;
+	
+
+	public void showFieldRelationships(ClassBuilder classBuilder) {
 
 		classBuilder.withFields(new Filter<Field>() {
 
 			public boolean accept(Field o) {
-				if ((fieldFilter==null) || (fieldFilter.accept(o))) {
+				if ((fieldRelationshipFilter==null) || (fieldRelationshipFilter.accept(o))) {
 					NounPart np = db.createNoun(o.getGenericType());
 
 					return (db.isOnDiagram(np.getRepresented()));
@@ -141,12 +180,12 @@ public class ClassDiagramWizard {
 		}, false).withType(null).show(relationshipFormat);
 	}
 
-	public void showFieldAttributes(ClassBuilder classBuilder, final Filter<? super Field> fieldFilter) {
+	public void showFieldAttributes(ClassBuilder classBuilder) {
 		// show any other fields too
 		classBuilder.withFields(new Filter<Field>() {
 
 			public boolean accept(Field o) {
-				if ((fieldFilter==null) || (fieldFilter.accept(o))) {
+				if ((fieldAttributeFilter==null) || (fieldAttributeFilter.accept(o))) {
 					NounPart np = db.createNoun(o.getGenericType());
 					return (!db.isOnDiagram(np.getRepresented()));
 				} else {
@@ -157,12 +196,12 @@ public class ClassDiagramWizard {
 		}, false).show(attributeFormat);
 	}
 	
-	public void showMethodAttributes(ClassBuilder classBuilder, final Filter<? super Method> methodFilter) {
+	public void showMethodAttributes(ClassBuilder classBuilder) {
 		// show any other fields too
 		classBuilder.withMethods(new Filter<Method>() {
 
 			public boolean accept(Method o) {
-				if ((methodFilter==null) || (methodFilter.accept(o))) {
+				if ((methodAttributeFilter==null) || (methodAttributeFilter.accept(o))) {
 					NounPart np = db.createNoun(o.getGenericReturnType());
 					return (!db.isOnDiagram(np.getRepresented()));
 				} else {
