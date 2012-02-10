@@ -4,7 +4,7 @@
 
 	<groupId>org.kite9</groupId>
 	<artifactId>kite9-java</artifactId>
-	<version>1.9</version>
+	<version>1.10-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<parent>
