@@ -15,6 +15,16 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 @XStreamAlias("rectangle")
 public class RectangleRenderingInformation implements RenderingInformation {
 
+	public RectangleRenderingInformation(Dimension2D position, Dimension2D size, HPos horizontalJustification,
+			VPos verticalJustification, boolean rendered) {
+		super();
+		this.position = position;
+		this.size = size;
+		this.horizontalJustification = horizontalJustification;
+		this.verticalJustification = verticalJustification;
+		this.rendered = rendered;
+	}
+
 	private static final long serialVersionUID = -1127180325861115291L;
 
 	Dimension2D position = new Dimension2D();

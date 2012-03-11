@@ -14,10 +14,13 @@ import org.kite9.diagram.adl.Glyph;
 import org.kite9.diagram.builders.Filter;
 import org.kite9.diagram.builders.formats.InsertionInterface;
 import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.java.ClassBuilder;
 import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.diagram.builders.java.JavaRelationships;
 import org.kite9.diagram.builders.krmodel.NounFactory;
 import org.kite9.diagram.builders.krmodel.NounPart;
+import org.kite9.diagram.builders.krmodel.Relationship;
+import org.kite9.diagram.builders.krmodel.Tie;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
@@ -88,6 +91,20 @@ public class HierarchyWizard  {
 		return nf.createNoun(o);
 	}
 
+	/**
+	 * Convenience method to get a basic hierarchy drawn
+	 */
+	public void show(ClassBuilder cb) {
+		for (Tie t : cb.getTies()) {
+			Class<?> c = cb.getRepresented(t);
+			add(true, c);
+		}
+		
+		
+		showClasses(db.asConnectedContexts(false, Layout.HORIZONTAL), db.asConnectedGlyphs(""));
+		showInheritance(db.asConnectedGlyphs(""));
+	}
+	
 	/**
 	 * Adds the classes to the diagram, as well as level-groups, so that classes
 	 * with the hierarchical depth are shown on the same level.

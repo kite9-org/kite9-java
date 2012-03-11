@@ -18,6 +18,10 @@ public abstract class AbstractElementBuilder<X> extends AbstractJavaBuilder {
 
 	protected Set<Tie> ties;
 	
+	public Set<Tie> getTies() {
+		return ties;
+	}
+
 	public int size() {
 		return ties.size();
 	}

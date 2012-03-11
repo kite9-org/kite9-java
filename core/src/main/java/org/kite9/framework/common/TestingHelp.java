@@ -2,8 +2,13 @@ package org.kite9.framework.common;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -41,6 +46,41 @@ import org.kite9.framework.logging.Table;
 public class TestingHelp {
 
     private static final String TARGET_DIR = "target/functional-test/outputs";
+    
+    private static final String TARGET_ERROR_DIR = "target/functional-test/outputs/errors";
+    
+    public static void copyDirectory(File sourceLocation , File targetLocation) {
+        
+        try {
+			if (sourceLocation.isDirectory()) {
+			    if (!targetLocation.exists()) {
+			        targetLocation.mkdir();
+			    }
+			    
+			    String[] children = sourceLocation.list();
+			    for (int i=0; i<children.length; i++) {
+			        copyDirectory(new File(sourceLocation, children[i]),
+			                new File(targetLocation, children[i]));
+			    }
+			} else {
+			    
+			    InputStream in = new FileInputStream(sourceLocation);
+			    OutputStream out = new FileOutputStream(targetLocation);
+			    
+			    // Copy the bits from instream to outstream
+			    byte[] buf = new byte[1024];
+			    int len;
+			    while ((len = in.read(buf)) > 0) {
+			        out.write(buf, 0, len);
+			    }
+			    in.close();
+			    out.close();
+			}
+		} catch (IOException e) {
+			throw new LogicException("Couldn't copy dir!");
+		}
+    }
+
 	
 	public static File prepareFileName(Class<?> theTest, String subtest, String item) {
 		String directory = getFullFileName(theTest, subtest);
@@ -51,6 +91,18 @@ public class TestingHelp {
 
 		File f3 = new File(f2, item);
 		return f3;
+	}
+	
+	public static void moveToError(Class<?> theTest, String subtest) {
+		String directory = getFullFileName(theTest, subtest);
+		File f = new File(TARGET_DIR);
+		File f2 = new File(f, directory);
+		File d = new File(TARGET_ERROR_DIR);
+		d.mkdirs();
+		File d2 = new File(d, directory);
+		d2.mkdirs();
+		d2.delete();
+		copyDirectory(f2, d2);
 	}
 
 	public static void writeOutput(Class<?> theTest, String subtest, String item, String contents) {
