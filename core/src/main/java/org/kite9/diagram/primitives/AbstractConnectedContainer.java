@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.position.RectangleRenderingInformation;
+import org.kite9.diagram.position.RenderingInformation;
 
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
@@ -21,6 +22,10 @@ public abstract class AbstractConnectedContainer extends AbstractConnectedContai
 		}
 		
 		return (RectangleRenderingInformation) renderingInformation;
+	}
+
+	public void setRenderingInformation(RenderingInformation ri) {
+		this.renderingInformation = ri;
 	}
 
 	private static final long serialVersionUID = 9108816802892206563L;

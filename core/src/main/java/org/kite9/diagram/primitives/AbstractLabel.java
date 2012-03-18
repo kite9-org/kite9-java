@@ -14,15 +14,9 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author robmoffat
  * 
  */
-public abstract class AbstractLabel implements Serializable, DiagramElement {
+public abstract class AbstractLabel extends AbstractIdentifiableDiagramElement implements Serializable, Label {
 
 	private static final long serialVersionUID = -1012880238215021108L;
-
-	/**
-	 * This is used by layout engines to set the position of the elements in the
-	 * diagram
-	 */
-	protected RenderingInformation renderingInformation = null;
 
 	/**
 	 * This is very handy for ensuring repeatability in tests.  Override as necessary.
@@ -45,7 +39,6 @@ public abstract class AbstractLabel implements Serializable, DiagramElement {
 	public Object getParent() {
 		return parent;
 	}
-	
 
 	public RenderingInformation getRenderingInformation() {
 		if (renderingInformation == null) {

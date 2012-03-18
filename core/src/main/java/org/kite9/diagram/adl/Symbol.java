@@ -2,7 +2,6 @@ package org.kite9.diagram.adl;
 
 import java.io.Serializable;
 
-import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
 import org.kite9.diagram.primitives.DiagramElement;
 
@@ -96,10 +95,5 @@ public class Symbol implements Serializable, CompositionalDiagramElement {
 		return parent;
 	}
 
-	public RenderingInformation getRenderingInformation() {
-		return null;
-	}
-	
-	
 	
 }

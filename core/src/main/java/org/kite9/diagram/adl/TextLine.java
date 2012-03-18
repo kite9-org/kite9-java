@@ -6,14 +6,12 @@ import java.util.List;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractLabel;
-import org.kite9.diagram.primitives.Label;
 import org.kite9.diagram.primitives.SymbolTarget;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 @XStreamAlias("text-line")
-public class TextLine extends AbstractLabel implements Label, SymbolTarget {
+public class TextLine extends AbstractLabel implements SymbolTarget {
 
 	private static final long serialVersionUID = -1917135065467101779L;
 	
@@ -52,17 +50,6 @@ public class TextLine extends AbstractLabel implements Label, SymbolTarget {
 		
 		return renderingInformation;
 	}
-
-	@XStreamOmitField
-	Object parent;
-	
-	public void setParent(Object el) {
-		this.parent = el;
-	}
-
-	public Object getParent() {
-		return parent;
-	}
 	
 	public String toString() {
 		return "[TL:"+text+"]";
@@ -74,5 +61,9 @@ public class TextLine extends AbstractLabel implements Label, SymbolTarget {
 
 	public boolean hasContent() {
 		return hasContent(text) || hasContent(symbols);
+	}
+
+	public void setRenderingInformation(RenderingInformation ri) {
+		this.renderingInformation = ri;
 	}
 }

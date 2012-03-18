@@ -1,6 +1,7 @@
 package org.kite9.diagram.adl;
 
 import org.kite9.diagram.position.Direction;
+import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnection;
 import org.kite9.diagram.primitives.Connected;
 import org.kite9.diagram.primitives.Label;
@@ -86,6 +87,10 @@ public class Link extends AbstractConnection {
 		} else if (toDecoration!=null) {
 			throw new LogicException("To Decoration should be LinkEndStyle");
 		}
+	}
+
+	public void setRenderingInformation(RenderingInformation ri) {
+		this.renderingInformation = ri;
 	}
 	
 }

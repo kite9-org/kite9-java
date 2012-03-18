@@ -431,8 +431,8 @@ public class XMLHelper {
 			if (getMapper().isImmutableValueType(item.getClass())) {
 				// strings, ints, dates, etc... don't bother using references.
 				converter.marshal(item, writer, this);
-			} else if ((!(item instanceof DiagramElement)) || (item instanceof CompositionalDiagramElement)) {
-				// we're only going to allow references on non-compositional
+			} else if (!(item instanceof IdentifiableDiagramElement)) {
+				// we're only going to allow references on non-identifiable
 				// diagram elements
 				converter.marshal(item, writer, this);
 			} else {

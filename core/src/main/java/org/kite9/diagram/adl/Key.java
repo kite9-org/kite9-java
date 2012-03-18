@@ -2,13 +2,11 @@ package org.kite9.diagram.adl;
 
 import java.util.List;
 
-import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractLabel;
 import org.kite9.diagram.primitives.Label;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 @XStreamAlias("key")
 public class Key extends AbstractLabel implements Label {
@@ -43,31 +41,16 @@ public class Key extends AbstractLabel implements Label {
 		this.symbols = symbols;
 	}
 	
+	public void setRenderingInformation(RenderingInformation ri) {
+		this.renderingInformation = ri;
+	}
+
 	public List<Symbol> getSymbols() {
 		return symbols;
 	}
 
 	public void setSymbols(List<Symbol> symbols) {
 		this.symbols = symbols;
-	}
-	
-	@XStreamOmitField
-	Object labelling;
-
-	public Object getParent() {
-		return labelling;
-	}
-
-	public void setParent(Object el) {
-		this.labelling = el;
-	}
-	
-	public RenderingInformation getRenderingInformation() {
-		if (renderingInformation==null) { 
-			renderingInformation = new RectangleRenderingInformation();
-		}
-		
-		return renderingInformation;
 	}
 	
 	public String toString() {
@@ -77,17 +60,6 @@ public class Key extends AbstractLabel implements Label {
 	public boolean hasContent() {
 		return hasContent(boldText) || hasContent(bodyText) || hasContent(symbols);
 	}
-	
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

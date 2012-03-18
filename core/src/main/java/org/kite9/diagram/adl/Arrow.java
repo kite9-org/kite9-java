@@ -60,4 +60,8 @@ public class Arrow extends AbstractConnectedContained implements VertexOnEdge, L
 		return renderingInformation;
 	}
 
+	public void setRenderingInformation(RenderingInformation ri) {
+		this.renderingInformation = ri;
+	}
+
 }
