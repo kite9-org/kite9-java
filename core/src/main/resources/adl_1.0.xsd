@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.kite9.org/schema/adl"
 	xmlns:tns="http://www.kite9.org/schema/adl" elementFormDefault="qualified">
 
-	<element name="diagram">
+	<element name="diagram"> 
 		<complexType>
 			<sequence>
 				<sequence>
@@ -162,8 +162,10 @@
 					<element name="symbols" type="tns:symbols" minOccurs="0"
 						maxOccurs="1" />
 				</sequence>
+			<attribute name="id" type="tns:id" use="required"></attribute>
 			</extension>
 		</complexContent>
+		
 	</complexType>
 
 	<complexType name="key">

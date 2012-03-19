@@ -1,10 +1,12 @@
 package org.kite9.diagram.position;
 
+import java.awt.geom.Path2D;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 
 /**
@@ -21,8 +23,12 @@ public class RouteRenderingInformation implements RenderingInformation {
 
 	private static final long serialVersionUID = 1958606211421399887L;
 
+	@XStreamOmitField
 	public List<Dimension2D> positions = new ArrayList<Dimension2D>();
+	@XStreamOmitField
 	public List<Boolean> hops = new ArrayList<Boolean>();
+	
+	public Path2D path;
 	
 	public Dimension2D getWaypoint(int pos) {
 		return positions.get(pos);
@@ -108,4 +114,12 @@ public class RouteRenderingInformation implements RenderingInformation {
 
 	@XStreamAsAttribute
 	private boolean rendered = true;
+	
+	public void setRoutingShape(Path2D gp) {
+		this.path = gp;
+	}
+	
+	public Path2D getRoutingShape() {
+		return path;
+	}
 }

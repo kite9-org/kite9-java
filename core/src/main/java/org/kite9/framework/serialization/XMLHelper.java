@@ -123,16 +123,21 @@ public class XMLHelper {
 	public XMLHelper() {
 	}
 
+	private XStream xs;
 
-	private XStream buildXStream() {
-		XStream xstream = new XStream(new PureJavaReflectionProvider(), new XMLHelper.SchemaTypeUsingStaxProvider());
-		xstream.processAnnotations(ADL_CLASSES);
-		addOmissions(xstream);
-		xstream.setMarshallingStrategy(new IDSuppliedMarshallingStrategy());
-		if (isSimplifyingXML()) {
-			xstream.omitField(AbstractConnectedContained.class, "links");
+	public synchronized XStream buildXStream() {
+		if (xs == null) {
+			XStream xstream = new XStream(new PureJavaReflectionProvider(), new XMLHelper.SchemaTypeUsingStaxProvider());
+			xstream.processAnnotations(ADL_CLASSES);
+			addOmissions(xstream);
+			xstream.setMarshallingStrategy(new IDSuppliedMarshallingStrategy());
+			if (isSimplifyingXML()) {
+				xstream.omitField(AbstractConnectedContained.class, "links");
+			}
+			xs = xstream;
 		}
-		return xstream;
+		
+		return xs;
 	}
 
 	private void addOmissions(XStream xstream) {
