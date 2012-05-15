@@ -1,6 +1,5 @@
 package org.kite9.diagram.position;
 
-import java.awt.geom.Path2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +16,24 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("route")
 public class RouteRenderingInformation implements RenderingInformation {
+	
+	public static class Decoration {
+		
+		public Decoration() {
+		}
+		
+		public Decoration(String name, Direction d, Dimension2D position) {
+			super();
+			this.name = name;
+			this.d = d;
+			this.position = position;
+		}
+		
+		String name;
+		Direction d;
+		Dimension2D position;
+		
+	}
 
     public RouteRenderingInformation() {
 	}
@@ -28,7 +45,26 @@ public class RouteRenderingInformation implements RenderingInformation {
 	@XStreamOmitField
 	public List<Boolean> hops = new ArrayList<Boolean>();
 	
-	public Path2D path;
+	public String path;
+	public Decoration fromDecoration;
+
+	public Decoration getFromDecoration() {
+		return fromDecoration;
+	}
+
+	public void setFromDecoration(Decoration fromDecoration) {
+		this.fromDecoration = fromDecoration;
+	}
+
+	public Decoration getToDecoration() {
+		return toDecoration;
+	}
+
+	public void setToDecoration(Decoration toDecoration) {
+		this.toDecoration = toDecoration;
+	}
+
+	public Decoration toDecoration;
 	
 	public Dimension2D getWaypoint(int pos) {
 		return positions.get(pos);
@@ -115,11 +151,11 @@ public class RouteRenderingInformation implements RenderingInformation {
 	@XStreamAsAttribute
 	private boolean rendered = true;
 	
-	public void setRoutingShape(Path2D gp) {
+	public void setRoutingShape(String gp) {
 		this.path = gp;
 	}
 	
-	public Path2D getRoutingShape() {
+	public String getRoutingShape() {
 		return path;
 	}
 }

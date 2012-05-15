@@ -13,7 +13,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
  *
  */
 @XStreamAlias("rectangle")
-public class RectangleRenderingInformation implements RenderingInformation {
+public class RectangleRenderingInformation implements RenderingInformation, Cloneable {
 
 	public RectangleRenderingInformation(Dimension2D position, Dimension2D size, HPos horizontalJustification,
 			VPos verticalJustification, boolean rendered) {
@@ -83,5 +83,12 @@ public class RectangleRenderingInformation implements RenderingInformation {
 	public void setNotRendered() {
 		this.rendered = false;
 	}
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+	
+	
 	
 }

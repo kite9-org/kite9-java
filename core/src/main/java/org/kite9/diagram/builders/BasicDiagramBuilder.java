@@ -71,7 +71,7 @@ public class BasicDiagramBuilder {
 				Key k = new Key(null, null, ordered);
 				d.setKey(k);
 			} else {
-				d.getKey().setSymbols(ordered);
+				d.getKey().setSymbols(Key.convert(ordered));
 			}
 
 		}
