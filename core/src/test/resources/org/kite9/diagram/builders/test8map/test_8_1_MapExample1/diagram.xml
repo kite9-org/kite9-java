@@ -14,11 +14,11 @@
  </glyph>
  <glyph id="java_class:java.util.Map" stereotype="interface" label="Map">
   <text-lines>
-   <text-line>
+   <text-line id="auto:3">
     <text>from A</text>
     <symbols></symbols>
    </text-line>
-   <text-line>
+   <text-line id="auto:4">
     <text>to B</text>
     <symbols></symbols>
    </text-line>
@@ -28,11 +28,11 @@
  <arrow id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap/rel_is a" label="is a"></arrow>
  <glyph id="java_class:java.util.Map.1" stereotype="interface" label="Map">
   <text-lines>
-   <text-line>
+   <text-line id="auto:7">
     <text>from A</text>
     <symbols></symbols>
    </text-line>
-   <text-line>
+   <text-line id="auto:8">
     <text>to C</text>
     <symbols></symbols>
    </text-line>
@@ -50,7 +50,7 @@
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:3">
+  <link id="auto:5">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap/rel_is a"></to>
   </link>
@@ -59,16 +59,16 @@
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:5">
+  <link id="auto:9">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap/rel_is a"></to>
   </link>
-  <link id="auto:4">
+  <link id="auto:6">
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap/rel_is a"></from>
    <to xsi:type="glyph" reference="java_class:java.util.Map"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:6">
+  <link id="auto:10">
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap/rel_is a"></from>
    <to xsi:type="glyph" reference="java_class:java.util.Map.1"></to>
    <toDecoration>ARROW</toDecoration>

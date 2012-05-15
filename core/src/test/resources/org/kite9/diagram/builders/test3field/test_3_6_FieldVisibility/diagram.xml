@@ -2,7 +2,7 @@
  <context id="project_java_class:org.kite9.diagram.builders.Test3Field" bordered="true">
   <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field1" stereotype="field" label="field1">
    <text-lines>
-    <text-line>
+    <text-line id="auto:1">
      <text>visibility: public</text>
      <symbols></symbols>
     </text-line>
@@ -11,14 +11,14 @@
   </glyph>
   <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field2" stereotype="field" label="field2">
    <text-lines>
-    <text-line>
+    <text-line id="auto:2">
      <text>visibility: protected</text>
      <symbols></symbols>
     </text-line>
    </text-lines>
    <symbols></symbols>
   </glyph>
-  <label xsi:type="text-line">
+  <label xsi:type="text-line" id="auto:0">
    <text>Test3Field</text>
    <symbols></symbols>
   </label>

@@ -5,9 +5,14 @@
    <symbol text="extends: AbstractBuilderTest" theChar="A" shape="HEXAGON"></symbol>
   </symbols>
  </glyph>
- <label xsi:type="key">
+ <label xsi:type="key" id="auto:1">
   <symbols>
-   <symbol text="extends: AbstractBuilderTest" theChar="A" shape="HEXAGON"></symbol>
+   <text-line id="auto:0">
+    <text>extends: AbstractBuilderTest</text>
+    <symbols>
+     <symbol text="extends: AbstractBuilderTest" theChar="A" shape="HEXAGON"></symbol>
+    </symbols>
+   </text-line>
   </symbols>
  </label>
  <allLinks></allLinks>

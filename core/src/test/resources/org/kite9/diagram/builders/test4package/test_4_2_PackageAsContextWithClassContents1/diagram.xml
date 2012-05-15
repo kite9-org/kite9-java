@@ -8,7 +8,7 @@
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <label xsi:type="text-line">
+  <label xsi:type="text-line" id="auto:0">
    <text>org.kite9.diagram.builders</text>
    <symbols></symbols>
   </label>

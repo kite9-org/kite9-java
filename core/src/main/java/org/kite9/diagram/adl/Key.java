@@ -39,6 +39,9 @@ public class Key extends AbstractLabel implements Label {
 	
 	public static List<TextLine> convert(List<Symbol> symbols) {
 		List<TextLine> out = new ArrayList<TextLine>();
+		if (symbols == null) {
+			return out;
+		}
 		for (Symbol s : symbols) {
 			List<Symbol> sl = new ArrayList<Symbol>(1);
 			sl.add(s);

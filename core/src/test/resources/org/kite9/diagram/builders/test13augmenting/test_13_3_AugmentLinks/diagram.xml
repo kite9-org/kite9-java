@@ -12,7 +12,7 @@
   <link id="auto:0" drawDirection="DOWN">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass/rel_implements"></to>
-   <fromLabel xsi:type="text-line">
+   <fromLabel xsi:type="text-line" id="auto:3">
     <text>some text there</text>
     <symbols></symbols>
    </fromLabel>
@@ -20,7 +20,7 @@
   <link id="auto:1" drawDirection="RIGHT">
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass/rel_implements"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeInterface"></to>
-   <toLabel xsi:type="text-line">
+   <toLabel xsi:type="text-line" id="auto:2">
     <text>some text here</text>
     <symbols></symbols>
    </toLabel>

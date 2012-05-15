@@ -32,7 +32,7 @@
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:3">
+  <link id="auto:4">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter"></to>
   </link>
@@ -41,32 +41,32 @@
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:6">
+  <link id="auto:9">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter"></to>
   </link>
-  <link id="auto:4">
+  <link id="auto:5">
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter"></from>
    <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line">
+   <toLabel xsi:type="text-line" id="auto:3">
+    <text>array of </text>
+    <symbols></symbols>
+   </toLabel>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+  <link id="auto:10">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter"></from>
+   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
+   <toLabel xsi:type="text-line" id="auto:8">
     <text>array of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
   <link id="auto:7">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line">
-    <text>array of </text>
-    <symbols></symbols>
-   </toLabel>
-   <toDecoration>ARROW</toDecoration>
-  </link>
-  <link id="auto:5">
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter"></from>
    <to xsi:type="glyph" reference="java_class:java.lang.Integer"></to>
-   <toLabel xsi:type="text-line">
+   <toLabel xsi:type="text-line" id="auto:6">
     <text>Collection of </text>
     <symbols></symbols>
    </toLabel>

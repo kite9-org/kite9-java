@@ -1,7 +1,7 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test8Map/test_8_6_MapExample4AsText()">
  <glyph id="project_java_class:org.kite9.diagram.builders.Test8Map.Example4" stereotype="class" label="Example4">
   <text-lines>
-   <text-line>
+   <text-line id="auto:0">
     <text>field: someMap, is a: Map</text>
     <symbols></symbols>
    </text-line>
