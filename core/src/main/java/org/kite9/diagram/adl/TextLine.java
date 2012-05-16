@@ -23,11 +23,20 @@ public class TextLine extends AbstractLabel implements SymbolTarget {
 
 	List<Symbol> symbols = new ArrayList<Symbol>();
 
+	public TextLine(String id, String text) {
+		this.text = text;
+	}
+	
 	public TextLine(String text) {
 		this.text = text;
 	}
 	
 	public TextLine() {
+	}
+	
+	public TextLine(String id, String text, List<Symbol> symbols) {
+		this(text);
+		this.symbols = symbols;
 	}
 	
 	public TextLine(String text, List<Symbol> symbols) {

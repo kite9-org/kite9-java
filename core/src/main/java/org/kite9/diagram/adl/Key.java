@@ -1,7 +1,6 @@
 package org.kite9.diagram.adl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.kite9.diagram.position.RenderingInformation;
