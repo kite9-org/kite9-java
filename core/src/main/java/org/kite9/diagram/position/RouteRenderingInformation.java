@@ -1,6 +1,7 @@
 package org.kite9.diagram.position;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -44,6 +45,11 @@ public class RouteRenderingInformation implements RenderingInformation {
 	public List<Dimension2D> positions = new ArrayList<Dimension2D>();
 	@XStreamOmitField
 	public List<Boolean> hops = new ArrayList<Boolean>();
+	
+	public void reverse() {
+		Collections.reverse(positions);
+		Collections.reverse(hops);
+	}
 	
 	public String path;
 	public Decoration fromDecoration;
