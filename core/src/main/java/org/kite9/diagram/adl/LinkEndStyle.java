@@ -11,5 +11,5 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("style")
 public enum LinkEndStyle {
 
-	ARROW, NONE
+	ARROW, NONE, CIRCLE, GAP
 }
