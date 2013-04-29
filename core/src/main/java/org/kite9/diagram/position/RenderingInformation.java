@@ -20,6 +20,6 @@ public interface RenderingInformation extends Serializable {
 	 */
 	public boolean isRendered();
 
-	public abstract void setNotRendered();
+	public abstract void setRendered(boolean r);
   
 }

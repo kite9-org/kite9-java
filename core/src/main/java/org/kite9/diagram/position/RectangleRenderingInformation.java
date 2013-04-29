@@ -80,8 +80,8 @@ public class RectangleRenderingInformation implements RenderingInformation, Clon
 		return rendered;
 	}
 	
-	public void setNotRendered() {
-		this.rendered = false;
+	public void setRendered(boolean r) {
+		this.rendered = r;
 	}
 
 	@Override

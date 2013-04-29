@@ -150,8 +150,8 @@ public class RouteRenderingInformation implements RenderingInformation {
 		return rendered;
 	}
 	
-	public void setNotRendered() {
-		this.rendered = false;
+	public void setRendered(boolean r) {
+		this.rendered = r;
 	}
 
 	@XStreamAsAttribute
