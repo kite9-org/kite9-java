@@ -16,7 +16,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 public class RectangleRenderingInformation implements RenderingInformation, Cloneable {
 
 	public RectangleRenderingInformation(Dimension2D position, Dimension2D size, HPos horizontalJustification,
-			VPos verticalJustification, boolean rendered, double pw, double ph) {
+			VPos verticalJustification, boolean rendered, Double pw, Double ph) {
 		super();
 		this.position = position;
 		this.size = size;
