@@ -16,13 +16,15 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 public class RectangleRenderingInformation implements RenderingInformation, Cloneable {
 
 	public RectangleRenderingInformation(Dimension2D position, Dimension2D size, HPos horizontalJustification,
-			VPos verticalJustification, boolean rendered) {
+			VPos verticalJustification, boolean rendered, double pw, double ph) {
 		super();
 		this.position = position;
 		this.size = size;
 		this.horizontalJustification = horizontalJustification;
 		this.verticalJustification = verticalJustification;
 		this.rendered = rendered;
+		this.preferredHeight = ph;
+		this.preferredWidth = pw;
 	}
 
 	private static final long serialVersionUID = -1127180325861115291L;
@@ -36,6 +38,29 @@ public class RectangleRenderingInformation implements RenderingInformation, Clon
 	@XStreamAsAttribute
 	private boolean rendered = true;
 
+	@XStreamAsAttribute
+	private Double preferredWidth;
+	
+	public Double getPreferredWidth() {
+		return preferredWidth;
+	}
+
+	public void setPreferredWidth(Double preferredWidth) {
+		this.preferredWidth = preferredWidth;
+	}
+
+	public Double getPreferredHeight() {
+		return preferredHeight;
+	}
+
+	public void setPreferredHeight(Double preferredHeight) {
+		this.preferredHeight = preferredHeight;
+	}
+
+	@XStreamAsAttribute
+	private Double preferredHeight;
+	
+	
 	
 	public RectangleRenderingInformation() {
 	}
