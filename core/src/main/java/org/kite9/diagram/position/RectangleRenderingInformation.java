@@ -26,6 +26,18 @@ public class RectangleRenderingInformation implements RenderingInformation, Clon
 		this.preferredHeight = ph;
 		this.preferredWidth = pw;
 	}
+	
+	public RectangleRenderingInformation(Dimension2D position, Dimension2D size, HPos horizontalJustification,
+			VPos verticalJustification, boolean rendered) {
+		super();
+		this.position = position;
+		this.size = size;
+		this.horizontalJustification = horizontalJustification;
+		this.verticalJustification = verticalJustification;
+		this.rendered = rendered;
+		this.preferredHeight = null;
+		this.preferredWidth = null;
+	}
 
 	private static final long serialVersionUID = -1127180325861115291L;
 
