@@ -7,9 +7,6 @@ import java.io.Serializable;
 /**
  * This holds formatting information for the graphical renderer to use.
  * 
- * TODO: eventually, should have colour information (for green/red test coverage
- * reports) 
- * 
  * @author robmoffat
  *
  */

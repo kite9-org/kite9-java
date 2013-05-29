@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 
@@ -16,7 +15,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  */
 @XStreamAlias("route")
-public class RouteRenderingInformation implements RenderingInformation {
+public class RouteRenderingInformation extends  AbstractRenderingInformation implements Cloneable{
 	
 	public static class Decoration {
 		
@@ -42,16 +41,24 @@ public class RouteRenderingInformation implements RenderingInformation {
 	private static final long serialVersionUID = 1958606211421399887L;
 
 	@XStreamOmitField
-	public List<Dimension2D> positions = new ArrayList<Dimension2D>();
-	@XStreamOmitField
-	public List<Boolean> hops = new ArrayList<Boolean>();
+	private List<Dimension2D> positions = new ArrayList<Dimension2D>();
 	
+	public List<Dimension2D> getPositions() {
+		return positions;
+	}
+
+	@XStreamOmitField
+	private List<Boolean> hops = new ArrayList<Boolean>();
+	
+	public List<Boolean> getHops() {
+		return hops;
+	}
+
 	public void reverse() {
 		Collections.reverse(positions);
 		Collections.reverse(hops);
 	}
 	
-	public String path;
 	public Decoration fromDecoration;
 
 	public Decoration getFromDecoration() {
@@ -71,6 +78,8 @@ public class RouteRenderingInformation implements RenderingInformation {
 	}
 
 	public Decoration toDecoration;
+	
+
 	
 	public Dimension2D getWaypoint(int pos) {
 		return positions.get(pos);
@@ -146,22 +155,4 @@ public class RouteRenderingInformation implements RenderingInformation {
 		this.contradicting = b;
 	}
 
-	public boolean isRendered() {
-		return rendered;
-	}
-	
-	public void setRendered(boolean r) {
-		this.rendered = r;
-	}
-
-	@XStreamAsAttribute
-	private boolean rendered = true;
-	
-	public void setRoutingShape(String gp) {
-		this.path = gp;
-	}
-	
-	public String getRoutingShape() {
-		return path;
-	}
 }

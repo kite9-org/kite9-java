@@ -13,7 +13,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
  *
  */
 @XStreamAlias("rectangle")
-public class RectangleRenderingInformation implements RenderingInformation, Cloneable {
+public class RectangleRenderingInformation extends AbstractRenderingInformation implements Cloneable {
 
 	public RectangleRenderingInformation(Dimension2D position, Dimension2D size, HPos horizontalJustification,
 			VPos verticalJustification, boolean rendered, Double pw, Double ph) {
@@ -47,9 +47,6 @@ public class RectangleRenderingInformation implements RenderingInformation, Clon
 	HPos horizontalJustification = null;
 	VPos verticalJustification = null;
 	
-	@XStreamAsAttribute
-	private boolean rendered = true;
-
 	@XStreamAsAttribute
 	private Double preferredWidth;
 	
@@ -111,14 +108,6 @@ public class RectangleRenderingInformation implements RenderingInformation, Clon
 
 	public void setVerticalJustification(VPos verticalJustification) {
 		this.verticalJustification = verticalJustification;
-	}
-
-	public boolean isRendered() {
-		return rendered;
-	}
-	
-	public void setRendered(boolean r) {
-		this.rendered = r;
 	}
 
 	@Override

@@ -65,8 +65,10 @@ public abstract class AbstractIdentifiableDiagramElement implements Identifiable
 	private static int counter = 0; 
 	
 	protected static synchronized String createID() {
-		return "auto:"+counter++;
+		return AUTO_GENERATED_ID_PREFIX+counter++;
 	}
+	
+	public static final String AUTO_GENERATED_ID_PREFIX = "auto:";
 
 
 	public static void resetCounter() {

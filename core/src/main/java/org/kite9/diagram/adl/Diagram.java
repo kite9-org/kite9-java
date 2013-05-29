@@ -10,6 +10,7 @@ import org.kite9.diagram.primitives.Connection;
 import org.kite9.diagram.primitives.Contained;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 
 /**
@@ -53,6 +54,17 @@ public class Diagram extends AbstractConnectedContainer {
 		return true;
 	}
 
+	@XStreamAsAttribute
+	String name;
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	/**
 	 * This is used by XStream to hold a set of all the links within the diagram.  
 	 */
