@@ -41,9 +41,8 @@ public abstract class AbstractIdentifiableDiagramElement implements Identifiable
 	@Override
 	public int hashCode() {
 		// doing this ensures repeatability in tests
-
 		if (id==null) {
-			throw new LogicException("This diagram element should have an id: "+this);
+			this.id = createID();
 		}
 		return id.hashCode();
 	}
