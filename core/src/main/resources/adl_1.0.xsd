@@ -71,13 +71,11 @@
 			<element name="to" minOccurs="1" maxOccurs="1" type="tns:linked" />
 			<element name="fromLabel" minOccurs="0" maxOccurs="1" type="tns:label" />
 			<element name="toLabel" minOccurs="0" maxOccurs="1" type="tns:label" />
-			<element name="fromDecoration" minOccurs="0" maxOccurs="1"
-				type="tns:style" />
-			<element name="toDecoration" minOccurs="0" maxOccurs="1"
-				type="tns:style" />
+			<element name="fromDecoration" minOccurs="0" maxOccurs="1" />
+			<element name="toDecoration" minOccurs="0" maxOccurs="1" />
 		</sequence>
 		<attribute name="drawDirection" type="tns:direction" />
-		<attribute name="style" type="tns:line-style" />
+		<attribute name="style" />
 		<!-- xstream likes to add IDs to links, so this is allowed but doesn't have any use -->
 		<attribute name="id" use="optional" />
 	</complexType>
@@ -134,12 +132,6 @@
 		</complexContent>
 	</complexType>
 
-	<simpleType name="style">
-		<restriction base="string">
-			<enumeration value="ARROW" />
-		</restriction>
-	</simpleType>
-
 	<group name="contained">
 		<choice>
 			<element name="glyph" type="tns:glyph"></element>
@@ -191,14 +183,6 @@
 		</restriction>
 	</simpleType>
 
-	<simpleType name="line-style">
-		<restriction base="string">
-			<enumeration value="NORMAL" />
-			<enumeration value="INVISIBLE" />
-			<enumeration value="DOTTED" />
-		</restriction>
-	</simpleType>
-
 
 	<simpleType name="layout">
 		<restriction base="string">
@@ -208,6 +192,11 @@
 			<enumeration value="RIGHT" />
 			<enumeration value="HORIZONTAL" />
 			<enumeration value="VERTICAL" />
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="string">
+		<restriction base="string">
 		</restriction>
 	</simpleType>
 

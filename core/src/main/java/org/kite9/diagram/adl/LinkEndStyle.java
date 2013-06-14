@@ -9,7 +9,10 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  *
  */
 @XStreamAlias("style")
-public enum LinkEndStyle {
+public class LinkEndStyle {
 
-	ARROW, NONE, CIRCLE, GAP
+	public static final String ARROW = "ARROW";
+	public static final String NONE = "NONE";
+	public static final String CIRCLE = "CIRCLE";
+	public static final String GAP = "GAP";
 }

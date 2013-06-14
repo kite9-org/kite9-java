@@ -35,6 +35,8 @@ public class AbstractBuilderTest extends HelpMethods {
 		XMLHelper helper = new XMLHelper();
 		String xml = helper.toXML(d);
 		DiagramTestingEngine.writeOutput(this.getClass(), m.getName(), "diagram.xml", xml);
+		
+		System.out.println(xml);
 
 		try {
 			// validate the xml against the schema

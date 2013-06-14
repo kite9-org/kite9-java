@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.xml.stream.XMLStreamException;
@@ -11,6 +12,7 @@ import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
 import org.kite9.diagram.adl.Arrow;
+import org.kite9.diagram.adl.CompositionalShape;
 import org.kite9.diagram.adl.Context;
 import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.Glyph;
@@ -23,6 +25,7 @@ import org.kite9.diagram.position.CostedDimension;
 import org.kite9.diagram.position.DiagramRenderingInformation;
 import org.kite9.diagram.position.Dimension2D;
 import org.kite9.diagram.position.RectangleRenderingInformation;
+import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.position.RouteRenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnectedContained;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
@@ -42,6 +45,7 @@ import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.ConverterLookup;
 import com.thoughtworks.xstream.converters.DataHolder;
+import com.thoughtworks.xstream.converters.basic.StringConverter;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
 import com.thoughtworks.xstream.core.DefaultConverterLookup;
 import com.thoughtworks.xstream.core.ReferenceByIdUnmarshaller;
@@ -84,7 +88,7 @@ public class XMLHelper {
 	public static final String KITE9_NAMESPACE = "http://www.kite9.org/schema/adl";
 
 	public static final Class<?>[] ADL_CLASSES = new Class[] { Arrow.class, Context.class, Diagram.class, Glyph.class,
-			Key.class, Link.class, TextLine.class, TextLine.class, Symbol.class, LinkEndStyle.class,
+			Key.class, Link.class, TextLine.class, TextLine.class, Symbol.class, LinkEndStyle.class, CompositionalShape.class, 
 			BasicWorkItem.class, Dimension2D.class, RouteRenderingInformation.class, DiagramRenderingInformation.class, RectangleRenderingInformation.class, CostedDimension.class };
 	
 	static class Field {
@@ -134,6 +138,16 @@ public class XMLHelper {
 			if (isSimplifyingXML()) {
 				xstream.omitField(AbstractConnectedContained.class, "links");
 			}
+			
+			// this makes it so that if the type is not specified in the xml, we assume a string.
+			xstream.registerConverter(new StringConverter() {
+
+				@Override
+				public boolean canConvert(Class type) {
+					return super.canConvert(type) || type.equals(Object.class);
+				}
+				
+			});
 			xs = xstream;
 		}
 		
@@ -227,9 +241,14 @@ public class XMLHelper {
 	 */
 	private void postProcess(DiagramElement diag, DiagramElement parent) {
 		if (diag instanceof Diagram) {
-			for (Connection l : ((Diagram) diag).getAllLinks()) {
-				l.getFrom().getLinks().add(l);
-				l.getTo().getLinks().add(l);
+			for (Iterator<Connection> iterator = ((Diagram) diag).getAllLinks().iterator(); iterator.hasNext();) {
+				Connection l = (Connection) iterator.next();
+				if ((l.getFrom() != NO_REF) && (l.getTo() != NO_REF)) {
+					l.getFrom().getLinks().add(l);
+					l.getTo().getLinks().add(l);
+				} else {
+					iterator.remove();
+				}
 			}
 		}
 		
@@ -258,6 +277,12 @@ public class XMLHelper {
 			postProcess(il.getFromLabel(), il);
 			postProcess(il.getToLabel(), il);
 		}
+		
+		if (diag instanceof Glyph) {
+			for (CompositionalDiagramElement c : ((Glyph)diag).getText()) {
+				postProcess(c, diag);
+			}
+		}
 
 		if (diag instanceof Container) {
 			Collection<Contained> content = ((Container) diag).getContents();
@@ -269,9 +294,11 @@ public class XMLHelper {
 			postProcess(((Container) diag).getLabel(), diag);
 		}
 		if (diag instanceof Connected) {
-			Iterable<Connection> content = ((Connected) diag).getLinks();
-			if (content != null) {
-				for (Connection c : content) {
+			for (Iterator<Connection> lc = ((Connected) diag).getLinks().iterator(); lc.hasNext();) {
+				Connection c = (Connection) lc.next();
+				if ((c.getFrom() == NO_REF) || (c.getTo() == NO_REF)) {
+					lc.remove();
+				} else {
 					postProcess(c, diag);
 				}
 			}
@@ -344,7 +371,9 @@ public class XMLHelper {
 				@Override
 				public void addAttribute(String name, String value) {
 					if (name.equals("class")) {
-						super.addAttribute("xsi:type", value);
+						if (!value.equals("string")) {
+							super.addAttribute("xsi:type", value);
+						}
 					} else {
 						super.addAttribute(name, value);
 					}
@@ -382,11 +411,34 @@ public class XMLHelper {
 
 	}
 
+	private static final Connected NO_REF = new AbstractConnectedContained() {
+		
+		public void setRenderingInformation(RenderingInformation ri) {
+		}
+		
+		public RenderingInformation getRenderingInformation() {
+			return null;
+		}
+	};
+	
 	protected class IDSuppliedMarshallingStrategy implements MarshallingStrategy {
 
 		public Object unmarshal(Object root, HierarchicalStreamReader reader, DataHolder dataHolder,
 				ConverterLookup converterLookup, Mapper mapper) {
-			return new ReferenceByIdUnmarshaller(root, reader, converterLookup, mapper).start(dataHolder);
+			return new ReferenceByIdUnmarshaller(root, reader, converterLookup, mapper) {
+
+				@Override
+				protected Object convert(Object parent, Class type,
+						Converter converter) {
+					try {
+						return super.convert(parent, type, converter);
+					} catch (ConversionException ce) {
+						return NO_REF;
+					}
+				}
+
+				
+			}.start(dataHolder);
 		}
 
 		public void marshal(HierarchicalStreamWriter writer, Object obj, ConverterLookup converterLookup,

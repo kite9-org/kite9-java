@@ -9,7 +9,10 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  *
  */
 @XStreamAlias("line-style")
-public enum LinkLineStyle {
+public class LinkLineStyle {
+	
+	public static final String DOTTED = "DOTTED";
+	public static final String INVISIBLE = "INVISIBLE";
+	public static final String NORMAL = "NORMAL";
 
-	DOTTED, INVISIBLE, NORMAL
 }

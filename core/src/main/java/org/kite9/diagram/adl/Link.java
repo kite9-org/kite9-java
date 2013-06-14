@@ -5,7 +5,6 @@ import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnection;
 import org.kite9.diagram.primitives.Connected;
 import org.kite9.diagram.primitives.Label;
-import org.kite9.framework.logging.LogicException;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
@@ -33,18 +32,18 @@ public class Link extends AbstractConnection {
 		super(from, to, null, null, null, null, null);
 	}
 	
-	public Link(Connected from, Connected to, LinkEndStyle fromStyle, Label fromLabel, LinkEndStyle toEndStyle, Label toLabel) {
+	public Link(Connected from, Connected to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel) {
 		this(from, to, fromStyle, fromLabel, toEndStyle, toLabel, null);
 	}
 
-	public Link(Connected from, Connected to, LinkEndStyle fromStyle, Label fromLabel, LinkEndStyle toEndStyle, Label toLabel, Direction drawDirection) {
+	public Link(Connected from, Connected to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel, Direction drawDirection) {
 		super(from, to, drawDirection, fromStyle, fromLabel, toEndStyle, toLabel);
 	}
 	
 	@XStreamAsAttribute
-	private LinkLineStyle style = null;
+	private String style = null;
 
-	public LinkLineStyle getStyle() {
+	public String getStyle() {
 		if (style==null) {
 			// defaults to normal
 			return LinkLineStyle.NORMAL;
@@ -53,12 +52,12 @@ public class Link extends AbstractConnection {
 		}
 	}
 
-	public void setStyle(LinkLineStyle style) {
+	public void setStyle(String style) {
 		this.style = style;
 	}
 
-	LinkEndStyle fromDecoration;
-	LinkEndStyle toDecoration;
+	Object fromDecoration;
+	Object toDecoration;
 	
 	
 	@Override
@@ -73,20 +72,12 @@ public class Link extends AbstractConnection {
 
 	@Override
 	public void setFromDecoration(Object fromDecoration) {
-		if (fromDecoration instanceof LinkEndStyle) {
-			this.fromDecoration = (LinkEndStyle) fromDecoration;
-		} else if (fromDecoration!=null) {
-			throw new LogicException("From Decoration should be LinkEndStyle");
-		}
+		this.fromDecoration = fromDecoration;
 	}
 
 	@Override
 	public void setToDecoration(Object toDecoration) {
-		if (toDecoration instanceof LinkEndStyle) {
-			this.toDecoration = (LinkEndStyle) toDecoration;
-		} else if (toDecoration!=null) {
-			throw new LogicException("To Decoration should be LinkEndStyle");
-		}
+		this.toDecoration = toDecoration;
 	}
 
 	public void setRenderingInformation(RenderingInformation ri) {

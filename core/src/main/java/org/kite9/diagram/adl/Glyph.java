@@ -6,6 +6,7 @@ import java.util.List;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnectedContained;
+import org.kite9.diagram.primitives.CompositionalDiagramElement;
 import org.kite9.diagram.primitives.Leaf;
 import org.kite9.diagram.primitives.SymbolTarget;
 import org.kite9.diagram.style.StyledDiagramElement;
@@ -43,18 +44,35 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 
 
 	@XStreamAlias("text-lines")
-	private List<TextLine> text = new ArrayList<TextLine>();
+	private List<CompositionalDiagramElement> text = new ArrayList<CompositionalDiagramElement>();
 	
 	private List<Symbol> symbols = new ArrayList<Symbol>();
 	
 	public Glyph() {
 	}
 	
-	public Glyph(String id, String stereotype, String label, List<TextLine> text, List<Symbol> symbols) {
+	/**
+	 * Adds a divider to the glyph, so that it is backwards compatible with tests
+	 */
+	private List<CompositionalDiagramElement> convertText(List<TextLine> t) {
+		if ((t==null) || (t.size()==0)) {
+			return null;
+		}
+		List<CompositionalDiagramElement> result = new ArrayList<CompositionalDiagramElement>(t.size() + 1);
+		CompositionalShape d = new CompositionalShape("divider");
+		d.setParent(this);
+		result.add(d);
+		for (TextLine diagramElement : t) {
+			result.add(diagramElement);
+		}
+		return result;
+	}
+
+	public Glyph(String id, String stereotype, String label,  List<TextLine> text, List<Symbol> symbols) {
 		super(id);
 		this.stereotype = stereotype;
 		if (text!=null) {
-			this.text = text;
+			setText(convertText(text));
 		}
 		if (symbols!=null) {
 			this.symbols = symbols;
@@ -63,7 +81,7 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 	}
 	
 	public Glyph(String sterotype, String label, List<TextLine> text, List<Symbol> symbols) {
-		this(createID(), sterotype, label, text, symbols);
+		this(createID(), sterotype, label,text, symbols);
 	}
 
 	public String getStereotype() {
@@ -74,12 +92,15 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 		this.stereotype = sterotype;
 	}
 
-	public List<TextLine> getText() {
+	public List<CompositionalDiagramElement> getText() {
 		return text;
 	}
 
-	public void setText(List<TextLine> text) {
+	public void setText(List<CompositionalDiagramElement> text) {
 		this.text = text;
+		for (CompositionalDiagramElement compositionalDiagramElement : text) {
+			compositionalDiagramElement.setParent(this);
+		}
 	}
 
 
