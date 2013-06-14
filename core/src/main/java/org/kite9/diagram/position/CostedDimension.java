@@ -74,10 +74,12 @@ public class CostedDimension extends Dimension2D implements Comparable<CostedDim
 	 */
 	public CostedDimension(double width, double height, Dimension2D within) {
 		super(width, height);
+		if (within != null) {
 		double extraHeight = Math.max(height - within.height, 0);
 		double extraWidth = Math.max(width - within.width, 0);
 		
 		cost = (long)( (extraHeight * width) + (extraWidth * height) +  (extraHeight * extraWidth));
+		}
 	}
 
 	public long getCost() {

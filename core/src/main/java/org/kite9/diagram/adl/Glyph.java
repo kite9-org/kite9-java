@@ -8,6 +8,7 @@ import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnectedContained;
 import org.kite9.diagram.primitives.Leaf;
 import org.kite9.diagram.primitives.SymbolTarget;
+import org.kite9.diagram.style.StyledDiagramElement;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
@@ -22,7 +23,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
  *
  */
 @XStreamAlias("glyph")
-public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTarget {
+public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTarget, StyledDiagramElement {
 
 	private static final long serialVersionUID = -6572545083931316651L;
 	
@@ -108,6 +109,16 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 
 	public void setRenderingInformation(RenderingInformation ri) {
 		this.renderingInformation = ri;
+	}
+	
+	String shape;
+
+	public String getShapeName() {
+		return shape;
+	}
+
+	public void setShapeName(String name) {
+		this.shape = name;
 	}
 	
 }
