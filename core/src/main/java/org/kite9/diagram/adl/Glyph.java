@@ -54,30 +54,36 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 	/**
 	 * Adds a divider to the glyph, so that it is backwards compatible with tests
 	 */
-	private List<CompositionalDiagramElement> convertText(List<TextLine> t) {
+	private List<CompositionalDiagramElement> convertText(List<TextLine> t, boolean divider) {
 		if ((t==null) || (t.size()==0)) {
 			return null;
 		}
 		List<CompositionalDiagramElement> result = new ArrayList<CompositionalDiagramElement>(t.size() + 1);
-		CompositionalShape d = new CompositionalShape("divider");
-		d.setParent(this);
-		result.add(d);
+		if (divider) {
+			CompositionalShape d = new CompositionalShape("divider");
+			d.setParent(this);
+			result.add(d);
+		}
 		for (TextLine diagramElement : t) {
 			result.add(diagramElement);
 		}
 		return result;
 	}
-
-	public Glyph(String id, String stereotype, String label,  List<TextLine> text, List<Symbol> symbols) {
+	
+	public Glyph(String id, String stereotype, String label,  List<TextLine> text, List<Symbol> symbols, boolean divider) {
 		super(id);
 		this.stereotype = stereotype;
 		if (text!=null) {
-			setText(convertText(text));
+			setText(convertText(text, divider));
 		}
 		if (symbols!=null) {
 			this.symbols = symbols;
 		}
 		this.label = label;
+	}
+
+	public Glyph(String id, String stereotype, String label,  List<TextLine> text, List<Symbol> symbols) {
+		this(id, stereotype, label, text, symbols, true);
 	}
 	
 	public Glyph(String sterotype, String label, List<TextLine> text, List<Symbol> symbols) {
