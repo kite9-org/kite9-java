@@ -26,7 +26,7 @@ public class CompositionalShape extends AbstractIdentifiableDiagramElement imple
 	}
 	
 	public CompositionalShape(String shape) {
-		super(createID());
+		this(createID(), shape);
 	}
 
 	public CompositionalShape() {

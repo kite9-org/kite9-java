@@ -43,6 +43,25 @@ public class RectangleRenderingInformation extends AbstractRenderingInformation 
 
 	Dimension2D position = new Dimension2D();
 	Dimension2D size = new Dimension2D();
+	Dimension2D internalPosition;
+	
+	public Dimension2D getInternalPosition() {
+		return internalPosition;
+	}
+
+	public void setInternalPosition(Dimension2D internalPosition) {
+		this.internalPosition = internalPosition;
+	}
+
+	public Dimension2D getInternalSize() {
+		return internalSize;
+	}
+
+	public void setInternalSize(Dimension2D internalSize) {
+		this.internalSize = internalSize;
+	}
+
+	Dimension2D internalSize;
 	
 	HPos horizontalJustification = null;
 	VPos verticalJustification = null;

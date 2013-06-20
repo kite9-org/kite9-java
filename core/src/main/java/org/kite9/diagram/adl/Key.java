@@ -57,6 +57,9 @@ public class Key extends AbstractLabel implements Label {
 		this.boldText = boldText;
 		this.bodyText = bodyText;
 		this.symbols = symbols;
+		for (TextLine textLine : symbols) {
+			textLine.setParent(this);
+		}
 	}
 	
 	public void setRenderingInformation(RenderingInformation ri) {

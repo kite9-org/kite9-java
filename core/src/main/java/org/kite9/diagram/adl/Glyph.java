@@ -138,6 +138,7 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 		this.renderingInformation = ri;
 	}
 	
+	@XStreamAsAttribute
 	String shape;
 
 	public String getShapeName() {
