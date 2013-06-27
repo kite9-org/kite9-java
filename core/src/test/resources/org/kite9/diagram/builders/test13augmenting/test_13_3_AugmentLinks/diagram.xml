@@ -1,13 +1,19 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test13Augmenting/test_13_3_AugmentLinks()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass" stereotype="class" label="SomeClass">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass">
+  <stereotype>class</stereotype>
+  <label>SomeClass</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeInterface" stereotype="interface" label="SomeInterface">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeInterface">
+  <stereotype>interface</stereotype>
+  <label>SomeInterface</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass/rel_implements" label="implements"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass/rel_implements">
+  <label>implements</label>
+ </arrow>
  <allLinks>
   <link id="auto:0" drawDirection="DOWN">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass"></from>

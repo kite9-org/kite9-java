@@ -1,18 +1,28 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test1Class/test_1_4_ClassInterfacesAsArrows()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class" stereotype="class" label="Test1Class">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class">
+  <stereotype>class</stereotype>
+  <label>Test1Class</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass" stereotype="class" label="DummyClass">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass">
+  <stereotype>class</stereotype>
+  <label>DummyClass</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:java.io.Serializable" stereotype="interface" label="Serializable">
+ <glyph id="java_class:java.io.Serializable">
+  <stereotype>interface</stereotype>
+  <label>Serializable</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass/rel_implements" label="implements"></arrow>
- <glyph id="java_class:java.lang.Cloneable" stereotype="interface" label="Cloneable">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass/rel_implements">
+  <label>implements</label>
+ </arrow>
+ <glyph id="java_class:java.lang.Cloneable">
+  <stereotype>interface</stereotype>
+  <label>Cloneable</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>

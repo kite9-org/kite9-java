@@ -1,13 +1,19 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test4Package/test_4_4_PackageDependency()">
- <glyph id="project_java_package:org.kite9.diagram.builders" stereotype="package" label="org.kite9.diagram.builders">
+ <glyph id="project_java_package:org.kite9.diagram.builders">
+  <stereotype>package</stereotype>
+  <label>org.kite9.diagram.builders</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_package:org.kite9.diagram.builders.formats" stereotype="package" label="org.kite9.diagram.builders.formats">
+ <glyph id="java_package:org.kite9.diagram.builders.formats">
+  <stereotype>package</stereotype>
+  <label>org.kite9.diagram.builders.formats</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_package:org.kite9.diagram.builders/rel_requires" label="requires"></arrow>
+ <arrow id="project_java_package:org.kite9.diagram.builders/rel_requires">
+  <label>requires</label>
+ </arrow>
  <allLinks>
   <link id="auto:0" drawDirection="UP">
    <from xsi:type="glyph" reference="project_java_package:org.kite9.diagram.builders"></from>

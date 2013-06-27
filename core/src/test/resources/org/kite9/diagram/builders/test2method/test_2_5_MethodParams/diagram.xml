@@ -1,27 +1,43 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test2Method/test_2_5_MethodParams()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method" stereotype="class" label="Test2Method">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method">
+  <stereotype>class</stereotype>
+  <label>Test2Method</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()" stereotype="method" label="someTestMethod">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()">
+  <stereotype>method</stereotype>
+  <label>someTestMethod</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method" label="has method"></arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()" stereotype="method" label="someOtherMethod">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method">
+  <label>has method</label>
+ </arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()">
+  <stereotype>method</stereotype>
+  <label>someOtherMethod</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:java.lang.String" stereotype="class" label="String">
+ <glyph id="java_class:java.lang.String">
+  <stereotype>class</stereotype>
+  <label>String</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter" label="has parameter"></arrow>
- <glyph id="java_class:java.lang.Integer" stereotype="class" label="Integer">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter">
+  <label>has parameter</label>
+ </arrow>
+ <glyph id="java_class:java.lang.Integer">
+  <stereotype>class</stereotype>
+  <label>Integer</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter" label="has parameter"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter">
+  <label>has parameter</label>
+ </arrow>
  <allLinks>
   <link id="auto:0">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method"></from>

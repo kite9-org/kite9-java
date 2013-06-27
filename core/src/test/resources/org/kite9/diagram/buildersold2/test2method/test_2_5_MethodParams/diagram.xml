@@ -1,0 +1,76 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test2Method/test_2_5_MethodParams()">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method" stereotype="class" label="Test2Method">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()" stereotype="method" label="someTestMethod">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method" label="has method"></arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()" stereotype="method" label="someOtherMethod">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <glyph id="java_class:java.lang.String" stereotype="class" label="String">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter" label="has parameter"></arrow>
+ <glyph id="java_class:java.lang.Integer" stereotype="class" label="Integer">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter" label="has parameter"></arrow>
+ <allLinks>
+  <link id="auto:0">
+   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method"></from>
+   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method"></to>
+  </link>
+  <link id="auto:1">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method"></from>
+   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()"></to>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+  <link id="auto:4">
+   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()"></from>
+   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter"></to>
+  </link>
+  <link id="auto:2">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method"></from>
+   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()"></to>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+  <link id="auto:9">
+   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()"></from>
+   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter"></to>
+  </link>
+  <link id="auto:5">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter"></from>
+   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
+   <toLabel xsi:type="text-line" id="auto:3">
+    <text>array of </text>
+    <symbols></symbols>
+   </toLabel>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+  <link id="auto:10">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter"></from>
+   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
+   <toLabel xsi:type="text-line" id="auto:8">
+    <text>array of </text>
+    <symbols></symbols>
+   </toLabel>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+  <link id="auto:7">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter"></from>
+   <to xsi:type="glyph" reference="java_class:java.lang.Integer"></to>
+   <toLabel xsi:type="text-line" id="auto:6">
+    <text>Collection of </text>
+    <symbols></symbols>
+   </toLabel>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+ </allLinks>
+</diagram>

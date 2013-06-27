@@ -1,13 +1,19 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test18ObjectDependencyWizard/test18_2_ObjectDependencyWizardGetterValues()">
- <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$MyOb0" stereotype="instance" label="MyOb">
+ <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$MyOb0">
+  <stereotype>instance</stereotype>
+  <label>MyOb</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$Gizmo0" stereotype="instance" label="Gizmo">
+ <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$Gizmo0">
+  <stereotype>instance</stereotype>
+  <label>Gizmo</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue0/rel_references" label="references"></arrow>
+ <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue0/rel_references">
+  <label>references</label>
+ </arrow>
  <allLinks>
   <link id="auto:1" drawDirection="RIGHT">
    <from xsi:type="glyph" reference="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$MyOb0"></from>

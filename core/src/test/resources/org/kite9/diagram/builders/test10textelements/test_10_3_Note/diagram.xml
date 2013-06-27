@@ -1,18 +1,28 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test10TextElements/test_10_3_Note()">
- <glyph id="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassA" stereotype="class" label="SomeClassA">
+ <glyph id="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassA">
+  <stereotype>class</stereotype>
+  <label>SomeClassA</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassB" stereotype="class" label="SomeClassB">
+ <glyph id="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassB">
+  <stereotype>class</stereotype>
+  <label>SomeClassB</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="The 10 second rule0" stereotype="note" label="The 10 second rule">
+ <glyph id="The 10 second rule0">
+  <stereotype>note</stereotype>
+  <label>The 10 second rule</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassA/rel_observes" label="observes"></arrow>
- <arrow id="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassB/rel_observes" label="observes"></arrow>
+ <arrow id="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassA/rel_observes">
+  <label>observes</label>
+ </arrow>
+ <arrow id="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassB/rel_observes">
+  <label>observes</label>
+ </arrow>
  <allLinks>
   <link id="auto:0">
    <from xsi:type="glyph" reference="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassA"></from>

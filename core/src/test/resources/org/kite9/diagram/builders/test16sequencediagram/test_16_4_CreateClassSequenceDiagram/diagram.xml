@@ -1,40 +1,84 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/test_16_4_CreateClassSequenceDiagram()">
  <context id="Some context0" layout="HORIZONTAL" bordered="true">
   <context id="java_package:org.kite9.diagram.builders" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram" stereotype="class" label="Test16SequenceDiagram">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram">
+    <stereotype>class</stereotype>
+    <label>Test16SequenceDiagram</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram00" label=""></arrow>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1" stereotype="class" label="Class1">
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram00">
+    <label></label>
+   </arrow>
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1">
+    <stereotype>class</stereotype>
+    <label>Class1</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class100" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class110" label=""></arrow>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2" stereotype="class" label="Class2">
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class100">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class110">
+    <label></label>
+   </arrow>
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2">
+    <stereotype>class</stereotype>
+    <label>Class2</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class200" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class210" label=""></arrow>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3" stereotype="class" label="Class3">
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class200">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class210">
+    <label></label>
+   </arrow>
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3">
+    <stereotype>class</stereotype>
+    <label>Class3</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class300" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class220" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class120" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class130" label=""></arrow>
-   <arrow id="class org.kite9.diagram.builders.Test16SequenceDiagram$Class1 SL=20" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class140" label=""></arrow>
-   <arrow id="class org.kite9.diagram.builders.Test16SequenceDiagram$Class1 SL=2000" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class150" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class230" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class240" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class310" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram10" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class320" label=""></arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class300">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class220">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class120">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class130">
+    <label></label>
+   </arrow>
+   <arrow id="class org.kite9.diagram.builders.Test16SequenceDiagram$Class1 SL=20">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class140">
+    <label></label>
+   </arrow>
+   <arrow id="class org.kite9.diagram.builders.Test16SequenceDiagram$Class1 SL=2000">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class150">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class230">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class240">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class310">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram10">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class320">
+    <label></label>
+   </arrow>
    <label xsi:type="text-line" id="auto:15">
     <text>org.kite9.diagram.builders</text>
     <symbols></symbols>

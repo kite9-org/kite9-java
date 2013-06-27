@@ -1,70 +1,120 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/test_16_2_CreateNestedSequenceDiagram()">
  <context id="Some context0" layout="HORIZONTAL" bordered="true">
   <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()" stereotype="method" label="someMethod1">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()">
+    <stereotype>method</stereotype>
+    <label>someMethod1</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()00" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()10" label=""></arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()00">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()10">
+    <label></label>
+   </arrow>
    <label xsi:type="text-line" id="auto:15">
     <text>Test16SequenceDiagram</text>
     <symbols></symbols>
    </label>
   </context>
   <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()" stereotype="method" label="startMethod">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()">
+    <stereotype>method</stereotype>
+    <label>startMethod</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()00" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()10" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()20" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()30" label=""></arrow>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value" stereotype="field" label="value">
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()00">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()10">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()20">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()30">
+    <label></label>
+   </arrow>
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value">
+    <stereotype>field</stereotype>
+    <label>value</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value00" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()40" label=""></arrow>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set" stereotype="field" label="set">
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value00">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()40">
+    <label></label>
+   </arrow>
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set">
+    <stereotype>field</stereotype>
+    <label>set</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set00" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()50" label=""></arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set00">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()50">
+    <label></label>
+   </arrow>
    <label xsi:type="text-line" id="auto:17">
     <text>Class1</text>
     <symbols></symbols>
    </label>
   </context>
   <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()" stereotype="method" label="method3">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()">
+    <stereotype>method</stereotype>
+    <label>method3</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()00" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()10" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()20" label=""></arrow>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()" stereotype="method" label="method4">
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()00">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()10">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()20">
+    <label></label>
+   </arrow>
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()">
+    <stereotype>method</stereotype>
+    <label>method4</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()00" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()10" label=""></arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()00">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()10">
+    <label></label>
+   </arrow>
    <label xsi:type="text-line" id="auto:21">
     <text>Class2</text>
     <symbols></symbols>
    </label>
   </context>
   <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()" stereotype="method" label="methodA">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()">
+    <stereotype>method</stereotype>
+    <label>methodA</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()00" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()10" label=""></arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()20" label=""></arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()00">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()10">
+    <label></label>
+   </arrow>
+   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()20">
+    <label></label>
+   </arrow>
    <label xsi:type="text-line" id="auto:25">
     <text>Class3</text>
     <symbols></symbols>

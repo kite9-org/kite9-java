@@ -1,0 +1,13 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test10TextElements/test_10_1_StringContext()">
+ <context id="m context0" bordered="true">
+  <glyph id="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassA" stereotype="class" label="SomeClassA">
+   <text-lines></text-lines>
+   <symbols></symbols>
+  </glyph>
+  <label xsi:type="text-line" id="auto:0">
+   <text>m context</text>
+   <symbols></symbols>
+  </label>
+ </context>
+ <allLinks></allLinks>
+</diagram>

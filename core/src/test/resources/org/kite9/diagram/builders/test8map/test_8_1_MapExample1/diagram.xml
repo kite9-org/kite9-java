@@ -1,18 +1,28 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test8Map/test_8_1_MapExample1()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1" stereotype="class" label="Example1">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1">
+  <stereotype>class</stereotype>
+  <label>Example1</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap" stereotype="field" label="someMap">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap">
+  <stereotype>field</stereotype>
+  <label>someMap</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/rel_field" label="has field"></arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap" stereotype="field" label="someOtherMap">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/rel_field">
+  <label>has field</label>
+ </arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap">
+  <stereotype>field</stereotype>
+  <label>someOtherMap</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:java.util.Map" stereotype="interface" label="Map">
+ <glyph id="java_class:java.util.Map">
+  <stereotype>interface</stereotype>
+  <label>Map</label>
   <text-lines>
    <text-line id="auto:3">
     <text>from A</text>
@@ -25,8 +35,12 @@
   </text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap/rel_is a" label="is a"></arrow>
- <glyph id="java_class:java.util.Map.1" stereotype="interface" label="Map">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <glyph id="java_class:java.util.Map.1">
+  <stereotype>interface</stereotype>
+  <label>Map</label>
   <text-lines>
    <text-line id="auto:7">
     <text>from A</text>
@@ -39,7 +53,9 @@
   </text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap/rel_is a" label="is a"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap/rel_is a">
+  <label>is a</label>
+ </arrow>
  <allLinks>
   <link id="auto:0">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1"></from>

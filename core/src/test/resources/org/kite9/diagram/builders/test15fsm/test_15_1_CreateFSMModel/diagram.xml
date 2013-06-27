@@ -1,19 +1,31 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test15FSM/test_15_1_CreateFSMModel()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test15FSM.State/ONE" stereotype="enum" label="one">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test15FSM.State/ONE">
+  <stereotype>enum</stereotype>
+  <label>one</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test15FSM.State/TWO" stereotype="enum" label="two">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test15FSM.State/TWO">
+  <stereotype>enum</stereotype>
+  <label>two</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test15FSM.State/THREE" stereotype="enum" label="three">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test15FSM.State/THREE">
+  <stereotype>enum</stereotype>
+  <label>three</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToThree()" label="moveToThree"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToTwo()" label="moveToTwo"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/reset()" label="reset"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToThree()">
+  <label>moveToThree</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToTwo()">
+  <label>moveToTwo</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/reset()">
+  <label>reset</label>
+ </arrow>
  <allLinks>
   <link id="auto:0">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.State/ONE"></from>

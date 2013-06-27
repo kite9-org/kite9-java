@@ -1,14 +1,22 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test2Method/test_2_1_MethodsAsGlyphs()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method" stereotype="class" label="Test2Method">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method">
+  <stereotype>class</stereotype>
+  <label>Test2Method</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()" stereotype="method" label="someTestMethod">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()">
+  <stereotype>method</stereotype>
+  <label>someTestMethod</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method" label="has method"></arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()" stereotype="method" label="someOtherMethod">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method">
+  <label>has method</label>
+ </arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()">
+  <stereotype>method</stereotype>
+  <label>someOtherMethod</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>

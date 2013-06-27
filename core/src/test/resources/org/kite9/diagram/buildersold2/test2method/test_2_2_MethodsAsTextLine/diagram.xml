@@ -1,0 +1,16 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test2Method/test_2_2_MethodsAsTextLine()">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method" stereotype="class" label="Test2Method">
+  <text-lines>
+   <text-line id="auto:0">
+    <text>method: someTestMethod</text>
+    <symbols></symbols>
+   </text-line>
+   <text-line id="auto:1">
+    <text>method: someOtherMethod</text>
+    <symbols></symbols>
+   </text-line>
+  </text-lines>
+  <symbols></symbols>
+ </glyph>
+ <allLinks></allLinks>
+</diagram>

@@ -1,13 +1,19 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test6Dependency/test_6_2_MethodCalledClassRelationship()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A/someMethod()" stereotype="method" label="someMethod">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A/someMethod()">
+  <stereotype>method</stereotype>
+  <label>someMethod</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.B" stereotype="interface" label="B">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.B">
+  <stereotype>interface</stereotype>
+  <label>B</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A/someMethod()/rel_execute" label="execute"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A/someMethod()/rel_execute">
+  <label>execute</label>
+ </arrow>
  <allLinks>
   <link id="auto:0">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test6Dependency.A/someMethod()"></from>

@@ -1,13 +1,19 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test11Stereotypes/test_11_3_FieldStereotype()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test11Stereotypes.SomeClass" stereotype="value object" label="SomeClass">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test11Stereotypes.SomeClass">
+  <stereotype>value object</stereotype>
+  <label>SomeClass</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test11Stereotypes.SomeClass/field" stereotype="transient field" label="field">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test11Stereotypes.SomeClass/field">
+  <stereotype>transient field</stereotype>
+  <label>field</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test11Stereotypes.SomeClass/rel_field" label="has field"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test11Stereotypes.SomeClass/rel_field">
+  <label>has field</label>
+ </arrow>
  <allLinks>
   <link id="auto:0">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test11Stereotypes.SomeClass"></from>

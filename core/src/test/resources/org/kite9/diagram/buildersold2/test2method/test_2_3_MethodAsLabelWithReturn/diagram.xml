@@ -1,0 +1,40 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test2Method/test_2_3_MethodAsLabelWithReturn()">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method" stereotype="class" label="Test2Method">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method.DummyClass" stereotype="class" label="DummyClass">
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_returns" label="returns"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_returns" label="returns"></arrow>
+ <allLinks>
+  <link id="auto:1">
+   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method"></from>
+   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_returns"></to>
+   <fromLabel xsi:type="text-line" id="auto:0">
+    <text>someTestMethod</text>
+    <symbols></symbols>
+   </fromLabel>
+  </link>
+  <link id="auto:4">
+   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method"></from>
+   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_returns"></to>
+   <fromLabel xsi:type="text-line" id="auto:3">
+    <text>someOtherMethod</text>
+    <symbols></symbols>
+   </fromLabel>
+  </link>
+  <link id="auto:2">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_returns"></from>
+   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method.DummyClass"></to>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+  <link id="auto:5">
+   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_returns"></from>
+   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method.DummyClass"></to>
+   <toDecoration>ARROW</toDecoration>
+  </link>
+ </allLinks>
+</diagram>

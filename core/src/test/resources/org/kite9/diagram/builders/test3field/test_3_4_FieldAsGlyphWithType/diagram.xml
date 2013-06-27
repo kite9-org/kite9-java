@@ -1,27 +1,43 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test3Field/test_3_4_FieldAsGlyphWithType()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field" stereotype="class" label="Test3Field">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field">
+  <stereotype>class</stereotype>
+  <label>Test3Field</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field1" stereotype="field" label="field1">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field1">
+  <stereotype>field</stereotype>
+  <label>field1</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test3Field/rel_field" label="has field"></arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field2" stereotype="field" label="field2">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test3Field/rel_field">
+  <label>has field</label>
+ </arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field2">
+  <stereotype>field</stereotype>
+  <label>field2</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:java.lang.Object" stereotype="class" label="Object">
+ <glyph id="java_class:java.lang.Object">
+  <stereotype>class</stereotype>
+  <label>Object</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test3Field/field1/rel_is a" label="is a"></arrow>
- <glyph id="java_class:java.lang.Integer" stereotype="class" label="Integer">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test3Field/field1/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <glyph id="java_class:java.lang.Integer">
+  <stereotype>class</stereotype>
+  <label>Integer</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test3Field/field2/rel_is a" label="is a"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test3Field/field2/rel_is a">
+  <label>is a</label>
+ </arrow>
  <allLinks>
   <link id="auto:0">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test3Field"></from>

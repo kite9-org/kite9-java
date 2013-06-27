@@ -1,18 +1,28 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test5Annotation/test_5_4_ReferencedByAnnotationElement()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassB" stereotype="class" label="SomeReferencedClassB">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassB">
+  <stereotype>class</stereotype>
+  <label>SomeReferencedClassB</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassC" stereotype="class" label="SomeReferencedClassC">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassC">
+  <stereotype>class</stereotype>
+  <label>SomeReferencedClassC</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassA" stereotype="class" label="SomeClassA">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassA">
+  <stereotype>class</stereotype>
+  <label>SomeClassA</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassB/rel_Reference(r)" label="Reference"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassC/rel_Reference(r)" label="Reference"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassB/rel_Reference(r)">
+  <label>Reference</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassC/rel_Reference(r)">
+  <label>Reference</label>
+ </arrow>
  <allLinks>
   <link id="auto:1">
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassB/rel_Reference(r)"></from>

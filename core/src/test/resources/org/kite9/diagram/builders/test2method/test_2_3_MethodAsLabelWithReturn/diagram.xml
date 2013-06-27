@@ -1,14 +1,22 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test2Method/test_2_3_MethodAsLabelWithReturn()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method" stereotype="class" label="Test2Method">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method">
+  <stereotype>class</stereotype>
+  <label>Test2Method</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method.DummyClass" stereotype="class" label="DummyClass">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method.DummyClass">
+  <stereotype>class</stereotype>
+  <label>DummyClass</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_returns" label="returns"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_returns" label="returns"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_returns">
+  <label>returns</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_returns">
+  <label>returns</label>
+ </arrow>
  <allLinks>
   <link id="auto:1">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method"></from>

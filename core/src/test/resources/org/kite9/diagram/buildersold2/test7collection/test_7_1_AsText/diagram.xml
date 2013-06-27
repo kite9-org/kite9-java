@@ -1,0 +1,36 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test7Collection/test_7_1_AsText()">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection" stereotype="class" label="Test7Collection">
+  <text-lines>
+   <text-line id="auto:0">
+    <text>field: stringArray, is a: array of String</text>
+    <symbols></symbols>
+   </text-line>
+   <text-line id="auto:1">
+    <text>field: stringList, is a: List of String</text>
+    <symbols></symbols>
+   </text-line>
+   <text-line id="auto:2">
+    <text>field: stringSet, is a: Set of String</text>
+    <symbols></symbols>
+   </text-line>
+   <text-line id="auto:3">
+    <text>field: stringCollection, is a: Collection of String</text>
+    <symbols></symbols>
+   </text-line>
+   <text-line id="auto:4">
+    <text>field: compoundString1, is a: Set of array of Set of String</text>
+    <symbols></symbols>
+   </text-line>
+   <text-line id="auto:5">
+    <text>field: compoundString2, is a: array of Set of Set of String</text>
+    <symbols></symbols>
+   </text-line>
+   <text-line id="auto:6">
+    <text>field: someStrings, is a: Iterable of String</text>
+    <symbols></symbols>
+   </text-line>
+  </text-lines>
+  <symbols></symbols>
+ </glyph>
+ <allLinks></allLinks>
+</diagram>

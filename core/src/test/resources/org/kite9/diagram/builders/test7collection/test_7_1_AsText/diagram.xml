@@ -1,5 +1,7 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test7Collection/test_7_1_AsText()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection" stereotype="class" label="Test7Collection">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection">
+  <stereotype>class</stereotype>
+  <label>Test7Collection</label>
   <text-lines>
    <text-line id="auto:0">
     <text>field: stringArray, is a: array of String</text>

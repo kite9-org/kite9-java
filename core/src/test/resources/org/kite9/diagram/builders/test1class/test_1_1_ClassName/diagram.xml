@@ -1,5 +1,7 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test1Class/test_1_1_ClassName()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class" stereotype="class" label="Test1Class">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class">
+  <stereotype>class</stereotype>
+  <label>Test1Class</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>

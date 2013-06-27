@@ -1,14 +1,22 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test6Dependency/test_6_10_ClassDependantsRelationship()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.B" stereotype="interface" label="B">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.B">
+  <stereotype>interface</stereotype>
+  <label>B</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A" stereotype="class" label="A">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A">
+  <stereotype>class</stereotype>
+  <label>A</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test6Dependency.B/rel_required by" label="requires"></arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.C" stereotype="class" label="C">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test6Dependency.B/rel_required by">
+  <label>requires</label>
+ </arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.C">
+  <stereotype>class</stereotype>
+  <label>C</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>

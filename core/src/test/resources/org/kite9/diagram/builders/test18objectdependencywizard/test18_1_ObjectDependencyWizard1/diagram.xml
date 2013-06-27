@@ -1,29 +1,49 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test18ObjectDependencyWizard/test18_1_ObjectDependencyWizard1()">
- <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$MyOb0" stereotype="instance" label="MyOb">
+ <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$MyOb0">
+  <stereotype>instance</stereotype>
+  <label>MyOb</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$AHelper0" stereotype="instance" label="AHelper">
+ <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$AHelper0">
+  <stereotype>instance</stereotype>
+  <label>AHelper</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue0/rel_references" label="references"></arrow>
- <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$BHelper0" stereotype="instance" label="BHelper">
+ <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue0/rel_references">
+  <label>references</label>
+ </arrow>
+ <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$BHelper0">
+  <stereotype>instance</stereotype>
+  <label>BHelper</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$Gizmo0" stereotype="instance" label="Gizmo">
+ <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$Gizmo0">
+  <stereotype>instance</stereotype>
+  <label>Gizmo</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue1/rel_references" label="references"></arrow>
- <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue2/rel_references" label="references"></arrow>
- <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$Gizmo1" stereotype="instance" label="Gizmo">
+ <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue1/rel_references">
+  <label>references</label>
+ </arrow>
+ <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue2/rel_references">
+  <label>references</label>
+ </arrow>
+ <glyph id="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$Gizmo1">
+  <stereotype>instance</stereotype>
+  <label>Gizmo</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue3/rel_references" label="references"></arrow>
- <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue4/rel_references" label="references"></arrow>
+ <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue3/rel_references">
+  <label>references</label>
+ </arrow>
+ <arrow id="class org.kite9.diagram.builders.java.AccessibleObjectValue4/rel_references">
+  <label>references</label>
+ </arrow>
  <allLinks>
   <link id="auto:1" drawDirection="RIGHT">
    <from xsi:type="glyph" reference="class org.kite9.diagram.builders.Test18ObjectDependencyWizard$MyOb0"></from>

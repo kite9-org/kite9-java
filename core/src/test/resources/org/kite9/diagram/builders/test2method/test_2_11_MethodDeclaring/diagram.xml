@@ -1,18 +1,28 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test2Method/test_2_11_MethodDeclaring()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method.CallerClass/someMethod()" stereotype="method" label="someMethod">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method.CallerClass/someMethod()">
+  <stereotype>method</stereotype>
+  <label>someMethod</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()" stereotype="method" label="someOtherMethod">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()">
+  <stereotype>method</stereotype>
+  <label>someOtherMethod</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method.CallerClass/someMethod()/rel_calls" label="calls"></arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method" stereotype="class" label="Test2Method">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method.CallerClass/someMethod()/rel_calls">
+  <label>calls</label>
+ </arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method">
+  <stereotype>class</stereotype>
+  <label>Test2Method</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_method" label="has method"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_method">
+  <label>has method</label>
+ </arrow>
  <allLinks>
   <link id="auto:0">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method.CallerClass/someMethod()"></from>

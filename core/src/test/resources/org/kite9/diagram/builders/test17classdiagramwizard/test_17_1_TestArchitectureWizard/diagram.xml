@@ -1,6 +1,8 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard/test_17_1_TestArchitectureWizard()">
  <context id="Rob's Architecture0" bordered="true">
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.MySite" stereotype="interface" label="MySite">
+  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.MySite">
+   <stereotype>interface</stereotype>
+   <label>MySite</label>
    <text-lines>
     <text-line id="auto:19">
      <text>method: getName</text>
@@ -9,33 +11,57 @@
    </text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1" stereotype="class" label="Sat1">
+  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1">
+   <stereotype>class</stereotype>
+   <label>Sat1</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat2" stereotype="class" label="Sat2">
+  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat2">
+   <stereotype>class</stereotype>
+   <label>Sat2</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat3" stereotype="class" label="Sat3">
+  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat3">
+   <stereotype>class</stereotype>
+   <label>Sat3</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Satellite" stereotype="interface" label="Satellite">
+  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Satellite">
+   <stereotype>interface</stereotype>
+   <label>Satellite</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server" stereotype="class" label="Server">
+  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server">
+   <stereotype>class</stereotype>
+   <label>Server</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1/parent/rel_is a" label="is a"></arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/hasSat1/rel_is a" label="is a"></arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/allTheSat2s/rel_is a" label="is a"></arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1/rel_implements" label="implements"></arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat2/rel_implements" label="implements"></arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat3/rel_implements" label="implements"></arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/rel_implements" label="implements"></arrow>
+  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1/parent/rel_is a">
+   <label>is a</label>
+  </arrow>
+  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/hasSat1/rel_is a">
+   <label>is a</label>
+  </arrow>
+  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/allTheSat2s/rel_is a">
+   <label>is a</label>
+  </arrow>
+  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1/rel_implements">
+   <label>implements</label>
+  </arrow>
+  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat2/rel_implements">
+   <label>implements</label>
+  </arrow>
+  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat3/rel_implements">
+   <label>implements</label>
+  </arrow>
+  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/rel_implements">
+   <label>implements</label>
+  </arrow>
   <label xsi:type="text-line" id="auto:0">
    <text>Rob's Architecture</text>
    <symbols></symbols>

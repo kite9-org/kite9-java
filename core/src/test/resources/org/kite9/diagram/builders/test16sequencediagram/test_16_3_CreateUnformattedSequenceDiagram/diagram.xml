@@ -1,7 +1,9 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/test_16_3_CreateUnformattedSequenceDiagram()">
  <context id="Some context0" bordered="true">
   <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()" stereotype="method" label="someMethod1">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()">
+    <stereotype>method</stereotype>
+    <label>someMethod1</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
@@ -11,15 +13,21 @@
    </label>
   </context>
   <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()" stereotype="method" label="startMethod">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()">
+    <stereotype>method</stereotype>
+    <label>startMethod</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value" stereotype="field" label="value">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value">
+    <stereotype>field</stereotype>
+    <label>value</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set" stereotype="field" label="set">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set">
+    <stereotype>field</stereotype>
+    <label>set</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
@@ -29,11 +37,15 @@
    </label>
   </context>
   <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()" stereotype="method" label="method3">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()">
+    <stereotype>method</stereotype>
+    <label>method3</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()" stereotype="method" label="method4">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()">
+    <stereotype>method</stereotype>
+    <label>method4</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
@@ -43,7 +55,9 @@
    </label>
   </context>
   <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()" stereotype="method" label="methodA">
+   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()">
+    <stereotype>method</stereotype>
+    <label>methodA</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>

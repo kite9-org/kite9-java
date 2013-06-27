@@ -1,6 +1,8 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test3Field/test_3_6_FieldVisibility()">
  <context id="project_java_class:org.kite9.diagram.builders.Test3Field" bordered="true">
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field1" stereotype="field" label="field1">
+  <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field1">
+   <stereotype>field</stereotype>
+   <label>field1</label>
    <text-lines>
     <text-line id="auto:1">
      <text>visibility: public</text>
@@ -9,7 +11,9 @@
    </text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field2" stereotype="field" label="field2">
+  <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field2">
+   <stereotype>field</stereotype>
+   <label>field2</label>
    <text-lines>
     <text-line id="auto:2">
      <text>visibility: protected</text>

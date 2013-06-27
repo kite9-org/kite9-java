@@ -1,48 +1,82 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test7Collection/test_7_2_AsGlyphs()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection" stereotype="class" label="Test7Collection">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection">
+  <stereotype>class</stereotype>
+  <label>Test7Collection</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringArray" stereotype="field" label="stringArray">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringArray">
+  <stereotype>field</stereotype>
+  <label>stringArray</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/rel_field" label="has field"></arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringList" stereotype="field" label="stringList">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/rel_field">
+  <label>has field</label>
+ </arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringList">
+  <stereotype>field</stereotype>
+  <label>stringList</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringSet" stereotype="field" label="stringSet">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringSet">
+  <stereotype>field</stereotype>
+  <label>stringSet</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringCollection" stereotype="field" label="stringCollection">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringCollection">
+  <stereotype>field</stereotype>
+  <label>stringCollection</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString1" stereotype="field" label="compoundString1">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString1">
+  <stereotype>field</stereotype>
+  <label>compoundString1</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2" stereotype="field" label="compoundString2">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2">
+  <stereotype>field</stereotype>
+  <label>compoundString2</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings" stereotype="field" label="someStrings">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings">
+  <stereotype>field</stereotype>
+  <label>someStrings</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:java.lang.String" stereotype="class" label="String">
+ <glyph id="java_class:java.lang.String">
+  <stereotype>class</stereotype>
+  <label>String</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringArray/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringList/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringSet/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringCollection/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString1/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings/rel_is a" label="is a"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringArray/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringList/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringSet/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringCollection/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString1/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings/rel_is a">
+  <label>is a</label>
+ </arrow>
  <allLinks>
   <link id="auto:0">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>

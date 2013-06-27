@@ -1,28 +1,46 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test12Primitives/test_12_3_AsLabels()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test12Primitives" stereotype="class" label="Test12Primitives">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test12Primitives">
+  <stereotype>class</stereotype>
+  <label>Test12Primitives</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:int" stereotype="class" label="int">
+ <glyph id="java_class:int">
+  <stereotype>class</stereotype>
+  <label>int</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test12Primitives/a/rel_is a" label="is a"></arrow>
- <glyph id="java_class:float" stereotype="class" label="float">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test12Primitives/a/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <glyph id="java_class:float">
+  <stereotype>class</stereotype>
+  <label>float</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test12Primitives/b/rel_is a" label="is a"></arrow>
- <glyph id="java_class:long" stereotype="class" label="long">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test12Primitives/b/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <glyph id="java_class:long">
+  <stereotype>class</stereotype>
+  <label>long</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test12Primitives/c/rel_is a" label="is a"></arrow>
- <glyph id="java_class:char" stereotype="class" label="char">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test12Primitives/c/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <glyph id="java_class:char">
+  <stereotype>class</stereotype>
+  <label>char</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test12Primitives/d/rel_is a" label="is a"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test12Primitives/d/rel_is a">
+  <label>is a</label>
+ </arrow>
  <allLinks>
   <link id="auto:1">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test12Primitives"></from>

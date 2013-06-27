@@ -1,18 +1,28 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test6Dependency/test_6_9_ClassDependencyRelationship()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.C" stereotype="class" label="C">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.C">
+  <stereotype>class</stereotype>
+  <label>C</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A" stereotype="class" label="A">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A">
+  <stereotype>class</stereotype>
+  <label>A</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.B" stereotype="interface" label="B">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.B">
+  <stereotype>interface</stereotype>
+  <label>B</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test6Dependency.C/rel_requires" label="requires"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A/rel_requires" label="requires"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test6Dependency.C/rel_requires">
+  <label>requires</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A/rel_requires">
+  <label>requires</label>
+ </arrow>
  <allLinks>
   <link id="auto:0" drawDirection="UP">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test6Dependency.C"></from>

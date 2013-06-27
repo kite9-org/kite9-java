@@ -1,19 +1,37 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test7Collection/test_7_3_AsLabels()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection" stereotype="class" label="Test7Collection">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection">
+  <stereotype>class</stereotype>
+  <label>Test7Collection</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:java.lang.String" stereotype="class" label="String">
+ <glyph id="java_class:java.lang.String">
+  <stereotype>class</stereotype>
+  <label>String</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringArray/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringList/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringSet/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringCollection/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString1/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2/rel_is a" label="is a"></arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings/rel_is a" label="is a"></arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringArray/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringList/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringSet/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringCollection/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString1/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2/rel_is a">
+  <label>is a</label>
+ </arrow>
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings/rel_is a">
+  <label>is a</label>
+ </arrow>
  <allLinks>
   <link id="auto:2">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>

@@ -94,28 +94,34 @@
 		</attribute>
 	</complexType>
 
-	<complexType name="glyph">
+	<complexType name="leaf">
 		<complexContent>
 			<extension base="tns:linked">
 				<sequence>
+					<element name="stereotype" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="label" type="string" minOccurs="0"
+						maxOccurs="1" />
 					<element name="text-lines" type="tns:text-lines" minOccurs="0"
 						maxOccurs="1" />
 					<element name="symbols" type="tns:symbols" minOccurs="0"
 						maxOccurs="1" />
 				</sequence>
-				<attribute name="stereotype" type="string"></attribute>
-				<attribute name="label" type="string"></attribute>
 			</extension>
 		</complexContent>
 	</complexType>
-
+	
 	<complexType name="arrow">
 		<complexContent>
-			<extension base="tns:linked">
-				<attribute name="label" type="string"></attribute>
-			</extension>
+			<extension base="tns:leaf"></extension>
 		</complexContent>
-
+	</complexType>
+		
+		
+	<complexType name="glyph">
+		<complexContent>
+			<extension base="tns:leaf"></extension>
+		</complexContent>
 	</complexType>
 
 	<complexType name="context">
@@ -134,9 +140,9 @@
 
 	<group name="contained">
 		<choice>
-			<element name="glyph" type="tns:glyph"></element>
+			<element name="glyph" type="tns:leaf"></element>
 			<element name="context" type="tns:context"></element>
-			<element name="arrow" type="tns:arrow"></element>
+			<element name="arrow" type="tns:leaf"></element>
 		</choice>
 	</group>
 

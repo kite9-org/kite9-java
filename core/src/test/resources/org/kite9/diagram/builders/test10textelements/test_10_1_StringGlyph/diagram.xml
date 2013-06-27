@@ -1,13 +1,19 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test10TextElements/test_10_1_StringGlyph()">
- <glyph id="a0" stereotype="" label="a">
+ <glyph id="a0">
+  <stereotype></stereotype>
+  <label>a</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="b0" stereotype="" label="b">
+ <glyph id="b0">
+  <stereotype></stereotype>
+  <label>b</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="c0" stereotype="" label="c">
+ <glyph id="c0">
+  <stereotype></stereotype>
+  <label>c</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>

@@ -1,23 +1,37 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test5Annotation/test_5_3_AnnotationAsSubject()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference" stereotype="annotation" label="Reference">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference">
+  <stereotype>annotation</stereotype>
+  <label>Reference</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Useless" stereotype="annotation" label="Useless">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Useless">
+  <stereotype>annotation</stereotype>
+  <label>Useless</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassA" stereotype="class" label="SomeClassA">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassA">
+  <stereotype>class</stereotype>
+  <label>SomeClassA</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference/rel_annotation" label="has annotation"></arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassD" stereotype="class" label="SomeClassD">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference/rel_annotation">
+  <label>has annotation</label>
+ </arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassD">
+  <stereotype>class</stereotype>
+  <label>SomeClassD</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Useless/rel_annotation" label="has annotation"></arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassE" stereotype="class" label="SomeClassE">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Useless/rel_annotation">
+  <label>has annotation</label>
+ </arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassE">
+  <stereotype>class</stereotype>
+  <label>SomeClassE</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>

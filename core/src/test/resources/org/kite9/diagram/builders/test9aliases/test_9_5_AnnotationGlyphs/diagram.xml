@@ -1,5 +1,7 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test9Aliases/test_9_5_AnnotationGlyphs()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeClass" stereotype="class" label="aliased_some_class">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeClass">
+  <stereotype>class</stereotype>
+  <label>aliased_some_class</label>
   <text-lines>
    <text-line id="auto:0">
     <text>annotation: alias annotation</text>

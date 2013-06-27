@@ -1,6 +1,8 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test4Package/test_4_1_PackageAsContext()">
  <context id="project_java_package:org.kite9.diagram.builders" bordered="true">
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test4Package" stereotype="class" label="Test4Package">
+  <glyph id="project_java_class:org.kite9.diagram.builders.Test4Package">
+   <stereotype>class</stereotype>
+   <label>Test4Package</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>

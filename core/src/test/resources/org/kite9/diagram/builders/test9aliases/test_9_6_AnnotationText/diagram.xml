@@ -1,14 +1,22 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test9Aliases/test_9_6_AnnotationText()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeClass" stereotype="class" label="aliased_some_class">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeClass">
+  <stereotype>class</stereotype>
+  <label>aliased_some_class</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeAnnotation" stereotype="annotation" label="alias annotation">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeAnnotation">
+  <stereotype>annotation</stereotype>
+  <label>alias annotation</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeClass/rel_annotation" label="has annotation"></arrow>
- <glyph id="java_class:org.kite9.diagram.annotation.K9OnDiagram" stereotype="annotation" label="K9OnDiagram">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeClass/rel_annotation">
+  <label>has annotation</label>
+ </arrow>
+ <glyph id="java_class:org.kite9.diagram.annotation.K9OnDiagram">
+  <stereotype>annotation</stereotype>
+  <label>K9OnDiagram</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>

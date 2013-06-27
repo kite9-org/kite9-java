@@ -1,14 +1,22 @@
 <?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test1Class/test_1_5_InnerClassAsGlyph()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class" stereotype="class" label="Test1Class">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class">
+  <stereotype>class</stereotype>
+  <label>Test1Class</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass" stereotype="class" label="DummyClass">
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass">
+  <stereotype>class</stereotype>
+  <label>DummyClass</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test1Class/rel_inner class" label="has inner class"></arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass2" stereotype="class" label="DummyClass2">
+ <arrow id="project_java_class:org.kite9.diagram.builders.Test1Class/rel_inner class">
+  <label>has inner class</label>
+ </arrow>
+ <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass2">
+  <stereotype>class</stereotype>
+  <label>DummyClass2</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>

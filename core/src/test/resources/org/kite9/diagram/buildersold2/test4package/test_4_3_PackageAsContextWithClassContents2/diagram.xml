@@ -1,0 +1,13 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test4Package/test_4_3_PackageAsContextWithClassContents2()">
+ <context id="project_java_package:org.kite9.diagram.builders" bordered="true">
+  <glyph id="project_java_class:org.kite9.diagram.builders.Test4Package" stereotype="class" label="Test4Package">
+   <text-lines></text-lines>
+   <symbols></symbols>
+  </glyph>
+  <label xsi:type="text-line" id="auto:0">
+   <text>org.kite9.diagram.builders</text>
+   <symbols></symbols>
+  </label>
+ </context>
+ <allLinks></allLinks>
+</diagram>
