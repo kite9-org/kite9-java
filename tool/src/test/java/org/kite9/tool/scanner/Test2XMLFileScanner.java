@@ -14,7 +14,9 @@ public class Test2XMLFileScanner extends AbstractRunnerTest {
 	bkr.setContext(ctx);
 	BuildListener mbl = new MockXMLBuildListener(new String[] {
 		"item xmlns=\"http://www.kite9.org/schema/adl\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" name=\"look\" subjectId=\"some.test.design.item\"",
-		"<glyph id=\"project:org.kite9.diagram.builders.Test1Class\" stereotype=\"class\" label=\"Test1Class\">"
+		"<glyph id=\"project:org.kite9.diagram.builders.Test1Class\">",
+		"<stereotype>class</stereotype>",
+		"<label>Test1Class</label>"
 	});
 	bkr.setListeners(createList((mbl)));
 	bkr.process();

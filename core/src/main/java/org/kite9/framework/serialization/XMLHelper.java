@@ -45,8 +45,12 @@ import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.ConverterLookup;
 import com.thoughtworks.xstream.converters.DataHolder;
+import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.converters.basic.StringConverter;
+import com.thoughtworks.xstream.converters.javabean.JavaBeanConverter;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
+import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
 import com.thoughtworks.xstream.core.DefaultConverterLookup;
 import com.thoughtworks.xstream.core.ReferenceByIdUnmarshaller;
 import com.thoughtworks.xstream.core.TreeMarshaller;
@@ -143,9 +147,45 @@ public class XMLHelper {
 			xstream.registerConverter(new StringConverter() {
 
 				@Override
-				public boolean canConvert(Class type) {
+				public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
 					return super.canConvert(type) || type.equals(Object.class);
 				}
+				
+			});
+			
+			xstream.registerConverter(new ReflectionConverter(xstream.getMapper(), xstream.getReflectionProvider()) {
+
+				@Override
+				public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
+					return type.equals(Glyph.class) || type.equals(Arrow.class);
+				}
+			
+				@Override
+				public Object unmarshal(HierarchicalStreamReader reader,
+						UnmarshallingContext context) {
+					String attLabel = reader.getAttribute("label");
+					String attStereo = reader.getAttribute("stereotype");
+					Object out = super.unmarshal(reader, context);
+					
+					if (out instanceof Glyph) {
+						if (((Glyph) out).getLabel() == null) {
+							((Glyph) out).setLabel(attLabel);
+						}
+						
+						if (((Glyph) out).getStereotype() == null) {
+							((Glyph) out).setStereotype(attStereo);
+						}
+						
+					} else if (out instanceof Arrow) {
+						if (((Arrow) out).getLabel() == null) {
+							
+						}
+					}
+					
+					return out;
+				}
+				
+				
 				
 			});
 			xs = xstream;
