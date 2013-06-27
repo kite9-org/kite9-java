@@ -24,7 +24,6 @@ public class Arrow extends AbstractConnectedContained implements VertexOnEdge, L
 	public Arrow() {
 	}
 	
-	@XStreamAsAttribute
 	private String label;
 		
 	public String getLabel() {

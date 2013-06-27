@@ -28,10 +28,8 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 
 	private static final long serialVersionUID = -6572545083931316651L;
 	
-	@XStreamAsAttribute
 	private String stereotype;
 	
-	@XStreamAsAttribute
 	private String label;
 		
 	public String getLabel() {

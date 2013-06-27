@@ -433,6 +433,7 @@ public class XMLHelper {
 					try {
 						return super.convert(parent, type, converter);
 					} catch (ConversionException ce) {
+						System.err.println("Couldn't convert: "+type);
 						return NO_REF;
 					}
 				}

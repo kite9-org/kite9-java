@@ -35,20 +35,6 @@ public class Dimension2D extends Dimension {
 	}
 
 	@Override
-	public void setSize(Dimension arg0) {
-		this.x = arg0.getWidth();
-		this.y = arg0.getHeight();
-		setInts();
-	}
-
-	@Override
-	public void setSize(double x, double y) {
-		this.x = x;
-		this.y = y;
-		setInts();
-	}
-
-	@Override
 	public void setSize(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -150,24 +136,34 @@ public class Dimension2D extends Dimension {
 	public double y() { 
 		return y;
 	}
+	
+	// MUTATOR METHODS
 
 	public void setX(double x) {
-		this.x = x;
-		setInts();
+		setSize(x, this.y);
 	}
 
 	public void setY(double y) {
-		this.y = y;
-		setInts();
+		setSize(this.x, y);
 	}
 	
 	public void increaseY(double y) {
-		this.y += y;
-		setInts();
+		setSize(this.x, this.y + y);
 	}
 	
 	public void increaseX(double x) {
-		this.x += x;
+		setSize(this.x + x, this.y);
+	}
+	
+	@Override
+	public void setSize(Dimension arg0) {
+		setSize(arg0.getWidth(), arg0.getHeight());
+	}
+
+	@Override
+	public void setSize(double x, double y) {
+		this.x = x;
+		this.y = y;
 		setInts();
 	}
 }

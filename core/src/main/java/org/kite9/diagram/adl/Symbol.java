@@ -15,7 +15,6 @@ public class Symbol implements Serializable, CompositionalDiagramElement {
 
 	private static final long serialVersionUID = 3578883565482903409L;
 	
-	@XStreamAsAttribute
 	String text;
 	
 	public String getText() {
