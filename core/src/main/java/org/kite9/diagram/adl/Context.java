@@ -68,6 +68,7 @@ public class Context extends AbstractConnectedContainer implements StyledDiagram
 		this.container =  c;
 	}
 
+	@XStreamAsAttribute
 	String shapeName;
 	
 	public String getShapeName() {
