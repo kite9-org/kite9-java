@@ -1,11 +1,8 @@
 package org.kite9.diagram.style;
 
-import org.kite9.diagram.primitives.DiagramElement;
+public interface StyledDiagramElement {
 
-public interface StyledDiagramElement extends DiagramElement {
-
-	public String getShapeName();
+	public String getStyle();
 	
-	public void setShapeName(String name);
-	
+	public void setStyle(String s);
 }

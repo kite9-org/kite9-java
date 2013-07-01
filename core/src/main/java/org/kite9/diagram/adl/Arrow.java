@@ -7,7 +7,6 @@ import org.kite9.diagram.primitives.Leaf;
 import org.kite9.diagram.primitives.VertexOnEdge;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * This class models the black body of the arrow, which will have links 

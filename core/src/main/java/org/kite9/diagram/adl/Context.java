@@ -8,7 +8,6 @@ import org.kite9.diagram.primitives.AbstractConnectedContainer;
 import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.Label;
-import org.kite9.diagram.style.StyledDiagramElement;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
@@ -23,7 +22,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  */
 @XStreamAlias("context")
-public class Context extends AbstractConnectedContainer implements StyledDiagramElement {
+public class Context extends AbstractConnectedContainer {
 	
 	@Override
 	public String toString() {
@@ -67,17 +66,5 @@ public class Context extends AbstractConnectedContainer implements StyledDiagram
 	public void setContainer(Container c) {
 		this.container =  c;
 	}
-
-	@XStreamAsAttribute
-	String shape;
-	
-	public String getShapeName() {
-		return shape;
-	}
-
-	public void setShapeName(String name) {
-		this.shape = name;
-	}
-	
 	
 }

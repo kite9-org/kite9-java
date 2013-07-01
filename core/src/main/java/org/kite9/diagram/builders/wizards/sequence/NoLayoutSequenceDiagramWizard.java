@@ -14,6 +14,7 @@ import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.diagram.primitives.Label;
+import org.kite9.diagram.primitives.StyledText;
 import org.kite9.framework.alias.Aliaser;
 
 public class NoLayoutSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
@@ -62,7 +63,7 @@ public class NoLayoutSequenceDiagramWizard extends AbstractSequenceDiagramWizard
 				out = new TextLine(stepNoText);
 			} else if (out instanceof TextLine) {
 				TextLine tl = (TextLine) out;
-				tl.setText(stepNoText + tl.getText());
+				tl.setText(new StyledText(stepNoText + tl.getText()));
 			}
 			stepNumber++;
 			return out;

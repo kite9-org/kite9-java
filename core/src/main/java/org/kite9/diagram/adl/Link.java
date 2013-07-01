@@ -7,7 +7,6 @@ import org.kite9.diagram.primitives.Connected;
 import org.kite9.diagram.primitives.Label;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 
 /**
@@ -40,9 +39,6 @@ public class Link extends AbstractConnection {
 		super(from, to, drawDirection, fromStyle, fromLabel, toEndStyle, toLabel);
 	}
 	
-	@XStreamAsAttribute
-	private String style = null;
-
 	public String getStyle() {
 		if (style==null) {
 			// defaults to normal

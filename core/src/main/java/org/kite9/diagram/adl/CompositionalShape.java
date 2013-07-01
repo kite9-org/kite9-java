@@ -5,24 +5,21 @@ import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractIdentifiableDiagramElement;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
 import org.kite9.diagram.primitives.DiagramElement;
-import org.kite9.diagram.style.StyledDiagramElement;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 @XStreamAlias("comp-shape")
-public class CompositionalShape extends AbstractIdentifiableDiagramElement implements CompositionalDiagramElement, StyledDiagramElement {
+public class CompositionalShape extends AbstractIdentifiableDiagramElement implements CompositionalDiagramElement {
 
 	private static final long serialVersionUID = 5343674853338333434L;
 	@XStreamOmitField
 	Object parent;
-	@XStreamAsAttribute
-	String shape;
+	
 	
 	public CompositionalShape(String id, String shape) {
 		super(id);
-		this.shape = shape;
+		this.setShapeName(shape);
 	}
 	
 	public CompositionalShape(String shape) {
@@ -42,14 +39,6 @@ public class CompositionalShape extends AbstractIdentifiableDiagramElement imple
 
 	public void setParent(Object de) {
 		this.parent = de;
-	}
-
-	public String getShapeName() {
-		return this.shape;
-	}
-
-	public void setShapeName(String name) {
-		this.shape = name;
 	}
 	
 	public RenderingInformation getRenderingInformation() {

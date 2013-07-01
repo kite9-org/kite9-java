@@ -8,11 +8,10 @@ import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnectedContained;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
 import org.kite9.diagram.primitives.Leaf;
+import org.kite9.diagram.primitives.StyledText;
 import org.kite9.diagram.primitives.SymbolTarget;
-import org.kite9.diagram.style.StyledDiagramElement;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 
 /**
@@ -24,19 +23,19 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
  *
  */
 @XStreamAlias("glyph")
-public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTarget, StyledDiagramElement {
+public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTarget {
 
 	private static final long serialVersionUID = -6572545083931316651L;
 	
-	private String stereotype;
+	private StyledText stereotype;
 	
-	private String label;
+	private StyledText label;
 		
-	public String getLabel() {
+	public StyledText getLabel() {
 		return label;
 	}
 
-	public void setLabel(String name) {
+	public void setLabel(StyledText name) {
 		this.label = name;
 	}
 
@@ -70,14 +69,14 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 	
 	public Glyph(String id, String stereotype, String label,  List<TextLine> text, List<Symbol> symbols, boolean divider) {
 		super(id);
-		this.stereotype = stereotype;
+		this.stereotype = new StyledText(stereotype);
 		if (text!=null) {
 			setText(convertText(text, divider));
 		}
 		if (symbols!=null) {
 			this.symbols = symbols;
 		}
-		this.label = label;
+		this.label = new StyledText(label);
 	}
 
 	public Glyph(String id, String stereotype, String label,  List<TextLine> text, List<Symbol> symbols) {
@@ -88,11 +87,11 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 		this(createID(), sterotype, label,text, symbols);
 	}
 
-	public String getStereotype() {
+	public StyledText getStereotype() {
 		return stereotype;
 	}
 
-	public void setStereotype(String sterotype) {
+	public void setStereotype(StyledText sterotype) {
 		this.stereotype = sterotype;
 	}
 
@@ -134,17 +133,6 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 
 	public void setRenderingInformation(RenderingInformation ri) {
 		this.renderingInformation = ri;
-	}
-	
-	@XStreamAsAttribute
-	String shape;
-
-	public String getShapeName() {
-		return shape;
-	}
-
-	public void setShapeName(String name) {
-		this.shape = name;
 	}
 	
 }

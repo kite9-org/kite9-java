@@ -25,6 +25,7 @@ import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.diagram.primitives.Label;
+import org.kite9.diagram.primitives.StyledText;
 import org.kite9.diagram.primitives.SymbolTarget;
 import org.kite9.framework.common.Kite9ProcessingException;
 
@@ -226,7 +227,7 @@ public class BasicDiagramBuilder {
 				DiagramElement out = representing == null ? null : contents
 						.get(representing);
 				if (out == null) {
-					container.setText(container.getText() + text);
+					container.setText(new StyledText(container.getText() + text));
 					contents.put(representing, container);
 					return container;
 				}

@@ -6,29 +6,37 @@ import java.util.List;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractLabel;
+import org.kite9.diagram.primitives.StyledText;
 import org.kite9.diagram.primitives.SymbolTarget;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+/**
+ * TODO: rename to text-box.  This is a formatted area containing text, and could
+ * consist of several lines of text.
+ * 
+ * @author robmoffat
+ *
+ */
 @XStreamAlias("text-line")
 public class TextLine extends AbstractLabel implements SymbolTarget {
 
 	private static final long serialVersionUID = -1917135065467101779L;
 	
-	String text;
+	StyledText text;
 
-	public String getText() {
+	public StyledText getText() { 
 		return text;
 	}
 
 	List<Symbol> symbols = new ArrayList<Symbol>();
 
 	public TextLine(String id, String text) {
-		this.text = text;
+		this.text = new StyledText(text);
 	}
 	
 	public TextLine(String text) {
-		this.text = text;
+		this.text = new StyledText(text);
 	}
 	
 	public TextLine() {
@@ -64,7 +72,7 @@ public class TextLine extends AbstractLabel implements SymbolTarget {
 		return "[TL:"+text+"]";
 	}
 
-	public void setText(String text) {
+	public void setText(StyledText text) {
 	    this.text = text;
 	}
 

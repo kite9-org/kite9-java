@@ -3,11 +3,13 @@ package org.kite9.diagram.primitives;
 import java.io.Serializable;
 
 import org.kite9.diagram.position.RenderingInformation;
+import org.kite9.diagram.style.ShapedDiagramElement;
+import org.kite9.diagram.style.StyledDiagramElement;
 import org.kite9.framework.logging.LogicException;
 
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
-public abstract class AbstractIdentifiableDiagramElement implements IdentifiableDiagramElement, Serializable {
+public abstract class AbstractIdentifiableDiagramElement implements IdentifiableDiagramElement, Serializable, StyledDiagramElement, ShapedDiagramElement {
 
 	private static final long serialVersionUID = -3154895826494435557L;
 
@@ -72,5 +74,27 @@ public abstract class AbstractIdentifiableDiagramElement implements Identifiable
 
 	public static void resetCounter() {
 		counter = 0;
+	}
+	
+	@XStreamAsAttribute
+	protected String shape;
+	
+	@XStreamAsAttribute
+	protected String style;
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String s) {
+		this.style = s;
+	}
+
+	public String getShapeName() {
+		return shape;
+	}
+
+	public void setShapeName(String name) {
+		this.shape = name;
 	}
 }

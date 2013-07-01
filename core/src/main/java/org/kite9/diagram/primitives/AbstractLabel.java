@@ -56,6 +56,14 @@ public abstract class AbstractLabel extends AbstractIdentifiableDiagramElement i
 		}
 	}
 	
+	public boolean hasContent(StyledText s) {
+		if (s!=null) {
+			return hasContent(s.getText());
+		} else {
+			return false;
+		}
+	}
+	
 	public boolean hasContent(Collection<?> c) {
 		if (c!=null) {
 			return c.size() >0;

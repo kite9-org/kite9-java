@@ -6,6 +6,7 @@ import java.util.List;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractLabel;
 import org.kite9.diagram.primitives.Label;
+import org.kite9.diagram.primitives.StyledText;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
@@ -14,25 +15,25 @@ public class Key extends AbstractLabel implements Label {
 
 	private static final long serialVersionUID = 7705875104684442878L;
 
-	String boldText;
+	StyledText boldText;
 	
-	String bodyText;
+	StyledText bodyText;
 	
-	public String getBodyText() {
+	public StyledText getBodyText() {
 		return bodyText;
 	}
 
-	public void setBodyText(String bodyText) {
+	public void setBodyText(StyledText bodyText) {
 		this.bodyText = bodyText;
 	}
 
 	List<TextLine> symbols;
 	
-	public String getBoldText() {
+	public StyledText getBoldText() {
 		return boldText;
 	}
 
-	public void setBoldText(String boldText) {
+	public void setBoldText(StyledText boldText) {
 		this.boldText = boldText;
 	}
 	
@@ -54,8 +55,8 @@ public class Key extends AbstractLabel implements Label {
 	}
 
 	public Key(List<TextLine> symbols, String boldText, String bodyText) {
-		this.boldText = boldText;
-		this.bodyText = bodyText;
+		this.boldText = new StyledText(boldText);
+		this.bodyText = new StyledText(bodyText);
 		this.symbols = symbols;
 		for (TextLine textLine : symbols) {
 			textLine.setParent(this);

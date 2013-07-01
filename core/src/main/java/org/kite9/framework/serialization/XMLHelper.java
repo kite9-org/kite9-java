@@ -35,6 +35,7 @@ import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.diagram.primitives.IdentifiableDiagramElement;
+import org.kite9.diagram.primitives.StyledText;
 import org.kite9.diagram.visitors.ContainerVisitor;
 import org.kite9.framework.server.BasicWorkItem;
 import org.kite9.framework.server.WorkItem;
@@ -48,7 +49,6 @@ import com.thoughtworks.xstream.converters.DataHolder;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.converters.basic.StringConverter;
-import com.thoughtworks.xstream.converters.javabean.JavaBeanConverter;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
 import com.thoughtworks.xstream.core.DefaultConverterLookup;
@@ -153,6 +153,29 @@ public class XMLHelper {
 				
 			});
 			
+			// handle styled text correctly
+			xstream.registerConverter(new Converter() {
+
+				public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
+					return type.equals(StyledText.class);
+				}
+
+				public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
+					StyledText st = (StyledText) source;
+					if (st.getStyle() != null) {
+						writer.addAttribute("style", st.getStyle());
+					}
+					writer.setValue(st.getText());
+				}
+
+				public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+					String text = reader.getValue();
+					String style= reader.getAttribute("style");
+					return new StyledText(text, style);
+				}
+			});
+			
+			// allow labels/stereotypes to appear in attributes.
 			xstream.registerConverter(new ReflectionConverter(xstream.getMapper(), xstream.getReflectionProvider()) {
 
 				@Override
@@ -169,11 +192,11 @@ public class XMLHelper {
 					
 					if (out instanceof Glyph) {
 						if (((Glyph) out).getLabel() == null) {
-							((Glyph) out).setLabel(attLabel);
+							((Glyph) out).setLabel(new StyledText(attLabel));
 						}
 						
 						if (((Glyph) out).getStereotype() == null) {
-							((Glyph) out).setStereotype(attStereo);
+							((Glyph) out).setStereotype(new StyledText(attStereo));
 						}
 						
 					} else if (out instanceof Arrow) {
