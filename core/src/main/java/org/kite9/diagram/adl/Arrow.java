@@ -4,6 +4,7 @@ import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnectedContained;
 import org.kite9.diagram.primitives.Leaf;
+import org.kite9.diagram.primitives.StyledText;
 import org.kite9.diagram.primitives.VertexOnEdge;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -23,20 +24,20 @@ public class Arrow extends AbstractConnectedContained implements VertexOnEdge, L
 	public Arrow() {
 	}
 	
-	private String label;
+	private StyledText label;
 		
-	public String getLabel() {
+	public StyledText getLabel() {
 		return label;
 	}
 
-	public void setLabel(String name) {
+	public void setLabel(StyledText name) {
 		this.label = name;
 	}
 
 	
 	public Arrow(String id, String label) {
 		super(id);
-		this.label = label;
+		this.label = new StyledText(label);
 	}
 	
 	public Arrow(String label) {

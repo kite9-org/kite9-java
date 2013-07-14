@@ -25,19 +25,24 @@ public class FileDiff {
 	public static void areFilesSame(File a, File b) throws IOException, DiffException {
 		BufferedInputStream fisA = new BufferedInputStream(new FileInputStream(a));
 		BufferedInputStream fisB = new BufferedInputStream(new FileInputStream(b));
+		areFilesSame(a.getPath(), b.getPath(), fisA, fisB);
+	
+	}
+
+	public static void areFilesSame(String a, String b, BufferedInputStream fisA, BufferedInputStream fisB)
+			throws DiffException, IOException {
 		int outA = 0;
 		int outB = 0;
 	
 		do {
 			if (outB != outA)
-				throw new DiffException("Files are different "+a.getPath()+" and "+b.getPath());
+				throw new DiffException("Files are different "+a+" and "+b);
 			
 			outA = fisA.read();
 			outB = fisB.read();
 			
 			
 		} while ((outA != -1) && (outB != -1));
-	
 	}
 	
 	public static void filesContainSameLines(File a, File b) throws IOException, DiffException {

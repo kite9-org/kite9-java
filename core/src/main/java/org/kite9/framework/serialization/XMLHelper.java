@@ -91,7 +91,7 @@ public class XMLHelper {
 	public static final String XML_SCHEMA_NAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
 	public static final String KITE9_NAMESPACE = "http://www.kite9.org/schema/adl";
 
-	public static final Class<?>[] ADL_CLASSES = new Class[] { Arrow.class, Context.class, Diagram.class, Glyph.class,
+	public static final Class<?>[] ADL_CLASSES = new Class[] { Arrow.class, Context.class, Diagram.class, Glyph.class, StyledText.class,
 			Key.class, Link.class, TextLine.class, TextLine.class, Symbol.class, LinkEndStyle.class, CompositionalShape.class, 
 			BasicWorkItem.class, Dimension2D.class, RouteRenderingInformation.class, DiagramRenderingInformation.class, RectangleRenderingInformation.class, CostedDimension.class };
 	
@@ -169,8 +169,8 @@ public class XMLHelper {
 				}
 
 				public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-					String text = reader.getValue();
 					String style= reader.getAttribute("style");
+					String text = reader.getValue();
 					return new StyledText(text, style);
 				}
 			});
@@ -201,7 +201,7 @@ public class XMLHelper {
 						
 					} else if (out instanceof Arrow) {
 						if (((Arrow) out).getLabel() == null) {
-							
+							((Glyph) out).setLabel(new StyledText(attLabel));
 						}
 					}
 					
@@ -497,6 +497,7 @@ public class XMLHelper {
 						return super.convert(parent, type, converter);
 					} catch (ConversionException ce) {
 						System.err.println("Couldn't convert: "+type);
+						ce.printStackTrace();
 						return NO_REF;
 					}
 				}
