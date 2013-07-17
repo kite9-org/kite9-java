@@ -8,7 +8,6 @@ import org.kite9.diagram.primitives.Label;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-
 /**
  * Joins glyphs and arrows to one another. 
  * Can have text attached to the 'to' end, and decoration at the 'to' end
@@ -17,7 +16,6 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  * diagram.
  * 
  * @author robmoffat
- *
  */
 @XStreamAlias("link")
 public class Link extends AbstractConnection {
@@ -37,19 +35,6 @@ public class Link extends AbstractConnection {
 
 	public Link(Connected from, Connected to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel, Direction drawDirection) {
 		super(from, to, drawDirection, fromStyle, fromLabel, toEndStyle, toLabel);
-	}
-	
-	public String getStyle() {
-		if (style==null) {
-			// defaults to normal
-			return LinkLineStyle.NORMAL;
-		} else {
-			return style;
-		}
-	}
-
-	public void setStyle(String style) {
-		this.style = style;
 	}
 
 	Object fromDecoration;

@@ -2,6 +2,7 @@ package org.kite9.diagram.position;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 
 /**
@@ -44,6 +45,27 @@ public class RectangleRenderingInformation extends AbstractRenderingInformation 
 	Dimension2D position = new Dimension2D();
 	Dimension2D size = new Dimension2D();
 	Dimension2D internalPosition;
+	@XStreamOmitField
+	boolean multipleHorizontalLinks;
+	public boolean isMultipleHorizontalLinks() {
+		return multipleHorizontalLinks;
+	}
+
+	public void setMultipleHorizontalLinks(boolean multipleHorizontalLinks) {
+		this.multipleHorizontalLinks = multipleHorizontalLinks;
+	}
+
+	public boolean isMultipleVerticalLinks() {
+		return multipleVerticalLinks;
+	}
+
+	public void setMultipleVerticalLinks(boolean multipleVerticalLinks) {
+		this.multipleVerticalLinks = multipleVerticalLinks;
+	}
+
+	@XStreamOmitField
+	boolean multipleVerticalLinks;
+	
 	
 	public Dimension2D getInternalPosition() {
 		return internalPosition;

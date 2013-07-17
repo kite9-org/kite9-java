@@ -7,6 +7,7 @@ import org.kite9.diagram.style.ShapedDiagramElement;
 import org.kite9.diagram.style.StyledDiagramElement;
 import org.kite9.framework.logging.LogicException;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 public abstract class AbstractIdentifiableDiagramElement implements IdentifiableDiagramElement, Serializable, StyledDiagramElement, ShapedDiagramElement {
@@ -81,6 +82,18 @@ public abstract class AbstractIdentifiableDiagramElement implements Identifiable
 	
 	@XStreamAsAttribute
 	protected String style;
+
+	@XStreamAsAttribute
+	@XStreamAlias("class")
+	protected String classes;
+	
+	public String getClasses() {
+		return classes;
+	}
+
+	public void setClasses(String s) {
+		this.classes = s;
+	}
 
 	public String getStyle() {
 		return style;
