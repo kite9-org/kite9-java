@@ -201,7 +201,7 @@ public class XMLHelper {
 						
 					} else if (out instanceof Arrow) {
 						if (((Arrow) out).getLabel() == null) {
-							((Glyph) out).setLabel(new StyledText(attLabel));
+							((Arrow) out).setLabel(new StyledText(attLabel));
 						}
 					}
 					
