@@ -3,6 +3,7 @@ target/
 */*/target/*
 .project
 .classpath
-.settings/
+.settings/*
 target/*
 *.class
+*/.settings/*
