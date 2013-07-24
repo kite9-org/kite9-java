@@ -227,7 +227,8 @@ public class BasicDiagramBuilder {
 				DiagramElement out = representing == null ? null : contents
 						.get(representing);
 				if (out == null) {
-					container.setText(new StyledText(container.getText() + text));
+					StyledText st = container.getText();
+					container.setText(new StyledText(st.getText() + text, st.getStyle()));
 					contents.put(representing, container);
 					return container;
 				}

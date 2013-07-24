@@ -112,7 +112,7 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 					if ((c3 instanceof Connected) && (headerGlyphs.contains(c3))) {
 						if (last != null) {
 							Link l = new Link(last, (Connected) c3, null, null, null, null, getDirectionFor(getArrowDirection()));
-							l.setStyle(LinkLineStyle.INVISIBLE);
+							l.setShapeName(LinkLineStyle.INVISIBLE);
 						}
 						last = (Connected) c3;
 					}
@@ -194,7 +194,7 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 		DiagramElement de = ii.returnConnection(existing, extension, null, null, null, false, getDirectionFor(getGlyphLayout()));
 
 		if ((!active) && (de instanceof Link)) {
-			((Link)de).setStyle(LinkLineStyle.DOTTED);
+			((Link)de).setShapeName(LinkLineStyle.DOTTED);
 		}
 		
 		return extension;

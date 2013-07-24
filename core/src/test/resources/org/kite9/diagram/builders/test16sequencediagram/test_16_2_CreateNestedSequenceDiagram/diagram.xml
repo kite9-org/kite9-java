@@ -126,7 +126,7 @@
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()00"></to>
   </link>
-  <link id="auto:46" drawDirection="RIGHT" style="INVISIBLE">
+  <link id="auto:46" shape="INVISIBLE" drawDirection="RIGHT">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()"></to>
   </link>
@@ -152,11 +152,11 @@
    </fromLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:18" drawDirection="DOWN" style="DOTTED">
+  <link id="auto:18" shape="DOTTED" drawDirection="DOWN">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()00"></to>
   </link>
-  <link id="auto:47" drawDirection="RIGHT" style="INVISIBLE">
+  <link id="auto:47" shape="INVISIBLE" drawDirection="RIGHT">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value"></to>
   </link>
@@ -173,7 +173,7 @@
    </fromLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:29" drawDirection="DOWN" style="DOTTED">
+  <link id="auto:29" shape="DOTTED" drawDirection="DOWN">
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()10"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()20"></to>
   </link>
@@ -203,11 +203,11 @@
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()30"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()40"></to>
   </link>
-  <link id="auto:32" drawDirection="DOWN" style="DOTTED">
+  <link id="auto:32" shape="DOTTED" drawDirection="DOWN">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value00"></to>
   </link>
-  <link id="auto:48" drawDirection="RIGHT" style="INVISIBLE">
+  <link id="auto:48" shape="INVISIBLE" drawDirection="RIGHT">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set"></to>
   </link>
@@ -224,11 +224,11 @@
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()40"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()50"></to>
   </link>
-  <link id="auto:35" drawDirection="DOWN" style="DOTTED">
+  <link id="auto:35" shape="DOTTED" drawDirection="DOWN">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set00"></to>
   </link>
-  <link id="auto:49" drawDirection="RIGHT" style="INVISIBLE">
+  <link id="auto:49" shape="INVISIBLE" drawDirection="RIGHT">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()"></to>
   </link>
@@ -241,11 +241,11 @@
    </fromLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:22" drawDirection="DOWN" style="DOTTED">
+  <link id="auto:22" shape="DOTTED" drawDirection="DOWN">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()00"></to>
   </link>
-  <link id="auto:50" drawDirection="RIGHT" style="INVISIBLE">
+  <link id="auto:50" shape="INVISIBLE" drawDirection="RIGHT">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()"></to>
   </link>
@@ -266,11 +266,11 @@
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()10"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()20"></to>
   </link>
-  <link id="auto:38" drawDirection="DOWN" style="DOTTED">
+  <link id="auto:38" shape="DOTTED" drawDirection="DOWN">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()00"></to>
   </link>
-  <link id="auto:51" drawDirection="RIGHT" style="INVISIBLE">
+  <link id="auto:51" shape="INVISIBLE" drawDirection="RIGHT">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()"></from>
    <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()"></to>
   </link>
@@ -287,15 +287,15 @@
    </fromLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:26" drawDirection="DOWN" style="DOTTED">
+  <link id="auto:26" shape="DOTTED" drawDirection="DOWN">
    <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()00"></to>
   </link>
-  <link id="auto:41" drawDirection="DOWN" style="DOTTED">
+  <link id="auto:41" shape="DOTTED" drawDirection="DOWN">
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()00"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()10"></to>
   </link>
-  <link id="auto:44" drawDirection="DOWN" style="DOTTED">
+  <link id="auto:44" shape="DOTTED" drawDirection="DOWN">
    <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()10"></from>
    <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()20"></to>
   </link>

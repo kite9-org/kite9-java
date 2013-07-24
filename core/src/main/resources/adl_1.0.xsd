@@ -76,6 +76,7 @@
 		</sequence>
 		<attribute name="drawDirection" type="tns:direction" />
 		<attribute name="style" />
+		<attribute name="shape" />
 		<!-- xstream likes to add IDs to links, so this is allowed but doesn't have any use -->
 		<attribute name="id" use="optional" />
 	</complexType>

@@ -8,6 +8,8 @@
   </symbols>
  </glyph>
  <label xsi:type="key" id="auto:1">
+  <boldText></boldText>
+  <bodyText></bodyText>
   <symbols>
    <text-line id="auto:0">
     <text>extends: AbstractBuilderTest</text>

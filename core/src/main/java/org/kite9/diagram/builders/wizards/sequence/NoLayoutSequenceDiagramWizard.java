@@ -63,7 +63,8 @@ public class NoLayoutSequenceDiagramWizard extends AbstractSequenceDiagramWizard
 				out = new TextLine(stepNoText);
 			} else if (out instanceof TextLine) {
 				TextLine tl = (TextLine) out;
-				tl.setText(new StyledText(stepNoText + tl.getText()));
+				StyledText st = tl.getText();
+				tl.setText(new StyledText(stepNoText + st.getText(), st.getStyle()));
 			}
 			stepNumber++;
 			return out;

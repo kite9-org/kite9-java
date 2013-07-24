@@ -143,16 +143,6 @@ public class XMLHelper {
 				xstream.omitField(AbstractConnectedContained.class, "links");
 			}
 			
-			// this makes it so that if the type is not specified in the xml, we assume a string.
-			xstream.registerConverter(new StringConverter() {
-
-				@Override
-				public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
-					return super.canConvert(type) || type.equals(Object.class);
-				}
-				
-			});
-			
 			// handle styled text correctly
 			xstream.registerConverter(new Converter() {
 
@@ -174,6 +164,16 @@ public class XMLHelper {
 					return new StyledText(text, style);
 				}
 			});
+			
+			// this makes it so that if the type is not specified in the xml, we assume a string.
+			xstream.registerConverter(new StringConverter() {
+
+				@Override
+				public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
+					return super.canConvert(type) || type.equals(Object.class);
+				}
+				
+			}, 10);
 			
 			// allow labels/stereotypes to appear in attributes.
 			xstream.registerConverter(new ReflectionConverter(xstream.getMapper(), xstream.getReflectionProvider()) {
