@@ -22,12 +22,14 @@ public class LibraryFacade {
 	
 	@Implements(Authenticate.class)
 	public Member authenticate(int membershipId) {
-		return db.retrieveMember(membershipId);
+		//return db.retrieveMember(membershipId);
+		return null;
 	}
 	
 	@Implements(BorrowBooks.class)
 	public void borrow(int membershipId, int bookId) {
-		Member m = authenticate(membershipId);
+		//Member m = authenticate(membershipId);
+		Member m = null;
 		if (m==null) {
 			throw new LibraryException("Could not find member: "+membershipId);
 		}
