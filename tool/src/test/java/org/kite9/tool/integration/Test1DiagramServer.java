@@ -21,7 +21,7 @@ import org.kite9.tool.Main;
  * Runs a test to generate a diagram by connecting to the server.
  * 
  * @author moffatr
- *
+ * 
  */
 public class Test1DiagramServer extends AbstractRunnerTest {
 

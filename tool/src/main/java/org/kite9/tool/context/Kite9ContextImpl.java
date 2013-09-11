@@ -52,7 +52,8 @@ public class Kite9ContextImpl implements Kite9Context, Logable, InitializingBean
 		// check that the secret key and id have been set.
 		if ((secretKey==null) || (secretKey.length()==0) || (projectId<=0)) {
 			logger.error("Secret key and project ID not provided. \n"+
-					"These must be set in your kite9.properties file or in the maven plugin configuration");
+					"These must be set in your kite9.properties file or in the maven plugin configuration. \n"+ 
+					"Please go to: http://www.kite9.com/node/add/project to register a project ID.");
 			
 			
 		}

@@ -67,8 +67,8 @@ public class Test1JavadocDiagram extends AbstractRunnerTest {
 					.fileContainsLines(
 							new File(TARGET_DOCS + "/" + htmlFile),
 							"<img src=\"Test1JavadocDiagram/someDesignItem.png\" usemap=\"#someDesignItem\" border=\"0\" alt=\"Some Design Item\"/><br />",
-							"<area shape=\"rect\" coords=\"2,2,40,8\" href=\"Test1JavadocDiagram.html\" target=\"_parent\" />",
-							"<area shape=\"rect\" coords=\"42,2,88,8\" href=\"Test1JavadocDiagram.Another.html\" target=\"_parent\" />"
+							"<area shape=\"rect\" coords=\"20,20,400,80\" href=\"Test1JavadocDiagram.html\" target=\"_parent\" />",
+							"<area shape=\"rect\" coords=\"420,20,880,80\" href=\"Test1JavadocDiagram.Another.html\" target=\"_parent\" />"
 
 					);
 		} catch (DiffException e) {

@@ -68,6 +68,7 @@ public class AbstractRunnerTest extends HelpMethods {
 		StreamGobbler outputGobbler = null;
 
 		try {
+			System.out.println("CMD: "+cmd);
 			Runtime rt = Runtime.getRuntime();
 			Process proc = rt.exec(cmd);
 
@@ -87,12 +88,20 @@ public class AbstractRunnerTest extends HelpMethods {
 			return exitVal;
 		} catch (Throwable t) {
 			return -1;
+		} finally {
+			if (outputGobbler != null)
+				System.out.print(outputGobbler.created.toString());
+			if (errorGobbler != null)
+				System.err.print(errorGobbler.created.toString());
 		}
 	}
 
 	public void generateJavadocs() throws Exception {
-		String cp = System.getProperty("java.class.path");
+		String cp = "\""+System.getProperty("java.class.path") + "\"";
 		String home = System.getProperty("java.home");
+		
+		// hack for spaces in cp-prevents error rather than fixing issue
+		cp = cp.replace(' ', '_');
 
 		String[] javadocargs = { "-d", TARGET_DOCS, "-classpath", cp, "-sourcepath", ("src/test/java"),
 				this.getClass().getPackage().getName() };
@@ -122,8 +131,8 @@ public class AbstractRunnerTest extends HelpMethods {
 		Repository<File> r = new BasicFileRepository();
 		Kite9ContextImpl out = new Kite9ContextImpl(a, r);
 		out.setClassPath("target/classes" + File.pathSeparator + "target/test-classes");
-		out.setProjectId(35);
-		out.setSecretKey("PFB9T1V97AK96WFK");
+//		out.setProjectId(35);
+//		out.setSecretKey("PFB9T1V97AK96WFK");
 		out.afterPropertiesSet();
 		return out;
 	}
