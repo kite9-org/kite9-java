@@ -147,7 +147,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.0-beta-3</version>
+				<version>3.3</version>
 				<inherited>true</inherited>
 			</plugin>
 
@@ -167,7 +167,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>2.2</version>
+					<version>3.3</version>
 					<configuration>
 						<siteDirectory>${project.parent.basedir}/src/site</siteDirectory>
 					</configuration>
