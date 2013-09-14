@@ -157,6 +157,13 @@
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.3</version>
 				<inherited>true</inherited>
+				<dependencies>
+            				<dependency><!-- add support for ssh/scp -->
+           	   				<groupId>org.apache.maven.wagon</groupId>
+              					<artifactId>wagon-ssh</artifactId>
+              					<version>1.0</version>
+            				</dependency>
+          			</dependencies>
 			</plugin>
 
 			<plugin>
