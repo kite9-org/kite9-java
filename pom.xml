@@ -16,7 +16,7 @@
 	<modules>
 		<module>core</module>
 		<module>tool</module>
-		<!--module>all</module-->
+		<module>all</module>
 		<module>maven-plugin</module>
 		<module>tutorials/HelloWorld</module>
 		<module>tutorials/MavenHelloWorld</module>
