@@ -58,6 +58,7 @@
 	 <distributionManagement>
     		<site>
       			<id>kite9.website</id>
+			<url>scp://deploy@server.kite9.org/var/www/server.kite9.org/site</url>
     		</site>
   	</distributionManagement>
 
