@@ -59,7 +59,7 @@
     		<site>
       			<id>kite9.website</id>
       			<name>Kite9 Website</name>
-      			<url>scp://server.kite9.org/kite9_dist</url>
+      			<url>scp://deploy@server.kite9.org/kite9_dist</url>
     		</site>
   	</distributionManagement>
 
