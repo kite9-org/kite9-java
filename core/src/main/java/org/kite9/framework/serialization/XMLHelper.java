@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -34,6 +35,7 @@ import org.kite9.diagram.primitives.Connection;
 import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
+import org.kite9.diagram.primitives.HintMap;
 import org.kite9.diagram.primitives.IdentifiableDiagramElement;
 import org.kite9.diagram.primitives.StyledText;
 import org.kite9.diagram.visitors.ContainerVisitor;
@@ -91,42 +93,43 @@ public class XMLHelper {
 	public static final String XML_SCHEMA_NAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
 	public static final String KITE9_NAMESPACE = "http://www.kite9.org/schema/adl";
 
-	public static final Class<?>[] ADL_CLASSES = new Class[] { Arrow.class, Context.class, Diagram.class, Glyph.class, StyledText.class,
-			Key.class, Link.class, TextLine.class, TextLine.class, Symbol.class, LinkEndStyle.class, CompositionalShape.class, 
-			BasicWorkItem.class, Dimension2D.class, RouteRenderingInformation.class, DiagramRenderingInformation.class, RectangleRenderingInformation.class, CostedDimension.class };
-	
+	public static final Class<?>[] ADL_CLASSES = new Class[] { Arrow.class, Context.class, Diagram.class, Glyph.class,
+			StyledText.class, Key.class, Link.class, TextLine.class, TextLine.class, Symbol.class, LinkEndStyle.class,
+			CompositionalShape.class, BasicWorkItem.class, Dimension2D.class, RouteRenderingInformation.class,
+			DiagramRenderingInformation.class, RectangleRenderingInformation.class, CostedDimension.class };
+
 	static class Field {
-		
+
 		private Class<?> c;
 		private String f;
-		
+
 		public Field(Class<?> c, String f) {
 			super();
 			this.c = c;
 			this.f = f;
 		}
-		
+
 	}
-	
-	public static final Field[] OMISSIONS = new Field[] { new Field(Dimension.class, "width"), new Field(Dimension.class, "height") };
-	
+
+	public static final Field[] OMISSIONS = new Field[] { new Field(Dimension.class, "width"),
+			new Field(Dimension.class, "height") };
 
 	private boolean simplifyingXML = true;
 
 	/**
-	 * When this is set, we serialize all of the link elements as part of the Diagram element.
-	 * This makes the containment structure of the ADL elements much easier to see.
+	 * When this is set, we serialize all of the link elements as part of the
+	 * Diagram element. This makes the containment structure of the ADL elements
+	 * much easier to see.
+	 * 
 	 * @return
 	 */
 	public boolean isSimplifyingXML() {
 		return simplifyingXML;
 	}
 
-
 	public void setSimplifyingXML(boolean simplifyingXML) {
 		this.simplifyingXML = simplifyingXML;
 	}
-
 
 	public XMLHelper() {
 	}
@@ -142,7 +145,7 @@ public class XMLHelper {
 			if (isSimplifyingXML()) {
 				xstream.omitField(AbstractConnectedContained.class, "links");
 			}
-			
+
 			// handle styled text correctly
 			xstream.registerConverter(new Converter() {
 
@@ -159,22 +162,55 @@ public class XMLHelper {
 				}
 
 				public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-					String style= reader.getAttribute("style");
+					String style = reader.getAttribute("style");
 					String text = reader.getValue();
 					return new StyledText(text, style);
 				}
 			});
-			
-			// this makes it so that if the type is not specified in the xml, we assume a string.
+
+			// this makes it so that if the type is not specified in the xml, we
+			// assume a string.
 			xstream.registerConverter(new StringConverter() {
 
 				@Override
 				public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
 					return super.canConvert(type) || type.equals(Object.class);
 				}
-				
+
 			}, 10);
-			
+
+			// this compacts the representation of a hint map, which is
+			// otherwise excessive
+			xstream.registerConverter(new Converter() {
+
+				public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
+					HintMap map = (HintMap) source;
+					for (Iterator<Entry<String, Float>> iterator = map.entrySet().iterator(); iterator.hasNext();) {
+						Entry<String, Float> entry = iterator.next();
+						writer.addAttribute(entry.getKey().toString(), entry.getValue().toString());
+					}
+				}
+
+				@SuppressWarnings("unchecked")
+				public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+					HintMap properties = new HintMap();
+					for (Iterator iterator = reader.getAttributeNames(); iterator.hasNext();) {
+						String n = (String) iterator.next();
+						String v = reader.getAttribute(n);
+						Float f = Float.parseFloat(v);
+						properties.put(n, f);
+					}
+
+					return properties;
+				}
+				
+				@SuppressWarnings("unchecked") 
+				public boolean canConvert(Class type) {
+					return type == HintMap.class;
+				}
+
+			});
+
 			// allow labels/stereotypes to appear in attributes.
 			xstream.registerConverter(new ReflectionConverter(xstream.getMapper(), xstream.getReflectionProvider()) {
 
@@ -182,38 +218,35 @@ public class XMLHelper {
 				public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
 					return type.equals(Glyph.class) || type.equals(Arrow.class);
 				}
-			
+
 				@Override
-				public Object unmarshal(HierarchicalStreamReader reader,
-						UnmarshallingContext context) {
+				public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 					String attLabel = reader.getAttribute("label");
 					String attStereo = reader.getAttribute("stereotype");
 					Object out = super.unmarshal(reader, context);
-					
+
 					if (out instanceof Glyph) {
 						if (((Glyph) out).getLabel() == null) {
 							((Glyph) out).setLabel(new StyledText(attLabel));
 						}
-						
+
 						if (((Glyph) out).getStereotype() == null) {
 							((Glyph) out).setStereotype(new StyledText(attStereo));
 						}
-						
+
 					} else if (out instanceof Arrow) {
 						if (((Arrow) out).getLabel() == null) {
 							((Arrow) out).setLabel(new StyledText(attLabel));
 						}
 					}
-					
+
 					return out;
 				}
-				
-				
-				
+
 			});
 			xs = xstream;
 		}
-		
+
 		return xs;
 	}
 
@@ -222,7 +255,6 @@ public class XMLHelper {
 			xstream.omitField(OMISSIONS[i].c, OMISSIONS[i].f);
 		}
 	}
-
 
 	public String toXML(Diagram d) {
 		XStream xstream = buildXStream();
@@ -233,11 +265,10 @@ public class XMLHelper {
 	public String toXML(WorkItem item) {
 		XStream xstream = buildXStream();
 		handlePreProcessing(item.getDesignItem());
-		
+
 		return xstream.toXML(item);
 	}
-	
-	
+
 	public Object fromXML(String s) {
 		Object out = buildXStream().fromXML(s);
 		handlePostProcessing(out);
@@ -249,34 +280,34 @@ public class XMLHelper {
 		handlePostProcessing(out);
 		return out;
 	}
-	
+
 	private void preProcess(final Diagram d) {
 		d.getAllLinks().clear();
-		
+
 		if (isSimplifyingXML()) {
-		
+
 			new ContainerVisitor() {
-				
+
 				@Override
 				protected void containerStart(Container c) {
 				}
-				
+
 				@Override
 				protected void containerEnd(Container c) {
 				}
-				
+
 				@Override
 				protected void contained(Contained c) {
 					if (c instanceof Connected) {
-						d.getAllLinks().addAll(((Connected)c).getLinks());
+						d.getAllLinks().addAll(((Connected) c).getLinks());
 					}
 				}
-	
+
 			}.visit(d);
-		
+
 		}
 	}
-	
+
 	protected void handlePreProcessing(Object in) {
 		if (in instanceof WorkItem) {
 			if (((WorkItem) in).getDesignItem() instanceof Diagram) {
@@ -286,7 +317,6 @@ public class XMLHelper {
 			preProcess((Diagram) in);
 		}
 	}
-
 
 	protected void handlePostProcessing(Object out) {
 		if (out instanceof WorkItem) {
@@ -314,7 +344,7 @@ public class XMLHelper {
 				}
 			}
 		}
-		
+
 		if (diag instanceof Contained) {
 			((Contained) diag).setContainer((Container) parent);
 		}
@@ -340,9 +370,9 @@ public class XMLHelper {
 			postProcess(il.getFromLabel(), il);
 			postProcess(il.getToLabel(), il);
 		}
-		
+
 		if (diag instanceof Glyph) {
-			for (CompositionalDiagramElement c : ((Glyph)diag).getText()) {
+			for (CompositionalDiagramElement c : ((Glyph) diag).getText()) {
 				postProcess(c, diag);
 			}
 		}
@@ -475,34 +505,35 @@ public class XMLHelper {
 	}
 
 	private static final Connected NO_REF = new AbstractConnectedContained() {
-		
+
+		private static final long serialVersionUID = -8145997830419925869L;
+
 		public void setRenderingInformation(RenderingInformation ri) {
 		}
-		
+
 		public RenderingInformation getRenderingInformation() {
 			return null;
 		}
 	};
-	
+
 	protected class IDSuppliedMarshallingStrategy implements MarshallingStrategy {
 
 		public Object unmarshal(Object root, HierarchicalStreamReader reader, DataHolder dataHolder,
 				ConverterLookup converterLookup, Mapper mapper) {
 			return new ReferenceByIdUnmarshaller(root, reader, converterLookup, mapper) {
 
+				@SuppressWarnings("unchecked")
 				@Override
-				protected Object convert(Object parent, Class type,
-						Converter converter) {
+				protected Object convert(Object parent, Class type, Converter converter) {
 					try {
 						return super.convert(parent, type, converter);
 					} catch (ConversionException ce) {
-						System.err.println("Couldn't convert: "+type);
+						System.err.println("Couldn't convert: " + type);
 						ce.printStackTrace();
 						return NO_REF;
 					}
 				}
 
-				
 			}.start(dataHolder);
 		}
 
@@ -569,7 +600,7 @@ public class XMLHelper {
 					String newReferenceKey = null;
 					boolean fire = false;
 					if (item instanceof IdentifiableDiagramElement) {
-						newReferenceKey = ensureUniqueness((IdentifiableDiagramElement)item);
+						newReferenceKey = ensureUniqueness((IdentifiableDiagramElement) item);
 					} else {
 						newReferenceKey = makeUnique("" + nextIntId++);
 						fire = true;
@@ -582,7 +613,7 @@ public class XMLHelper {
 						lastPath = currentPath;
 						if (usedIDs.contains(newReferenceKey)) {
 							throw new ConversionException("ID is used by more than one diagram element: "
-									+ newReferenceKey+" for "+item);
+									+ newReferenceKey + " for " + item);
 						}
 
 						usedIDs.add(newReferenceKey);
@@ -606,11 +637,11 @@ public class XMLHelper {
 		private String makeUnique(String id) {
 			String suffix = "";
 			int i = 1;
-			while (usedIDs.contains(id+suffix)) {
-				suffix = "."+i++;
+			while (usedIDs.contains(id + suffix)) {
+				suffix = "." + i++;
 			}
-			
-			return id+suffix;
+
+			return id + suffix;
 		}
 
 		protected void fireValidReference(Object referenceKey) {

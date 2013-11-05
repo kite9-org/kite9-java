@@ -8,4 +8,8 @@ public interface PositionableDiagramElement extends DiagramElement {
 	public RenderingInformation getRenderingInformation();
 	
 	public void setRenderingInformation(RenderingInformation ri);
+	
+	public HintMap getPositioningHints();
+	
+	public void setPositioningHints(HintMap hints);
 }

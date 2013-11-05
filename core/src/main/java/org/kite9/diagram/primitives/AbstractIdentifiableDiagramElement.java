@@ -110,4 +110,17 @@ public abstract class AbstractIdentifiableDiagramElement implements Identifiable
 	public void setShapeName(String name) {
 		this.shape = name;
 	}
+	
+	protected HintMap hints;
+
+
+	public HintMap getPositioningHints() {
+		return hints;
+	}
+
+	public void setPositioningHints(HintMap hints) {
+		this.hints = hints;
+	}
+	
+	
 }

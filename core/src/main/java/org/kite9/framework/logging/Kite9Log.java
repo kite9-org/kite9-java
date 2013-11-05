@@ -85,13 +85,21 @@ public class Kite9Log {
 			Collections.sort(keyList, new Comparator<Object>() {
 
 				public int compare(Object o1, Object o2) {
-					return o1.toString().compareTo(o2.toString());
+					if (o1 == null) {
+						return -1; 
+					} else if (o2 == null) {
+						return 1;
+					} else {
+						return o1.toString().compareTo(o2.toString());
+					}
 				}
 				
 			});
 
 			for (Object object : keyList) {
-				t.addRow(new Object[] { "\t", object.toString(), items.get(object).toString() });
+				if (object != null) {
+					t.addRow(new Object[] { "\t", object.toString(), items.get(object).toString() });
+				}
 			}
 
 			StringBuffer sb = new StringBuffer();
