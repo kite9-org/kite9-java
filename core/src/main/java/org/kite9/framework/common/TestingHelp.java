@@ -93,7 +93,7 @@ public class TestingHelp {
 		return f3;
 	}
 	
-	public static void moveToError(Class<?> theTest, String subtest) {
+	public static void moveToError(Class<?> theTest, String subtest, boolean emptyIt) {
 		String directory = getFullFileName(theTest, subtest);
 		File f = new File(TARGET_DIR);
 		File f2 = new File(f, directory);
@@ -102,7 +102,10 @@ public class TestingHelp {
 		File d2 = new File(d, directory);
 		d2.mkdirs();
 		d2.delete();
-		copyDirectory(f2, d2);
+		
+		if (!emptyIt) {
+			copyDirectory(f2, d2);
+		}
 	}
 
 	public static void writeOutput(Class<?> theTest, String subtest, String item, String contents) {

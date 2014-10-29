@@ -5,8 +5,8 @@ import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -334,11 +334,15 @@ public class XMLHelper {
 	 */
 	private void postProcess(DiagramElement diag, DiagramElement parent) {
 		if (diag instanceof Diagram) {
+			int rank = 0;
 			for (Iterator<Connection> iterator = ((Diagram) diag).getAllLinks().iterator(); iterator.hasNext();) {
 				Connection l = (Connection) iterator.next();
 				if ((l.getFrom() != NO_REF) && (l.getTo() != NO_REF)) {
 					l.getFrom().getLinks().add(l);
 					l.getTo().getLinks().add(l);
+					if (l instanceof Link) {
+						((Link) l).setRank(rank++);
+					}
 				} else {
 					iterator.remove();
 				}

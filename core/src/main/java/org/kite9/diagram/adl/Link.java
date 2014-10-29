@@ -7,6 +7,7 @@ import org.kite9.diagram.primitives.Connected;
 import org.kite9.diagram.primitives.Label;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
  * Joins glyphs and arrows to one another. 
@@ -64,5 +65,20 @@ public class Link extends AbstractConnection {
 	public void setRenderingInformation(RenderingInformation ri) {
 		this.renderingInformation = ri;
 	}
+	
+	/**
+	 * Contains the ordering of the field within the diagram allLinks() list.
+	 */
+	@XStreamOmitField
+	int rank;
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+	
 	
 }
