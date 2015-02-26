@@ -85,11 +85,11 @@ public abstract class AbstractJavadocModifyingListener extends AbstractContextua
 	}
 
 	protected String classDocPattern() {
-		return "<!-- ======== START OF CLASS DATA ======== -->.*?<HR>.*?</PRE>";
+		return "<!-- ======== START OF CLASS DATA ======== -->.*?<(HR|hr)>.*?</(pre|PRE)>";
 	}
 
 	protected String methodDocPattern() {
-		return "<A NAME=\"([a-zA-Z_0-9]*?)\\(.*?\\)\">.*?<PRE>.*?</PRE>";
+		return "<(A|a) (NAME|name)=\"([a-zA-Z_0-9]*?)\\(.*?\\)\">.*?<(pre|PRE)>.*?</(pre|PRE)>";
 	}
 
 	protected void processClass(Class<?> cl, Set<WorkItem> mods) throws IOException {
@@ -144,7 +144,7 @@ public abstract class AbstractJavadocModifyingListener extends AbstractContextua
 				int at = m.end();
 				String toInsert = input.substring(cursor, at);
 				os.write(toInsert);
-				processMethodLevelDoc(cl, r.getFile(), m.group(1), os, mods);
+				processMethodLevelDoc(cl, r.getFile(), m.group(3), os, mods);
 				cursor = at;
 				found = m.find(cursor);
 			}
