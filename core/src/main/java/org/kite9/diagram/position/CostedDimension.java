@@ -18,33 +18,6 @@ public class CostedDimension extends Dimension2D implements Comparable<CostedDim
 	public static final CostedDimension ZERO = new CostedDimension(0,0,0) {
 
 		private static final long serialVersionUID = -5465011727879693143L;
-
-		@Override
-		public void increaseX(double x) {
-			super.increaseX(x);
-		}
-
-		@Override
-		public void increaseY(double y) {
-			super.increaseY(y);
-		}
-
-		@Override
-		public void setX(double x) {
-			super.setX(x);
-		}
-
-		@Override
-		public void setY(double y) {
-			super.setY(y);
-		}
-
-		@Override
-		public void setSize(java.awt.geom.Dimension2D arg0) {
-			super.setSize(arg0);
-		}
-		
-		
 		
 	};
 	
@@ -75,8 +48,8 @@ public class CostedDimension extends Dimension2D implements Comparable<CostedDim
 	public CostedDimension(double width, double height, Dimension2D within) {
 		super(width, height);
 		if (within != null) {
-		double extraHeight = Math.max(height - within.height, 0);
-		double extraWidth = Math.max(width - within.width, 0);
+		double extraHeight = Math.max(height - within.getHeight(), 0);
+		double extraWidth = Math.max(width - within.getWidth(), 0);
 		
 		cost = (long)( (extraHeight * width) + (extraWidth * height) +  (extraHeight * extraWidth));
 		}
@@ -103,15 +76,15 @@ public class CostedDimension extends Dimension2D implements Comparable<CostedDim
 				return b;
 			}
 			
-			if (a.height< b.height) {
+			if (a.getHeight()< b.getHeight()) {
 				return a;
-			} else if (a.height > b.height) {
+			} else if (a.getHeight() > b.getHeight()) {
 				return b;
 			}
 		
-			if (a.width< b.width) {
+			if (a.getWidth()< b.getWidth()) {
 				return a;
-			} else if (a.width > b.width) {
+			} else if (a.getWidth() > b.getWidth()) {
 				return b;
 			}
 	

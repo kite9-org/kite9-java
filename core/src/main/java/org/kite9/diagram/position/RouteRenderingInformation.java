@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 
 /**
@@ -40,14 +39,12 @@ public class RouteRenderingInformation extends  AbstractRenderingInformation imp
 
 	private static final long serialVersionUID = 1958606211421399887L;
 
-	@XStreamOmitField
 	private List<Dimension2D> positions = new ArrayList<Dimension2D>();
 	
 	public List<Dimension2D> getPositions() {
 		return positions;
 	}
 
-	@XStreamOmitField
 	private List<Boolean> hops = new ArrayList<Boolean>();
 	
 	public List<Boolean> getHops() {

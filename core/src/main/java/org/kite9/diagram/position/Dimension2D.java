@@ -1,44 +1,36 @@
 package org.kite9.diagram.position;
 
-import java.awt.Dimension;
+import java.io.Serializable;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
- * This extends and is compatible with the awt dimension class, which is used for a
+ * This is compatible with the awt dimension class, which is used for a
  * lot of rendering.  
  * This has double precision though and has internal scaling operations, as well
  * as actions to allow you to apply operations to a specific direction.
+ * 
+ * Immutable
  * 
  * @author robmoffat
  *
  */
 @XStreamAlias("d")
-public class Dimension2D extends Dimension {
+public class Dimension2D implements Serializable {
 
 	private static final long serialVersionUID = -2042867297107289469L;
 
-	@Override
 	public double getHeight() {
 		return y;
 	}
 
-	@Override
-	public Dimension getSize() {
+	public Dimension2D getSize() {
 		return this;
 	}
 
-	@Override
 	public double getWidth() {
 		return x;
-	}
-
-	@Override
-	public void setSize(int x, int y) {
-		this.x = x;
-		this.y = y;
-		setInts();
 	}
 
 	@XStreamAsAttribute
@@ -62,24 +54,16 @@ public class Dimension2D extends Dimension {
 	public Dimension2D(double x, double y) {
 		this.x = x;
 		this.y = y;
-		setInts();
 	}
 	
 	public Dimension2D(Dimension2D clone) {
 		this(clone.x, clone.y);
-		setInts();
-	}
-	
-	private void setInts() {
-		this.width = (int) x;
-		this.height = (int) y;
 	}
 
 	public Dimension2D divide(Dimension2D by) {
 		Dimension2D d2 = new Dimension2D();
 		d2.x = x / by.x;
 		d2.y = y / by.y;
-		d2.setInts();
 		return d2;
 	}
 	
@@ -87,7 +71,6 @@ public class Dimension2D extends Dimension {
 		Dimension2D d2 = new Dimension2D();
 		d2.x = x * by.x;
 		d2.y = y * by.y;
-		d2.setInts();
 		return d2;
 	}
 	
@@ -95,7 +78,6 @@ public class Dimension2D extends Dimension {
 		Dimension2D d2 = new Dimension2D();
 		d2.x = x * by;
 		d2.y = y * by;
-		d2.setInts();
 		return d2;
 	}
 	
@@ -104,7 +86,6 @@ public class Dimension2D extends Dimension {
 		Dimension2D d2 = new Dimension2D();
 		d2.x = Math.ceil(x / factor.x) * factor.x;
 		d2.y = Math.ceil(y / factor.y) * factor.y;
-		d2.setInts();
 		return d2;
 	}
 	
@@ -117,7 +98,6 @@ public class Dimension2D extends Dimension {
 		Dimension2D d2 = new Dimension2D();
 		d2.x = x + by.x;
 		d2.y = y + by.y;
-		d2.setInts();
 		return d2;
 	}
 	
@@ -125,7 +105,6 @@ public class Dimension2D extends Dimension {
 		Dimension2D d2 = new Dimension2D();
 		d2.x = x - by.x;
 		d2.y = y - by.y;
-		d2.setInts();
 		return d2;
 	}
 	
@@ -137,33 +116,11 @@ public class Dimension2D extends Dimension {
 		return y;
 	}
 	
-	// MUTATOR METHODS
-
-	public void setX(double x) {
-		setSize(x, this.y);
+	public Dimension2D setX(double x) {
+		return new Dimension2D(x, this.y);
 	}
 
-	public void setY(double y) {
-		setSize(this.x, y);
-	}
-	
-	public void increaseY(double y) {
-		setSize(this.x, this.y + y);
-	}
-	
-	public void increaseX(double x) {
-		setSize(this.x + x, this.y);
-	}
-	
-	@Override
-	public void setSize(Dimension arg0) {
-		setSize(arg0.getWidth(), arg0.getHeight());
-	}
-
-	@Override
-	public void setSize(double x, double y) {
-		this.x = x;
-		this.y = y;
-		setInts();
+	public Dimension2D setY(double y) {
+		return new Dimension2D(this.x, y);
 	}
 }
