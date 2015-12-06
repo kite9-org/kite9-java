@@ -85,11 +85,11 @@ public abstract class AbstractJavadocModifyingListener extends AbstractContextua
 	}
 
 	protected String classDocPattern() {
-		return "<!-- ======== START OF CLASS DATA ======== -->.*?<(HR|hr)>.*?</(pre|PRE)>";
+		return "<!-- ======== START OF CLASS DATA ======== -->.*?</(pre|PRE)>";
 	}
 
 	protected String methodDocPattern() {
-		return "<(A|a) (NAME|name)=\"([a-zA-Z_0-9]*?)\\(.*?\\)\">.*?<(pre|PRE)>.*?</(pre|PRE)>";
+		return "<(pre|PRE)>(.*?)</(pre|PRE)>";
 	}
 
 	protected void processClass(Class<?> cl, Set<WorkItem> mods) throws IOException {
@@ -144,7 +144,7 @@ public abstract class AbstractJavadocModifyingListener extends AbstractContextua
 				int at = m.end();
 				String toInsert = input.substring(cursor, at);
 				os.write(toInsert);
-				processMethodLevelDoc(cl, r.getFile(), m.group(3), os, mods);
+				processMethodLevelDoc(cl, r.getFile(), m.group(2), os, mods);
 				cursor = at;
 				found = m.find(cursor);
 			}
@@ -159,6 +159,16 @@ public abstract class AbstractJavadocModifyingListener extends AbstractContextua
 			}
 		}
 	}
+
+	protected String removeTrailingDashes(Matcher m) {
+		String g = m.group(3);
+		int dash = g.indexOf("-");
+		if(dash != -1) {
+			return g.substring(0, dash);
+		} else {
+			return g;
+		}
+	} 
 
 	/**
 	 * Override this to include any of your own processing for the class-heading

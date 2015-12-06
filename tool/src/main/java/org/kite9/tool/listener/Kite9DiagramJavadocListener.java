@@ -176,7 +176,7 @@ public class Kite9DiagramJavadocListener extends AbstractJavadocModifyingListene
 		for (WorkItem workItem : mods2) {
 			if (workItem.getDesignItem() instanceof Diagram) {
 				if (workItem.getSubjectId().equals(cl.getName())) {
-					if (workItem.getName().equals(method)) {
+					if (method.contains(workItem.getName()+"()")) {
 						inlineDiagram(cl, htmlResource, os, workItem);
 					}
 				}

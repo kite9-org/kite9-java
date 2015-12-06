@@ -165,7 +165,7 @@ public class AbstractRunnerTest extends HelpMethods {
 	}
 
 	
-	protected ServerCallingBuildListener createServerCallingListener() {
+	protected ServerCallingBuildListener createMockServerCallingListener() {
 		ServerCallingBuildListener scbl = new ServerCallingBuildListener();
 		scbl.setContext(ctx);
 		scbl.setServer(new AbstractLocalServer() {

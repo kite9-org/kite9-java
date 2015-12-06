@@ -33,8 +33,6 @@ public class Test1JavadocDiagram extends AbstractRunnerTest {
 
 	/**
 	 * Here is some bobbins related to the design item
-	 * 
-	 * @return
 	 */
 	@Kite9Item
 	public Diagram someDesignItem() {
@@ -56,7 +54,7 @@ public class Test1JavadocDiagram extends AbstractRunnerTest {
 		Kite9DiagramJavadocListener mbl = new Kite9DiagramJavadocListener();
 		mbl.setContext(ctx);
 		mbl.setDocRoot(TARGET_DOCS);
-		ServerCallingBuildListener scbl = createServerCallingListener();
+		ServerCallingBuildListener scbl = createMockServerCallingListener();
 		bkr.setListeners(createList((BuildListener) mbl, scbl));
 		bkr.process();
 

@@ -40,19 +40,6 @@ public class Test2JavadocModifier extends AbstractRunnerTest {
 		mbl.setDocRoot(TARGET_DOCS);
 		bkr.setListeners(createList((BuildListener) mbl));
 		bkr.process();
-		
-		String htmlFile = this.getClass().getName().replace(".", "/")+".html";
-		
-		String className = this.getClass().getCanonicalName();
-		
-		FileDiff.fileContainsLines(new File(TARGET_DOCS+"/"+htmlFile),
-			"<h2>Modifying: "+className+"</h2>",
-			"Modifying: "+className+": method : someDesignItem",
-			"Modifying: "+className+": method : test_2_1_JavadocModification"
-
-
-		
-		);
 	}
 
 	
