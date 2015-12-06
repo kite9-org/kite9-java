@@ -53,7 +53,7 @@ public abstract class AbstractLocalServer implements ItemServer {
 	 * Call this method for each item to add to the zip stream.
 	 */
 	public void beginZipEntry(WorkItem workItem, String fileExtension, ZipOutputStream zos) throws IOException {
-		ZipEntry ze = new ZipEntry(workItem.getSubjectId() + "/" + workItem.getName() + "." + fileExtension);
+		ZipEntry ze = new ZipEntry(fileExtension);
 		zos.putNextEntry(ze);
 	}
 }

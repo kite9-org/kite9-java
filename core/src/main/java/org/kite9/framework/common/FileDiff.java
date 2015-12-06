@@ -129,18 +129,20 @@ public class FileDiff {
 	
 	
 	public static void fileContainsLines(BufferedReader rA, String fn, String... lines) throws IOException, DiffException {
-		Set<String> aLines = new HashSet<String>();
+		StringBuilder aContent = new StringBuilder(10000);
 		
 		String line1 = rA.readLine();
 		while (line1!=null) {
-			aLines.add(line1.trim());
+			aContent.append(line1);
+			aContent.append("\n");
 			line1 = rA.readLine();
 		}
 		
-	
+		String a = aContent.toString();
+		
 		// check lines are present
 		for (String string : lines) {
-			boolean found = aLines.contains(string.trim());
+			boolean found = a.contains(string.trim());
 			
 			if (!found) {
 				throw new DiffException("Not in "+fn+":"+string);

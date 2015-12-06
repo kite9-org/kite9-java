@@ -191,7 +191,7 @@ public class XMLHelper {
 					}
 				}
 
-				@SuppressWarnings("unchecked")
+				@SuppressWarnings("rawtypes")
 				public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 					HintMap properties = new HintMap();
 					for (Iterator iterator = reader.getAttributeNames(); iterator.hasNext();) {
@@ -204,7 +204,7 @@ public class XMLHelper {
 					return properties;
 				}
 				
-				@SuppressWarnings("unchecked") 
+				@SuppressWarnings("rawtypes") 
 				public boolean canConvert(Class type) {
 					return type == HintMap.class;
 				}
@@ -526,7 +526,7 @@ public class XMLHelper {
 				ConverterLookup converterLookup, Mapper mapper) {
 			return new ReferenceByIdUnmarshaller(root, reader, converterLookup, mapper) {
 
-				@SuppressWarnings("unchecked")
+				@SuppressWarnings("rawtypes")
 				@Override
 				protected Object convert(Object parent, Class type, Converter converter) {
 					try {
