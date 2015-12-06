@@ -15,7 +15,7 @@ public class Test2SerializeWorkItems extends HelpMethods {
 	public void quickSerializeTest() {
 		KeyHelper kh = new KeyHelper();
 		Diagram d1 = Test1SerializeDiagram.createDiagram(kh);
-		WorkItem w1 = new BasicWorkItem(d1, "hello", "diagram.png", -1, "x");
+		WorkItem w1 = new BasicWorkItem(d1, "hello", "diagram.png", "x", "x", "PNG");
 		
 		
 		XMLHelper helper = new XMLHelper();

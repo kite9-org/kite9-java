@@ -1,6 +1,8 @@
 package org.kite9.framework.server;
 
 /**
+ * Details of a single diagram request for the diagram server.
+ * 
  * @author moffatr
  *
  */
@@ -12,8 +14,13 @@ public interface WorkItem {
     
     public Object getDesignItem();
     
-    public int getProjectId();
+    public String getProjectSecretKey();
     
-    public String getSecretKey();
+    public String getUserSecretKey();
+    
+    /**
+     * Comma-separated list of formats to return
+     */
+    public String getFormats();
     
 }
