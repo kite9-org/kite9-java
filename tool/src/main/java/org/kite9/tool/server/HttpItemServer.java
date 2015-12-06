@@ -6,11 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.zip.ZipInputStream;
 
+import org.kite9.diagram.adl.Diagram;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.kite9.framework.common.RepositoryHelp;
 import org.kite9.framework.serialization.XMLHelper;
@@ -51,15 +54,13 @@ public class HttpItemServer extends HttpConnection implements ItemServer {
 	public void serve(WorkItem item, OutputStream os) throws IOException {
 
 		try {
-			XMLHelper helper = new XMLHelper();
-			String xml = helper.toXML(item);
 
 			URL u = new URL(url);
 			URLConnection conn = createConnection(u);
 
 			OutputStream params = conn.getOutputStream();
 			OutputStreamWriter w = new OutputStreamWriter(params);
-			w.write(xml);
+			writeParams(w, item);
 			w.flush();
 			w.close();
 
@@ -71,6 +72,24 @@ public class HttpItemServer extends HttpConnection implements ItemServer {
 			throw new Kite9ProcessingException("Could not retrieve diagram server from " + url, e);
 		}
 
+	}
+
+	private void writeParams(OutputStreamWriter w, WorkItem item) throws IOException {
+		XMLHelper helper = new XMLHelper();
+		encodeField(w, "xml", helper.toXML((Diagram) item.getDesignItem()), true);
+		encodeField(w, "projectSecretId", item.getProjectSecretKey(), true);
+		encodeField(w, "userSecretId", item.getUserSecretKey(), true);
+		encodeField(w, "format", "PNG,MAP", false);
+	}
+
+	protected void encodeField(OutputStreamWriter w, String field, String value, boolean continues) throws IOException, UnsupportedEncodingException {
+		String encoding = "UTF-8";
+		w.write(URLEncoder.encode(field, encoding));
+		w.write("=");
+		w.write(URLEncoder.encode(value, encoding));
+		if (continues) {
+			w.write("&");
+		}
 	}
 
 }

@@ -29,8 +29,8 @@
     	<constructor-arg ref="aliaser" />
     	<constructor-arg ref="repo" />
     	<property name="classPath" value="" />
-    	<property name="projectId" value="-1" />
-    	<property name="secretKey" value="" />
+    	<property name="projectSecretKey" value="" />
+    	<property name="userSecretKey" value="" />
     </bean>
     
     <bean name="repo" class="org.kite9.framework.repository.BasicFileRepository">

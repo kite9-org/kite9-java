@@ -1,5 +1,5 @@
 class-scanner.basePackage=org.kite9.tool.integration
 context.classPath=target/test-classes
-context.projectId=206
-context.secretKey=766TCETYFW14G6N9
-diagram-server.url=http://www.kite9.com/kite9/image.zip
+context.projectSecretKey=TEST123ABC
+context.userSecretKey=abc123
+diagram-server.url=http://localhost:8080/grails-kite9-projects/post

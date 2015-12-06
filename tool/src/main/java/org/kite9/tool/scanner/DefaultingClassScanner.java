@@ -106,6 +106,6 @@ public class DefaultingClassScanner extends BasicClassScanner {
 			db.withKeyText("Kite9 Class Diagram Example",
 					"This is a default diagram created by Kite9");
 		
-		out.add(new BasicWorkItem(db.getDiagram(), name, "", getContext().getProjectId(), getContext().getSecretKey()));
+		out.add(new BasicWorkItem(db.getDiagram(), name, "", getContext().getProjectSecretKey(), getContext().getUserSecretKey()));
 	}
 }

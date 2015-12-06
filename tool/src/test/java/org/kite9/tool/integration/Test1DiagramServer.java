@@ -28,25 +28,39 @@ public class Test1DiagramServer extends AbstractRunnerTest {
 	@Test
 	public void test_1_1_SendMessageToServer() throws IOException, DiffException {
 		File dir = new File("target/kite9-repo/"+this.getClass().getName().replace(".", "/"));
-		File f = new File(dir, "simpleDiagram.png");
-		if (f.exists()) {
-			f.delete();
-		}
+		File f1 = checkDelete(dir, "simpleDiagramVersion1.png");
+		File f2 = checkDelete(dir, "simpleDiagramVersion2.png");
 		
 		URL p =  Test1DiagramServer.class.getResource("kite9-test.props");
 		Main.main(new String[] { "-p", p.getFile(), "-Xcl" });
 		
-		Assert.assertTrue(f.exists());
+		Assert.assertTrue(f1.exists());
+		Assert.assertTrue(f2.exists());
 		
-		File f2 = new File(Test1DiagramServer.class.getResource("simpleDiagram.map").getFile());
-		File f2comp = new File(dir, "simpleDiagram.map");
+		File f3 = new File(Test1DiagramServer.class.getResource("simpleDiagramVersion1.map").getFile());
+		File f3comp = new File(dir, "simpleDiagramVersion1.map");
 		
-		FileDiff.filesContainSameLines(f2, f2comp);
+		FileDiff.filesContainSameLines(f3, f3comp);
+	}
+
+	protected File checkDelete(File dir, String name) {
+		File f = new File(dir, name);
+		if (f.exists()) {
+			f.delete();
+		}
+		return f;
 	}
 	
 	@Kite9Item
-	public Diagram simpleDiagram(DiagramBuilder db) {
-		Glyph test = new Glyph("project_class:bob", "this is a", "test", null, null);
+	public Diagram simpleDiagramVersion1(DiagramBuilder db) {
+		Glyph test = new Glyph("project_class:bob", "this is a", "test1", null, null);
+		Diagram out = new Diagram("some diagram", createList((Contained) test), null);
+		return out;
+	}
+	
+	@Kite9Item
+	public Diagram simpleDiagramVersion2(DiagramBuilder db) {
+		Glyph test = new Glyph("project_class:bob", "this is a", "test2", null, null);
 		Diagram out = new Diagram("some diagram", createList((Contained) test), null);
 		return out;
 	}

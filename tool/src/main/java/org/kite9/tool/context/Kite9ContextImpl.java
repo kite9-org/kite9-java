@@ -50,8 +50,8 @@ public class Kite9ContextImpl implements Kite9Context, Logable, InitializingBean
 		setupUserClassLoader();
 		
 		// check that the secret key and id have been set.
-		if ((secretKey==null) || (secretKey.length()==0) || (projectId<=0)) {
-			logger.error("Secret key and project ID not provided. \n"+
+		if (empty(userSecretKey) || empty(projectSecretKey)) {
+			logger.error("Secret API key and project key not provided. \n"+
 					"These must be set in your kite9.properties file or in the maven plugin configuration. \n"+ 
 					"Please go to: http://www.kite9.com/node/add/project to register a project ID.");
 			
@@ -59,6 +59,10 @@ public class Kite9ContextImpl implements Kite9Context, Logable, InitializingBean
 		}
 	}
 
+
+	private boolean empty(String ps) {
+		return (ps==null) || (ps.length()==0);
+	}
 
 	@SuppressWarnings("deprecation")
 	public synchronized ClassLoader setupUserClassLoader() {
@@ -101,25 +105,25 @@ public class Kite9ContextImpl implements Kite9Context, Logable, InitializingBean
 		return repo;
 	}
 	
-	private int projectId = -1;
+	private String projectSecretKey;
 	
-	public int getProjectId() {
-		return projectId;
+	public String getProjectSecretKey() {
+		return projectSecretKey;
 	}
 
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
+	public void setProjectSecretKey(String projectSecretKey) {
+		this.projectSecretKey = projectSecretKey;
 	}
 
-	public String getSecretKey() {
-		return secretKey;
+	public String getUserSecretKey() {
+		return userSecretKey;
 	}
 
-	public void setSecretKey(String secretKey) {
-		this.secretKey = secretKey;
+	public void setUserSecretKey(String secretKey) {
+		this.userSecretKey = secretKey;
 	}
 
-	private String secretKey;
+	private String userSecretKey;
 	
 	
 

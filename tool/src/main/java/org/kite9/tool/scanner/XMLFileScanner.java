@@ -43,7 +43,7 @@ public class XMLFileScanner extends AbstractContextualizable implements Scanner 
 			subject = id.substring(0, slashIndex);
 			name = id.substring(slashIndex+1); 
 		    }
-		    WorkItem item = new BasicWorkItem(o, name, subject, getContext().getProjectId(), getContext().getSecretKey());
+		    WorkItem item = new BasicWorkItem(o, name, subject, getContext().getProjectSecretKey(), getContext().getUserSecretKey());
 		    out.add(item);
 		} else {
 		    getContext().getLogger().error("Cannot process: "+o.toString());

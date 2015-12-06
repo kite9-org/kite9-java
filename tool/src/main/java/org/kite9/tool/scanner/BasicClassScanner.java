@@ -73,8 +73,8 @@ public class BasicClassScanner extends AbstractContextualizable implements
 							Object diagram = method.invoke(null, args);
 							if (diagram != null) {
 								item = new BasicWorkItem(diagram, name, id,
-										getContext().getProjectId(),
-										getContext().getSecretKey());
+										getContext().getProjectSecretKey(),
+										getContext().getUserSecretKey());
 							}
 						} else {
 							instance = instance == null ? ClassHelp
@@ -82,8 +82,8 @@ public class BasicClassScanner extends AbstractContextualizable implements
 							Object designItem = method.invoke(instance, args);
 							if (designItem != null) {
 								item = new BasicWorkItem(designItem, name, id,
-										getContext().getProjectId(),
-										getContext().getSecretKey());
+										getContext().getProjectSecretKey(),
+										getContext().getUserSecretKey());
 							}
 						}
 						if (item != null) {

@@ -42,18 +42,13 @@ public class ServerCallingBuildListener extends AbstractContextualizable impleme
 			ZipEntry next;
 
 			while ((next = zis.getNextEntry()) != null) {
-				String name = next.getName();
-				int lastDot = name.lastIndexOf(".");
-				int firstSlash = name.indexOf("/");
-				String id = name.substring(0, firstSlash);
-				String np = name.substring(firstSlash + 1, lastDot);
-				String ext = name.substring(lastDot + 1);
+				String ext = next.getName().toLowerCase();
 
-				OutputStream fos = getRepository().store(id, np, ext);
+				OutputStream fos = getRepository().store(i.getSubjectId(), i.getName(), ext);
 				RepositoryHelp.streamCopy(zis, fos, true);
 
 				if (ext.equals("exception")) {
-					InputStream is = getRepository().retrieve(id, np, ext);
+					InputStream is = getRepository().retrieve(i.getSubjectId(), i.getName(), ext);
 					ByteArrayOutputStream baos = new ByteArrayOutputStream();
 					RepositoryHelp.streamCopy(is, baos, true);
 					String problemText = baos.toString();

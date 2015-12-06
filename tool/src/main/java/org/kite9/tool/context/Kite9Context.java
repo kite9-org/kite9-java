@@ -22,8 +22,8 @@ public interface Kite9Context {
     
     public Repository<?> getRepository();
     
-    public int getProjectId();
+    public String getProjectSecretKey();
     
-    public String getSecretKey();
+    public String getUserSecretKey();
    
 }
