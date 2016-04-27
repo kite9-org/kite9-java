@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.kite9.diagram.builders.java.DiagramBuilder;
-import org.kite9.diagram.builders.krmodel.NounPart;
-import org.kite9.diagram.builders.krmodel.SimpleNoun;
+import org.kite9.diagram.builders.krmodel.noun.NounPart;
+import org.kite9.diagram.builders.krmodel.noun.SimpleNoun;
 import org.kite9.framework.common.Kite9ProcessingException;
 
 /**

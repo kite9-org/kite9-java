@@ -1,5 +1,7 @@
 package org.kite9.diagram.primitives;
 
+import org.kite9.diagram.builders.id.Address;
+
 /**
  * This means that the element has an ID, so that the id can be used to reference 
  * it from multiple places.  This is used where the element is likely to be given a
@@ -19,8 +21,23 @@ public interface IdentifiableDiagramElement extends PositionableDiagramElement {
 	 * 
 	 */
 	public String getID();
-	
-	public void setID(String s);
+		
+	/**
+	 * We now force IDs to be set using CompoundIDs, as this ensures that we have actually
+	 * thought about what the ID should be.  They are stored as strings within the object though.
+	 */
+	public void setID(Address s);
 
+	/**
+	 * Returns a description for this element, put together loosely from maybe the name or something.
+	 * This is a "human readable" way of identifying the element on the diagram.  Should not be relied upon for
+	 * code.
+	 */
+	public String getDescription();
+	
+	/**
+	 * Some human-readable indication of the type of element.
+	 */
+	public String getType();
 	
 }

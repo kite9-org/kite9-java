@@ -1,12 +1,12 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test4Package/test_4_1_PackageAsContext()">
- <context id="project_java_package:org.kite9.diagram.builders" bordered="true">
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test4Package">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test4Package]method[test_4_1_PackageAsContext]package[org.kite9.diagram.builders]}">
+ <context id="{package[org.kite9.diagram.builders]}" bordered="true">
+  <glyph id="{class[Test4Package]package[org.kite9.diagram.builders]}">
    <stereotype>class</stereotype>
    <label>Test4Package</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <label xsi:type="text-line" id="auto:0">
+  <label xsi:type="text-line" id="{z[auto:0]}">
    <text>org.kite9.diagram.builders</text>
    <symbols></symbols>
   </label>

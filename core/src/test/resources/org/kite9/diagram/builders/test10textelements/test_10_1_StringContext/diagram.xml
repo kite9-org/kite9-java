@@ -1,12 +1,12 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test10TextElements/test_10_1_StringContext()">
- <context id="m context0" bordered="true">
-  <glyph id="java_class:org.kite9.diagram.builders.Test10TextElements.SomeClassA">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test10TextElements]method[test_10_1_StringContext]package[org.kite9.diagram.builders]}">
+ <context id="{document[**doc**]entity[m context0]}" bordered="true">
+  <glyph id="{class[Test10TextElements$SomeClassA]package[org.kite9.diagram.builders]}">
    <stereotype>class</stereotype>
    <label>SomeClassA</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <label xsi:type="text-line" id="auto:0">
+  <label xsi:type="text-line" id="{z[auto:0]}">
    <text>m context</text>
    <symbols></symbols>
   </label>

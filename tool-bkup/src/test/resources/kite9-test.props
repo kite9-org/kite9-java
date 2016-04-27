@@ -1,0 +1,5 @@
+class-scanner.basePackage=org.kite9.tool.integration
+context.classPath=target/test-classes
+context.secretKey=TEST123ABC
+diagram-server.url=http://localhost:8080/grails-kite9-projects/post
+javadoc-listener.docRoot=target/functional-test/docs

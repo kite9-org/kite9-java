@@ -1,8 +1,9 @@
 package org.kite9.diagram.builders.wizards.sequence;
 
-import org.kite9.diagram.builders.formats.InsertionInterface;
+import org.kite9.diagram.builders.id.IdHelper;
 import org.kite9.diagram.builders.krmodel.KRDiagramBuilder;
-import org.kite9.diagram.builders.krmodel.NounFactory;
+import org.kite9.diagram.builders.krmodel.noun.NounFactory;
+import org.kite9.diagram.builders.representation.ADLInsertionInterface;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.Label;
@@ -18,18 +19,20 @@ import org.kite9.framework.alias.Aliaser;
  */
 public abstract class AbstractSequenceDiagramWizard {
 
-	InsertionInterface ii;
-	NounFactory nf;
-	Aliaser a;
+	protected ADLInsertionInterface ii;
+	protected NounFactory nf;
+	protected Aliaser a;
+	protected IdHelper idHelper;
 
 	public AbstractSequenceDiagramWizard(KRDiagramBuilder db) {
-		this(db.getInsertionInterface(), db.getNounFactory(), db.getAliaser());
+		this(db.getInsertionInterface(), db.getNounFactory(), db.getAliaser(), db.getIdHelper());
 	}
 
-	public AbstractSequenceDiagramWizard(InsertionInterface ii, NounFactory nf, Aliaser a) {
+	public AbstractSequenceDiagramWizard(ADLInsertionInterface ii, NounFactory nf, Aliaser a, IdHelper helper) {
 		this.ii = ii;
 		this.nf = nf;
 		this.a = a;
+		this.idHelper = idHelper;
 	}
 
 	protected Label buildFromLabel(Step s, Label existing) {

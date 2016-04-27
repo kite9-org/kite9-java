@@ -1,6 +1,6 @@
 package org.kite9.diagram.builders.wizards.sequence;
 
-import org.kite9.diagram.builders.krmodel.SimpleNoun;
+import org.kite9.diagram.builders.krmodel.noun.SimpleNoun;
 import org.kite9.diagram.primitives.Label;
 
 public class CallStep extends Step {
@@ -25,7 +25,5 @@ public class CallStep extends Step {
 	public String toString() {
 		return "CallStep [to=" + to + ", toGroup=" + toGroup + "]";
 	}
-	
-	
 
 }

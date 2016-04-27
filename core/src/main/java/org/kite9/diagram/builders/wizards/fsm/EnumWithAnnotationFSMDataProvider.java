@@ -8,9 +8,9 @@ import java.lang.reflect.Method;
 import java.util.Set;
 
 import org.kite9.diagram.builders.java.DiagramBuilder;
-import org.kite9.diagram.builders.krmodel.NounFactory;
-import org.kite9.diagram.builders.krmodel.NounPart;
-import org.kite9.diagram.builders.krmodel.SimpleNoun;
+import org.kite9.diagram.builders.krmodel.noun.NounFactory;
+import org.kite9.diagram.builders.krmodel.noun.NounPart;
+import org.kite9.diagram.builders.krmodel.noun.SimpleNoun;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.kite9.framework.model.FieldHandle;
 import org.kite9.framework.model.MemberHandle;
@@ -131,6 +131,7 @@ public class EnumWithAnnotationFSMDataProvider implements FSMDataProvider {
 
 		try {
 			Method m2 = a.getClass().getDeclaredMethod(field);
+			m2.setAccessible(true);
 			Object o = m2.invoke(a);
 			if ((o.getClass().isArray()) && (Enum.class.isAssignableFrom(o.getClass().getComponentType()))) {
 				return (Enum<?>[]) o;

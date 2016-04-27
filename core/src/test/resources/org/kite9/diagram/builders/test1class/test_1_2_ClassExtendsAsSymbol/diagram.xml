@@ -1,5 +1,5 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test1Class/test_1_2_ClassExtendsAsSymbol()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test1Class]method[test_1_2_ClassExtendsAsSymbol]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test1Class]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>Test1Class</label>
   <text-lines></text-lines>
@@ -7,11 +7,11 @@
    <symbol text="extends: AbstractBuilderTest" theChar="A" shape="HEXAGON"></symbol>
   </symbols>
  </glyph>
- <label xsi:type="key" id="auto:1">
+ <label xsi:type="key" id="{z[auto:1]}">
   <boldText></boldText>
   <bodyText></bodyText>
   <symbols>
-   <text-line id="auto:0">
+   <text-line id="{z[auto:0]}">
     <text>extends: AbstractBuilderTest</text>
     <symbols>
      <symbol text="extends: AbstractBuilderTest" theChar="A" shape="HEXAGON"></symbol>

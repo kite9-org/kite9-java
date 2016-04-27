@@ -82,6 +82,18 @@ public class Key extends AbstractLabel implements Label {
 	public boolean hasContent() {
 		return hasContent(boldText) || hasContent(bodyText) || hasContent(symbols);
 	}
+
+	public String getDescription() {
+		if (hasContent(boldText)) {
+			return boldText.getText();
+		} else {
+			return "<empty>";
+		}
+	}
+
+	public String getType() {
+		return "key";
+	}
 	
 	
 }

@@ -83,4 +83,16 @@ public class TextLine extends AbstractLabel implements SymbolTarget {
 	public void setRenderingInformation(RenderingInformation ri) {
 		this.renderingInformation = ri;
 	}
+
+	public String getDescription() {
+		if (hasContent()) {
+			return text.getText();
+		} else {
+			return "<empty>";
+		}
+	}
+
+	public String getType() {
+		return "text-line";
+	}
 }

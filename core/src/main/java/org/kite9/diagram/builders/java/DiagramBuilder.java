@@ -1,30 +1,43 @@
 package org.kite9.diagram.builders.java;
 
-import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
-import org.kite9.diagram.annotation.K9Exclude;
+import org.kite9.diagram.adl.Context;
+import org.kite9.diagram.adl.Diagram;
+import org.kite9.diagram.adl.Key;
 import org.kite9.diagram.annotation.K9OnDiagram;
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.krmodel.KRDiagramBuilder;
-import org.kite9.diagram.builders.krmodel.NounFactory;
-import org.kite9.diagram.builders.krmodel.NounPart;
-import org.kite9.diagram.builders.krmodel.NounRelationshipBinding;
-import org.kite9.diagram.builders.krmodel.Relationship;
-import org.kite9.diagram.builders.krmodel.Tie;
+import org.kite9.diagram.builders.formats.ADLFormat;
+import org.kite9.diagram.builders.formats.Format;
+import org.kite9.diagram.builders.id.IdHelper;
+import org.kite9.diagram.builders.java.krmodel.BasicJavaNounFactory;
+import org.kite9.diagram.builders.java.krmodel.JavaIdHelper;
+import org.kite9.diagram.builders.java.krmodel.JavaPropositionBinding;
+import org.kite9.diagram.builders.java.krmodel.JavaRelationships;
+import org.kite9.diagram.builders.krmodel.noun.NounFactory;
+import org.kite9.diagram.builders.krmodel.noun.NounPart;
+import org.kite9.diagram.builders.krmodel.proposition.Proposition;
+import org.kite9.diagram.builders.krmodel.verb.Verb;
+import org.kite9.diagram.builders.representation.ADLInsertionInterface;
+import org.kite9.diagram.builders.representation.ADLRepresentation;
+import org.kite9.diagram.builders.representation.Representation;
+import org.kite9.diagram.position.Direction;
+import org.kite9.diagram.position.Layout;
+import org.kite9.diagram.primitives.Contained;
+import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.framework.alias.Aliaser;
+import org.kite9.framework.alias.PropertyAliaser;
 import org.kite9.framework.common.HelpMethods;
 import org.kite9.framework.model.AnnotationHandle;
 import org.kite9.framework.model.ClassHandle;
-import org.kite9.framework.model.PackageHandle;
 import org.kite9.framework.model.ProjectModel;
 
 /**
@@ -34,26 +47,33 @@ import org.kite9.framework.model.ProjectModel;
  * @author robmoffat
  * 
  */
-public class DiagramBuilder extends KRDiagramBuilder {
+public class DiagramBuilder extends AbstractJavaRepresentationBuilder<Diagram> {
 
-	ProjectModel model;
-	Object creator;
-
-	public DiagramBuilder(Aliaser a, Method creator, ProjectModel pm, JavaIdHelper helper) {
-		super(helper.getId(creator), helper, a);
+	final ProjectModel model;
+	
+	public DiagramBuilder(NounPart theDiagram, ProjectModel pm, NounFactory nf) {
+		super(pm, theDiagram, nf);
 		this.model = pm;
-		this.creator = creator;
+	}
+
+	public DiagramBuilder(Method creator, ProjectModel pm, NounFactory nf) {
+		this(nf.createNoun(creator), pm, nf);
 	}
 	
-	public DiagramBuilder(Aliaser a, Method creator, ProjectModel pm) {
-		this(a, creator, pm, new JavaIdHelper(pm));
-		this.model = pm;
+	public DiagramBuilder(Method creator, ProjectModel pm, Aliaser a, IdHelper helper) {
+		this(creator, pm, new BasicJavaNounFactory(a, helper));
 	}
 
-	public DiagramBuilder(Aliaser a, String id, ProjectModel pm) {
-		super(id, new JavaIdHelper(pm), a);
-		this.model = pm;
-		this.creator = id;
+	public DiagramBuilder(NounPart theDiagram, ProjectModel pm, Aliaser a, IdHelper helper) {
+		this(theDiagram, pm, new BasicJavaNounFactory(a, helper));
+	}
+	
+	public DiagramBuilder(Method creator, ProjectModel pm) {
+		this(creator, pm, new PropertyAliaser(), new JavaIdHelper());
+	}
+	
+	public DiagramBuilder(NounPart theDiagram, ProjectModel pm) {
+		this(theDiagram, pm, new PropertyAliaser(), new JavaIdHelper());
 	}
 
 	public ProjectModel getProjectModel() {
@@ -61,20 +81,17 @@ public class DiagramBuilder extends KRDiagramBuilder {
 	}
 
 	public ObjectBuilder withObjects(Object... objects) {
-		List<Tie> ties = new ArrayList<Tie>(objects.length);
+		List<Proposition> ties = new ArrayList<Proposition>(objects.length);
 		for (Object s : objects) {
-			ties.add(new Tie(null, null, createNoun(s)));
+			ties.add(new JavaPropositionBinding(null, null, createNoun(s)));
 		}
-		ObjectBuilder sb = new ObjectBuilder(ties, model, a);
+		ObjectBuilder sb = new ObjectBuilder(ties, model, nf);
 		return sb;
 	}
 
-	private static final Set<Tie> SET_OF_NULL = HelpMethods
-			.createSet(new Tie[] { null });
-
 	public ClassBuilder withClasses(Class<?>... forClasses) {
-		return new ClassBuilder(createTies(SET_OF_NULL, null,
-				(Object[]) forClasses), model, a);
+		return new ClassBuilder(createPropositions(getDiagramProposition(), JavaRelationships.GROUP_CLASS,
+				(Object[]) forClasses), model, nf);
 	}
 
 	/**
@@ -104,8 +121,8 @@ public class DiagramBuilder extends KRDiagramBuilder {
 	}
 
 	public PackageBuilder withPackages(Package... packages) {
-		return new PackageBuilder(createTies(SET_OF_NULL, null,
-				(Object[]) packages), model, a);
+		return new PackageBuilder(createPropositions(getDiagramProposition(), JavaRelationships.GROUP_PACKAGE,
+				(Object[]) packages), model, nf);
 	}
 
 	public PackageBuilder withPackages(Class<?>... packagesForClasses) {
@@ -120,144 +137,6 @@ public class DiagramBuilder extends KRDiagramBuilder {
 		return (Package[]) packages.toArray(new Package[packages.size()]);
 	}
 
-	/**
-	 * Filters methods, fields, inner classes to just the ones with an in-scope
-	 * {@link K9OnDiagram} annotation.
-	 */
-	public Filter<AnnotatedElement> onlyAnnotated() {
-		return new Filter<AnnotatedElement>() {
-			public boolean accept(AnnotatedElement o) {
-				return isAnnotated(o);
-			}
-		};
-	}
-	
-	/**
-	 * Filters methods, fields, inner classes to exclude ones with an in-scope
-	 * {@link K9Exclude} annotation.
-	 */
-	public Filter<AnnotatedElement> onlyNotExcluded() {
-		return new Filter<AnnotatedElement>() {
-			public boolean accept(AnnotatedElement o) {
-				return !isExcluded(o);
-			}
-		};
-	}
-	
-	/**
-	 * Filters objects, classes which are in the java model and
-	 * within a certain part of the package structure
-	 */
-	public Filter<Object> onlyInModel(Package packageRoot) {
-		return onlyInModel(PackageHandle.convertPackageName(packageRoot));
-	}
-	
-	/**
-	 * Filters objects, classes which are in the java model and
-	 * within a certain part of the package structure
-	 */
-	public Filter<Object> onlyInModel(final String packageRoot) {
-		return new Filter<Object>() {			
-			public boolean accept(Object o) {
-				if (o instanceof Class) {
-					String name = ClassHandle.convertClassName((Class<?>) o);
-					return model.withinModel(name) && ((packageRoot==null) || (packageRoot.length() == 0) || (name.startsWith(packageRoot)));
-				}
-				
-				if (o instanceof Field) {
-					return accept ( ((Field)o).getDeclaringClass());
-				}
-				
-				if (o instanceof Method) {
-					return accept ( ((Field)o).getDeclaringClass());
-				}
-				
-				if (o instanceof Constructor<?>) {
-					return accept ( ((Constructor<?>)o).getDeclaringClass());
-				}
-				
-				return accept(o.getClass());
-			}
-		};
-	}
-	
-	/**
-	 * Filters objects, classes which are in the java model.
-	 */
-	public Filter<Object> onlyInModel() {
-		return onlyInModel("");
-	}
-	
-
-	/**
-	 * Returns true for fields, methods, inner classes that have an in-scope
-	 * {@link K9OnDiagram} annotation.
-	 */
-	public boolean isAnnotated(AnnotatedElement o) {
-		K9OnDiagram on = null;
-		if (o instanceof AnnotatedElement) {
-			AnnotatedElement ae = (AnnotatedElement) o;
-			on = ae.getAnnotation(K9OnDiagram.class);
-		}
-
-		if (on != null) {
-			if ((on.on().length == 0))
-				return true;
-
-			for (Class<?> on1 : on.on()) {
-				if (on1.equals((creator instanceof Method) ? ((Method) creator)
-						.getDeclaringClass() : null)) {
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-	
-	/**
-	 * Returns true for fields, methods, inner classes that have an in-scope
-	 * {@link K9Exclude} annotation.
-	 */
-	public boolean isExcluded(AnnotatedElement o) {
-		K9Exclude on = null;
-		if (o instanceof AnnotatedElement) {
-			AnnotatedElement ae = (AnnotatedElement) o;
-			on = ae.getAnnotation(K9Exclude.class);
-		}
-
-		if (on != null) {
-			if ((on.from().length == 0))
-				return true;
-
-			for (Class<?> on1 : on.from()) {
-				if (on1.equals((creator instanceof Method) ? ((Method) creator)
-						.getDeclaringClass() : null)) {
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Filters to just the items mentioned in the arguments
-	 */
-	public Filter<Object> only(final Object... items) {
-		return new Filter<Object>() {
-
-			public boolean accept(Object o) {
-				for (Object class1 : items) {
-					if ((class1.equals(o)) || (class1.equals(o.getClass())))
-						return true;
-				}
-
-				return false;
-			}
-		};
-	}
-
 	public ClassLoader getCurrentClassLoader() {
 		return Thread.currentThread().getContextClassLoader();
 	}
@@ -268,19 +147,9 @@ public class DiagramBuilder extends KRDiagramBuilder {
 	}
 
 	public DiagramElement getRelationshipElement(Object o,
-			Relationship r) {
-		NounRelationshipBinding nrb = new NounRelationshipBinding(getNounFactory().createNoun(o), r);
+			Verb r) {
+		JavaPropositionBinding nrb = new JavaPropositionBinding(getNounFactory().createNoun(o), r);
 		return contents.get(nrb);
-	}
-	
-	protected NounFactory nf;
-	
-	public NounFactory getNounFactory() {
-		if (nf==null) {
-			nf = new BasicNounFactory(getAliaser());
-		}
-		
-		return nf;
 	}
 
 	@Override
@@ -289,4 +158,146 @@ public class DiagramBuilder extends KRDiagramBuilder {
 		return this;
 	}
 	
+	protected BasicDiagramBuilder withKeyText(String boldtext, String body) {
+		Key k = new Key(boldtext, body, null);
+		d.setKey(k);
+		return this;
+	}
+
+	public Format asConnectedContexts() {
+		return BasicFormats.asConnectionWithBody(getInsertionInterface(), BasicFormats.asContext(true, null, null), null, null);
+	}
+
+	public Format asConnectedContexts(boolean border, Layout l) {
+		return BasicFormats.asConnectionWithBody(getInsertionInterface(), BasicFormats.asContext(border, l, null), null, null);
+	}
+
+	public Format asConnectedContexts(boolean border, Layout l, Direction d) {
+		return BasicFormats.asConnectionWithBody(getInsertionInterface(), BasicFormats.asContext(border, l, null), d, null);
+	}
+
+	public Format asConnectedGlyphs() {
+		return ADLBasicFormats.asConnectionWithBody(getInsertionInterface(), BasicFormats.asGlyph(null), null, null);
+	}
+
+	public Format asConnectedGlyphs(String stereotypeOverride) {
+		return BasicFormats.asConnectionWithBody(getInsertionInterface(), BasicFormats.asGlyph(stereotypeOverride), null, null);
+	}
+
+	public Format asConnectedGlyphs(String stereotypeOverride, Direction d) {
+		return BasicFormats.asConnectionWithBody(getInsertionInterface(), BasicFormats.asGlyph(stereotypeOverride), d, null);
+	}
+
+	private void considerSubdivision(Container c, Set<Object> included, ContextFactory cf) {
+		Set<Contained> itemsToSubdivide = new LinkedHashSet<Contained>(c.getContents().size());
+		Integer firstIndex = null;
+		for (int i = 0; i < c.getContents().size(); i++) {
+			Contained contained = c.getContents().get(i);
+			if (included.contains(contained)) {
+				itemsToSubdivide.add(contained);
+				if (firstIndex == null) {
+					firstIndex = i;
+				}
+			}
+						
+			// handle recursion
+			if (contained instanceof Container) {
+				considerSubdivision((Container)contained, included, cf);
+			}
+		}
+		
+		if (itemsToSubdivide.size() > 0) {
+			// ok, we need to introduce a context
+			Context c2 = cf.createContextFor(c, new ArrayList<Contained>(itemsToSubdivide), getInsertionInterface());
+			c.getContents().add(firstIndex, c2);
+			c.getContents().removeAll(itemsToSubdivide);
+		}
+	}
+
+	/**
+	 * For each container in the diagram (including the diagram itself) containing elements N, create a context containing F elements out of N, 
+	 * where F is the filtered set of elements.  If the size of F is zero, no subcontext is created.
+	 */
+	public void introduceContexts(final Filter<Object> f, ContextFactory cf) {
+		Set<Object> included = new HashSet<Object>(contents.size());
+		for (Entry<Object, DiagramElement> cont : contents.entrySet()) {
+			if (f.accept(cont.getKey())) {
+				included.add(cont.getValue());
+			}
+		}
+		
+		considerSubdivision(d, included, cf);
+	}
+	
+
+	@Override
+	public DiagramBuilder withKeyText(String boldtext, String body) {
+		super.withKeyText(boldtext, body);
+		return this;
+	}
+
+	protected BasicDiagramBuilder withKeyText(String boldtext, String body) {
+		Key k = new Key(boldtext, body, null);
+		d.setKey(k);
+		return this;
+	}
+	
+	/**
+	 * Helper interface for introduceContexts method, so you can describe exactly the style of context you want to create.
+	 */
+	public static interface ContextFactory {
+		
+		public Context createContextFor(Container subdivisionOf, List<Contained> contents, ADLInsertionInterface ii);
+		
+	}
+
+	
+
+	private void considerSubdivision(Container c, Set<Object> included, ContextFactory cf) {
+		Set<Contained> itemsToSubdivide = new LinkedHashSet<Contained>(c.getContents().size());
+		Integer firstIndex = null;
+		for (int i = 0; i < c.getContents().size(); i++) {
+			Contained contained = c.getContents().get(i);
+			if (included.contains(contained)) {
+				itemsToSubdivide.add(contained);
+				if (firstIndex == null) {
+					firstIndex = i;
+				}
+			}
+						
+			// handle recursion
+			if (contained instanceof Container) {
+				considerSubdivision((Container)contained, included, cf);
+			}
+		}
+		
+		if (itemsToSubdivide.size() > 0) {
+			// ok, we need to introduce a context
+			Context c2 = cf.createContextFor(c, new ArrayList<Contained>(itemsToSubdivide), getInsertionInterface());
+			c.getContents().add(firstIndex, c2);
+			c.getContents().removeAll(itemsToSubdivide);
+		}
+	}
+
+	@Override
+	protected Representation<Diagram> createRepresentation(NounPart id) {
+		return new ADLRepresentation(id);
+	}
+
+	public Diagram getDiagram() {
+		return representation.render();
+	}
+
+	@Override
+	public ADLRepresentation getRepresentation() {
+		return (ADLRepresentation) super.getRepresentation();
+	}
+
+	public Format asSymbols() {
+		return ADLFormat.typeIgnored(getRepresentation(), 
+				  ADLFormat.asSymbols(getRepresentation()));
+	}
+	
+	
+
 }

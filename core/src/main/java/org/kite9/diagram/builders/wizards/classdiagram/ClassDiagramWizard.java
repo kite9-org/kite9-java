@@ -6,11 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.formats.Format;
 import org.kite9.diagram.builders.java.ClassBuilder;
 import org.kite9.diagram.builders.java.DiagramBuilder;
-import org.kite9.diagram.builders.krmodel.NounPart;
-import org.kite9.diagram.builders.krmodel.Relationship;
+import org.kite9.diagram.builders.krmodel.noun.NounPart;
+import org.kite9.diagram.builders.krmodel.verb.Verb;
 
 /**
  * Helper wizard for creating links for an entity relationship diagram based on static analysis.
@@ -21,29 +21,29 @@ import org.kite9.diagram.builders.krmodel.Relationship;
 public class ClassDiagramWizard {
 
 	DiagramBuilder db;
-	PropositionFormat attributeFormat;
-	PropositionFormat relationshipFormat;
-	PropositionFormat classFormat;
-	PropositionFormat implementsFormat;
-	PropositionFormat extendsFormat;
+	Format attributeFormat;
+	Format relationshipFormat;
+	Format classFormat;
+	Format implementsFormat;
+	Format extendsFormat;
 	boolean interfaceTraversal;
 	
-	public PropositionFormat getImplementsFormat() {
+	public Format getImplementsFormat() {
 		return implementsFormat;
 	}
 
 
-	public void setImplementsFormat(PropositionFormat implementsFormat) {
+	public void setImplementsFormat(Format implementsFormat) {
 		this.implementsFormat = implementsFormat;
 	}
 
 
-	public PropositionFormat getExtendsFormat() {
+	public Format getExtendsFormat() {
 		return extendsFormat;
 	}
 
 
-	public void setExtendsFormat(PropositionFormat extendsFormat) {
+	public void setExtendsFormat(Format extendsFormat) {
 		this.extendsFormat = extendsFormat;
 	}
 
@@ -70,32 +70,32 @@ public class ClassDiagramWizard {
 
 	boolean fieldTraversal;
 
-	public PropositionFormat getAttributeFormat() {
+	public Format getAttributeFormat() {
 		return attributeFormat;
 	}
 
 
-	public void setAttributeFormat(PropositionFormat attributeFormat) {
+	public void setAttributeFormat(Format attributeFormat) {
 		this.attributeFormat = attributeFormat;
 	}
 
 
-	public PropositionFormat getRelationshipFormat() {
+	public Format getRelationshipFormat() {
 		return relationshipFormat;
 	}
 
 
-	public void setRelationshipFormat(PropositionFormat relationshipFormat) {
+	public void setRelationshipFormat(Format relationshipFormat) {
 		this.relationshipFormat = relationshipFormat;
 	}
 
 
-	public PropositionFormat getClassFormat() {
+	public Format getClassFormat() {
 		return classFormat;
 	}
 
 
-	public void setClassFormat(PropositionFormat classFormat) {
+	public void setClassFormat(Format classFormat) {
 		this.classFormat = classFormat;
 	}
 	
@@ -239,9 +239,9 @@ public class ClassDiagramWizard {
 
 	private Set<Class<?>> createClassSet(final ClassBuilder classBuilder) {
 		final Set<Class<?>> allClasses = new HashSet<Class<?>>();
-		classBuilder.show(new PropositionFormat() {
+		classBuilder.show(new Format() {
 
-			public void write(NounPart subject, Relationship verb, NounPart object) {
+			public void write(NounPart subject, Verb verb, NounPart object) {
 				Object r = object.getRepresented();
 				if (r instanceof Class<?>) {
 					allClasses.add((Class<?>) r);

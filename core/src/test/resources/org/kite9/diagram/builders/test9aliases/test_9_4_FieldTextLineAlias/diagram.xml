@@ -1,9 +1,9 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test9Aliases/test_9_4_FieldTextLineAlias()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeClass">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test9Aliases]method[test_9_4_FieldTextLineAlias]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test9Aliases$SomeClass]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>aliased_some_class</label>
   <text-lines>
-   <text-line id="auto:0">
+   <text-line id="{z[auto:0]}">
     <text>field: aliased Field</text>
     <symbols></symbols>
    </text-line>

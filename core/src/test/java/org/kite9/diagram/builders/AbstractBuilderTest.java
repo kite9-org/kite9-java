@@ -28,6 +28,18 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 public class AbstractBuilderTest extends HelpMethods {
+	
+	public void renderXML(String d) throws IOException {
+		
+		Method m = StackHelp.getAnnotatedMethod(Test.class);
+		String xml = d;
+		DiagramTestingEngine.writeOutput(this.getClass(), m.getName(), "diagram.xml", xml);
+		
+		if (!DiagramTestingEngine.checkOutputs(this.getClass(), m.getName(), "diagram.xml")) {
+			Assert.fail("No comparison with correct output");
+		}
+		
+	}
 
 	public void renderDiagram(Diagram d) throws IOException {
 		Method m = StackHelp.getAnnotatedMethod(Test.class);
@@ -75,8 +87,17 @@ public class AbstractBuilderTest extends HelpMethods {
 		Method m = StackHelp.getKite9Item();
 		Aliaser a = new PropertyAliaser();
 
-		return new DiagramBuilder(a, m, pmi);
+		return new DiagramBuilder(m, pmi);
 	}
+	
+	public XMLRepresentationBuilder createXMLBuilder() {
+		AbstractIdentifiableDiagramElement.resetCounter();
+		Method m = StackHelp.getKite9Item();
+		Aliaser a = new PropertyAliaser();
+
+		return new XMLRepresentationBuilder(m, pmi);
+	}
+
 
 	protected String convertClassName(Class<?> c) {
 		return c.getName().replace(".", "/");

@@ -1,0 +1,35 @@
+<org.kite9.diagram.builders.representation.XMLRepresentation>
+  <org.kite9.diagram.builders.java.krmodel.SimpleJavaRelationshipImpl>
+    <subject class="org.kite9.diagram.builders.java.krmodel.ProjectStaticSimpleNoun">
+      <id>{class[Test19ClassAsXML]package[org.kite9.diagram.builders]}</id>
+      <label>Test19ClassAsXML</label>
+      <represented class="java-class">org.kite9.diagram.builders.Test19ClassAsXML</represented>
+    </subject>
+    <object class="org.kite9.diagram.builders.java.krmodel.JavaModelNoun">
+      <label>class</label>
+    </object>
+    <verb class="org.kite9.diagram.builders.krmodel.verb.SimpleVerb">
+      <type>ACTIVE</type>
+      <name>is a</name>
+      <id>type</id>
+    </verb>
+  </org.kite9.diagram.builders.java.krmodel.SimpleJavaRelationshipImpl>
+  <org.kite9.diagram.builders.java.krmodel.SimpleJavaRelationshipImpl>
+    <subject class="org.kite9.diagram.builders.java.krmodel.ProjectStaticSimpleNoun">
+      <id>{class[Test19ClassAsXML]method[test_19_1_ClassName]package[org.kite9.diagram.builders]}</id>
+      <label>test_19_1_ClassName</label>
+      <represented class="method">
+        <class>org.kite9.diagram.builders.Test19ClassAsXML</class>
+        <name>test_19_1_ClassName</name>
+        <parameter-types/>
+      </represented>
+    </subject>
+    <object class="org.kite9.diagram.builders.java.krmodel.ProjectStaticSimpleNoun" reference="../../org.kite9.diagram.builders.java.krmodel.SimpleJavaRelationshipImpl/subject"/>
+    <verb class="org.kite9.diagram.builders.krmodel.verb.ComposesVerb">
+      <type>ACTIVE</type>
+      <name>class</name>
+      <id>{kite9-java[class]verb[composes]}</id>
+      <objectType class="org.kite9.diagram.builders.java.krmodel.JavaModelNoun" reference="../../../org.kite9.diagram.builders.java.krmodel.SimpleJavaRelationshipImpl/object"/>
+    </verb>
+  </org.kite9.diagram.builders.java.krmodel.SimpleJavaRelationshipImpl>
+</org.kite9.diagram.builders.representation.XMLRepresentation>

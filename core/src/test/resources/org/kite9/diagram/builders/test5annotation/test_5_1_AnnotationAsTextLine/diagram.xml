@@ -1,13 +1,13 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test5Annotation/test_5_1_AnnotationAsTextLine()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation/someTestMethod()">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test5Annotation]method[test_5_1_AnnotationAsTextLine]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test5Annotation]method[someTestMethod]package[org.kite9.diagram.builders]}">
   <stereotype>method</stereotype>
   <label>someTestMethod</label>
   <text-lines>
-   <text-line id="auto:0">
+   <text-line id="{z[auto:0]}">
     <text>annotation: Kite9Item</text>
     <symbols></symbols>
    </text-line>
-   <text-line id="auto:1">
+   <text-line id="{z[auto:1]}">
     <text>annotation: K9OnDiagram</text>
     <symbols></symbols>
    </text-line>

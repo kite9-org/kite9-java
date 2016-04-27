@@ -80,5 +80,12 @@ public class Link extends AbstractConnection {
 		this.rank = rank;
 	}
 	
+	public String getDescription() {
+		return from.getDescription()+" - "+to.getDescription();
+	}
+
+	public String getType() {
+		return "link";
+	}
 	
 }

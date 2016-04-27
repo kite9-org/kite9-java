@@ -1,8 +1,9 @@
 package org.kite9.diagram.builders.wizards.sequence;
 
+import org.kite9.diagram.builders.krmodel.noun.NounPart;
 import org.kite9.diagram.primitives.Label;
 
-public abstract class Step {
+public abstract class Step implements NounPart {
 	
 	public Label getFromLabel() {
 		return fromLabel;

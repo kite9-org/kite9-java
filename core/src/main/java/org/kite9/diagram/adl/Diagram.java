@@ -81,4 +81,16 @@ public class Diagram extends AbstractConnectedContainer {
 		
 		return (DiagramRenderingInformation) renderingInformation;
 	}
+	
+	public String getDescription() {
+		if (name != null) {
+			return name;
+		} else {
+			return "";
+		}
+	}
+
+	public String getType() {
+		return "diagram";
+	}
 }

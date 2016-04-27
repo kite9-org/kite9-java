@@ -1,32 +1,32 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test13Augmenting/test_13_3_AugmentLinks()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test13Augmenting]method[test_13_3_AugmentLinks]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test13Augmenting$SomeClass]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>SomeClass</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeInterface">
+ <glyph id="{class[Test13Augmenting$SomeInterface]package[org.kite9.diagram.builders]}">
   <stereotype>interface</stereotype>
   <label>SomeInterface</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass/rel_implements">
+ <arrow id="{document[**doc**]generated[96271966]}">
   <label>implements</label>
  </arrow>
  <allLinks>
-  <link id="auto:0" drawDirection="DOWN">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass/rel_implements"></to>
-   <fromLabel xsi:type="text-line" id="auto:3">
+  <link id="{z[auto:0]}" drawDirection="DOWN">
+   <from xsi:type="glyph" reference="{class[Test13Augmenting$SomeClass]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[96271966]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:3]}">
     <text>some text there</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:1" drawDirection="RIGHT">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeClass/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test13Augmenting.SomeInterface"></to>
-   <toLabel xsi:type="text-line" id="auto:2">
+  <link id="{z[auto:1]}" drawDirection="RIGHT">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[96271966]}"></from>
+   <to xsi:type="glyph" reference="{class[Test13Augmenting$SomeInterface]package[org.kite9.diagram.builders]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:2]}">
     <text>some text here</text>
     <symbols></symbols>
    </toLabel>

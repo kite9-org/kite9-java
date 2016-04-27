@@ -22,6 +22,8 @@ import org.kite9.diagram.adl.Link;
 import org.kite9.diagram.adl.LinkEndStyle;
 import org.kite9.diagram.adl.Symbol;
 import org.kite9.diagram.adl.TextLine;
+import org.kite9.diagram.builders.id.Address;
+import org.kite9.diagram.builders.id.AddressImpl;
 import org.kite9.diagram.position.CostedDimension;
 import org.kite9.diagram.position.DiagramRenderingInformation;
 import org.kite9.diagram.position.Dimension2D;
@@ -518,6 +520,14 @@ public class XMLHelper {
 		public RenderingInformation getRenderingInformation() {
 			return null;
 		}
+
+		public String getDescription() {
+			return "NONE";
+		}
+
+		public String getType() {
+			return "no-ref";
+		}
 	};
 
 	protected class IDSuppliedMarshallingStrategy implements MarshallingStrategy {
@@ -571,8 +581,7 @@ public class XMLHelper {
 		private ObjectIdDictionary implicitElements = new ObjectIdDictionary();
 		private PathTracker pathTracker = new PathTracker();
 		private Path lastPath;
-		private Set<String> usedIDs = new HashSet<String>(200);
-		private int nextIntId = 0;
+		private Set<Address> usedIDs = new HashSet<Address>(200);
 
 		public ReferenceByNameMarshaller(HierarchicalStreamWriter writer, ConverterLookup converterLookup, Mapper mapper) {
 			super(writer, converterLookup, mapper);
@@ -601,12 +610,12 @@ public class XMLHelper {
 				} else if (implicitElements.lookupId(item) != null) {
 					throw new ReferencedImplicitElementException(item, currentPath);
 				} else {
-					String newReferenceKey = null;
+					Address newReferenceKey = null;
 					boolean fire = false;
 					if (item instanceof IdentifiableDiagramElement) {
-						newReferenceKey = ensureUniqueness((IdentifiableDiagramElement) item);
+						newReferenceKey = ensureUniqueness((IdentifiableDiagramElement) item, usedIDs.size());
 					} else {
-						newReferenceKey = makeUnique("" + nextIntId++);
+						newReferenceKey = makeUnique(newReferenceKey, usedIDs.size());
 						fire = true;
 					}
 
@@ -631,21 +640,20 @@ public class XMLHelper {
 
 		}
 
-		private String ensureUniqueness(IdentifiableDiagramElement item) {
+		private Address ensureUniqueness(IdentifiableDiagramElement item, int uniqueNumber) {
 			String currentId = item.getID();
-			currentId = makeUnique(currentId);
-			item.setID(currentId);
-			return currentId;
+			Address compound = new AddressImpl(currentId);
+			compound = makeUnique(compound, uniqueNumber);
+			item.setID(compound);
+			return compound;
 		}
 
-		private String makeUnique(String id) {
-			String suffix = "";
-			int i = 1;
-			while (usedIDs.contains(id + suffix)) {
-				suffix = "." + i++;
+		private Address makeUnique(Address id, int uniqueNumber) {
+			if (usedIDs.contains(id)) {
+				id = id.extend("occ", ""+uniqueNumber);
 			}
 
-			return id + suffix;
+			return id;
 		}
 
 		protected void fireValidReference(Object referenceKey) {
@@ -653,7 +661,7 @@ public class XMLHelper {
 		}
 
 		protected String createReference(Path currentPath, Object existingReferenceKey) {
-			return (String) existingReferenceKey;
+			return existingReferenceKey.toString();
 		}
 
 		protected Object createReferenceKey(IdentifiableDiagramElement item) {

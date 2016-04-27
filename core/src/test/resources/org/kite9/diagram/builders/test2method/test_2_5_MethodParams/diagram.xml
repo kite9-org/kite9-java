@@ -1,88 +1,88 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test2Method/test_2_5_MethodParams()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test2Method]method[test_2_5_MethodParams]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test2Method]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>Test2Method</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()">
+ <glyph id="{class[Test2Method]method[someTestMethod]package[org.kite9.diagram.builders]}">
   <stereotype>method</stereotype>
   <label>someTestMethod</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method">
+ <arrow id="{document[**doc**]generated[-642357088]}">
   <label>has method</label>
  </arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()">
+ <glyph id="{class[Test2Method]method[someOtherMethod]package[org.kite9.diagram.builders]}">
   <stereotype>method</stereotype>
   <label>someOtherMethod</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:java.lang.String">
+ <glyph id="{class[String]package[java.lang]}">
   <stereotype>class</stereotype>
   <label>String</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter">
+ <arrow id="{document[**doc**]generated[863998342]}">
   <label>has parameter</label>
  </arrow>
- <glyph id="java_class:java.lang.Integer">
+ <glyph id="{class[Integer]package[java.lang]}">
   <stereotype>class</stereotype>
   <label>Integer</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter">
+ <arrow id="{document[**doc**]generated[1368384016]}">
   <label>has parameter</label>
  </arrow>
  <allLinks>
-  <link id="auto:0">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method"></to>
+  <link id="{z[auto:0]}">
+   <from xsi:type="glyph" reference="{class[Test2Method]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-642357088]}"></to>
   </link>
-  <link id="auto:1">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()"></to>
+  <link id="{z[auto:1]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-642357088]}"></from>
+   <to xsi:type="glyph" reference="{class[Test2Method]method[someTestMethod]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:4">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter"></to>
+  <link id="{z[auto:4]}">
+   <from xsi:type="glyph" reference="{class[Test2Method]method[someTestMethod]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[863998342]}"></to>
   </link>
-  <link id="auto:2">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/rel_method"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()"></to>
+  <link id="{z[auto:2]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-642357088]}"></from>
+   <to xsi:type="glyph" reference="{class[Test2Method]method[someOtherMethod]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:9">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter"></to>
+  <link id="{z[auto:9]}">
+   <from xsi:type="glyph" reference="{class[Test2Method]method[someOtherMethod]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[1368384016]}"></to>
   </link>
-  <link id="auto:5">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line" id="auto:3">
+  <link id="{z[auto:5]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[863998342]}"></from>
+   <to xsi:type="glyph" reference="{class[String]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:3]}">
     <text>array of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:10">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()/rel_parameter"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line" id="auto:8">
+  <link id="{z[auto:10]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[1368384016]}"></from>
+   <to xsi:type="glyph" reference="{class[String]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:8]}">
     <text>array of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:7">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()/rel_parameter"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.Integer"></to>
-   <toLabel xsi:type="text-line" id="auto:6">
+  <link id="{z[auto:7]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[863998342]}"></from>
+   <to xsi:type="glyph" reference="{class[Integer]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:6]}">
     <text>Collection of </text>
     <symbols></symbols>
    </toLabel>

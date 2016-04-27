@@ -5,21 +5,21 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Stack;
 
+import org.kite9.diagram.builders.AbstractBuilder;
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.formats.BasicFormats;
-import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.formats.Format;
+import org.kite9.diagram.builders.formats.adl.BasicFormats;
 import org.kite9.diagram.builders.java.AbstractJavaBuilder;
 import org.kite9.diagram.builders.java.AccessibleValueBuilder;
 import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.diagram.builders.java.ObjectBuilder;
-import org.kite9.diagram.builders.krmodel.AbstractBuilder;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.primitives.Container;
 
 public class ObjectDependencyWizard {
 
 	DiagramBuilder db;
-	PropositionFormat objectFormatNew;  
+	Format objectFormatNew;  
 	Filter<Field> fieldFilter = new Filter<Field>() {
 
 		public boolean accept(Field f) {
@@ -67,23 +67,23 @@ public class ObjectDependencyWizard {
 
 	Filter<Object> valueFilter;
 	
-	public PropositionFormat getObjectFormatNew() {
+	public Format getObjectFormatNew() {
 		return objectFormatNew;
 	}
 
-	public void setObjectFormatNew(PropositionFormat objectFormatNew) {
+	public void setObjectFormatNew(Format objectFormatNew) {
 		this.objectFormatNew = objectFormatNew;
 	}
 
-	public PropositionFormat getObjectFormatExisting() {
+	public Format getObjectFormatExisting() {
 		return objectFormatExisting;
 	}
 
-	public void setObjectFormatExisting(PropositionFormat objectFormatExisting) {
+	public void setObjectFormatExisting(Format objectFormatExisting) {
 		this.objectFormatExisting = objectFormatExisting;
 	}
 
-	PropositionFormat objectFormatExisting;
+	Format objectFormatExisting;
 	
 	private Filter<? super Method> methodFilter = new Filter<Method>() {
 

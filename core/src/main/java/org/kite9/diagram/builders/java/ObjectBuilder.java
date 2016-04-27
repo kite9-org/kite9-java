@@ -6,30 +6,34 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.kite9.diagram.builders.AbstractElementBuilder;
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.formats.PropositionFormat;
-import org.kite9.diagram.builders.krmodel.NounFactory;
-import org.kite9.diagram.builders.krmodel.Tie;
+import org.kite9.diagram.builders.formats.Format;
+import org.kite9.diagram.builders.java.krmodel.JavaPropositionBinding;
+import org.kite9.diagram.builders.java.krmodel.JavaRelationships;
+import org.kite9.diagram.builders.krmodel.noun.NounFactory;
+import org.kite9.diagram.builders.krmodel.noun.NounPart;
+import org.kite9.diagram.builders.krmodel.proposition.Proposition;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.model.ProjectModel;
 
 public class ObjectBuilder extends AbstractElementBuilder<Object> {
 
-	public ObjectBuilder(List<Tie> ties2, ProjectModel model, Aliaser a) {
+	public ObjectBuilder(List<Proposition> ties2, ProjectModel model, NounFactory a) {
 		super(ties2, model, a);
 	}
 
 	@Override
 	public ObjectBuilder reduce(Filter<? super Object> f) {
-		return new ObjectBuilder(reduceInner(f), model, a);
+		return new ObjectBuilder(reduceInner(f), model, nf);
 	}
 
-	public ObjectBuilder show(PropositionFormat f) {
+	public ObjectBuilder show(Format f) {
 		return (ObjectBuilder) super.show(f);
 	}
 	
 
-	private void traverseFields(Tie t, Object o, List<Tie> ties, Class<?> c, Filter<? super Field> f) {
+	private void traverseFields(Proposition t, Object o, List<Proposition> ties, Class<?> c, Filter<? super Field> f) {
 		if (c.getSuperclass() != null)
 			traverseFields(t, o, ties, c.getSuperclass(), f);
 
@@ -43,13 +47,13 @@ public class ObjectBuilder extends AbstractElementBuilder<Object> {
 			} catch (IllegalAccessException e) {
 			}
 			if ((value!=null) && ((f == null) || (f.accept(field)))) {
-				ties.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.FIELD,
+				ties.add(new JavaPropositionBinding(nf.extractObject(t), JavaRelationships.FIELD,
 						createNoun(value)));
 			}
 		}
 	}
 	
-	private void traverseMethods(Tie t, Object o, List<Tie> ties, Class<?> c, Filter<? super Method> f) {
+	private void traverseMethods(Proposition t, Object o, List<Proposition> ties, Class<?> c, Filter<? super Method> f) {
 		if (c.getSuperclass() != null)
 			traverseMethods(t, o, ties, c.getSuperclass(), f);
 
@@ -67,7 +71,7 @@ public class ObjectBuilder extends AbstractElementBuilder<Object> {
 			} catch (InvocationTargetException e) {
 			}
 			if ((value!=null) && ((f == null) || (f.accept(method)))) {
-				ties.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.FIELD,
+				ties.add(new JavaPropositionBinding(nf.extractObject(t), JavaRelationships.FIELD,
 						createNoun(value)));
 			}
 		}
@@ -77,24 +81,22 @@ public class ObjectBuilder extends AbstractElementBuilder<Object> {
 	 * Returns objects which the builder object is composed with.
 	 */
 	public AccessibleValueBuilder withFieldValues(Filter<? super Field> f) {
-		List<Tie> ties2 = new ArrayList<Tie>();
-		for (Tie t : ties) {
+		List<Proposition> ties2 = new ArrayList<Proposition>();
+		for (Proposition t : ties) {
 			Object o = getRepresented(t);
-			
 			traverseFields(t, o, ties2, o.getClass(), f);
 		}
 
-		return new AccessibleValueBuilder(ties2, model, a);
+		return new AccessibleValueBuilder(ties2, model, nf);
 	}
 
 	public AccessibleValueBuilder withMethodReturnValues(Filter<? super Method> f) {
-		List<Tie> ties2 = new ArrayList<Tie>();
-		for (Tie t : ties) {
+		List<Proposition> ties2 = new ArrayList<Proposition>();
+		for (Proposition t : ties) {
 			Object o = getRepresented(t);
-			
 			traverseMethods(t, o, ties2, o.getClass(), f);
 		}
 
-		return new AccessibleValueBuilder(ties2, model, a);
+		return new AccessibleValueBuilder(ties2, model, nf);
 	}
 }

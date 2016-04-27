@@ -1,18 +1,18 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test1Class/test_1_6_InnerClassAsGlyphsInContext()">
- <context id="project_java_class:org.kite9.diagram.builders.Test1Class" bordered="true">
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test1Class]method[test_1_6_InnerClassAsGlyphsInContext]package[org.kite9.diagram.builders]}">
+ <context id="{class[Test1Class]package[org.kite9.diagram.builders]}" bordered="true">
+  <glyph id="{class[Test1Class$DummyClass]package[org.kite9.diagram.builders]}">
    <stereotype>class</stereotype>
    <label>DummyClass</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass2">
+  <glyph id="{class[Test1Class$DummyClass2]package[org.kite9.diagram.builders]}">
    <stereotype>class</stereotype>
    <label>DummyClass2</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <label xsi:type="text-line" id="auto:0">
+  <label xsi:type="text-line" id="{z[auto:0]}">
    <text>Test1Class</text>
    <symbols></symbols>
   </label>

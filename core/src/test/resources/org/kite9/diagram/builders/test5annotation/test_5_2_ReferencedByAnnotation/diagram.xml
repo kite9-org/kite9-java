@@ -1,46 +1,46 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test5Annotation/test_5_2_ReferencedByAnnotation()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassB">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test5Annotation]method[test_5_2_ReferencedByAnnotation]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test5Annotation$SomeReferencedClassB]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>SomeReferencedClassB</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassC">
+ <glyph id="{class[Test5Annotation$SomeReferencedClassC]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>SomeReferencedClassC</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference">
+ <glyph id="{class[Test5Annotation$Reference]package[org.kite9.diagram.builders]}">
   <stereotype>annotation</stereotype>
   <label>Reference</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassB/rel_referenced by">
+ <arrow id="{document[**doc**]generated[1063870580]}">
   <label>references</label>
  </arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassC/rel_referenced by">
+ <arrow id="{document[**doc**]generated[298975274]}">
   <label>references</label>
  </arrow>
  <allLinks>
-  <link id="auto:1">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassB/rel_referenced by"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassB"></to>
+  <link id="{z[auto:1]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[1063870580]}"></from>
+   <to xsi:type="glyph" reference="{class[Test5Annotation$SomeReferencedClassB]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:3">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassC/rel_referenced by"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassC"></to>
+  <link id="{z[auto:3]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[298975274]}"></from>
+   <to xsi:type="glyph" reference="{class[Test5Annotation$SomeReferencedClassC]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:0">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassB/rel_referenced by"></to>
+  <link id="{z[auto:0]}">
+   <from xsi:type="glyph" reference="{class[Test5Annotation$Reference]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[1063870580]}"></to>
   </link>
-  <link id="auto:2">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeReferencedClassC/rel_referenced by"></to>
+  <link id="{z[auto:2]}">
+   <from xsi:type="glyph" reference="{class[Test5Annotation$Reference]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[298975274]}"></to>
   </link>
  </allLinks>
 </diagram>

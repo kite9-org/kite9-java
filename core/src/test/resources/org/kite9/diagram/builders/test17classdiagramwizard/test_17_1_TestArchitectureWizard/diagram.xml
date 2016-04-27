@@ -1,151 +1,151 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard/test_17_1_TestArchitectureWizard()">
- <context id="Rob's Architecture0" bordered="true">
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.MySite">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test17ClassDiagramWizard]method[test_17_1_TestArchitectureWizard]package[org.kite9.diagram.builders]}">
+ <context id="{document[**doc**]entity[Rob's Architecture0]}" bordered="true">
+  <glyph id="{class[Test17ClassDiagramWizard$MySite]package[org.kite9.diagram.builders]}">
    <stereotype>interface</stereotype>
    <label>MySite</label>
    <text-lines>
-    <text-line id="auto:19">
+    <text-line id="{z[auto:19]}">
      <text>method: getName</text>
      <symbols></symbols>
     </text-line>
    </text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1">
+  <glyph id="{class[Test17ClassDiagramWizard$Sat1]package[org.kite9.diagram.builders]}">
    <stereotype>class</stereotype>
    <label>Sat1</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat2">
+  <glyph id="{class[Test17ClassDiagramWizard$Sat2]package[org.kite9.diagram.builders]}">
    <stereotype>class</stereotype>
    <label>Sat2</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat3">
+  <glyph id="{class[Test17ClassDiagramWizard$Sat3]package[org.kite9.diagram.builders]}">
    <stereotype>class</stereotype>
    <label>Sat3</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Satellite">
+  <glyph id="{class[Test17ClassDiagramWizard$Satellite]package[org.kite9.diagram.builders]}">
    <stereotype>interface</stereotype>
    <label>Satellite</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server">
+  <glyph id="{class[Test17ClassDiagramWizard$Server]package[org.kite9.diagram.builders]}">
    <stereotype>class</stereotype>
    <label>Server</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1/parent/rel_is a">
+  <arrow id="{document[**doc**]generated[1875866893]}">
    <label>is a</label>
   </arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/hasSat1/rel_is a">
+  <arrow id="{document[**doc**]generated[-1025337756]}">
    <label>is a</label>
   </arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/allTheSat2s/rel_is a">
+  <arrow id="{document[**doc**]generated[-690718190]}">
    <label>is a</label>
   </arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1/rel_implements">
+  <arrow id="{document[**doc**]generated[-681766448]}">
    <label>implements</label>
   </arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat2/rel_implements">
+  <arrow id="{document[**doc**]generated[-1083865758]}">
    <label>implements</label>
   </arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat3/rel_implements">
+  <arrow id="{document[**doc**]generated[-1472926806]}">
    <label>implements</label>
   </arrow>
-  <arrow id="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/rel_implements">
+  <arrow id="{document[**doc**]generated[-491667442]}">
    <label>implements</label>
   </arrow>
-  <label xsi:type="text-line" id="auto:0">
+  <label xsi:type="text-line" id="{z[auto:0]}">
    <text>Rob's Architecture</text>
    <symbols></symbols>
   </label>
  </context>
  <allLinks>
-  <link id="auto:18" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.MySite"></to>
+  <link id="{z[auto:18]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-491667442]}"></from>
+   <to xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$MySite]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:2">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1/parent/rel_is a"></to>
-   <fromLabel xsi:type="text-line" id="auto:1">
+  <link id="{z[auto:2]}">
+   <from xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Sat1]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[1875866893]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:1]}">
     <text>parent</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:3">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1/parent/rel_is a"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1"></to>
+  <link id="{z[auto:3]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[1875866893]}"></from>
+   <to xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Sat1]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:6">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/hasSat1/rel_is a"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1"></to>
+  <link id="{z[auto:6]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1025337756]}"></from>
+   <to xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Sat1]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:11" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1/rel_implements"></to>
+  <link id="{z[auto:11]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Sat1]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-681766448]}"></to>
   </link>
-  <link id="auto:10">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/allTheSat2s/rel_is a"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat2"></to>
-   <toLabel xsi:type="text-line" id="auto:8">
+  <link id="{z[auto:10]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-690718190]}"></from>
+   <to xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Sat2]package[org.kite9.diagram.builders]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:8]}">
     <text>List of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:13" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat2"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat2/rel_implements"></to>
+  <link id="{z[auto:13]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Sat2]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1083865758]}"></to>
   </link>
-  <link id="auto:15" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat3"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat3/rel_implements"></to>
+  <link id="{z[auto:15]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Sat3]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1472926806]}"></to>
   </link>
-  <link id="auto:12" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat1/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Satellite"></to>
+  <link id="{z[auto:12]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-681766448]}"></from>
+   <to xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Satellite]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:14" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat2/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Satellite"></to>
+  <link id="{z[auto:14]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1083865758]}"></from>
+   <to xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Satellite]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:16" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Sat3/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Satellite"></to>
+  <link id="{z[auto:16]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1472926806]}"></from>
+   <to xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Satellite]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:5">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/hasSat1/rel_is a"></to>
-   <fromLabel xsi:type="text-line" id="auto:4">
+  <link id="{z[auto:5]}">
+   <from xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Server]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1025337756]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:4]}">
     <text>hasSat1</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:9">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/allTheSat2s/rel_is a"></to>
-   <fromLabel xsi:type="text-line" id="auto:7">
+  <link id="{z[auto:9]}">
+   <from xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Server]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-690718190]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:7]}">
     <text>allTheSat2s</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:17" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test17ClassDiagramWizard.Server/rel_implements"></to>
+  <link id="{z[auto:17]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test17ClassDiagramWizard$Server]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-491667442]}"></to>
   </link>
  </allLinks>
 </diagram>

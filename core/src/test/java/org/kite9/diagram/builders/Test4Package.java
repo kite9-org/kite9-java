@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.formats.Format;
 import org.kite9.diagram.builders.java.DiagramBuilder;
 import org.kite9.framework.Kite9Item;
 import org.kite9.framework.model.PackageHandle;
@@ -67,9 +67,9 @@ public class Test4Package extends AbstractBuilderTest {
 	Package p = this.getClass().getPackage();
 	pmi.addPackageClass(convertPackageName(p), convertClassName(Test3Field.class));
 	pmi.addPackageClass(convertPackageName(p), convertClassName(Test4Package.class));
-	Package pack2= PropositionFormat.class.getPackage();
+	Package pack2= Format.class.getPackage();
 	PackageHandle p1 = new PackageHandle(convertPackageName(p), convertClassName(Test4Package.class));
-	PackageHandle p2 = new PackageHandle(convertPackageName(pack2), convertClassName(PropositionFormat.class));
+	PackageHandle p2 = new PackageHandle(convertPackageName(pack2), convertClassName(Format.class));
 	pmi.addPackageDependency(p1, p2);
     }
 }

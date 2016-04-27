@@ -1,66 +1,66 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test15FSM/test_15_1_CreateFSMModel()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test15FSM.State/ONE">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test15FSM]method[test_15_1_CreateFSMModel]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test15FSM$State]enum[ONE]package[org.kite9.diagram.builders]}">
   <stereotype>enum</stereotype>
   <label>one</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test15FSM.State/TWO">
+ <glyph id="{class[Test15FSM$State]enum[TWO]package[org.kite9.diagram.builders]}">
   <stereotype>enum</stereotype>
   <label>two</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test15FSM.State/THREE">
+ <glyph id="{class[Test15FSM$State]enum[THREE]package[org.kite9.diagram.builders]}">
   <stereotype>enum</stereotype>
   <label>three</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToThree()">
+ <arrow id="{class[Test15FSM$StateMovingClass]method[moveToThree]package[org.kite9.diagram.builders]}">
   <label>moveToThree</label>
  </arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToTwo()">
+ <arrow id="{class[Test15FSM$StateMovingClass]method[moveToTwo]package[org.kite9.diagram.builders]}">
   <label>moveToTwo</label>
  </arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/reset()">
+ <arrow id="{class[Test15FSM$StateMovingClass]method[reset]package[org.kite9.diagram.builders]}">
   <label>reset</label>
  </arrow>
  <allLinks>
-  <link id="auto:0">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.State/ONE"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToThree()"></to>
+  <link id="{z[auto:0]}">
+   <from xsi:type="glyph" reference="{class[Test15FSM$State]enum[ONE]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{class[Test15FSM$StateMovingClass]method[moveToThree]package[org.kite9.diagram.builders]}"></to>
   </link>
-  <link id="auto:3">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.State/ONE"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToTwo()"></to>
+  <link id="{z[auto:3]}">
+   <from xsi:type="glyph" reference="{class[Test15FSM$State]enum[ONE]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{class[Test15FSM$StateMovingClass]method[moveToTwo]package[org.kite9.diagram.builders]}"></to>
   </link>
-  <link id="auto:7">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/reset()"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.State/ONE"></to>
+  <link id="{z[auto:7]}">
+   <from xsi:type="arrow" reference="{class[Test15FSM$StateMovingClass]method[reset]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="glyph" reference="{class[Test15FSM$State]enum[ONE]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:1">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.State/TWO"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToThree()"></to>
+  <link id="{z[auto:1]}">
+   <from xsi:type="glyph" reference="{class[Test15FSM$State]enum[TWO]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{class[Test15FSM$StateMovingClass]method[moveToThree]package[org.kite9.diagram.builders]}"></to>
   </link>
-  <link id="auto:4">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToTwo()"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.State/TWO"></to>
+  <link id="{z[auto:4]}">
+   <from xsi:type="arrow" reference="{class[Test15FSM$StateMovingClass]method[moveToTwo]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="glyph" reference="{class[Test15FSM$State]enum[TWO]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:5">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.State/TWO"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/reset()"></to>
+  <link id="{z[auto:5]}">
+   <from xsi:type="glyph" reference="{class[Test15FSM$State]enum[TWO]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{class[Test15FSM$StateMovingClass]method[reset]package[org.kite9.diagram.builders]}"></to>
   </link>
-  <link id="auto:2">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/moveToThree()"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.State/THREE"></to>
+  <link id="{z[auto:2]}">
+   <from xsi:type="arrow" reference="{class[Test15FSM$StateMovingClass]method[moveToThree]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="glyph" reference="{class[Test15FSM$State]enum[THREE]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:6">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.State/THREE"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test15FSM.StateMovingClass/reset()"></to>
+  <link id="{z[auto:6]}">
+   <from xsi:type="glyph" reference="{class[Test15FSM$State]enum[THREE]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{class[Test15FSM$StateMovingClass]method[reset]package[org.kite9.diagram.builders]}"></to>
   </link>
  </allLinks>
 </diagram>

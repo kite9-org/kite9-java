@@ -1,28 +1,28 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test1Class/test_1_7_SubClassesAsExtends()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test1Class]method[test_1_7_SubClassesAsExtends]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test1Class$DummyClass]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>DummyClass</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass2">
+ <glyph id="{class[Test1Class$DummyClass2]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>DummyClass2</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass/rel_extended by">
+ <arrow id="{document[**doc**]generated[-1476204254]}">
   <label>extends</label>
  </arrow>
  <allLinks>
-  <link id="auto:1" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass/rel_extended by"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass"></to>
+  <link id="{z[auto:1]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1476204254]}"></from>
+   <to xsi:type="glyph" reference="{class[Test1Class$DummyClass]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:0" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass2"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test1Class.DummyClass/rel_extended by"></to>
+  <link id="{z[auto:0]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test1Class$DummyClass2]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1476204254]}"></to>
   </link>
  </allLinks>
 </diagram>

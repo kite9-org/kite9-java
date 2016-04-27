@@ -54,4 +54,12 @@ public class CompositionalShape extends AbstractIdentifiableDiagramElement imple
 		this.renderingInformation = ri;
 	}
 
+	public String getDescription() {
+		return shape;
+	}
+
+	public String getType() {
+		return "shape";
+	}
+
 }

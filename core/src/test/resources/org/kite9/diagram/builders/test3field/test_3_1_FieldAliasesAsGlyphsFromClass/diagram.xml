@@ -1,38 +1,38 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test3Field/test_3_1_FieldAliasesAsGlyphsFromClass()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test3Field]method[test_3_1_FieldAliasesAsGlyphsFromClass]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test3Field]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>Test3Field</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field1">
+ <glyph id="{class[Test3Field]field[field1]package[org.kite9.diagram.builders]}">
   <stereotype>field</stereotype>
   <label>field1</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test3Field/rel_field">
+ <arrow id="{document[**doc**]generated[-1281127425]}">
   <label>has field</label>
  </arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field2">
+ <glyph id="{class[Test3Field]field[field2]package[org.kite9.diagram.builders]}">
   <stereotype>field</stereotype>
   <label>field2</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
  <allLinks>
-  <link id="auto:0">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test3Field"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test3Field/rel_field"></to>
+  <link id="{z[auto:0]}">
+   <from xsi:type="glyph" reference="{class[Test3Field]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1281127425]}"></to>
   </link>
-  <link id="auto:1">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test3Field/rel_field"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test3Field/field1"></to>
+  <link id="{z[auto:1]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1281127425]}"></from>
+   <to xsi:type="glyph" reference="{class[Test3Field]field[field1]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:2">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test3Field/rel_field"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test3Field/field2"></to>
+  <link id="{z[auto:2]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1281127425]}"></from>
+   <to xsi:type="glyph" reference="{class[Test3Field]field[field2]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
  </allLinks>

@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 import org.kite9.diagram.builders.java.DiagramBuilder;
-import org.kite9.diagram.builders.java.JavaRelationships;
-import org.kite9.diagram.builders.krmodel.Relationship;
+import org.kite9.diagram.builders.java.krmodel.JavaRelationships;
+import org.kite9.diagram.builders.krmodel.verb.AbstractVerb;
 import org.kite9.framework.Kite9Item;
 
 public class Test10TextElements extends AbstractBuilderTest{
@@ -27,7 +27,7 @@ public class Test10TextElements extends AbstractBuilderTest{
 	    DiagramBuilder db = createBuilder();
 	    db.withObjects("m context")
 	    	.show(db.asConnectedContexts())
-	    	.withClasses(JavaRelationships.CLASS, SomeClassA.class)
+	    	.withClasses(JavaRelationships.IS_CLASS, SomeClassA.class)
 	    		.show(db.asConnectedGlyphs());
 	    renderDiagram(db.getDiagram());
 	}
@@ -38,7 +38,7 @@ public class Test10TextElements extends AbstractBuilderTest{
 	    DiagramBuilder db = createBuilder();
 	    db.withClasses(SomeClassA.class, SomeClassB.class)
 	    	.show(db.asConnectedGlyphs())
-	    	.withObjects(new Relationship("observes"), "The 10 second rule")
+	    	.withObjects(new AbstractVerb("observes"), "The 10 second rule")
 	    	.show(db.asConnectedGlyphs("note"));
 	    renderDiagram(db.getDiagram());
 	}

@@ -1,13 +1,13 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test3Field/test_3_7_FieldReturnTypesAsTextLine()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test3Field]method[test_3_7_FieldReturnTypesAsTextLine]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test3Field]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>Test3Field</label>
   <text-lines>
-   <text-line id="auto:0">
+   <text-line id="{z[auto:0]}">
     <text>field: field1, is a: Object</text>
     <symbols></symbols>
    </text-line>
-   <text-line id="auto:1">
+   <text-line id="{z[auto:1]}">
     <text>field: field2, is a: List of Integer</text>
     <symbols></symbols>
    </text-line>

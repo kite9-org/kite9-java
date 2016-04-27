@@ -2,6 +2,7 @@ package org.kite9.diagram.primitives;
 
 import java.io.Serializable;
 
+import org.kite9.diagram.builders.id.Address;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.style.ShapedDiagramElement;
 import org.kite9.diagram.style.StyledDiagramElement;
@@ -54,8 +55,8 @@ public abstract class AbstractIdentifiableDiagramElement implements Identifiable
 		return id;
 	}
 	
-	public void setID(String id) {
-		this.id = id;
+	public void setID(Address id) {
+		this.id = id.toString();
 	}
 
 	/**

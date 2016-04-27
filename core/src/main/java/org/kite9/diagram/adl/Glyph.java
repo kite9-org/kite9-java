@@ -134,5 +134,17 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 	public void setRenderingInformation(RenderingInformation ri) {
 		this.renderingInformation = ri;
 	}
+
+	public String getDescription() {
+		if (label != null) {
+			return label.getText();
+		} else {
+			return "";
+		}
+	}
+
+	public String getType() {
+		return "part";
+	}
 	
 }

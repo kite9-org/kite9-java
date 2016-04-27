@@ -1,75 +1,75 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test3Field/test_3_4_FieldAsGlyphWithType()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test3Field]method[test_3_4_FieldAsGlyphWithType]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test3Field]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>Test3Field</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field1">
+ <glyph id="{class[Test3Field]field[field1]package[org.kite9.diagram.builders]}">
   <stereotype>field</stereotype>
   <label>field1</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test3Field/rel_field">
+ <arrow id="{document[**doc**]generated[-1281127425]}">
   <label>has field</label>
  </arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test3Field/field2">
+ <glyph id="{class[Test3Field]field[field2]package[org.kite9.diagram.builders]}">
   <stereotype>field</stereotype>
   <label>field2</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:java.lang.Object">
+ <glyph id="{class[Object]package[java.lang]}">
   <stereotype>class</stereotype>
   <label>Object</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test3Field/field1/rel_is a">
+ <arrow id="{document[**doc**]generated[370929249]}">
   <label>is a</label>
  </arrow>
- <glyph id="java_class:java.lang.Integer">
+ <glyph id="{class[Integer]package[java.lang]}">
   <stereotype>class</stereotype>
   <label>Integer</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test3Field/field2/rel_is a">
+ <arrow id="{document[**doc**]generated[370929652]}">
   <label>is a</label>
  </arrow>
  <allLinks>
-  <link id="auto:0">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test3Field"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test3Field/rel_field"></to>
+  <link id="{z[auto:0]}">
+   <from xsi:type="glyph" reference="{class[Test3Field]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1281127425]}"></to>
   </link>
-  <link id="auto:1">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test3Field/rel_field"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test3Field/field1"></to>
+  <link id="{z[auto:1]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1281127425]}"></from>
+   <to xsi:type="glyph" reference="{class[Test3Field]field[field1]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:3">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test3Field/field1"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test3Field/field1/rel_is a"></to>
+  <link id="{z[auto:3]}">
+   <from xsi:type="glyph" reference="{class[Test3Field]field[field1]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[370929249]}"></to>
   </link>
-  <link id="auto:2">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test3Field/rel_field"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test3Field/field2"></to>
+  <link id="{z[auto:2]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1281127425]}"></from>
+   <to xsi:type="glyph" reference="{class[Test3Field]field[field2]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:6">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test3Field/field2"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test3Field/field2/rel_is a"></to>
+  <link id="{z[auto:6]}">
+   <from xsi:type="glyph" reference="{class[Test3Field]field[field2]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[370929652]}"></to>
   </link>
-  <link id="auto:4">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test3Field/field1/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.Object"></to>
+  <link id="{z[auto:4]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[370929249]}"></from>
+   <to xsi:type="glyph" reference="{class[Object]package[java.lang]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:7">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test3Field/field2/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.Integer"></to>
-   <toLabel xsi:type="text-line" id="auto:5">
+  <link id="{z[auto:7]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[370929652]}"></from>
+   <to xsi:type="glyph" reference="{class[Integer]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:5]}">
     <text>List of </text>
     <symbols></symbols>
    </toLabel>

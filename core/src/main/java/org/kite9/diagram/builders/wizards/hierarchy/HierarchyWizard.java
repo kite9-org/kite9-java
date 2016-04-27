@@ -12,15 +12,15 @@ import org.kite9.diagram.adl.Arrow;
 import org.kite9.diagram.adl.Context;
 import org.kite9.diagram.adl.Glyph;
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.formats.InsertionInterface;
-import org.kite9.diagram.builders.formats.PropositionFormat;
+import org.kite9.diagram.builders.formats.Format;
 import org.kite9.diagram.builders.java.ClassBuilder;
 import org.kite9.diagram.builders.java.DiagramBuilder;
-import org.kite9.diagram.builders.java.JavaRelationships;
-import org.kite9.diagram.builders.krmodel.NounFactory;
-import org.kite9.diagram.builders.krmodel.NounPart;
-import org.kite9.diagram.builders.krmodel.Relationship;
-import org.kite9.diagram.builders.krmodel.Tie;
+import org.kite9.diagram.builders.java.krmodel.JavaRelationships;
+import org.kite9.diagram.builders.krmodel.noun.NounFactory;
+import org.kite9.diagram.builders.krmodel.noun.NounPart;
+import org.kite9.diagram.builders.krmodel.proposition.SimpleRelationship;
+import org.kite9.diagram.builders.krmodel.verb.AbstractVerb;
+import org.kite9.diagram.builders.representation.ADLInsertionInterface;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
@@ -95,7 +95,7 @@ public class HierarchyWizard  {
 	 * Convenience method to get a basic hierarchy drawn
 	 */
 	public void show(ClassBuilder cb) {
-		for (Tie t : cb.getTies()) {
+		for (SimpleRelationship t : cb.getTies()) {
 			Class<?> c = cb.getRepresented(t);
 			add(true, c);
 		}
@@ -109,7 +109,7 @@ public class HierarchyWizard  {
 	 * Adds the classes to the diagram, as well as level-groups, so that classes
 	 * with the hierarchical depth are shown on the same level.
 	 */
-	public void showClasses(PropositionFormat containerFormat, PropositionFormat classFormat) {
+	public void showClasses(Format containerFormat, Format classFormat) {
 		List<List<Class<?>>> sortedClasses = sortClassesByLevel();
 		// create the containers
 		int i = 1;
@@ -119,7 +119,7 @@ public class HierarchyWizard  {
 			containerFormat.write(getNoun(container), JavaRelationships.CLASS_GROUP, containerNoun);
 			hierarchyContainers.add(db.getInsertionInterface().returnExisting(containerNoun));
 			for (Class<?> class1 : list) {
-				classFormat.write(containerNoun, JavaRelationships.CLASS, getNoun(class1));
+				classFormat.write(containerNoun, JavaRelationships.IS_CLASS, getNoun(class1));
 			}
 		}
 	}
@@ -128,10 +128,10 @@ public class HierarchyWizard  {
 	 * Shows the EXTENDS/IMPLEMENTS relationships between the classes. Will add
 	 * any classes that are not already on the diagram.
 	 */
-	public void showInheritance(PropositionFormat classFormat) {
+	public void showInheritance(Format classFormat) {
 		// ensure classes are on diagram somewhere
 		for (Class<?> class1 : classes) {
-			classFormat.write(getNoun(container), JavaRelationships.CLASS, getNoun(class1));
+			classFormat.write(getNoun(container), JavaRelationships.IS_CLASS, getNoun(class1));
 		}
 
 		// add the inheritance / extension relationships
@@ -173,7 +173,7 @@ public class HierarchyWizard  {
 		
 		db.introduceContexts(includedArrows, new DiagramBuilder.ContextFactory() {
 
-			public Context createContextFor(Container subdivisionOf, List<Contained> contents, InsertionInterface ii) {
+			public Context createContextFor(Container subdivisionOf, List<Contained> contents, ADLInsertionInterface ii) {
 				Layout l = (subdivisionOf instanceof Context) ? ((Context)subdivisionOf).getLayoutDirection() :  null;
 				return new Context(subdivisionOf.getID()+"-arrows", contents, false, null, l);
 			}
@@ -182,7 +182,7 @@ public class HierarchyWizard  {
 		
 		db.introduceContexts(includedGlyphs, new DiagramBuilder.ContextFactory() {
 
-			public Context createContextFor(Container subdivisionOf, List<Contained> contents, InsertionInterface ii) {
+			public Context createContextFor(Container subdivisionOf, List<Contained> contents, ADLInsertionInterface ii) {
 				Layout l = null;
 				if (subdivisionOf instanceof Context) {
 					// clear layout direction as it is inherited by the child contexts now

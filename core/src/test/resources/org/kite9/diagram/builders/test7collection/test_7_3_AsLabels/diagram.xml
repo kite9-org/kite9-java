@@ -1,152 +1,152 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test7Collection/test_7_3_AsLabels()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test7Collection">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test7Collection]method[test_7_3_AsLabels]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test7Collection]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>Test7Collection</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:java.lang.String">
+ <glyph id="{class[String]package[java.lang]}">
   <stereotype>class</stereotype>
   <label>String</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringArray/rel_is a">
+ <arrow id="{document[**doc**]generated[-293789424]}">
   <label>is a</label>
  </arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringList/rel_is a">
+ <arrow id="{document[**doc**]generated[-1249926923]}">
   <label>is a</label>
  </arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringSet/rel_is a">
+ <arrow id="{document[**doc**]generated[960422023]}">
   <label>is a</label>
  </arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/stringCollection/rel_is a">
+ <arrow id="{document[**doc**]generated[1387771317]}">
   <label>is a</label>
  </arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString1/rel_is a">
+ <arrow id="{document[**doc**]generated[193856651]}">
   <label>is a</label>
  </arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2/rel_is a">
+ <arrow id="{document[**doc**]generated[193856558]}">
   <label>is a</label>
  </arrow>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings/rel_is a">
+ <arrow id="{document[**doc**]generated[1553357430]}">
   <label>is a</label>
  </arrow>
  <allLinks>
-  <link id="auto:2">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/stringArray/rel_is a"></to>
-   <fromLabel xsi:type="text-line" id="auto:0">
+  <link id="{z[auto:2]}">
+   <from xsi:type="glyph" reference="{class[Test7Collection]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-293789424]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:0]}">
     <text>stringArray</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:6">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/stringList/rel_is a"></to>
-   <fromLabel xsi:type="text-line" id="auto:4">
+  <link id="{z[auto:6]}">
+   <from xsi:type="glyph" reference="{class[Test7Collection]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1249926923]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:4]}">
     <text>stringList</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:10">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/stringSet/rel_is a"></to>
-   <fromLabel xsi:type="text-line" id="auto:8">
+  <link id="{z[auto:10]}">
+   <from xsi:type="glyph" reference="{class[Test7Collection]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[960422023]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:8]}">
     <text>stringSet</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:14">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/stringCollection/rel_is a"></to>
-   <fromLabel xsi:type="text-line" id="auto:12">
+  <link id="{z[auto:14]}">
+   <from xsi:type="glyph" reference="{class[Test7Collection]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[1387771317]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:12]}">
     <text>stringCollection</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:18">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString1/rel_is a"></to>
-   <fromLabel xsi:type="text-line" id="auto:16">
+  <link id="{z[auto:18]}">
+   <from xsi:type="glyph" reference="{class[Test7Collection]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[193856651]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:16]}">
     <text>compoundString1</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:22">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2/rel_is a"></to>
-   <fromLabel xsi:type="text-line" id="auto:20">
+  <link id="{z[auto:22]}">
+   <from xsi:type="glyph" reference="{class[Test7Collection]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[193856558]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:20]}">
     <text>compoundString2</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:26">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test7Collection"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings/rel_is a"></to>
-   <fromLabel xsi:type="text-line" id="auto:24">
+  <link id="{z[auto:26]}">
+   <from xsi:type="glyph" reference="{class[Test7Collection]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[1553357430]}"></to>
+   <fromLabel xsi:type="text-line" id="{z[auto:24]}">
     <text>someStrings</text>
     <symbols></symbols>
    </fromLabel>
   </link>
-  <link id="auto:3">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/stringArray/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line" id="auto:1">
+  <link id="{z[auto:3]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-293789424]}"></from>
+   <to xsi:type="glyph" reference="{class[String]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:1]}">
     <text>array of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:7">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/stringList/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line" id="auto:5">
+  <link id="{z[auto:7]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1249926923]}"></from>
+   <to xsi:type="glyph" reference="{class[String]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:5]}">
     <text>List of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:11">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/stringSet/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line" id="auto:9">
+  <link id="{z[auto:11]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[960422023]}"></from>
+   <to xsi:type="glyph" reference="{class[String]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:9]}">
     <text>Set of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:15">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/stringCollection/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line" id="auto:13">
+  <link id="{z[auto:15]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[1387771317]}"></from>
+   <to xsi:type="glyph" reference="{class[String]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:13]}">
     <text>Collection of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:19">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString1/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line" id="auto:17">
+  <link id="{z[auto:19]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[193856651]}"></from>
+   <to xsi:type="glyph" reference="{class[String]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:17]}">
     <text>Set of array of Set of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:23">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/compoundString2/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line" id="auto:21">
+  <link id="{z[auto:23]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[193856558]}"></from>
+   <to xsi:type="glyph" reference="{class[String]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:21]}">
     <text>array of Set of Set of </text>
     <symbols></symbols>
    </toLabel>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:27">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test7Collection/someStrings/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.lang.String"></to>
-   <toLabel xsi:type="text-line" id="auto:25">
+  <link id="{z[auto:27]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[1553357430]}"></from>
+   <to xsi:type="glyph" reference="{class[String]package[java.lang]}"></to>
+   <toLabel xsi:type="text-line" id="{z[auto:25]}">
     <text>Iterable of </text>
     <symbols></symbols>
    </toLabel>

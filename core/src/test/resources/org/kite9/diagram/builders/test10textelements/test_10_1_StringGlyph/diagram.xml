@@ -1,17 +1,17 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test10TextElements/test_10_1_StringGlyph()">
- <glyph id="a0">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test10TextElements]method[test_10_1_StringGlyph]package[org.kite9.diagram.builders]}">
+ <glyph id="{document[**doc**]entity[a0]}">
   <stereotype></stereotype>
   <label>a</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="b0">
+ <glyph id="{document[**doc**]entity[b0]}">
   <stereotype></stereotype>
   <label>b</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="c0">
+ <glyph id="{document[**doc**]entity[c0]}">
   <stereotype></stereotype>
   <label>c</label>
   <text-lines></text-lines>

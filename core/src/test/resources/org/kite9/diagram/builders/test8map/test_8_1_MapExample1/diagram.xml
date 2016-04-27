@@ -1,92 +1,92 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test8Map/test_8_1_MapExample1()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test8Map]method[test_8_1_MapExample1]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test8Map$Example1]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>Example1</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap">
+ <glyph id="{class[Test8Map$Example1]field[someMap]package[org.kite9.diagram.builders]}">
   <stereotype>field</stereotype>
   <label>someMap</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/rel_field">
+ <arrow id="{document[**doc**]generated[378569783]}">
   <label>has field</label>
  </arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap">
+ <glyph id="{class[Test8Map$Example1]field[someOtherMap]package[org.kite9.diagram.builders]}">
   <stereotype>field</stereotype>
   <label>someOtherMap</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="java_class:java.util.Map">
+ <glyph id="{class[Map]package[java.util]}">
   <stereotype>interface</stereotype>
   <label>Map</label>
   <text-lines>
-   <text-line id="auto:3">
+   <text-line id="{z[auto:3]}">
     <text>from A</text>
     <symbols></symbols>
    </text-line>
-   <text-line id="auto:4">
+   <text-line id="{z[auto:4]}">
     <text>to B</text>
     <symbols></symbols>
    </text-line>
   </text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap/rel_is a">
+ <arrow id="{document[**doc**]generated[-1740013366]}">
   <label>is a</label>
  </arrow>
- <glyph id="java_class:java.util.Map.1">
+ <glyph id="{class[Map]occ[9]package[java.util]}">
   <stereotype>interface</stereotype>
   <label>Map</label>
   <text-lines>
-   <text-line id="auto:7">
+   <text-line id="{z[auto:7]}">
     <text>from A</text>
     <symbols></symbols>
    </text-line>
-   <text-line id="auto:8">
+   <text-line id="{z[auto:8]}">
     <text>to C</text>
     <symbols></symbols>
    </text-line>
   </text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap/rel_is a">
+ <arrow id="{document[**doc**]generated[-11880638]}">
   <label>is a</label>
  </arrow>
  <allLinks>
-  <link id="auto:0">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/rel_field"></to>
+  <link id="{z[auto:0]}">
+   <from xsi:type="glyph" reference="{class[Test8Map$Example1]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[378569783]}"></to>
   </link>
-  <link id="auto:1">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/rel_field"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap"></to>
+  <link id="{z[auto:1]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[378569783]}"></from>
+   <to xsi:type="glyph" reference="{class[Test8Map$Example1]field[someMap]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:5">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap/rel_is a"></to>
+  <link id="{z[auto:5]}">
+   <from xsi:type="glyph" reference="{class[Test8Map$Example1]field[someMap]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1740013366]}"></to>
   </link>
-  <link id="auto:2">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/rel_field"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap"></to>
+  <link id="{z[auto:2]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[378569783]}"></from>
+   <to xsi:type="glyph" reference="{class[Test8Map$Example1]field[someOtherMap]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:9">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap/rel_is a"></to>
+  <link id="{z[auto:9]}">
+   <from xsi:type="glyph" reference="{class[Test8Map$Example1]field[someOtherMap]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-11880638]}"></to>
   </link>
-  <link id="auto:6">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someMap/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.util.Map"></to>
+  <link id="{z[auto:6]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1740013366]}"></from>
+   <to xsi:type="glyph" reference="{class[Map]package[java.util]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:10">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test8Map.Example1/someOtherMap/rel_is a"></from>
-   <to xsi:type="glyph" reference="java_class:java.util.Map.1"></to>
+  <link id="{z[auto:10]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-11880638]}"></from>
+   <to xsi:type="glyph" reference="{class[Map]occ[9]package[java.util]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
  </allLinks>

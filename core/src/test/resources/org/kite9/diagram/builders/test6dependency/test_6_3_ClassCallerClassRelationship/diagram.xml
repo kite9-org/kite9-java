@@ -1,28 +1,28 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test6Dependency/test_6_3_ClassCallerClassRelationship()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.B">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test6Dependency]method[test_6_3_ClassCallerClassRelationship]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test6Dependency$B]package[org.kite9.diagram.builders]}">
   <stereotype>interface</stereotype>
   <label>B</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test6Dependency.A">
+ <glyph id="{class[Test6Dependency$A]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>A</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test6Dependency.B/rel_called">
+ <arrow id="{document[**doc**]generated[-2086428961]}">
   <label>execute</label>
  </arrow>
  <allLinks>
-  <link id="auto:1">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test6Dependency.B/rel_called"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test6Dependency.B"></to>
+  <link id="{z[auto:1]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-2086428961]}"></from>
+   <to xsi:type="glyph" reference="{class[Test6Dependency$B]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:0">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test6Dependency.A"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test6Dependency.B/rel_called"></to>
+  <link id="{z[auto:0]}">
+   <from xsi:type="glyph" reference="{class[Test6Dependency$A]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-2086428961]}"></to>
   </link>
  </allLinks>
 </diagram>

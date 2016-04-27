@@ -1,8 +1,8 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="java_class:org.kite9.diagram.builders.Test14Hierarchy/test_14_1_TestHierarchy()">
- <context id="Rob's Hierarchy0" bordered="true">
-  <context id="level 10" bordered="false">
-   <context id="level 10-glyphs" layout="HORIZONTAL" bordered="false">
-    <glyph id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Top">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test14Hierarchy]method[test_14_1_TestHierarchy]package[org.kite9.diagram.builders]}">
+ <context id="{document[**doc**]entity[Rob's Hierarchy0]}" bordered="true">
+  <context id="{document[**doc**]entity[level 10]}" bordered="false">
+   <context id="{z[document**doc**entitylevel 10-glyphs]}" layout="HORIZONTAL" bordered="false">
+    <glyph id="{class[Test14Hierarchy$Top]package[org.kite9.diagram.builders]}">
      <stereotype></stereotype>
      <label>Top</label>
      <text-lines></text-lines>
@@ -10,191 +10,191 @@
     </glyph>
    </context>
   </context>
-  <context id="level 20" bordered="false">
-   <context id="level 20-glyphs" layout="HORIZONTAL" bordered="false">
-    <glyph id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract1">
-     <stereotype></stereotype>
-     <label>Abstract1</label>
-     <text-lines></text-lines>
-     <symbols></symbols>
-    </glyph>
-    <glyph id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle1">
-     <stereotype></stereotype>
-     <label>Middle1</label>
-     <text-lines></text-lines>
-     <symbols></symbols>
-    </glyph>
-    <glyph id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle2">
+  <context id="{document[**doc**]entity[level 20]}" bordered="false">
+   <context id="{z[document**doc**entitylevel 20-glyphs]}" layout="HORIZONTAL" bordered="false">
+    <glyph id="{class[Test14Hierarchy$Middle2]package[org.kite9.diagram.builders]}">
      <stereotype></stereotype>
      <label>Middle2</label>
      <text-lines></text-lines>
      <symbols></symbols>
     </glyph>
+    <glyph id="{class[Test14Hierarchy$Middle1]package[org.kite9.diagram.builders]}">
+     <stereotype></stereotype>
+     <label>Middle1</label>
+     <text-lines></text-lines>
+     <symbols></symbols>
+    </glyph>
+    <glyph id="{class[Test14Hierarchy$Abstract1]package[org.kite9.diagram.builders]}">
+     <stereotype></stereotype>
+     <label>Abstract1</label>
+     <text-lines></text-lines>
+     <symbols></symbols>
+    </glyph>
    </context>
-   <context id="level 20-arrows" layout="HORIZONTAL" bordered="false">
-    <arrow id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract1/rel_implements">
+   <context id="{z[document**doc**entitylevel 20-arrows]}" layout="HORIZONTAL" bordered="false">
+    <arrow id="{document[**doc**]generated[-149811851]}">
      <label>implements</label>
     </arrow>
-    <arrow id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle1/rel_implements">
+    <arrow id="{document[**doc**]generated[635845127]}">
      <label>implements</label>
     </arrow>
-    <arrow id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle2/rel_implements">
+    <arrow id="{document[**doc**]generated[-1116949101]}">
      <label>implements</label>
     </arrow>
    </context>
   </context>
-  <context id="level 30" bordered="false">
-   <context id="level 30-glyphs" layout="HORIZONTAL" bordered="false">
-    <glyph id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract2">
+  <context id="{document[**doc**]entity[level 30]}" bordered="false">
+   <context id="{z[document**doc**entitylevel 30-glyphs]}" layout="HORIZONTAL" bordered="false">
+    <glyph id="{class[Test14Hierarchy$Abstract2]package[org.kite9.diagram.builders]}">
      <stereotype></stereotype>
      <label>Abstract2</label>
      <text-lines></text-lines>
      <symbols></symbols>
     </glyph>
-    <glyph id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc2">
-     <stereotype></stereotype>
-     <label>Conc2</label>
-     <text-lines></text-lines>
-     <symbols></symbols>
-    </glyph>
-    <glyph id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc1">
+    <glyph id="{class[Test14Hierarchy$Conc1]package[org.kite9.diagram.builders]}">
      <stereotype></stereotype>
      <label>Conc1</label>
      <text-lines></text-lines>
      <symbols></symbols>
     </glyph>
+    <glyph id="{class[Test14Hierarchy$Conc2]package[org.kite9.diagram.builders]}">
+     <stereotype></stereotype>
+     <label>Conc2</label>
+     <text-lines></text-lines>
+     <symbols></symbols>
+    </glyph>
    </context>
-   <context id="level 30-arrows" layout="HORIZONTAL" bordered="false">
-    <arrow id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract2/rel_implements">
+   <context id="{z[document**doc**entitylevel 30-arrows]}" layout="HORIZONTAL" bordered="false">
+    <arrow id="{document[**doc**]generated[201923978]}">
      <label>implements</label>
     </arrow>
-    <arrow id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc2/rel_extends">
+    <arrow id="{document[**doc**]generated[-1681380565]}">
      <label>extends</label>
     </arrow>
-    <arrow id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc2/rel_implements">
+    <arrow id="{document[**doc**]generated[-302645223]}">
      <label>implements</label>
     </arrow>
-    <arrow id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc1/rel_extends">
+    <arrow id="{document[**doc**]generated[2051894326]}">
      <label>extends</label>
     </arrow>
-    <arrow id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc1/rel_implements">
+    <arrow id="{document[**doc**]generated[-864337628]}">
      <label>implements</label>
     </arrow>
    </context>
   </context>
-  <context id="level 40" bordered="false">
-   <context id="level 40-glyphs" layout="HORIZONTAL" bordered="false">
-    <glyph id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc3">
+  <context id="{document[**doc**]entity[level 40]}" bordered="false">
+   <context id="{z[document**doc**entitylevel 40-glyphs]}" layout="HORIZONTAL" bordered="false">
+    <glyph id="{class[Test14Hierarchy$Conc3]package[org.kite9.diagram.builders]}">
      <stereotype></stereotype>
      <label>Conc3</label>
      <text-lines></text-lines>
      <symbols></symbols>
     </glyph>
    </context>
-   <context id="level 40-arrows" layout="HORIZONTAL" bordered="false">
-    <arrow id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc3/rel_extends">
+   <context id="{z[document**doc**entitylevel 40-arrows]}" layout="HORIZONTAL" bordered="false">
+    <arrow id="{document[**doc**]generated[-912280931]}">
      <label>extends</label>
     </arrow>
-    <arrow id="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc3/rel_implements">
+    <arrow id="{document[**doc**]generated[466454411]}">
      <label>implements</label>
     </arrow>
    </context>
   </context>
-  <label xsi:type="text-line" id="auto:0">
+  <label xsi:type="text-line" id="{z[auto:0]}">
    <text>Rob's Hierarchy</text>
    <symbols></symbols>
   </label>
  </context>
  <allLinks>
-  <link id="auto:16" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract1/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Top"></to>
+  <link id="{z[auto:6]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-149811851]}"></from>
+   <to xsi:type="glyph" reference="{class[Test14Hierarchy$Top]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:18" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle1/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Top"></to>
+  <link id="{z[auto:14]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[635845127]}"></from>
+   <to xsi:type="glyph" reference="{class[Test14Hierarchy$Top]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:24" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle2/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Top"></to>
+  <link id="{z[auto:20]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1116949101]}"></from>
+   <to xsi:type="glyph" reference="{class[Test14Hierarchy$Top]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:12" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc2/rel_extends"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract1"></to>
+  <link id="{z[auto:5]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test14Hierarchy$Middle2]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-149811851]}"></to>
+  </link>
+  <link id="{z[auto:18]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-302645223]}"></from>
+   <to xsi:type="glyph" reference="{class[Test14Hierarchy$Middle2]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:15" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract1"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract1/rel_implements"></to>
-  </link>
-  <link id="auto:20" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc1/rel_extends"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract1"></to>
+  <link id="{z[auto:10]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[466454411]}"></from>
+   <to xsi:type="glyph" reference="{class[Test14Hierarchy$Middle1]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:6" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract2/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle1"></to>
+  <link id="{z[auto:12]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[201923978]}"></from>
+   <to xsi:type="glyph" reference="{class[Test14Hierarchy$Middle1]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:10" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc3/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle1"></to>
+  <link id="{z[auto:13]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test14Hierarchy$Middle1]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[635845127]}"></to>
+  </link>
+  <link id="{z[auto:24]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-864337628]}"></from>
+   <to xsi:type="glyph" reference="{class[Test14Hierarchy$Middle1]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:14" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc2/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle1"></to>
+  <link id="{z[auto:16]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1681380565]}"></from>
+   <to xsi:type="glyph" reference="{class[Test14Hierarchy$Abstract1]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:17" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle1"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle1/rel_implements"></to>
+  <link id="{z[auto:19]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test14Hierarchy$Abstract1]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1116949101]}"></to>
   </link>
-  <link id="auto:22" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc1/rel_implements"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle2"></to>
+  <link id="{z[auto:22]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[2051894326]}"></from>
+   <to xsi:type="glyph" reference="{class[Test14Hierarchy$Abstract1]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:23" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle2"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Middle2/rel_implements"></to>
-  </link>
-  <link id="auto:5" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract2"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract2/rel_implements"></to>
-  </link>
-  <link id="auto:8" drawDirection="UP">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc3/rel_extends"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Abstract2"></to>
+  <link id="{z[auto:8]}" drawDirection="UP">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-912280931]}"></from>
+   <to xsi:type="glyph" reference="{class[Test14Hierarchy$Abstract2]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:11" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc2"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc2/rel_extends"></to>
+  <link id="{z[auto:11]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test14Hierarchy$Abstract2]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[201923978]}"></to>
   </link>
-  <link id="auto:13" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc2"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc2/rel_implements"></to>
+  <link id="{z[auto:15]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test14Hierarchy$Conc1]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1681380565]}"></to>
   </link>
-  <link id="auto:19" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc1"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc1/rel_extends"></to>
+  <link id="{z[auto:17]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test14Hierarchy$Conc1]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-302645223]}"></to>
   </link>
-  <link id="auto:21" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc1"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc1/rel_implements"></to>
+  <link id="{z[auto:21]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test14Hierarchy$Conc2]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[2051894326]}"></to>
   </link>
-  <link id="auto:7" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc3"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc3/rel_extends"></to>
+  <link id="{z[auto:23]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test14Hierarchy$Conc2]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-864337628]}"></to>
   </link>
-  <link id="auto:9" drawDirection="UP">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc3"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test14Hierarchy.Conc3/rel_implements"></to>
+  <link id="{z[auto:7]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test14Hierarchy$Conc3]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-912280931]}"></to>
+  </link>
+  <link id="{z[auto:9]}" drawDirection="UP">
+   <from xsi:type="glyph" reference="{class[Test14Hierarchy$Conc3]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[466454411]}"></to>
   </link>
  </allLinks>
 </diagram>

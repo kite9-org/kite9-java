@@ -1,16 +1,16 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/test_16_2_CreateNestedSequenceDiagram()">
- <context id="Some context0" layout="HORIZONTAL" bordered="true">
-  <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test16SequenceDiagram]method[test_16_2_CreateNestedSequenceDiagram]package[org.kite9.diagram.builders]}">
+ <context id="{document[**doc**]entity[Some context0]}" layout="HORIZONTAL" bordered="true">
+  <context id="{class[Test16SequenceDiagram]package[org.kite9.diagram.builders]}" bordered="true">
+   <glyph id="{class[Test16SequenceDiagram]method[someMethod1]package[org.kite9.diagram.builders]}">
     <stereotype>method</stereotype>
     <label>someMethod1</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()00">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram]method[someMethod1]package[org.kite9.diagram.builders]}00]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()10">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram]method[someMethod1]package[org.kite9.diagram.builders]}10]}">
     <label></label>
    </arrow>
    <label xsi:type="text-line" id="auto:15">
@@ -18,47 +18,47 @@
     <symbols></symbols>
    </label>
   </context>
-  <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()">
+  <context id="{class[Test16SequenceDiagram$Class1]package[org.kite9.diagram.builders]}" bordered="true">
+   <glyph id="{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}">
     <stereotype>method</stereotype>
     <label>startMethod</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()00">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}00]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()10">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}10]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()20">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}20]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()30">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}30]}">
     <label></label>
    </arrow>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value">
+   <glyph id="{class[Test16SequenceDiagram$Class1]field[value]package[org.kite9.diagram.builders]}">
     <stereotype>field</stereotype>
     <label>value</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value00">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]field[value]package[org.kite9.diagram.builders]}00]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()40">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}40]}">
     <label></label>
    </arrow>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set">
+   <glyph id="{class[Test16SequenceDiagram$Class1]field[set]package[org.kite9.diagram.builders]}">
     <stereotype>field</stereotype>
     <label>set</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set00">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]field[set]package[org.kite9.diagram.builders]}00]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()50">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}50]}">
     <label></label>
    </arrow>
    <label xsi:type="text-line" id="auto:17">
@@ -66,32 +66,32 @@
     <symbols></symbols>
    </label>
   </context>
-  <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()">
+  <context id="{class[Test16SequenceDiagram$Class2]package[org.kite9.diagram.builders]}" bordered="true">
+   <glyph id="{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}">
     <stereotype>method</stereotype>
     <label>method3</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()00">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}00]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()10">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}10]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()20">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}20]}">
     <label></label>
    </arrow>
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()">
+   <glyph id="{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}">
     <stereotype>method</stereotype>
     <label>method4</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()00">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}00]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()10">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}10]}">
     <label></label>
    </arrow>
    <label xsi:type="text-line" id="auto:21">
@@ -99,20 +99,20 @@
     <symbols></symbols>
    </label>
   </context>
-  <context id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3" bordered="true">
-   <glyph id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()">
+  <context id="{class[Test16SequenceDiagram$Class3]package[org.kite9.diagram.builders]}" bordered="true">
+   <glyph id="{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}">
     <stereotype>method</stereotype>
     <label>methodA</label>
     <text-lines></text-lines>
     <symbols></symbols>
    </glyph>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()00">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}00]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()10">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}10]}">
     <label></label>
    </arrow>
-   <arrow id="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()20">
+   <arrow id="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}20]}">
     <label></label>
    </arrow>
    <label xsi:type="text-line" id="auto:25">
@@ -123,16 +123,16 @@
  </context>
  <allLinks>
   <link id="auto:16" drawDirection="DOWN">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()00"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram]method[someMethod1]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram]method[someMethod1]package[org.kite9.diagram.builders]}00]}"></to>
   </link>
   <link id="auto:46" shape="INVISIBLE" drawDirection="RIGHT">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram]method[someMethod1]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}"></to>
   </link>
   <link id="auto:19" drawDirection="RIGHT">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()00"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()00"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram]method[someMethod1]package[org.kite9.diagram.builders]}00]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}00]}"></to>
    <fromLabel xsi:type="text-line" id="auto:1">
     <text>startMethod()</text>
     <symbols></symbols>
@@ -140,12 +140,12 @@
    <toDecoration>ARROW</toDecoration>
   </link>
   <link id="auto:43" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()00"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()10"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram]method[someMethod1]package[org.kite9.diagram.builders]}00]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram]method[someMethod1]package[org.kite9.diagram.builders]}10]}"></to>
   </link>
   <link id="auto:45" drawDirection="RIGHT">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram/someMethod1()10"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()20"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram]method[someMethod1]package[org.kite9.diagram.builders]}10]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}20]}"></to>
    <fromLabel xsi:type="text-line" id="auto:13">
     <text>methodA()</text>
     <symbols></symbols>
@@ -153,20 +153,20 @@
    <toDecoration>ARROW</toDecoration>
   </link>
   <link id="auto:18" shape="DOTTED" drawDirection="DOWN">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()00"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}00]}"></to>
   </link>
   <link id="auto:47" shape="INVISIBLE" drawDirection="RIGHT">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class1]field[value]package[org.kite9.diagram.builders]}"></to>
   </link>
   <link id="auto:20" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()00"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()10"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}00]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}10]}"></to>
   </link>
   <link id="auto:23" drawDirection="RIGHT">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()10"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()00"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}10]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}00]}"></to>
    <fromLabel xsi:type="text-line" id="auto:2">
     <text>method3()</text>
     <symbols></symbols>
@@ -174,12 +174,12 @@
    <toDecoration>ARROW</toDecoration>
   </link>
   <link id="auto:29" shape="DOTTED" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()10"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()20"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}10]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}20]}"></to>
   </link>
   <link id="auto:30" drawDirection="LEFT">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()20"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()20"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}20]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}20]}"></to>
    <toLabel xsi:type="text-line" id="auto:5">
     <text>returns int</text>
     <symbols></symbols>
@@ -187,12 +187,12 @@
    <toDecoration>ARROW</toDecoration>
   </link>
   <link id="auto:31" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()20"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()30"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}20]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}30]}"></to>
   </link>
   <link id="auto:33" drawDirection="RIGHT">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()30"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value00"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}30]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]field[value]package[org.kite9.diagram.builders]}00]}"></to>
    <fromLabel xsi:type="text-line" id="auto:6">
     <text>get value</text>
     <symbols></symbols>
@@ -200,20 +200,20 @@
    <toDecoration>ARROW</toDecoration>
   </link>
   <link id="auto:34" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()30"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()40"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}30]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}40]}"></to>
   </link>
   <link id="auto:32" shape="DOTTED" drawDirection="DOWN">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value00"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class1]field[value]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]field[value]package[org.kite9.diagram.builders]}00]}"></to>
   </link>
   <link id="auto:48" shape="INVISIBLE" drawDirection="RIGHT">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/value"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class1]field[value]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class1]field[set]package[org.kite9.diagram.builders]}"></to>
   </link>
   <link id="auto:36" drawDirection="RIGHT">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()40"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set00"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}40]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]field[set]package[org.kite9.diagram.builders]}00]}"></to>
    <fromLabel xsi:type="text-line" id="auto:7">
     <text>get set</text>
     <symbols></symbols>
@@ -221,20 +221,20 @@
    <toDecoration>ARROW</toDecoration>
   </link>
   <link id="auto:37" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()40"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()50"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}40]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}50]}"></to>
   </link>
   <link id="auto:35" shape="DOTTED" drawDirection="DOWN">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set00"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class1]field[set]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]field[set]package[org.kite9.diagram.builders]}00]}"></to>
   </link>
   <link id="auto:49" shape="INVISIBLE" drawDirection="RIGHT">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/set"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class1]field[set]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}"></to>
   </link>
   <link id="auto:39" drawDirection="RIGHT">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class1/startMethod()50"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()00"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class1]method[startMethod]package[org.kite9.diagram.builders]}50]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}00]}"></to>
    <fromLabel xsi:type="text-line" id="auto:8">
     <text>method4()</text>
     <symbols></symbols>
@@ -242,20 +242,20 @@
    <toDecoration>ARROW</toDecoration>
   </link>
   <link id="auto:22" shape="DOTTED" drawDirection="DOWN">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()00"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}00]}"></to>
   </link>
   <link id="auto:50" shape="INVISIBLE" drawDirection="RIGHT">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}"></to>
   </link>
   <link id="auto:24" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()00"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()10"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}00]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}10]}"></to>
   </link>
   <link id="auto:27" drawDirection="RIGHT">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()10"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()00"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}10]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}00]}"></to>
    <fromLabel xsi:type="text-line" id="auto:3">
     <text>methodA()</text>
     <symbols></symbols>
@@ -263,24 +263,24 @@
    <toDecoration>ARROW</toDecoration>
   </link>
   <link id="auto:28" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()10"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method3()20"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}10]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method3]package[org.kite9.diagram.builders]}20]}"></to>
   </link>
   <link id="auto:38" shape="DOTTED" drawDirection="DOWN">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()00"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}00]}"></to>
   </link>
   <link id="auto:51" shape="INVISIBLE" drawDirection="RIGHT">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}"></to>
   </link>
   <link id="auto:40" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()00"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()10"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}00]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}10]}"></to>
   </link>
   <link id="auto:42" drawDirection="RIGHT">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class2/method4()10"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()10"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class2]method[method4]package[org.kite9.diagram.builders]}10]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}10]}"></to>
    <fromLabel xsi:type="text-line" id="auto:9">
     <text>methodA()</text>
     <symbols></symbols>
@@ -288,16 +288,16 @@
    <toDecoration>ARROW</toDecoration>
   </link>
   <link id="auto:26" shape="DOTTED" drawDirection="DOWN">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()00"></to>
+   <from xsi:type="glyph" reference="{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}00]}"></to>
   </link>
   <link id="auto:41" shape="DOTTED" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()00"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()10"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}00]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}10]}"></to>
   </link>
   <link id="auto:44" shape="DOTTED" drawDirection="DOWN">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()10"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test16SequenceDiagram.Class3/methodA()20"></to>
+   <from xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}10]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]entity[{class[Test16SequenceDiagram$Class3]method[methodA]package[org.kite9.diagram.builders]}20]}"></to>
   </link>
  </allLinks>
 </diagram>

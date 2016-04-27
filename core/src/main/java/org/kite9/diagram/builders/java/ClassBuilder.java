@@ -6,19 +6,26 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import org.kite9.diagram.builders.AbstractElementBuilder;
 import org.kite9.diagram.builders.Filter;
-import org.kite9.diagram.builders.formats.PropositionFormat;
-import org.kite9.diagram.builders.krmodel.NounFactory;
-import org.kite9.diagram.builders.krmodel.NounPart;
-import org.kite9.diagram.builders.krmodel.Relationship;
-import org.kite9.diagram.builders.krmodel.Tie;
-import org.kite9.diagram.builders.krmodel.Relationship.RelationshipType;
+import org.kite9.diagram.builders.AbstractElementBuilder.BasicObjectExtractor;
+import org.kite9.diagram.builders.formats.Format;
+import org.kite9.diagram.builders.java.krmodel.JavaPropositionBinding;
+import org.kite9.diagram.builders.java.krmodel.JavaRelationships;
+import org.kite9.diagram.builders.krmodel.noun.NounFactory;
+import org.kite9.diagram.builders.krmodel.noun.NounPart;
+import org.kite9.diagram.builders.krmodel.proposition.Proposition;
+import org.kite9.diagram.builders.krmodel.verb.AbstractVerb;
+import org.kite9.diagram.builders.krmodel.verb.Verb;
+import org.kite9.diagram.builders.krmodel.verb.Verb.VerbType;
 import org.kite9.framework.alias.Aliaser;
 import org.kite9.framework.model.AbstractHandle;
 import org.kite9.framework.model.AnnotationHandle;
@@ -28,49 +35,52 @@ import org.kite9.framework.model.ProjectModel;
 
 public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 
-	public ClassBuilder(List<Tie> forX, ProjectModel model, Aliaser a) {
+	public ClassBuilder(List<Proposition> forX, ProjectModel model, NounFactory a) {
 		super(forX, model, a);
 	}
 
-	public ClassBuilder showVisibility(PropositionFormat f) {
-		for (Tie t : ties) {
-			NounPart subject = NounFactory.createNewSubjectNounPart(t);
+	public ClassBuilder showVisibility(Format f) {
+		for (Proposition t : ties) {
+			NounPart subject = getNounFactory().extractObject(t);
 			Class<?> c = getRepresented(t);
 			if (Modifier.isPublic(c.getModifiers())) {
-				f.write(subject, JavaRelationships.VISIBILITY, createNoun(new JavaModifier("public")));
+				show(f, new JavaPropositionBinding(subject, JavaRelationships.IS_VISIBILITY, createNoun(JavaModifier.PUBLIC)));
 			} else if (Modifier.isPrivate(c.getModifiers())) {
-				f.write(subject, JavaRelationships.VISIBILITY, createNoun(new JavaModifier("private")));
+				show(f, new JavaPropositionBinding(subject, JavaRelationships.IS_VISIBILITY, createNoun(JavaModifier.PRIVATE)));
 			} else if (Modifier.isProtected(c.getModifiers())) {
-				f.write(subject, JavaRelationships.VISIBILITY, createNoun(new JavaModifier("protected")));
+				show(f, new JavaPropositionBinding(subject, JavaRelationships.IS_VISIBILITY, createNoun(JavaModifier.PROTECTED)));
 			}
 		}
 		return this;
 	}
 
-	public ClassBuilder showStatic(PropositionFormat f) {
-		for (Tie t : ties) {
+	public ClassBuilder showStatic(Format f) {
+		for (Proposition t : ties) {
 			Class<?> c = getRepresented(t);
-			NounPart subject = NounFactory.createNewSubjectNounPart(t);
+			NounPart subject = getNounFactory().extractObject(t);
 			if (c.getEnclosingClass() != null) {
 				// inner class
 				if (Modifier.isStatic(c.getModifiers())) {
-					f.write(subject, JavaRelationships.MODIFIER, createNoun(new JavaModifier("static")));
+					show(f, new JavaPropositionBinding(subject, JavaRelationships.IS_MODIFIER, 
+						createNoun(JavaModifier.STATIC)));
 				}
 			}
 		}
 		return this;
 	}
 
-	public ClassBuilder show(PropositionFormat f) {
+	public ClassBuilder show(Format f) {
 		return (ClassBuilder) super.show(f);
 	}
 
-	public ClassBuilder showFinal(PropositionFormat f) {
-		for (Tie t : ties) {
+	public ClassBuilder showFinal(Format f) {
+		for (Proposition t : ties) {
 			Class<?> c = getRepresented(t);
-			NounPart subject = NounFactory.createNewSubjectNounPart(t);
+			NounPart subject = getNounFactory().extractObject(t);
 			if (Modifier.isFinal(c.getModifiers())) {
-				f.write(subject, JavaRelationships.MODIFIER, createNoun(new JavaModifier("final")));
+				show(f, 
+					new JavaPropositionBinding(subject, JavaRelationships.IS_MODIFIER, 
+							createNoun(JavaModifier.FINAL)));
 			}
 		}
 		return this;
@@ -84,18 +94,20 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 	 *            An optional filter to reduce the number of interfaces being
 	 *            considered.
 	 */
-	public ClassBuilder withSuperClasses(Filter<? super Class<?>> f) {
-		return new ClassBuilder(packContent(ties, f, new ClassContentSelector<Class<?>>() {
-
-			public Class<?>[] contents(Class<?> c) {
-				return new Class<?>[] { c.getSuperclass() };
+	public ClassBuilder withSuperClasses(@SuppressWarnings("rawtypes") Filter<? super Class> f) {
+		return new ClassBuilder(new BasicObjectExtractor() {
+			
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.EXTENDS;
 			}
-
-			public Set<? extends Class<?>> traverse(Class<?> c) {
-				throw new UnsupportedOperationException("Not implemented for superClass selector");
+			
+			@SuppressWarnings("unchecked")
+			@Override
+			public List<?> createObjects(Object from) {
+				return Arrays.asList(((Class<?>)from).getSuperclass());
 			}
-
-		}, false, JavaRelationships.EXTENDS), model, a);
+		}.generatePropositions(Class.class, f), model, nf);
 	}
 
 	/**
@@ -110,18 +122,20 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 	 *            Set to true if you want interfaces declared by superclasses
 	 *            and superinterfaces too
 	 */
-	public ClassBuilder withInterfaces(Filter<? super Class<?>> f, boolean traverse) {
-		return new ClassBuilder(packContent(ties, f, new ClassContentSelector<Class<?>>() {
-
-			public Class<?>[] contents(Class<?> c) {
-				return c.getInterfaces();
+	public ClassBuilder withInterfaces(@SuppressWarnings("rawtypes")
+	Filter<? super Class> f, boolean traverse) {
+		return new ClassBuilder(new TraversingObjectExtractor(traverse) {
+			
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.IMPLEMENTS;
 			}
-
-			public Set<? extends Class<?>> traverse(Class<?> c) {
-				return superTraverse(c);
+			
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				out.addAll(Arrays.asList(in.getInterfaces()));
 			}
-
-		}, traverse, JavaRelationships.IMPLEMENTS), model, a);
+		}.generatePropositions(Class.class, f), model,nf);
 	}
 
 	/**
@@ -135,16 +149,21 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 	 *         and superinterfaces too
 	 */
 	public MethodBuilder withMethods(Filter<? super Method> f, boolean traverse) {
-		return new MethodBuilder(packContent(ties, f, new ClassContentSelector<Method>() {
-			public Method[] contents(Class<?> c) {
-				return c.getDeclaredMethods();
+		return new MethodBuilder(new TraversingObjectExtractor(traverse) {
+			
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				out.addAll(Arrays.asList(in.getDeclaredMethods()));
 			}
 
-			public Set<? extends Class<?>> traverse(Class<?> c) {
-				return superTraverse(c);
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.METHOD;
 			}
-
-		}, traverse, JavaRelationships.METHOD), model, a);
+			
+			
+			
+		}.generatePropositions(Method.class, f), model, nf);
 	}
 
 	/**
@@ -157,16 +176,22 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 	 * @oparam traverse Set to true if you want declarations from superclasses
 	 *         too
 	 */
-	public ClassBuilder withInnerClasses(Filter<? super Class<?>> f, boolean traverse) {
-		return new ClassBuilder(packContent(ties, f, new ClassContentSelector<Class<?>>() {
-			public Class<?>[] contents(Class<?> c) {
-				return c.getDeclaredClasses();
+	public ClassBuilder withInnerClasses(@SuppressWarnings("rawtypes") Filter<? super Class> f, boolean traverse) {
+		return new ClassBuilder(new TraversingObjectExtractor(traverse) {
+			
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				out.addAll(Arrays.asList(in.getDeclaredClasses()));
 			}
 
-			public Set<? extends Class<?>> traverse(Class<?> c) {
-				return Collections.singleton(c.getSuperclass());
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.INNER_CLASS;
 			}
-		}, traverse, JavaRelationships.INNER_CLASS), model, a);
+			
+			
+			
+		}.generatePropositions(Class.class, f), model, nf);
 	}
 
 	/**
@@ -180,23 +205,22 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 	 *            sub-sub-classes etc)s
 	 * @return
 	 */
-	public ClassBuilder withSubClasses(Filter<? super Class<?>> f, boolean traverse) {
+	public ClassBuilder withSubClasses(@SuppressWarnings("rawtypes") Filter<? super Class> f, boolean traverse) {
 		final ClassLoader cl = getCurrentClassLoader();
-		return new ClassBuilder(packContent(ties, f, new ClassContentSelector<Class<?>>() {
-			public Class<?>[] contents(Class<?> c) {
-				return MemberHandle.hydrateClasses(model.getSubclasses(MemberHandle.convertClassName(c)), cl).toArray(
-						new Class<?>[] {});
+
+		return new ClassBuilder(new TraversingObjectExtractor(traverse) {
+			
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.EXTENDED_BY;
 			}
-
-			public Set<Class<?>> traverse(Class<?> c) {
-				return MemberHandle.hydrateClasses(model.getSubclasses(MemberHandle.convertClassName(c)), cl);
+			
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				out.addAll(
+					MemberHandle.hydrateClasses(model.getSubclasses(MemberHandle.convertClassName(in)), cl));
 			}
-		}, traverse, JavaRelationships.EXTENDED_BY), model, a);
-
-	}
-
-	protected interface ClassContentSelector<T> extends ContentSelector<T, Class<?>> {
-
+		}.generatePropositions(Class.class, f), model, nf);
 	}
 
 	/**
@@ -209,100 +233,48 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 	 *         too
 	 */
 	public FieldBuilder withFields(Filter<? super Field> f, boolean traverse) {
-		return new FieldBuilder(packContent(ties, f, new ClassContentSelector<Field>() {
-			public Field[] contents(Class<?> c) {
-				return c.getDeclaredFields();
+		return new FieldBuilder(new TraversingObjectExtractor(traverse) {
+			
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.FIELD;
 			}
-
-			public Set<? extends Class<?>> traverse(Class<?> c) {
-				return Collections.singleton(c.getSuperclass());
+			
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				out.addAll(Arrays.asList(in.getDeclaredFields()));
 			}
-		}, traverse, JavaRelationships.FIELD), model, a);
+		}.generatePropositions(Field.class, f), model,nf);
 	}
-
-	private Set<Class<?>> superTraverse(Class<?> c) {
-		LinkedHashSet<Class<?>> out = new LinkedHashSet<Class<?>>();
-		if (c.getSuperclass() != null)
-			out.add(c.getSuperclass());
-		for (int i = 0; i < c.getInterfaces().length; i++) {
-			out.add(c.getInterfaces()[i]);
-		}
-		return out;
-	}
-
-	/**
-	 * This is a helper method used to create a list of ties correctly, by
-	 * applying a ContentSelector.
-	 */
-	protected <Y> List<Tie> packContent(Collection<Tie> in, Filter<? super Y> f, ClassContentSelector<Y> ccs,
-			boolean traverse, Relationship r) {
-		List<Tie> out = new ArrayList<Tie>();
-		packContentInner(in, f, ccs, traverse, r, out);
-		return out;
-	}
-
-	protected <Y> void packContentInner(Collection<Tie> in, Filter<? super Y> f, ClassContentSelector<Y> ccs,
-			boolean traverse, Relationship r, List<Tie> out) {
-		for (Tie t : in) {
-			Class<?> c = getRepresented(t);
-			NounPart subject = NounFactory.createNewSubjectNounPart(t);
-			if (model.withinModel(MemberHandle.convertClassName(c))) {
-				for (Y y : ccs.contents(c)) {
-					if ((y!=null) && ((f == null) || (f.accept(y)))) {
-						out.add(new Tie(subject, r, createNoun(y)));
-					}
-				}
-
-				if (traverse) {
-					packContentInner2(subject, ccs.traverse(c), f, ccs, traverse, r, out);
-				}
-			}
-		}
-	}
-
-	protected <Y> void packContentInner2(NounPart subject, Collection<? extends Class<?>> in, Filter<? super Y> f,
-			ClassContentSelector<Y> ccs, boolean traverse, Relationship r, List<Tie> out) {
-		for (Class<?> c : in) {
-			if (model.withinModel(MemberHandle.convertClassName(c))) {
-				for (Y y : ccs.contents(c)) {
-					if ((f == null) || (f.accept(y))) {
-						out.add(new Tie(subject, r, createNoun(y)));
-					}
-				}
-
-				if (traverse) {
-					packContentInner2(subject, ccs.traverse(c), f, ccs, traverse, r, out);
-				}
-			}
-		}
-	}
-
+	
 	@Override
 	public ClassBuilder reduce(Filter<? super Class<?>> f) {
-		return new ClassBuilder(reduceInner(f), model, a);
+		return new ClassBuilder(reduceInner(f), model,nf);
 	}
 
 	/**
 	 * Assumes that the classes in this builder are annotations, and provides
 	 * you with a classbuilder of classes that have declared these annotations.
 	 */
-	public ClassBuilder withAnnotatedClasses(Filter<? super Class<?>> f) {
+	public ClassBuilder withAnnotatedClasses(@SuppressWarnings("rawtypes") Filter<? super Class> f) {
 		final ClassLoader cl = getCurrentClassLoader();
-		return new ClassBuilder(packContent(ties, f, new ClassContentSelector<Class<?>>() {
-			public Class<?>[] contents(Class<?> c) {
-				Set<String> classNames = model.getClassesWithAnnotation(MemberHandle.convertClassName(c));
-				Class<?>[] out = new Class<?>[classNames.size()];
-				int i = 0;
+
+		return new ClassBuilder(new BasicObjectExtractor() {
+
+			public List<?> createObjects(Object from) {
+				Set<String> classNames = model.getClassesWithAnnotation(MemberHandle.convertClassName((Class<?>) from));
+				List<Class<?>> out = new ArrayList<Class<?>>(classNames.size());
 				for (String name : classNames) {
-					out[i++] = MemberHandle.hydrateClass(name, cl);
+					out.add(MemberHandle.hydrateClass(name, cl));
 				}
 				return out;
 			}
 
-			public Set<? extends Class<?>> traverse(Class<?> c) {
-				return Collections.singleton(c.getSuperclass());
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.ANNOTATION_OF;
 			}
-		}, false, JavaRelationships.ANNOTATION_OF), model, a);
+			
+		}.generatePropositions(Class.class, f), model, nf);
 	}
 
 	/**
@@ -310,24 +282,20 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 	 */
 	public AnnotationBuilder withReferencingAnnotations(Filter<? super Annotation> f) {
 		final ClassLoader cl = getCurrentClassLoader();
-		return new AnnotationBuilder(packContent(ties, f, new ClassContentSelector<Annotation>() {
-
-			public Annotation[] contents(Class<?> c) {
-				Set<AnnotationHandle> handles = model.getAnnotationReferences(MemberHandle.convertClassName(c));
-				Annotation[] out = new Annotation[handles.size()];
-				int i = 0;
-				for (AnnotationHandle h : handles) {
-					out[i++] = h.hydrate(cl);
-				}
-				return out;
-
+		return new AnnotationBuilder(new BasicObjectExtractor() {
+			
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.REFERENCED_BY;
 			}
-
-			public Set<? extends Class<?>> traverse(Class<?> c) {
-				return null;
+			
+			@Override
+			public List<?> createObjects(Object from) {
+				Set<AnnotationHandle> handles = model.getAnnotationReferences(MemberHandle.convertClassName((Class<?>) from));
+				return handles.stream().map(h -> h.hydrate(cl)).collect(Collectors.toList());
 			}
-
-		}, false, JavaRelationships.REFERENCED_BY), model, a);
+			
+		}.generatePropositions(Annotation.class, f), model,nf);
 
 	}
 
@@ -338,186 +306,255 @@ public class ClassBuilder extends AnnotatedElementBuilder<Class<?>> {
 	 */
 	public AnnotatedElementBuilder<?> withReferencingAnnotatedElements(Filter<? super Class<? extends Annotation>> f) {
 		final ClassLoader cl = getCurrentClassLoader();
-		List<Tie> out = new ArrayList<Tie>();
-		for (Tie t : ties) {
+		List<Proposition> out = new ArrayList<Proposition>();
+		for (Proposition t : ties) {
 			Class<?> c = getRepresented(t);
-			NounPart subject = NounFactory.createNewSubjectNounPart(t);
+			NounPart subject = getNounFactory().createNewSubjectNounPart(t);
 			Set<AnnotationHandle> handles = model.getAnnotationReferences(MemberHandle.convertClassName(c));
 			for (AnnotationHandle h : handles) {
 				AnnotatedElement object = h.getAnnotatedItem().hydrate(cl);
 				Annotation relation = h.hydrate(cl);
 				if ((f==null) || (f.accept(relation.annotationType()))) {
 					String annAlias = a.getObjectAlias(relation);
-					Relationship rel = new Relationship(annAlias+"(r)", new Relationship(annAlias));
-					Tie newTie = new Tie(subject, rel, createNoun(object));
+					Verb rel = new AbstractVerb(annAlias+"(r)", new AbstractVerb(annAlias));
+					Proposition newTie = new JavaPropositionBinding(subject, rel, createNoun(object), object);
 					out.add(newTie);
 				}
 			}
 		}
 		
-		return new AnnotatedElementBuilder<AnnotatedElement>(out, model, a);
+		return new AnnotatedElementBuilder<AnnotatedElement>(new BasicObjectExtractor() {
+
+			@Override
+			public List<?> createObjects(Object from) {
+				Set<AnnotationHandle> handles = model.getAnnotationReferences(MemberHandle.convertClassName((Class<?>) from));
+				return new ArrayList<>(handles);
+			}
+
+			@Override
+			public Object getFilterObject(Object from) {
+				return ((AnnotationHandle) from).getAnnotatedItem().hydrate(cl);
+			}
+
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				Annotation relation = ((AnnotationHandle) object).hydrate(cl);
+				Verb rel = new AbstractVerb(annAlias+"(r)", new AbstractVerb(annAlias));
+			}
+			
+		}.generatePropositions(AnnotatedElement.class, f), model,nf);
 	}
 
 	/**
 	 * Returns classes calling this one
 	 */
-	public ClassBuilder withCallingClasses(Filter<? super Class<?>> f, boolean traverse) {
+	public ClassBuilder withCallingClasses(@SuppressWarnings("rawtypes") Filter<? super Class> f, boolean traverse) {
 		final ClassLoader cl = getCurrentClassLoader();
-		List<Tie> ties2 = new ArrayList<Tie>();
-		for (Tie t : ties) {
-			Class<?> c = getRepresented(t);
-			Set<Class<?>> todo = traverse ? superTraverse(c) : new LinkedHashSet<Class<?>>();
-			todo.add(c);
-			for (Class<?> class1 : todo) {
-				for (Method m : class1.getDeclaredMethods()) {
-					for (MemberHandle mh : model.getCalledBy(new MethodHandle(m))) {
-						if (mh instanceof MethodHandle) {
-							Class<?> dc = ((MethodHandle) mh).hydrateClass(cl);
-							if ((f == null) || (f.accept(dc))) {
-								ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), new MethodCallRelationship(m,
-										RelationshipType.PASSIVE), createNoun(dc)));
-							}
-						}
-					}
-				}
+		
+		return new ClassBuilder(new TraversingObjectExtractor(traverse) {
+			
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				extractFromModel(in, out, WhatToExtract.HANDLES, ModelPart.CALLED_BY);
 			}
-		}
 
-		return new ClassBuilder(ties2, model, a);
+			@Override
+			public Object getFilterObject(Object from) {
+				MethodHandle mh = (MethodHandle) from;
+				return ((MethodHandle) mh).hydrateClass(cl);
+			}
 
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				MethodHandle mh = (MethodHandle) object;
+				Method m2 = ((MethodHandle) mh).hydrate(cl);
+				return new MethodCallVerb(m2, VerbType.PASSIVE);
+			}
+			
+		}.generatePropositions(Class.class, f), model, nf);
 	}
 
 	/**
 	 * Returns classes calling this one
 	 */
 	public MethodBuilder withCallingMethods(Filter<? super Method> f, boolean traverse) {
+		return new MethodBuilder(new TraversingObjectExtractor(traverse) {
+			
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.CLASS_CALLED_BY_METHOD;
+			}
+			
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				extractFromModel(in, out, WhatToExtract.METHODS, ModelPart.CALLED_BY);
+			}
+		}.generatePropositions(Method.class, f), model,nf);
+
+	}
+	
+	enum WhatToExtract { HANDLES, METHODS };
+	enum ModelPart { CALLS, CALLED_BY };
+
+	private void extractFromModel(Class<?> in, List<Object> out, WhatToExtract what, ModelPart mp) {
 		final ClassLoader cl = getCurrentClassLoader();
-		List<Tie> ties2 = new ArrayList<Tie>();
-		for (Tie t : ties) {
-			Class<?> c = getRepresented(t);
-			Set<Class<?>> todo = traverse ? superTraverse(c) : new LinkedHashSet<Class<?>>();
-			todo.add(c);
-			for (Class<?> class1 : todo) {
-				for (Method m : class1.getDeclaredMethods()) {
-					for (MemberHandle mh : model.getCalledBy(new MethodHandle(m))) {
-						if (mh instanceof MethodHandle) {
-							Method dc = ((MethodHandle) mh).hydrate(cl);
-							if ((f == null) || (f.accept(dc))) {
-								ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.CALLED_BY, createNoun(dc)));
-							}
-						}
+		for (Method m : in.getDeclaredMethods()) {
+			MethodHandle meth = new MethodHandle(m);
+			Collection<MemberHandle> refs = (mp == ModelPart.CALLS) ? model.getCalls(meth) : model.getCalledBy(meth);
+			
+			for (MemberHandle mh : refs) {
+				if (mh instanceof MethodHandle) {
+					switch (what) {
+					case HANDLES:
+						out.add(mh);
+						break;
+					default:
+					case METHODS:
+						out.add(mh.hydrate(cl));
+						break;
 					}
 				}
 			}
 		}
-
-		return new MethodBuilder(ties2, model, a);
-
 	}
+
 
 	/**
 	 * Returns classes which are called by this one
 	 */
-	public ClassBuilder withCalledClasses(Filter<? super Class<?>> f, boolean traverse) {
+	public ClassBuilder withCalledClasses(@SuppressWarnings("rawtypes") Filter<? super Class> f, final boolean traverse) {
 		final ClassLoader cl = getCurrentClassLoader();
-		List<Tie> ties2 = new ArrayList<Tie>();
-		for (Tie t : ties) {
-			Class<?> c = getRepresented(t);
-			Set<Class<?>> todo = traverse ? superTraverse(c) : new LinkedHashSet<Class<?>>();
-			todo.add(c);
-			for (Class<?> class1 : todo) {
-				for (Method m : class1.getDeclaredMethods()) {
-					for (MemberHandle mh : model.getCalls(new MethodHandle(m))) {
-						if (mh instanceof MethodHandle) {
-							Method m2 = ((MethodHandle) mh).hydrate(cl);
-							Class<?> dc = ((MethodHandle) mh).hydrateClass(cl);
-							if ((f == null) || (f.accept(dc))) {
-								ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), new MethodCallRelationship(m2),
-										createNoun(dc)));
-							}
-						}
-					}
-				}
-			}
-		}
 
-		return new ClassBuilder(ties2, model, a);
+		return new ClassBuilder(new TraversingObjectExtractor(traverse) {
+			
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				extractFromModel(in, out, WhatToExtract.HANDLES, ModelPart.CALLS);
+			}
+
+			@Override
+			public Object getFilterObject(Object from) {
+				MethodHandle mh = (MethodHandle) from;
+				return ((MethodHandle) mh).hydrateClass(cl);
+			}
+
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				MethodHandle mh = (MethodHandle) object;
+				Method m2 = ((MethodHandle) mh).hydrate(cl);
+				return new MethodCallVerb(m2);
+			}
+			
+			
+			
+		}.generatePropositions(Class.class, f), model, nf);
+	}
+	
+	abstract class TraversingObjectExtractor extends AbstractElementBuilder<Class<?>>.BasicObjectExtractor {
+		
+		private final  boolean traverse;
+		
+		TraversingObjectExtractor(boolean traverse) {
+			this.traverse = traverse;
+		}
+		
+		private Set<Class<?>> handleSuperTraverse(Class<?> from) {
+			Set<Class<?>> todo = traverse ? superTraverse(from) : new LinkedHashSet<Class<?>>();
+			todo.add((Class<?>) from);
+			return todo;
+		}
+		
+		private Set<Class<?>> superTraverse(Class<?> c) {
+			LinkedHashSet<Class<?>> out = new LinkedHashSet<Class<?>>();
+			if (c.getSuperclass() != null)
+				out.add(c.getSuperclass());
+			for (int i = 0; i < c.getInterfaces().length; i++) {
+				out.add(c.getInterfaces()[i]);
+			}
+			return out;
+		}
+		
+		@Override
+		public List<Object> createObjects(Object from) {
+			Set<Class<?>> todo = handleSuperTraverse((Class<?>) from);
+			List<Object> out = new ArrayList<Object>();
+			for (Class<?> class1 : todo) {
+				processClass(class1, out);
+			}
+			
+			return out;
+		}
+		
+		public abstract void processClass(Class<?> in, List<Object> out);
+		
 	}
 
+	
+
+	
 	/**
 	 * Returns methods which are called by this class
 	 */
-	public MethodBuilder withCalledMethods(Filter<? super Method> f, boolean traverse) {
-		final ClassLoader cl = getCurrentClassLoader();
-		List<Tie> ties2 = new ArrayList<Tie>();
-		for (Tie t : ties) {
-			Class<?> c = getRepresented(t);
-			Set<Class<?>> todo = traverse ? superTraverse(c) : new LinkedHashSet<Class<?>>();
-			todo.add(c);
-			for (Class<?> class1 : todo) {
-				for (Method m : class1.getDeclaredMethods()) {
-					for (MemberHandle mh : model.getCalls(new MethodHandle(m))) {
-						if (mh instanceof MethodHandle) {
-							Method m2 = ((MethodHandle) mh).hydrate(cl);
-							if ((f == null) || (f.accept(m2))) {
-								ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.CALLS, createNoun(m2)));
-							}
-						}
-					}
-				}
-			}
-		}
+	public MethodBuilder withCalledMethods(Filter<? super Method> f, final boolean traverse) {
+		return new MethodBuilder(new TraversingObjectExtractor(traverse) {
 
-		return new MethodBuilder(ties2, model, a);
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.CLASS_CALLS_METHOD;
+			}
+
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				extractFromModel(in, out, WhatToExtract.METHODS, ModelPart.CALLS);
+			}
+			
+			
+		}.generatePropositions(Method.class, f), model,nf);
 	}
 	
 	/**
 	 * Returns classes which this class depends on to work.
 	 */
-	public ClassBuilder withDependencies(Filter<? super Class<?>> f, boolean traverse) {
+	public ClassBuilder withDependencies(@SuppressWarnings("rawtypes") Filter<? super Class> f, boolean traverse) {
 		final ClassLoader cl = getCurrentClassLoader();
-		List<Tie> ties2 = new ArrayList<Tie>();
-		for (Tie t : ties) {
-			Class<?> c = getRepresented(t);
-			Set<Class<?>> todo = traverse ? superTraverse(c) : new LinkedHashSet<Class<?>>();
-			todo.add(c);
-			for (Class<?> class1 : todo) {
-				String className = AbstractHandle.convertClassName(class1);
-				for (String depName : model.getDependsOnClasses(className)) {
+		
+		return new ClassBuilder(new TraversingObjectExtractor(traverse) {
+			
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.REQUIRES;
+			}
+			
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				for (String depName : model.getDependedOnClasses(in.getName())) {
 					Class<?> depClass = AbstractHandle.hydrateClass(depName, cl);
-					if ((f == null) || (f.accept(depClass))) {
-						ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.REQUIRES,
-								createNoun(depClass)));
-					}
+					out.add(depClass);
 				}
 			}
-		}
-
-		return new ClassBuilder(ties2, model, a);
+		}.generatePropositions(Class.class, f), model,nf);
 	}
 	
 	/**
 	 * Returns classes which require this class to work.
 	 */
-	public ClassBuilder withDependants(Filter<? super Class<?>> f, boolean traverse) {
+	public ClassBuilder withDependants(@SuppressWarnings("rawtypes") Filter<? super Class> f, boolean traverse) {
 		final ClassLoader cl = getCurrentClassLoader();
-		List<Tie> ties2 = new ArrayList<Tie>();
-		for (Tie t : ties) {
-			Class<?> c = getRepresented(t);
-			Set<Class<?>> todo = traverse ? superTraverse(c) : new LinkedHashSet<Class<?>>();
-			todo.add(c);
-			for (Class<?> class1 : todo) {
-				String className = AbstractHandle.convertClassName(class1);
-				for (String depName : model.getDependedOnClasses(className)) {
+
+		return new ClassBuilder(new TraversingObjectExtractor(traverse) {
+			
+			@Override
+			public Verb getVerb(Object subject, Object object) {
+				return JavaRelationships.REQUIRED_BY;
+			}
+			
+			@Override
+			public void processClass(Class<?> in, List<Object> out) {
+				for (String depName : model.getDependedOnClasses(in.getName())) {
 					Class<?> depClass = AbstractHandle.hydrateClass(depName, cl);
-					if ((f == null) || (f.accept(depClass))) {
-						ties2.add(new Tie(NounFactory.createNewSubjectNounPart(t), JavaRelationships.REQUIRED_BY,
-								createNoun(depClass)));
-					}
+					out.add(depClass);
 				}
 			}
-		}
-
-		return new ClassBuilder(ties2, model, a);
+		}.generatePropositions(Class.class, f), model,nf);
 	}
+
 }

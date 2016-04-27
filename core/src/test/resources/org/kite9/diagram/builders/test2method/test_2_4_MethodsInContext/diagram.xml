@@ -1,18 +1,18 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test2Method/test_2_4_MethodsInContext()">
- <context id="project_java_class:org.kite9.diagram.builders.Test2Method" bordered="true">
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someTestMethod()">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test2Method]method[test_2_4_MethodsInContext]package[org.kite9.diagram.builders]}">
+ <context id="{class[Test2Method]package[org.kite9.diagram.builders]}" bordered="true">
+  <glyph id="{class[Test2Method]method[someTestMethod]package[org.kite9.diagram.builders]}">
    <stereotype>method</stereotype>
    <label>someTestMethod</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <glyph id="project_java_class:org.kite9.diagram.builders.Test2Method/someOtherMethod()">
+  <glyph id="{class[Test2Method]method[someOtherMethod]package[org.kite9.diagram.builders]}">
    <stereotype>method</stereotype>
    <label>someOtherMethod</label>
    <text-lines></text-lines>
    <symbols></symbols>
   </glyph>
-  <label xsi:type="text-line" id="auto:0">
+  <label xsi:type="text-line" id="{z[auto:0]}">
    <text>Test2Method</text>
    <symbols></symbols>
   </label>

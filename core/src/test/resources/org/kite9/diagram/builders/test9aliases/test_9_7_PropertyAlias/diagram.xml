@@ -1,5 +1,5 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test9Aliases/test_9_7_PropertyAlias()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test9Aliases.SomeOtherClass">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test9Aliases]method[test_9_7_PropertyAlias]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test9Aliases$SomeOtherClass]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>aliased some_other</label>
   <text-lines></text-lines>

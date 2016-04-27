@@ -11,11 +11,16 @@ import org.kite9.diagram.adl.Context;
 import org.kite9.diagram.adl.Link;
 import org.kite9.diagram.adl.LinkLineStyle;
 import org.kite9.diagram.adl.TextLine;
-import org.kite9.diagram.builders.formats.InsertionInterface;
-import org.kite9.diagram.builders.java.ProjectStaticSimpleNoun;
+import org.kite9.diagram.builders.id.Address;
+import org.kite9.diagram.builders.id.AddressImpl;
+import org.kite9.diagram.builders.id.IdHelper;
+import org.kite9.diagram.builders.java.krmodel.ProjectStaticSimpleNoun;
 import org.kite9.diagram.builders.krmodel.KRDiagramBuilder;
-import org.kite9.diagram.builders.krmodel.NounFactory;
-import org.kite9.diagram.builders.krmodel.SimpleNoun;
+import org.kite9.diagram.builders.krmodel.noun.NounFactory;
+import org.kite9.diagram.builders.krmodel.noun.NounPart;
+import org.kite9.diagram.builders.krmodel.noun.SimpleNoun;
+import org.kite9.diagram.builders.krmodel.proposition.Proposition;
+import org.kite9.diagram.builders.representation.ADLInsertionInterface;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.Connected;
@@ -40,8 +45,8 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 		super(db);
 	}
 
-	public ColumnSequenceDiagramWizard(InsertionInterface ii, NounFactory nf, Aliaser a) {
-		super(ii, nf, a);
+	public ColumnSequenceDiagramWizard(ADLInsertionInterface ii, NounFactory nf, Aliaser a, IdHelper helper) {
+		super(ii, nf, a, helper);
 	}
 
 	protected Layout getGlyphLayout() {
@@ -62,7 +67,7 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 		c.setLayoutDirection(Layout.HORIZONTAL);
 
 		Map<DiagramElement, DiagramElement> lastArrows = new HashMap<DiagramElement, DiagramElement>();
-		Map<DiagramElement, Integer> lengths = new HashMap<DiagramElement, Integer>();
+//		Map<DiagramElement, Integer> lengths = new HashMap<DiagramElement, Integer>();
 		Set<DiagramElement> headerGlyphs = new HashSet<DiagramElement>();
 		Map<DiagramElement, DiagramElement> rootElements = new HashMap<DiagramElement, DiagramElement>();
 		Map<DiagramElement, Integer> elementDepth = new HashMap<DiagramElement, Integer>();
@@ -73,11 +78,11 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 			if (s instanceof CallStep) {
 				CallStep cs = (CallStep) s;
 				DiagramElement fromg = elementStack.size()==0 ? null : elementStack.peek();
-				DiagramElement from = fromg == null ? null : getExtensionElement(((Contained)fromg).getContainer(), fromg, lastArrows, lengths, true);
+				DiagramElement from = fromg == null ? null : getExtensionElement(((Contained)fromg).getContainer(), fromg, lastArrows, s, true);
 				DiagramElement tog = buildGlyph(c, cs.getTo(), cs.getToGroup(), stateMap, headerGlyphs, rootElements, elementStack, elementDepth);
 				
 				if (from != null) {
-					DiagramElement to  = getExtensionElement(((Contained)tog).getContainer(), tog, lastArrows, lengths, false);
+					DiagramElement to  = getExtensionElement(((Contained)tog).getContainer(), tog, lastArrows, s, false);
 					Direction d = getDirectionFor(getArrowDirection());
 					boolean fromBefore = isFromBefore2(rootElements, elementDepth, fromg, tog);
 					if (!fromBefore) {
@@ -89,9 +94,9 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 			} else if (s instanceof ReturnStep) {
 				DiagramElement fromg = elementStack.pop();
 				if (((ReturnStep)s).isShow()) {
-					DiagramElement from = getExtensionElement(((Contained)fromg).getContainer(), fromg, lastArrows, lengths, true);
+					DiagramElement from = getExtensionElement(((Contained)fromg).getContainer(), fromg, lastArrows, s, true);
 					DiagramElement tog = elementStack.peek();
-					DiagramElement to  = getExtensionElement(((Contained)tog).getContainer(), tog, lastArrows, lengths, false);
+					DiagramElement to  = getExtensionElement(((Contained)tog).getContainer(), tog, lastArrows, s, false);
 					Direction d = getDirectionFor(getArrowDirection());
 					
 					boolean fromBefore = isFromBefore2(rootElements, elementDepth, fromg, tog);
@@ -177,20 +182,19 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 	int arrowId = 0;
 	int ownsId = 0;
 
-	private DiagramElement getExtensionElement(Container c, DiagramElement glyph,
+	private DiagramElement getExtensionElement(Container c, DiagramElement from,
 			Map<DiagramElement, DiagramElement> lastArrows,
-			Map<DiagramElement, Integer> lengths, boolean active) {
+			Step s, boolean active) {
 
-		DiagramElement existing = lastArrows.get(glyph) == null ? glyph : lastArrows.get(glyph);
+		DiagramElement existing = lastArrows.get(from) == null ? from : lastArrows.get(from);
 		if ((existing instanceof Arrow) && (((Arrow)existing).getLinks().size()==0)) {
 			// this one will do anyway
 			return existing;
 		}
-		int newLength = lengths.get(glyph) == null ? 0 : lengths.get(glyph);
+		
 
-		DiagramElement extension = ii.returnConnectionBody(c, new ProjectStaticSimpleNoun(((IdentifiableDiagramElement)glyph).getID()+newLength, a), "");
-		lengths.put(glyph, newLength + 1);
-		lastArrows.put(glyph, extension);
+		DiagramElement extension = ii.returnConnectionBody(c, createNoun(from, s), "");
+		lastArrows.put(from, extension);
 		DiagramElement de = ii.returnConnection(existing, extension, null, null, null, false, getDirectionFor(getGlyphLayout()));
 
 		if ((!active) && (de instanceof Link)) {
@@ -198,6 +202,27 @@ public class ColumnSequenceDiagramWizard extends AbstractSequenceDiagramWizard {
 		}
 		
 		return extension;
+	}
+
+	protected Proposition createNoun(DiagramElement glyph, Step s) {
+		Address compoundId = new AddressImpl(((IdentifiableDiagramElement)glyph).getID());
+		final Address stepId = s.extend(compoundId, idHelper);
+		
+		return new Proposition() {
+			
+			public Address getID(IdHelper helper) {
+				return stepId;
+			}
+			
+			public Address extend(Address in, IdHelper helper) {
+				throw new IllegalStateException("Can't call this");
+			}
+			
+			public NounPart getSubject() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		};
 	}
 
 	private DiagramElement buildGlyph(Container c, SimpleNoun from, SimpleNoun fromGroup, Map<Object, DiagramElement> stateMap, Set<DiagramElement> headerGlyphs, Map<DiagramElement, DiagramElement> rootElements, Stack<DiagramElement> elementStack, Map<DiagramElement, Integer> elementDepth) {

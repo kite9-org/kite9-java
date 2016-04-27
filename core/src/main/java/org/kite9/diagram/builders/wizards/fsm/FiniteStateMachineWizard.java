@@ -1,11 +1,12 @@
 package org.kite9.diagram.builders.wizards.fsm;
 
-import org.kite9.diagram.builders.formats.BasicFormats;
-import org.kite9.diagram.builders.formats.NounFormat;
+import org.kite9.diagram.builders.formats.Format;
+import org.kite9.diagram.builders.formats.adl.BasicFormats;
 import org.kite9.diagram.builders.java.DiagramBuilder;
-import org.kite9.diagram.builders.krmodel.NounFactory;
-import org.kite9.diagram.builders.krmodel.Relationship;
-import org.kite9.diagram.builders.krmodel.SimpleNoun;
+import org.kite9.diagram.builders.krmodel.noun.NounFactory;
+import org.kite9.diagram.builders.krmodel.noun.SimpleNoun;
+import org.kite9.diagram.builders.krmodel.verb.AbstractVerb;
+import org.kite9.diagram.builders.krmodel.verb.Verb;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
 
@@ -18,18 +19,18 @@ import org.kite9.diagram.primitives.DiagramElement;
  */
 public class FiniteStateMachineWizard {
 
-	NounFormat stateFormat;
+	Format stateFormat;
 	NounFactory nf;
-	NounFormat transitionFormat;
+	Format transitionFormat;
 	Container c;
 	DiagramBuilder db;
-	Relationship stateTransitionRelationship;
+	Verb stateTransitionRelationship;
 
 	public FiniteStateMachineWizard(DiagramBuilder db, Container c) {
 		this(db.getNounFactory());
 		stateFormat = BasicFormats.asGlyph(null);
-		transitionFormat = BasicFormats.asConnectionBody();
-		stateTransitionRelationship = new Relationship("transits to");
+		transitionFormat = BasicFormats.asConnectionWithBody();
+		stateTransitionRelationship = new AbstractVerb("transits to");
 		this.c = c;
 		this.db = db;
 	}

@@ -1,0 +1,15 @@
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="org.kite9.tool.listener.Test1JavadocDiagram.someDesignItem">
+ <glyph id="auto:0">
+  <stereotype>stereo</stereotype>
+  <label>project:org.kite9.tool.listener.Test1JavadocDiagram</label>
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <glyph id="auto:1">
+  <stereotype>stereo</stereotype>
+  <label>project:org.kite9.tool.listener.Test1JavadocDiagram$Another</label>
+  <text-lines></text-lines>
+  <symbols></symbols>
+ </glyph>
+ <allLinks></allLinks>
+</diagram>

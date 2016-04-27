@@ -67,4 +67,17 @@ public class Context extends AbstractConnectedContainer {
 		this.container =  c;
 	}
 	
+	
+	public String getDescription() {
+		if (label != null) {
+			return label.getDescription();
+		} else {
+			return "";
+		}
+	}
+
+	public String getType() {
+		return "container";
+	}
+	
 }

@@ -9,8 +9,8 @@ import org.kite9.diagram.adl.Glyph;
 import org.kite9.diagram.adl.Link;
 import org.kite9.diagram.adl.TextLine;
 import org.kite9.diagram.builders.java.DiagramBuilder;
-import org.kite9.diagram.builders.java.JavaRelationships;
-import org.kite9.diagram.builders.krmodel.Relationship;
+import org.kite9.diagram.builders.java.krmodel.JavaRelationships;
+import org.kite9.diagram.builders.krmodel.verb.AbstractVerb;
 import org.kite9.diagram.position.Direction;
 import org.kite9.framework.Kite9Item;
 
@@ -20,15 +20,15 @@ public class Test13Augmenting extends AbstractBuilderTest {
     class SomeClass implements SomeInterface {}
     
     
-    @Kite9Item
-    @Test
-    public void test_13_1_AugmentGlyph() throws IOException {
-	DiagramBuilder db = createBuilder();
-	db.withClasses(SomeClass.class).show(db.asConnectedGlyphs());
-	Glyph g = (Glyph) db.getNounElement(SomeClass.class);
-	g.getText().add(new TextLine("This is a favourite of John's"));
-	renderDiagram(db.getDiagram());
-    }
+	@Kite9Item
+	@Test
+	public void test_13_1_AugmentGlyph() throws IOException {
+		DiagramBuilder db = createBuilder();
+		db.withClasses(SomeClass.class).show(db.asConnectedGlyphs());
+		Glyph g = (Glyph) db.getNounElement(SomeClass.class);
+		g.getText().add(new TextLine("This is a favourite of John's"));
+		renderDiagram(db.getDiagram());
+	}
     
     @Kite9Item
     @Test
@@ -36,7 +36,7 @@ public class Test13Augmenting extends AbstractBuilderTest {
 	DiagramBuilder db = createBuilder();
 	db.withClasses(SomeClass.class)
 		.show(db.asConnectedGlyphs())
-		.withClasses(new Relationship("inherits", Direction.LEFT), SomeInterface.class)
+		.withClasses(new AbstractVerb("inherits", Direction.LEFT), SomeInterface.class)
 		.show(db.asConnectedGlyphs());
 	
 	renderDiagram(db.getDiagram());

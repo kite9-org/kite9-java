@@ -1,66 +1,66 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test5Annotation/test_5_3_AnnotationAsSubject()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test5Annotation]method[test_5_3_AnnotationAsSubject]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test5Annotation$Reference]package[org.kite9.diagram.builders]}">
   <stereotype>annotation</stereotype>
   <label>Reference</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Useless">
+ <glyph id="{class[Test5Annotation$Useless]package[org.kite9.diagram.builders]}">
   <stereotype>annotation</stereotype>
   <label>Useless</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassA">
+ <glyph id="{class[Test5Annotation$SomeClassA]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>SomeClassA</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference/rel_annotation">
+ <arrow id="{document[**doc**]generated[1291927964]}">
   <label>has annotation</label>
  </arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassD">
+ <glyph id="{class[Test5Annotation$SomeClassD]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>SomeClassD</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
- <arrow id="project_java_class:org.kite9.diagram.builders.Test5Annotation.Useless/rel_annotation">
+ <arrow id="{document[**doc**]generated[-1566264501]}">
   <label>has annotation</label>
  </arrow>
- <glyph id="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassE">
+ <glyph id="{class[Test5Annotation$SomeClassE]package[org.kite9.diagram.builders]}">
   <stereotype>class</stereotype>
   <label>SomeClassE</label>
   <text-lines></text-lines>
   <symbols></symbols>
  </glyph>
  <allLinks>
-  <link id="auto:1">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference/rel_annotation"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference"></to>
+  <link id="{z[auto:1]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[1291927964]}"></from>
+   <to xsi:type="glyph" reference="{class[Test5Annotation$Reference]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:4">
-   <from xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.Useless/rel_annotation"></from>
-   <to xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.Useless"></to>
+  <link id="{z[auto:4]}">
+   <from xsi:type="arrow" reference="{document[**doc**]generated[-1566264501]}"></from>
+   <to xsi:type="glyph" reference="{class[Test5Annotation$Useless]package[org.kite9.diagram.builders]}"></to>
    <toDecoration>ARROW</toDecoration>
   </link>
-  <link id="auto:0">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassA"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference/rel_annotation"></to>
+  <link id="{z[auto:0]}">
+   <from xsi:type="glyph" reference="{class[Test5Annotation$SomeClassA]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[1291927964]}"></to>
   </link>
-  <link id="auto:3">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassA"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.Useless/rel_annotation"></to>
+  <link id="{z[auto:3]}">
+   <from xsi:type="glyph" reference="{class[Test5Annotation$SomeClassA]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1566264501]}"></to>
   </link>
-  <link id="auto:2">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassD"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.Reference/rel_annotation"></to>
+  <link id="{z[auto:2]}">
+   <from xsi:type="glyph" reference="{class[Test5Annotation$SomeClassD]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[1291927964]}"></to>
   </link>
-  <link id="auto:5">
-   <from xsi:type="glyph" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.SomeClassE"></from>
-   <to xsi:type="arrow" reference="project_java_class:org.kite9.diagram.builders.Test5Annotation.Useless/rel_annotation"></to>
+  <link id="{z[auto:5]}">
+   <from xsi:type="glyph" reference="{class[Test5Annotation$SomeClassE]package[org.kite9.diagram.builders]}"></from>
+   <to xsi:type="arrow" reference="{document[**doc**]generated[-1566264501]}"></to>
   </link>
  </allLinks>
 </diagram>

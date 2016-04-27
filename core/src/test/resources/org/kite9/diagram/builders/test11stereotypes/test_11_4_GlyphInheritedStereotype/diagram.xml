@@ -1,5 +1,5 @@
-<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="project_java_class:org.kite9.diagram.builders.Test11Stereotypes/test_11_4_GlyphInheritedStereotype()">
- <glyph id="project_java_class:org.kite9.diagram.builders.Test11Stereotypes.SomeOtherClass">
+<?xml version="1.0" ?><diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="{class[Test11Stereotypes]method[test_11_4_GlyphInheritedStereotype]package[org.kite9.diagram.builders]}">
+ <glyph id="{class[Test11Stereotypes$SomeOtherClass]package[org.kite9.diagram.builders]}">
   <stereotype>bob</stereotype>
   <label>SomeOtherClass</label>
   <text-lines></text-lines>
