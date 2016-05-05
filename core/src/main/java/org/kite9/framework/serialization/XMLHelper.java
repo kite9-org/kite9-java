@@ -2,12 +2,18 @@ package org.kite9.framework.serialization;
 
 import java.awt.Dimension;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
@@ -39,8 +45,12 @@ import org.kite9.diagram.primitives.HintMap;
 import org.kite9.diagram.primitives.IdentifiableDiagramElement;
 import org.kite9.diagram.primitives.StyledText;
 import org.kite9.diagram.visitors.ContainerVisitor;
+import org.kite9.framework.common.Kite9ProcessingException;
 import org.kite9.framework.server.BasicWorkItem;
 import org.kite9.framework.server.WorkItem;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import com.thoughtworks.xstream.MarshallingStrategy;
 import com.thoughtworks.xstream.XStream;
@@ -209,6 +219,91 @@ public class XMLHelper {
 					return type == HintMap.class;
 				}
 
+			});
+			
+
+			final DocumentBuilder db;
+			
+			try {
+				db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			} catch (ParserConfigurationException e1) {
+				throw new Kite9ProcessingException("Couldn't create document factory: "+e1);
+			}
+
+			/* Converts embedded SVG XML */
+			xstream.registerConverter(new Converter() {
+				
+				
+				@Override
+				public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
+					return XMLFragments.class.isAssignableFrom(type);
+				}
+				
+				@Override
+				public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+					XMLFragments xml = new XMLFragments();
+					Document d = db.newDocument();
+					
+					while (reader.hasMoreChildren()) {
+						reader.moveDown();
+						Element e = unmarshalElement(reader, context, d);
+						xml.getParts().add(e);
+						reader.moveUp();
+					}
+					
+					return xml;
+				}
+				
+				private Element unmarshalElement(HierarchicalStreamReader reader, UnmarshallingContext context, Document d) {
+					Element e = d.createElement(reader.getNodeName());
+					
+					for (@SuppressWarnings("rawtypes") Iterator iterator = reader.getAttributeNames(); iterator.hasNext();) {
+						String n = (String) iterator.next();
+						e.setAttribute(n, reader.getAttribute(n));
+					}
+					
+					while (reader.hasMoreChildren()) {
+						reader.moveDown();
+						Element e2 = unmarshalElement(reader, context, d);
+						e.appendChild(e2);
+						reader.moveUp();
+					}
+					
+					return e;
+				}
+
+				@Override
+				public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
+					XMLFragments xml = (XMLFragments) source;
+					
+					for (Element e : xml.getParts()) {
+						marshalElement(writer, context, e);
+					}
+					
+				}
+
+				private void marshalElement(HierarchicalStreamWriter writer, MarshallingContext context, Element e) {
+					writer.startNode(e.getTagName());
+					List<String> names = new ArrayList<String>(e.getAttributes().getLength());
+					
+					for (int i = 0; i < e.getAttributes().getLength(); i++) {
+						Node n = e.getAttributes().item(i);
+						names.add(n.getNodeName());
+					}
+					
+					Collections.sort(names);
+					
+					for (String n : names) {
+						writer.addAttribute(n, e.getAttribute(n));
+					}
+					
+					for (int i = 0; i < e.getChildNodes().getLength(); i++) {
+						Element e2 = (Element) e.getChildNodes().item(i);
+						marshalElement(writer, context, e2);
+					}
+					
+					writer.endNode();
+				}
 			});
 
 			// allow labels/stereotypes to appear in attributes.

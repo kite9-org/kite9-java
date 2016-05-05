@@ -17,9 +17,15 @@ public abstract class AbstractRenderingInformation implements RenderingInformati
 	private static final long serialVersionUID = 5784432791632841277L;
 	@XStreamAsAttribute
 	protected boolean rendered = true;
-	private String path;
-	private String perimeter;
-	private Dimension2D offset;
+	protected Object displayData;
+
+	public Object getDisplayData() {
+		return displayData;
+	}
+
+	public void setDisplayData(Object displayData) {
+		this.displayData = displayData;
+	}
 
 	public AbstractRenderingInformation() {
 		super();
@@ -33,6 +39,8 @@ public abstract class AbstractRenderingInformation implements RenderingInformati
 		this.rendered = r;
 	}
 	
+	private Dimension2D offset;
+
 	public void setPathOffset(Dimension2D offset) {
 		this.offset = offset;
 	}
@@ -40,21 +48,4 @@ public abstract class AbstractRenderingInformation implements RenderingInformati
 	public Dimension2D getPathOffset() {
 		return this.offset;
 	}
-
-	public void setShapePath(String gp) {
-		this.path = gp;
-	}
-
-	public String getShapePath() {
-		return path;
-	}
-	
-	public void setPerimeterPath(String gp) {
-		this.perimeter = gp;
-	}
-	
-	public String getPerimeterPath() {
-		return perimeter;
-	}
-
 }

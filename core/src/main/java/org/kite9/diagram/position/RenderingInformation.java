@@ -18,5 +18,11 @@ public interface RenderingInformation extends Serializable {
 	public boolean isRendered();
 
 	public abstract void setRendered(boolean r);
-  
+ 
+	/**
+	 * For storing format-specific rendering details.
+	 */
+	public Object getDisplayData();
+	
+	public void setDisplayData(Object o);
 }
