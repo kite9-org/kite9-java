@@ -275,6 +275,7 @@ public class XMLHelper {
 				@Override
 				public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
 					XMLFragments xml = (XMLFragments) source;
+					writer.addAttribute("xmlns", xml.getNamespace());
 					
 					for (Element e : xml.getParts()) {
 						marshalElement(writer, context, e);
