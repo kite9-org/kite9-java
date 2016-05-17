@@ -51,6 +51,7 @@ import org.kite9.framework.server.WorkItem;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.Text;
 
 import com.thoughtworks.xstream.MarshallingStrategy;
 import com.thoughtworks.xstream.XStream;
@@ -246,7 +247,7 @@ public class XMLHelper {
 					
 					while (reader.hasMoreChildren()) {
 						reader.moveDown();
-						Element e = unmarshalElement(reader, context, d);
+						Element e = (Element) unmarshalNode(reader, context, d);
 						xml.getParts().add(e);
 						reader.moveUp();
 					}
@@ -254,7 +255,7 @@ public class XMLHelper {
 					return xml;
 				}
 				
-				private Element unmarshalElement(HierarchicalStreamReader reader, UnmarshallingContext context, Document d) {
+				private Node unmarshalNode(HierarchicalStreamReader reader, UnmarshallingContext context, Document d) {
 					Element e = d.createElement(reader.getNodeName());
 					
 					for (@SuppressWarnings("rawtypes") Iterator iterator = reader.getAttributeNames(); iterator.hasNext();) {
@@ -264,9 +265,13 @@ public class XMLHelper {
 					
 					while (reader.hasMoreChildren()) {
 						reader.moveDown();
-						Element e2 = unmarshalElement(reader, context, d);
+						Node e2 = unmarshalNode(reader, context, d);
 						e.appendChild(e2);
 						reader.moveUp();
+					}
+					
+					if ((reader.getValue() != null) && (reader.getValue().length()>0)) {
+						e.setTextContent(reader.getValue());
 					}
 					
 					return e;
@@ -275,35 +280,38 @@ public class XMLHelper {
 				@Override
 				public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
 					XMLFragments xml = (XMLFragments) source;
-					writer.addAttribute("xmlns", xml.getNamespace());
 					
 					for (Element e : xml.getParts()) {
-						marshalElement(writer, context, e);
+						marshalNode(writer, context, e);
 					}
 					
 				}
 
-				private void marshalElement(HierarchicalStreamWriter writer, MarshallingContext context, Element e) {
-					writer.startNode(e.getTagName());
-					List<String> names = new ArrayList<String>(e.getAttributes().getLength());
-					
-					for (int i = 0; i < e.getAttributes().getLength(); i++) {
-						Node n = e.getAttributes().item(i);
-						names.add(n.getNodeName());
+				private void marshalNode(HierarchicalStreamWriter writer, MarshallingContext context, Node e) {
+					if (e instanceof Element) {
+						writer.startNode(((Element) e).getTagName());
+						List<String> names = new ArrayList<String>(e.getAttributes().getLength());
+						
+						for (int i = 0; i < e.getAttributes().getLength(); i++) {
+							Node n = e.getAttributes().item(i);
+							names.add(n.getNodeName());
+						}
+						
+						Collections.sort(names);
+						
+						for (String n : names) {
+							writer.addAttribute(n, ((Element) e).getAttribute(n));
+						}
+						
+						for (int i = 0; i < e.getChildNodes().getLength(); i++) {
+							Node e2 = e.getChildNodes().item(i);
+							marshalNode(writer, context, e2);
+						}
+						
+						writer.endNode();
+					} else if (e instanceof Text) {
+						writer.setValue(((Text) e).getTextContent());
 					}
-					
-					Collections.sort(names);
-					
-					for (String n : names) {
-						writer.addAttribute(n, e.getAttribute(n));
-					}
-					
-					for (int i = 0; i < e.getChildNodes().getLength(); i++) {
-						Element e2 = (Element) e.getChildNodes().item(i);
-						marshalElement(writer, context, e2);
-					}
-					
-					writer.endNode();
 				}
 			});
 

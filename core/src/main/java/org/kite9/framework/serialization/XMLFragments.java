@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.w3c.dom.Element;
 
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 /**
@@ -14,22 +13,6 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
  * @author robmoffat
  */
 public class XMLFragments {
-	
-	public XMLFragments() {
-		this("http://www.w3.org/2000/svg");
-	}
-	
-	public XMLFragments(String namespace) {
-		super();
-		this.xmlns = namespace;
-	}
-
-	@XStreamAsAttribute
-	private final String xmlns;
-	
-	public String getNamespace() {
-		return xmlns;
-	}
 
 	@XStreamImplicit
 	private final List<Element> parts = new ArrayList<Element>();
