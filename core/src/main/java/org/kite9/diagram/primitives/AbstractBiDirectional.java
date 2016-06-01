@@ -1,11 +1,11 @@
 package org.kite9.diagram.primitives;
 
+import org.kite9.diagram.adl.ADLDocument;
 import org.kite9.diagram.position.Direction;
 import org.kite9.framework.logging.LogicException;
+import org.w3c.dom.Element;
 
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
-public abstract class AbstractBiDirectional<X> extends
+public abstract class AbstractBiDirectional<X extends IdentifiableDiagramElement> extends
 		AbstractIdentifiableDiagramElement implements BiDirectional<X> {
 
 	/**
@@ -14,50 +14,61 @@ public abstract class AbstractBiDirectional<X> extends
 	public AbstractBiDirectional() {
 	}
 
-	public AbstractBiDirectional(X from, X to, Direction drawDirection) {
-		super();
-		this.from = from;
-		this.to = to;
-		this.drawDirection = drawDirection;
+	public AbstractBiDirectional(String id, String tag, X from, X to, Direction drawDirection, ADLDocument doc) {
+		super(id, tag, doc);
+		setFrom(from);
+		setTo(to);
+		setDrawDirection(drawDirection);
 	}
 
 	private static final long serialVersionUID = -2932750084676000416L;
-	protected X from;
-	protected X to;
-
-	@XStreamAsAttribute
-	protected Direction drawDirection = null;
 
 	public Direction getDrawDirection() {
-		return drawDirection;
+		String dd = getAttribute("drawDirection");
+		if (dd == null) {
+			return null;
+		}
+		return Direction.valueOf(dd);
 	}
 
+	@SuppressWarnings("unchecked")
 	public X getFrom() {
-		return from;
+		Element from = getProperty("from", Element.class);
+		String reference = from.getAttribute("reference");
+		Element e = ownerDocument.getElementById(reference);
+		return (X) e;
 	}
 
+	@SuppressWarnings("unchecked")
 	public X getTo() {
-		return to;
+		Element to = getProperty("to", Element.class);
+		String reference = to.getAttribute("reference");
+		Element e = ownerDocument.getElementById(reference);
+		return (X) e;
 	}
 
 	public void setFrom(X v) {
-		this.from = v;
+		Element from = ownerDocument.createElement("from");
+		from.setAttribute("reference", v.getID());
+		replaceProperty("from", from, Element.class);
 	}
 
 	public void setTo(X v) {
-		this.to = v;
+		Element to = ownerDocument.createElement("to");
+		to.setAttribute("reference", v.getID());
+		replaceProperty("to", to, Element.class);
 	}
 
 	@Override
 	public String toString() {
-		return "[" + from + "-" + to + "]";
+		return "[" + getFrom() + "-" + getTo() + "]";
 	}
 
 	public X otherEnd(X end) {
-		if (end == from)
-			return to;
-		if (end == to)
-			return from;
+		if (end == getFrom())
+			return getTo();
+		if (end == getTo())
+			return getFrom();
 		throw new LogicException("This is not an end: " + end + " of " + this);
 	}
 
@@ -71,15 +82,15 @@ public abstract class AbstractBiDirectional<X> extends
 	}
 
 	public Direction getDrawDirectionFrom(X end) {
-		if (drawDirection == null)
+		if (getDrawDirection() == null)
 			return null;
 
 		if (end.equals(getFrom())) {
-			return drawDirection;
+			return getDrawDirection();
 		}
 
 		if (end.equals(getTo())) {
-			return Direction.values()[(drawDirection.ordinal() + 2) % 4];
+			return Direction.reverse(getDrawDirection());
 		}
 
 		throw new RuntimeException(
@@ -88,15 +99,19 @@ public abstract class AbstractBiDirectional<X> extends
 	}
 
 	public void setDrawDirection(Direction d) {
-		this.drawDirection = d;
+		if (d == null) {
+			removeAttribute("drawDirection");
+		} else {
+			setAttribute("drawDirection", d.toString());
+		}
 	}
 
 	public void setDrawDirectionFrom(Direction d, X end) {
 
 		if (end.equals(getFrom())) {
-			this.drawDirection = d;
+			setDrawDirection(d);
 		} else if (end.equals(getTo())) {
-			this.drawDirection = Direction.reverse(d);
+			setDrawDirection(Direction.reverse(d));
 		} else {
 			throw new RuntimeException(
 					"Trying to set direction from an end that's not set: " + end

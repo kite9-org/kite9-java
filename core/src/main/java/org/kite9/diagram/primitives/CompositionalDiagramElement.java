@@ -14,9 +14,4 @@ public interface CompositionalDiagramElement extends DiagramElement {
 
 	public Object getParent();
 	
-	/**
-	 * This must be called by the parent object when the composition is created.
-	 */
-	public void setParent(Object de);
-	
 }

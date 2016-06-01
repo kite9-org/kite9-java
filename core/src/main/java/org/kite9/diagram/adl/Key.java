@@ -6,7 +6,8 @@ import java.util.List;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractLabel;
 import org.kite9.diagram.primitives.Label;
-import org.kite9.diagram.primitives.StyledText;
+import org.kite9.diagram.primitives.TextContainingDiagramElement;
+import org.w3c.dom.Node;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
@@ -14,52 +15,55 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 public class Key extends AbstractLabel implements Label {
 
 	private static final long serialVersionUID = 7705875104684442878L;
-
-	StyledText boldText;
 	
-	StyledText bodyText;
-	
-	public StyledText getBodyText() {
-		return bodyText;
+	public TextContainingDiagramElement getBodyText() {
+		return getProperty("bodyText", TextContainingDiagramElement.class);
 	}
 
-	public void setBodyText(StyledText bodyText) {
-		this.bodyText = bodyText;
-	}
-
-	List<TextLine> symbols;
-	
-	public StyledText getBoldText() {
-		return boldText;
-	}
-
-	public void setBoldText(StyledText boldText) {
-		this.boldText = boldText;
+	public void setBodyText(TextContainingDiagramElement bodyText) {
+		replaceProperty("bodyText", bodyText, TextContainingDiagramElement.class);
 	}
 	
-	public static List<TextLine> convert(List<Symbol> symbols) {
-		List<TextLine> out = new ArrayList<TextLine>();
+	public TextContainingDiagramElement getBoldText() {
+		return getProperty("boldText", TextContainingDiagramElement.class);
+	}
+
+	public void setBoldText(TextContainingDiagramElement boldText) {
+		replaceProperty("boldText", boldText, TextContainingDiagramElement.class);
+	}
+	
+	public ContainerProperty<TextLine> convert(List<Symbol> symbols) {
+		@SuppressWarnings("unchecked")
+		ContainerProperty<TextLine> out = (ContainerProperty<TextLine>) ownerDocument.createElement("text-lines");
 		if (symbols == null) {
 			return out;
 		}
+
 		for (Symbol s : symbols) {
 			List<Symbol> sl = new ArrayList<Symbol>(1);
 			sl.add(s);
-			out.add(new TextLine(s.getText(), sl));
+			out.appendChild(new TextLine(null, "text-line", s.getText(), sl, (ADLDocument) ownerDocument));
 		}
 		return out;
 	}
 	
-	public Key(String boldText, String bodyText, List<Symbol> symbols) {
-		this(convert(symbols), boldText, bodyText);
+	public Key() {		
+		this.tagName = "key";
 	}
+	
+	public Key(String id, String boldText, String bodyText, List<Symbol> symbols, ADLDocument doc) {
+		super(id, "key", doc);
+		
+		if (boldText != null) {
+			setBoldText(new TextLine(null, "boldText", boldText, null, doc));
+		}
 
-	public Key(List<TextLine> symbols, String boldText, String bodyText) {
-		this.boldText = new StyledText(boldText);
-		this.bodyText = new StyledText(bodyText);
-		this.symbols = symbols;
-		for (TextLine textLine : symbols) {
-			textLine.setParent(this);
+		if (bodyText != null) {
+			setBodyText(new TextLine(null, "bodyText", bodyText, null, doc));
+		}
+
+		if (symbols != null) {
+			setSymbols(convert(symbols));
 		}
 	}
 	
@@ -67,12 +71,13 @@ public class Key extends AbstractLabel implements Label {
 		this.renderingInformation = ri;
 	}
 
-	public List<TextLine> getSymbols() {
-		return symbols;
+	@SuppressWarnings("unchecked")
+	public ContainerProperty<TextLine> getSymbols() {
+		return getProperty("text-lines", ContainerProperty.class);
 	}
 
-	public void setSymbols(List<TextLine> symbols) {
-		this.symbols = symbols;
+	public void setSymbols(ContainerProperty<TextLine> symbols) {
+		replaceProperty("text-lines", symbols, ContainerProperty.class);
 	}
 	
 	public String toString() {
@@ -80,7 +85,12 @@ public class Key extends AbstractLabel implements Label {
 	}
 
 	public boolean hasContent() {
-		return hasContent(boldText) || hasContent(bodyText) || hasContent(symbols);
+		return hasContent(getBoldText()) || hasContent(getBodyText()) || hasContent(getSymbols());
+	}
+
+	@Override
+	protected Node newNode() {
+		return new Key();
 	}
 	
 	

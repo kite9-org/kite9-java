@@ -2,60 +2,44 @@ package org.kite9.diagram.primitives;
 
 import java.io.Serializable;
 
+import org.kite9.diagram.adl.ADLDocument;
 import org.kite9.diagram.position.RenderingInformation;
-import org.kite9.diagram.style.ShapedDiagramElement;
 import org.kite9.diagram.style.StyledDiagramElement;
-import org.kite9.framework.logging.LogicException;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
-public abstract class AbstractIdentifiableDiagramElement implements IdentifiableDiagramElement, Serializable, StyledDiagramElement, ShapedDiagramElement {
+public abstract class AbstractIdentifiableDiagramElement extends AbstractDiagramElement implements IdentifiableDiagramElement, Serializable, StyledDiagramElement {
 
 	private static final long serialVersionUID = -3154895826494435557L;
 
-
 	public AbstractIdentifiableDiagramElement() {
-		super();
-		this.id = createID();
 	}
-
-	public AbstractIdentifiableDiagramElement(String id) {
-		if (id==null) {
-			throw new LogicException("Cannot create diagram element with null id");
-		}
-		this.id = id;
+	
+	public AbstractIdentifiableDiagramElement(String id, String tag, ADLDocument doc) {
+		super(tag, doc);
+		setID(id);
 	}
 
 	public int compareTo(DiagramElement o) {
 		if (o instanceof IdentifiableDiagramElement) {
-			return id.compareTo(((IdentifiableDiagramElement)o).getID());
+			return getId().compareTo(((IdentifiableDiagramElement)o).getID());
 		} else if (o!=null) {
 			return this.toString().compareTo(o.toString());
 		} else {
 			return -1;
 		}
 	}
-	
-	@XStreamAsAttribute
-	private String id;
-	
+
 
 	@Override
 	public int hashCode() {
-		// doing this ensures repeatability in tests
-		if (id==null) {
-			this.id = createID();
-		}
-		return id.hashCode();
+		return getId().hashCode();
 	}
 	
 	public final String getID() {
-		return id;
+		return getAttribute("id");
 	}
 	
 	public void setID(String id) {
-		this.id = id;
+		setAttribute("id", id);
 	}
 
 	/**
@@ -76,41 +60,7 @@ public abstract class AbstractIdentifiableDiagramElement implements Identifiable
 	public static void resetCounter() {
 		counter = 0;
 	}
-	
-	@XStreamAsAttribute
-	protected String shape;
-	
-	@XStreamAsAttribute
-	protected String style;
 
-	@XStreamAsAttribute
-	@XStreamAlias("class")
-	protected String classes;
-	
-	public String getClasses() {
-		return classes;
-	}
-
-	public void setClasses(String s) {
-		this.classes = s;
-	}
-
-	public String getStyle() {
-		return style;
-	}
-
-	public void setStyle(String s) {
-		this.style = s;
-	}
-
-	public String getShapeName() {
-		return shape;
-	}
-
-	public void setShapeName(String name) {
-		this.shape = name;
-	}
-	
 	protected HintMap hints;
 
 
@@ -121,6 +71,9 @@ public abstract class AbstractIdentifiableDiagramElement implements Identifiable
 	public void setPositioningHints(HintMap hints) {
 		this.hints = hints;
 	}
-	
+
+	public String getXMLId() {
+		return getId();
+	}
 	
 }

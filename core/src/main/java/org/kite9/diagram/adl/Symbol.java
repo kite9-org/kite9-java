@@ -2,31 +2,15 @@ package org.kite9.diagram.adl;
 
 import java.io.Serializable;
 
+import org.kite9.diagram.primitives.AbstractDiagramElement;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
 import org.kite9.diagram.primitives.DiagramElement;
+import org.kite9.diagram.primitives.TextContainingDiagramElement;
+import org.w3c.dom.Node;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
-
-
-@XStreamAlias("symbol")
-public class Symbol implements Serializable, CompositionalDiagramElement {
+public class Symbol extends AbstractDiagramElement implements Serializable, CompositionalDiagramElement, TextContainingDiagramElement {
 
 	private static final long serialVersionUID = 3578883565482903409L;
-	
-	@XStreamAsAttribute
-	String text;
-	
-	public String getText() {
-		return text;
-	}
-
-	@XStreamAsAttribute
-	char theChar;
-	
-	@XStreamAsAttribute
-	SymbolShape shape;
 	
 	public enum SymbolShape { HEXAGON, CIRCLE,  DIAMOND };
 
@@ -47,35 +31,37 @@ public class Symbol implements Serializable, CompositionalDiagramElement {
 	}
 	
 	public Symbol() {
+		this.tagName = "symbol";
 	}
 
-	public Symbol(String text, char preferredChar, SymbolShape shape) {
-		this.text = text;
-		this.theChar = preferredChar;
-		this.shape = shape;
+	public Symbol(String text, char preferredChar, SymbolShape shape, ADLDocument doc) {
+		super("symbol", doc);
+		setTextContent(text);
+		setChar(preferredChar);
+		setShape(shape);
 	}
 
 	public char getChar() {
-		return theChar;
+		return getAttribute("theChar").charAt(0);
 	}
 
 	public void setChar(char theChar) {
-		this.theChar = theChar;
+		setAttribute("theChar", ""+theChar);
 	}
 
 	public SymbolShape getShape() {
-		return shape;
+		return SymbolShape.valueOf(getAttribute("shape"));
 	}
 
 	public void setShape(SymbolShape shape) {
-		this.shape = shape;
+		setAttribute("shape", shape.name());
 	}
 
 	public int compareTo(DiagramElement o) {
 		if (o instanceof Symbol) {
-			int out = ((Character)this.theChar).compareTo(((Symbol) o).theChar);
+			int out = ((Character)this.getChar()).compareTo(((Symbol) o).getChar());
 			if (out==0) {
-				return this.shape.compareTo(((Symbol) o).shape);
+				return this.getShape().compareTo(((Symbol) o).getShape());
 			} else {
 				return out;
 			}
@@ -83,16 +69,18 @@ public class Symbol implements Serializable, CompositionalDiagramElement {
 			return 1;
 		}
 	}
-	
-	@XStreamOmitField
-	Object parent;
-	
-	public void setParent(Object el) {
-		this.parent = el;
+
+	@Override
+	protected Node newNode() {
+		return new Symbol("new", 'n', SymbolShape.CIRCLE, (ADLDocument) ownerDocument);
 	}
 
-	public Object getParent() {
-		return parent;
+	public void setText(String text) {
+		setTextData(text);
+	}
+
+	public String getText() {
+		return getTextData();
 	}
 
 	

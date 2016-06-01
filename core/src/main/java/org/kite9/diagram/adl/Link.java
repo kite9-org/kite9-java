@@ -5,8 +5,9 @@ import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnection;
 import org.kite9.diagram.primitives.Connected;
 import org.kite9.diagram.primitives.Label;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
@@ -18,48 +19,55 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * 
  * @author robmoffat
  */
-@XStreamAlias("link")
 public class Link extends AbstractConnection {
 
 	private static final long serialVersionUID = -5950978530304852748L;
 
 	public Link() {
+		this.tagName = "link";
 	}
 	
-	public Link(Connected from, Connected to) {
-		super(from, to, null, null, null, null, null);
+	public Link(String id, Connected from, Connected to, ADLDocument doc) {
+		this(id, from, to, null, null, null, null, null, doc);
 	}
 	
-	public Link(Connected from, Connected to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel) {
-		this(from, to, fromStyle, fromLabel, toEndStyle, toLabel, null);
-	}
-
-	public Link(Connected from, Connected to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel, Direction drawDirection) {
-		super(from, to, drawDirection, fromStyle, fromLabel, toEndStyle, toLabel);
+	public Link(String id, Connected from, Connected to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel, Direction drawDirection, ADLDocument doc) {
+		super(id, "link", from, to, drawDirection, fromStyle, fromLabel, toEndStyle, toLabel, doc);
 	}
 
-	Object fromDecoration;
-	Object toDecoration;
-	
-	
 	@Override
 	public Object getFromDecoration() {
-		return fromDecoration;
+		return getDecoration("fromDecoration");
 	}
 
 	@Override
 	public Object getToDecoration() {
-		return toDecoration;
+		return getDecoration("toDecoration");
+	}
+	
+	private void setDecoration(String name, Object d) {
+		Element e = ownerDocument.createElement(name);
+		e.setTextContent((String) d);
+		replaceProperty(name, e, Element.class);
+	}
+	
+	private String getDecoration(String name) {
+		Element e = getProperty(name, Element.class);
+		if (e == null) {
+			return null;
+		} else {
+			return e.getTextContent();
+		}
 	}
 
 	@Override
 	public void setFromDecoration(Object fromDecoration) {
-		this.fromDecoration = fromDecoration;
+		setDecoration("fromDecoration", fromDecoration);
 	}
 
 	@Override
 	public void setToDecoration(Object toDecoration) {
-		this.toDecoration = toDecoration;
+		setDecoration("toDecoration", toDecoration);
 	}
 
 	public void setRenderingInformation(RenderingInformation ri) {
@@ -78,6 +86,11 @@ public class Link extends AbstractConnection {
 
 	public void setRank(int rank) {
 		this.rank = rank;
+	}
+
+	@Override
+	protected Node newNode() {
+		return new Link();
 	}
 	
 	

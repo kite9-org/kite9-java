@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="My Diagram" class="bob">
+	
+	<glyph class="james" id="spam">
+		<label>Some Load of Nonsense</label>
+		<stereotype>The stereotype</stereotype>
+		<symbols>
+			<symbol shape="CIRCLE" theChar="c">Some text here</symbol>
+		</symbols>
+		<text-lines>
+			<text-line class="ronson" id="tl1">Some text
+				<symbols>
+					<symbol shape="HEXAGON" theChar="z">My Z</symbol>
+				</symbols>
+			</text-line>
+		</text-lines>
+	</glyph>
+	<arrow id="arrow1">
+		<label>this is in the arrow</label>
+	</arrow>
+	<context id="context1">
+		<label id="blah">This is the label</label>
+		<glyph class="jj" id="contained1">
+			<label>Some inner glyph</label>
+		</glyph>
+	</context>
+	
+	<key id="auto:22">
+  		<boldText>Keykey</boldText>
+  		<bodyText>Body</bodyText>
+  		<text-lines>
+		   <text-line id="auto:15">Some description
+		 taking multiple lines
+		    <symbols>
+		     <symbol shape="DIAMOND" theChar="a" />
+		    </symbols>
+		   </text-line>
+		   
+		   <text-line id="auto:16">Some description sdkjfsd flksdjf
+		    <symbols>
+		     <symbol theChar="Q" shape="CIRCLE" />
+		    </symbols>
+		   </text-line>
+		   
+		   <text-line id="auto:17">Some description
+		    <symbols>
+		     <symbol theChar="g" shape="HEXAGON" />
+		    </symbols>
+		   </text-line>
+  		</text-lines>
+  		
+   </key>
+	
+	<allLinks>
+      <link id="auto:6" drawDirection="RIGHT">
+        <from xsi:type="arrow" reference="spam"></from>
+        <to xsi:type="glyph" reference="arrow1"></to>
+        <toLabel xsi:type="text-line" id="auto:5">
+          Some Label
+          <symbols></symbols>
+        </toLabel>
+        <fromDecoration>CIRCLE</fromDecoration>
+        <toDecoration>CIRCLE</toDecoration>
+       </link>
+	</allLinks>
+</diagram>

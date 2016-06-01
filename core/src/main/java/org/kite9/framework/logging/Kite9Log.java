@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -57,9 +58,10 @@ public class Kite9Log {
 			System.out.println(logFor.getPrefix() + " " + prefix);
 
 			StringBuffer sb = new StringBuffer();
-			for (Object o : items) {
+			Object[] array = items.toArray();
+			for (Object o : array) {
 				sb.append("\t");
-				sb.append(o.toString());
+				sb.append(o != null ? o.toString() : null);
 				sb.append("\n");
 			}
 

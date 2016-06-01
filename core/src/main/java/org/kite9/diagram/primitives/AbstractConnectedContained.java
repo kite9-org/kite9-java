@@ -3,6 +3,8 @@ package org.kite9.diagram.primitives;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
+import org.kite9.diagram.adl.ADLDocument;
+
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
@@ -15,11 +17,10 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public abstract class AbstractConnectedContained extends AbstractIdentifiableDiagramElement implements Connected, Contained {
 
 	public AbstractConnectedContained() {
-		super();
 	}
-
-	public AbstractConnectedContained(String id) {
-		super(id);
+	
+	public AbstractConnectedContained(String id, String tag, ADLDocument doc) {
+		super(id, tag, doc);
 	}
 
 	private static final long serialVersionUID = 8856547625295452633L;

@@ -1,7 +1,6 @@
 package org.kite9.diagram.primitives;
 
-import java.util.List;
-
+import org.kite9.diagram.adl.ContainerProperty;
 import org.kite9.diagram.adl.Symbol;
 
 /**
@@ -12,7 +11,7 @@ import org.kite9.diagram.adl.Symbol;
  */
 public interface SymbolTarget {
 
-	public List<Symbol> getSymbols();
+	public ContainerProperty<Symbol> getSymbols();
 	
-	public void setSymbols(List<Symbol> l);
+	public void setSymbols(ContainerProperty<Symbol> l);
 }

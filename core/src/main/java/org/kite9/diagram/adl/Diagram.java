@@ -1,13 +1,10 @@
 package org.kite9.diagram.adl;
 
-import java.util.LinkedHashSet;
-import java.util.List;
-
 import org.kite9.diagram.position.DiagramRenderingInformation;
-import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.AbstractConnectedContainer;
 import org.kite9.diagram.primitives.Connection;
-import org.kite9.diagram.primitives.Contained;
+import org.kite9.diagram.primitives.Label;
+import org.w3c.dom.Node;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
@@ -26,28 +23,21 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 public class Diagram extends AbstractConnectedContainer {
 
 	private static final long serialVersionUID = -7727042271665853389L;
-
+	
 	public Diagram() {
+		this.tagName = "diagram";
 	}
 	
-	public Diagram(List<Contained> contained, Key key) {
-		super(createID(), contained, null, key);
-	}
-	
-	public Diagram(String id, List<Contained> contained, Key key) {
-		super(id, contained, null, key);
-	}
-	
-	public Diagram(String id, List<Contained> contained, Layout d, Key key) {
-		super(id, contained, d, key);
+	public Diagram(String id, ADLDocument doc) {
+		super(id, "diagram", doc);
 	}
 
 	public Key getKey() {
-		return (Key) label;
+		return getProperty("key", Key.class);
 	}
 
 	public void setKey(Key k) {
-	    this.label = k;
+	    replaceProperty("key", k, Key.class);
 	}
 
 	public boolean isBordered() {
@@ -65,13 +55,9 @@ public class Diagram extends AbstractConnectedContainer {
 		this.name = name;
 	}
 	
-	/**
-	 * This is used by XStream to hold a set of all the links within the diagram.  
-	 */
-	private LinkedHashSet<Connection> allLinks = new LinkedHashSet<Connection>();
-
-	public LinkedHashSet<Connection> getAllLinks() {
-		return allLinks;
+	@SuppressWarnings("unchecked")
+	public ContainerProperty<Connection> getAllLinks() {
+		return getProperty("allLinks", ContainerProperty.class);
 	}
 	
 	public DiagramRenderingInformation getRenderingInformation() {
@@ -81,4 +67,20 @@ public class Diagram extends AbstractConnectedContainer {
 		
 		return (DiagramRenderingInformation) renderingInformation;
 	}
+
+	public String getNodeName() {
+		return "diagram";
+	}
+
+	@Override
+	protected Node newNode() {
+		return new Diagram();
+	}
+
+	@Override
+	public Label getLabel() {
+		return getKey();
+	}
+	
+	
 }

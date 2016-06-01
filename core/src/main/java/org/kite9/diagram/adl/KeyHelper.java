@@ -55,8 +55,10 @@ public class KeyHelper {
 
 	Set<UsedKey> used = new HashSet<UsedKey>();
 	Map<String, Symbol> declared = new HashMap<String, Symbol>();
+	private ADLDocument doc;
 
-	public KeyHelper() {
+	public KeyHelper(ADLDocument doc) {
+		this.doc = doc;
 	}
 
 	public Symbol createSymbol(String text) {
@@ -112,7 +114,7 @@ public class KeyHelper {
 		option.shape = shape;
 		option.theChar = potential;
 		if (!used.contains(option)) {
-			Symbol s = new Symbol(text, potential, shape);
+			Symbol s = new Symbol(text, potential, shape, doc);
 			used.add(option);
 			return s;
 		}

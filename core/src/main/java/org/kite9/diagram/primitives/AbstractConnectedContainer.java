@@ -1,19 +1,19 @@
 package org.kite9.diagram.primitives;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import org.kite9.diagram.adl.ADLDocument;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
-
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import org.w3c.dom.Node;
 
 public abstract class AbstractConnectedContainer extends AbstractConnectedContained implements Container {
 
 	public Label getLabel() {
-		return label;
+		return getProperty("label", Label.class);
 	}
 
 	public RectangleRenderingInformation getRenderingInformation() {
@@ -30,46 +30,39 @@ public abstract class AbstractConnectedContainer extends AbstractConnectedContai
 
 	private static final long serialVersionUID = 9108816802892206563L;
 
-	@XStreamImplicit
-	private List<Contained> contents = new ArrayList<Contained>();
-	
-	@XStreamAsAttribute
-	private Layout layout = null;
-	
-	@XStreamAsAttribute
-	protected Label label = null;
-
 	public List<Contained> getContents() {
-		return contents;
+		List<Contained> contents = new ArrayList<Contained>();
+		for (int i = 0; i < getChildNodes().getLength(); i++) {
+			Node n = getChildNodes().item(i);
+			if (n instanceof Contained) {
+				contents.add((Contained) n);
+			}
+		}
+		return Collections.unmodifiableList(contents);
 	}
-
+	
 	public AbstractConnectedContainer() {
 	}
 	
-	public AbstractConnectedContainer(String id, List<Contained> contents, Layout d, Label label) {
-		super(id);
-		this.contents = contents;
-		for (Contained c : contents) {
-			c.setContainer(this);
-		}
-		
-		this.layout = d;
-		if (label!=null) { 
-			this.label = label;
-			label.setParent(this);
-		}
+	
+	public AbstractConnectedContainer(String id, String tag, ADLDocument doc) {
+		super(id, tag, doc);
 	}
 
 	public Layout getLayoutDirection() {
-		return layout;
+		String layout = getAttribute("layout");
+		return layout == null ? null : Layout.valueOf(layout);
 	}
 
 	public void setLayoutDirection(Layout layout) {
-	    this.layout = layout;
+	    if (layout == null) {
+	    	removeAttribute("layout");
+	    } else {
+	    	setAttribute("layout", layout.name());
+	    }
 	}
 
 	public void setLabel(Label label) {
-	    this.label = label;
-	    label.setParent(this);
+	    replaceProperty("label", label, Label.class);
 	}
 }

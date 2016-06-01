@@ -1,17 +1,12 @@
 package org.kite9.diagram.adl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.AbstractConnectedContainer;
 import org.kite9.diagram.primitives.Contained;
-import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.Label;
-
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.w3c.dom.Node;
 
 
 /**
@@ -21,7 +16,6 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author robmoffat
  *
  */
-@XStreamAlias("context")
 public class Context extends AbstractConnectedContainer {
 	
 	@Override
@@ -30,41 +24,36 @@ public class Context extends AbstractConnectedContainer {
 	}
 
 	private static final long serialVersionUID = -311300007972605832L;
-	
-	@XStreamOmitField
-	private Container container;
-	
-	
-	@XStreamAsAttribute
-	private boolean bordered = true;
 
 	public Context() {
+		this.tagName = "context";
 	}
 	
-	public Context(List<Contained> contents, boolean bordered, Label label, Layout layoutDirection) {
-		super(createID(), contents==null ? new ArrayList<Contained>() : contents, layoutDirection, label);	
-		this.bordered = bordered;
-	}
-	
-	public Context(String id, List<Contained> contents, boolean bordered, Label label, Layout layoutDirection) {
-		super(id, contents==null ? new ArrayList<Contained>() : contents, layoutDirection, label);
-		this.bordered = bordered;
+	public Context(String id, List<Contained> contents, boolean bordered, Label label, Layout layoutDirection, ADLDocument doc) {
+		super(id, "context", doc);
+		
+		if (contents != null) {
+			for (Contained contained : contents) {
+				appendChild(contained);
+			}
+		}
+		
+		setLayoutDirection(layoutDirection);
+		setLabel(label);
+		setBordered(bordered);
 	}
 
 	public boolean isBordered() {
-		return bordered;
+		return !"false".equals(getAttribute("bordered"));
 	}
 
 	public void setBordered(boolean bordered) {
-		this.bordered = bordered;
+		setAttribute("bordered", ""+bordered);
 	}
 
-	public Container getContainer() {
-		return container;
-	}
-
-	public void setContainer(Container c) {
-		this.container =  c;
+	@Override
+	protected Node newNode() {
+		return new Context();
 	}
 	
 }

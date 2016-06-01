@@ -1,12 +1,10 @@
 package org.kite9.diagram.style;
 
-public interface StyledDiagramElement {
+import org.apache.batik.css.engine.CSSStylableElement;
 
-	public String getStyle();
+public interface StyledDiagramElement extends CSSStylableElement {
+
+	public void setClasses(String c);
 	
 	public void setStyle(String s);
-	
-	public String getClasses();
-	
-	public void setClasses(String s);
 }

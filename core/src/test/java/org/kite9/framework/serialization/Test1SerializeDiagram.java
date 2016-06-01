@@ -3,6 +3,7 @@ package org.kite9.framework.serialization;
 import junit.framework.Assert;
 
 import org.junit.Test;
+import org.kite9.diagram.adl.ADLDocument;
 import org.kite9.diagram.adl.Arrow;
 import org.kite9.diagram.adl.Context;
 import org.kite9.diagram.adl.Diagram;
@@ -20,7 +21,9 @@ public class Test1SerializeDiagram extends HelpMethods {
 
 	@Test
 	public void quickSerializeTest() {
-		KeyHelper kh = new KeyHelper();
+		ADLDocument doc = new ADLDocument();
+		
+		KeyHelper kh = new KeyHelper(doc);
 
 		Diagram d1 = createDiagram(kh);
 
@@ -41,6 +44,7 @@ public class Test1SerializeDiagram extends HelpMethods {
 	}
 
 	public static Diagram createDiagram(KeyHelper kh) {
+		ADLDocument doc = new ADLDocument();
 		Glyph g1 = new Glyph("class", "Test Class", createList(new TextLine(
 				"Here is a line of text", createList(kh.createSymbol(
 						"Baphomet", "B")))), createList(kh.createSymbol(
