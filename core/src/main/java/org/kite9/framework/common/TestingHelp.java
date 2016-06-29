@@ -242,7 +242,7 @@ public class TestingHelp {
 					    return new String[] { id, ""+width, ""+height, ""+connections };
 			    	} else {
 			    		RouteRenderingInformation rri = (RouteRenderingInformation) ri;
-			    		Dimension2D bounds = rri.getBoundingSize();
+			    		Dimension2D bounds = rri.getSize();
 			    		double width = bounds.getWidth();
 			    		double height = bounds.getHeight();
 					    return new String[] { id, ""+width, ""+height, ""+connections };			    		

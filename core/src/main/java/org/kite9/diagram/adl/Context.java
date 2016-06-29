@@ -43,6 +43,14 @@ public class Context extends AbstractConnectedContainer {
 		setBordered(bordered);
 	}
 
+	public Context(String id, List<Contained> contents, boolean bordered, Label label, Layout layoutDirection) {
+		this(id, contents, bordered, label, layoutDirection, TESTING_DOCUMENT);
+	}
+
+	public Context(List<Contained> contents, boolean b, Label label, Layout l) {
+		this(createID(), contents, b, label, l);
+	}
+
 	public boolean isBordered() {
 		return !"false".equals(getAttribute("bordered"));
 	}

@@ -7,7 +7,9 @@ import java.util.List;
 
 import org.kite9.diagram.primitives.AbstractDiagramElement;
 import org.kite9.diagram.primitives.DiagramElement;
+import org.kite9.diagram.primitives.XMLDiagramElement;
 import org.kite9.framework.common.Kite9ProcessingException;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 /**
@@ -18,7 +20,7 @@ import org.w3c.dom.Node;
  * @author robmoffat
  *
  */
-public class ContainerProperty<E extends DiagramElement> extends AbstractDiagramElement implements Iterable<E> {
+public class ContainerProperty<E extends Element> extends AbstractDiagramElement implements Iterable<E> {
 
 	public ContainerProperty(String part, ADLDocument d) {
 		super(part, d);
@@ -33,7 +35,7 @@ public class ContainerProperty<E extends DiagramElement> extends AbstractDiagram
 
 	@Override
 	protected Node newNode() {
-		return new ContainerProperty<DiagramElement>(tagName, (ADLDocument) ownerDocument);
+		return new ContainerProperty<XMLDiagramElement>(tagName, (ADLDocument) ownerDocument);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -63,4 +65,11 @@ public class ContainerProperty<E extends DiagramElement> extends AbstractDiagram
 		}
 	}
 	
+	public List<E> asList() {
+		ArrayList<E> out = new ArrayList<E>(size());
+		for (E e : this) {
+			out.add(e);
+		}
+		return out;
+	}
 }

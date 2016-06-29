@@ -18,6 +18,7 @@ import org.kite9.diagram.adl.Key;
 import org.kite9.diagram.adl.Link;
 import org.kite9.diagram.adl.Symbol;
 import org.kite9.diagram.adl.TextLine;
+import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -152,6 +153,15 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 			
 			public Element create(String prefix, Document doc) {
 				Key out = new Key();
+				out.setOwnerDocument(doc);
+				return out;
+			}
+		});
+		
+		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "renderingInformation", new ElementFactory() {
+			
+			public Element create(String prefix, Document doc) {
+				BasicRenderingInformation out = new BasicRenderingInformation();
 				out.setOwnerDocument(doc);
 				return out;
 			}

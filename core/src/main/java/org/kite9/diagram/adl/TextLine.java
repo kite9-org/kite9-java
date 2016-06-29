@@ -3,15 +3,11 @@ package org.kite9.diagram.adl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.kite9.diagram.position.RectangleRenderingInformation;
-import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractLabel;
 import org.kite9.diagram.primitives.IdentifiableDiagramElement;
 import org.kite9.diagram.primitives.SymbolTarget;
 import org.kite9.diagram.primitives.TextContainingDiagramElement;
 import org.w3c.dom.Node;
-
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
  * TODO: rename to text-box.  This is a formatted area containing text, and could
@@ -20,7 +16,6 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  * @author robmoffat
  *
  */
-@XStreamAlias("text-line")
 public class TextLine extends AbstractLabel implements SymbolTarget, IdentifiableDiagramElement, TextContainingDiagramElement {
 
 	private static final long serialVersionUID = -1917135065467101779L;
@@ -31,6 +26,19 @@ public class TextLine extends AbstractLabel implements SymbolTarget, Identifiabl
 	public TextLine() {
 		this.tagName = "text-line";
 	}
+	
+	public TextLine(String text, ADLDocument doc) {
+		this(null, "text-line", text, null, doc);
+	}
+	
+	public TextLine(String text) {
+		this(text, TESTING_DOCUMENT);
+	}
+	
+	public TextLine(String text, List<Symbol> symbols) {
+		this(null, "text-line", text, symbols, TESTING_DOCUMENT);
+	}
+
 	
 	public TextLine(String id, String tag, String text, List<Symbol> symbols, ADLDocument doc) {
 		super(id, tag, doc);
@@ -48,16 +56,6 @@ public class TextLine extends AbstractLabel implements SymbolTarget, Identifiabl
 	public void setSymbols(ContainerProperty<Symbol> syms) {
 		replaceProperty("symbols", syms, ContainerProperty.class);
 	}
-
-	RenderingInformation renderingInformation;
-	
-	public RenderingInformation getRenderingInformation() {
-		if (renderingInformation == null) {
-			renderingInformation = new RectangleRenderingInformation();
-		}
-		
-		return renderingInformation;
-	}
 	
 	public String toString() {
 		return "[TL:"+getText()+"]";
@@ -65,10 +63,6 @@ public class TextLine extends AbstractLabel implements SymbolTarget, Identifiabl
 
 	public boolean hasContent() {
 		return hasContent(getText()) || hasContent(getSymbols());
-	}
-
-	public void setRenderingInformation(RenderingInformation ri) {
-		this.renderingInformation = ri;
 	}
 
 	@Override

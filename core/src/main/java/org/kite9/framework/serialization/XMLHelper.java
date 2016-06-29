@@ -18,22 +18,10 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.apache.batik.dom.util.SAXDocumentFactory;
-import org.kite9.diagram.adl.Arrow;
-import org.kite9.diagram.adl.CompositionalShape;
 import org.kite9.diagram.adl.ContainerProperty;
-import org.kite9.diagram.adl.Context;
 import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.Glyph;
-import org.kite9.diagram.adl.Key;
 import org.kite9.diagram.adl.Link;
-import org.kite9.diagram.adl.LinkEndStyle;
-import org.kite9.diagram.adl.Symbol;
-import org.kite9.diagram.adl.TextLine;
-import org.kite9.diagram.position.CostedDimension;
-import org.kite9.diagram.position.DiagramRenderingInformation;
-import org.kite9.diagram.position.Dimension2D;
-import org.kite9.diagram.position.RectangleRenderingInformation;
-import org.kite9.diagram.position.RouteRenderingInformation;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
 import org.kite9.diagram.primitives.Connected;
 import org.kite9.diagram.primitives.Connection;
@@ -42,7 +30,6 @@ import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.diagram.visitors.ContainerVisitor;
 import org.kite9.framework.common.Kite9ProcessingException;
-import org.kite9.framework.server.BasicWorkItem;
 import org.kite9.framework.server.WorkItem;
 import org.w3c.dom.Document;
 
@@ -68,11 +55,6 @@ public class XMLHelper {
 
 	public static final String XML_SCHEMA_NAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
 	public static final String KITE9_NAMESPACE = "http://www.kite9.org/schema/adl";
-
-	public static final Class<?>[] ADL_CLASSES = new Class[] { Arrow.class, Context.class, Diagram.class, Glyph.class,
-			Key.class, Link.class, TextLine.class, TextLine.class, Symbol.class, LinkEndStyle.class,
-			CompositionalShape.class, BasicWorkItem.class, Dimension2D.class, RouteRenderingInformation.class,
-			DiagramRenderingInformation.class, RectangleRenderingInformation.class, CostedDimension.class };
 
 	private boolean simplifyingXML = true;
 
@@ -104,7 +86,7 @@ public class XMLHelper {
 			 trans.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 			 StringWriter sw= new StringWriter();
 			 Result result = new StreamResult(sw);
-			 trans.transform(new DOMSource(d.getOwnerDocument()), result);
+			 trans.transform(new DOMSource(d), result);
 			 sw.close();
 			 return sw.toString();
 		} catch (Exception e) {
@@ -137,6 +119,7 @@ public class XMLHelper {
 
 	private void preProcess(final Diagram d) {
 		d.getAllLinks().clear();
+		
 		final LinkedHashSet<Connection> allLinks = new LinkedHashSet<Connection>();
 
 		if (isSimplifyingXML()) {

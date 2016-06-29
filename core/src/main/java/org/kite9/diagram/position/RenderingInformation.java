@@ -1,6 +1,8 @@
 package org.kite9.diagram.position;
 
-import java.io.Serializable;
+import org.kite9.diagram.adl.ContainerProperty;
+import org.kite9.diagram.primitives.XMLDiagramElement;
+import org.w3c.dom.Element;
 
 
 
@@ -10,7 +12,7 @@ import java.io.Serializable;
  * @author robmoffat
  *
  */
-public interface RenderingInformation extends Serializable {
+public interface RenderingInformation extends XMLDiagramElement {
 	
 	/**
 	 * Returns true if this item should be drawn
@@ -22,7 +24,20 @@ public interface RenderingInformation extends Serializable {
 	/**
 	 * For storing format-specific rendering details.
 	 */
-	public Object getDisplayData();
+	public ContainerProperty<Element> getDisplayData();
 	
-	public void setDisplayData(Object o);
+	public void setDisplayData(ContainerProperty<Element> o);
+	
+	public Dimension2D getPosition();
+
+	public void setPosition(Dimension2D position);
+
+	public Dimension2D getSize();
+
+	public void setSize(Dimension2D size);
+	
+	public Dimension2D getInternalSize();
+
+	public void setInternalSize(Dimension2D size);
+
 }

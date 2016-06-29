@@ -1,13 +1,14 @@
 package org.kite9.diagram.adl;
 
-import org.kite9.diagram.position.DiagramRenderingInformation;
+import java.util.List;
+
+import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.AbstractConnectedContainer;
 import org.kite9.diagram.primitives.Connection;
+import org.kite9.diagram.primitives.Contained;
+import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.Label;
 import org.w3c.dom.Node;
-
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 
 /**
@@ -19,7 +20,6 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
  * @author robmoffat
  *
  */
-@XStreamAlias("diagram")
 public class Diagram extends AbstractConnectedContainer {
 
 	private static final long serialVersionUID = -7727042271665853389L;
@@ -30,6 +30,35 @@ public class Diagram extends AbstractConnectedContainer {
 	
 	public Diagram(String id, ADLDocument doc) {
 		super(id, "diagram", doc);
+		this.setParentNode(doc);
+	}
+
+	public Diagram(String id, List<Contained> contents, Key k) {
+		this(id, contents, k, TESTING_DOCUMENT);
+	}
+
+	
+	public Diagram(String id, List<Contained> contents, Key k, ADLDocument doc) {
+		this(id, doc);
+		this.setParentNode(doc);
+		if (contents != null) {
+			for (Contained contained : contents) {
+				appendChild(contained);
+			}
+		}
+	}
+	
+	public Diagram(String id, List<Contained> contents) {
+		this(id, contents, null, TESTING_DOCUMENT);
+	}
+
+	public Diagram(String id, List<Contained> contents, Layout l, Key k) {
+		this(id, contents, k, TESTING_DOCUMENT);
+		this.setLayoutDirection(l);
+	}
+
+	public Diagram(List<Contained> contents, Key k) {
+		this(createID(), contents, k);
 	}
 
 	public Key getKey() {
@@ -44,28 +73,22 @@ public class Diagram extends AbstractConnectedContainer {
 		return true;
 	}
 
-	@XStreamAsAttribute
-	String name;
-	
 	public String getName() {
-		return name;
+		return getAttribute("name");
 	}
 	
 	public void setName(String name) {
-		this.name = name;
+		setAttribute("name", name);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public ContainerProperty<Connection> getAllLinks() {
-		return getProperty("allLinks", ContainerProperty.class);
-	}
-	
-	public DiagramRenderingInformation getRenderingInformation() {
-		if (renderingInformation==null) {
-			renderingInformation = new DiagramRenderingInformation();
+		ContainerProperty<Connection> out = getProperty("allLinks", ContainerProperty.class);
+		if (out == null) {
+			out = replaceProperty("allLinks", (ContainerProperty<Connection>) ownerDocument.createElement("allLinks"), ContainerProperty.class);
 		}
 		
-		return (DiagramRenderingInformation) renderingInformation;
+		return out;
 	}
 
 	public String getNodeName() {
@@ -81,6 +104,18 @@ public class Diagram extends AbstractConnectedContainer {
 	public Label getLabel() {
 		return getKey();
 	}
+	
+
+	public Container getContainer() {
+		return null;
+	}
+
+	@Override
+	public void setContainer(Container c) {
+		// diagrams don't have containers.
+	}
+
+	
 	
 	
 }

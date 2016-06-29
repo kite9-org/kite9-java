@@ -4,8 +4,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 
 import org.kite9.diagram.adl.ADLDocument;
-
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.kite9.diagram.position.RectangleRenderingInformation;
 
 /**
  * This is the base class for most {@link Connected} elements within the diagram.
@@ -30,16 +29,13 @@ public abstract class AbstractConnectedContained extends AbstractIdentifiableDia
 	public void addLink(Connection l) {
 		links.add(l);
 	}
-	
-	@XStreamOmitField
-	Container c;
 
 	public Container getContainer() {
-		return c; 
+		return (Container) getParentNode();
 	}
 
 	public void setContainer(Container c) {
-		this.c = c;
+		setParentNode(c);
 	}
 
 	public Collection<Connection> getLinks() {
@@ -65,6 +61,12 @@ public abstract class AbstractConnectedContained extends AbstractIdentifiableDia
 	public boolean isConnectedDirectlyTo(Connected c) {
 	    return getConnectionTo(c) != null;
 	}
+
+	public RectangleRenderingInformation getRenderingInformation() {
+		return getBasicRenderingInformation();
+	}
+	
+	
 }
 
 

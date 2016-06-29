@@ -1,6 +1,6 @@
 package org.kite9.diagram.primitives;
 
-
+import org.kite9.diagram.position.RouteRenderingInformation;
 
 /**
  * A connection is a link between two Connected items within the diagram.  Connections have a notional
@@ -28,4 +28,6 @@ public interface Connection extends PositionableDiagramElement, BiDirectional<Co
 	 */
 	public Label getToLabel();
 
+	
+	public RouteRenderingInformation getRenderingInformation();
 }

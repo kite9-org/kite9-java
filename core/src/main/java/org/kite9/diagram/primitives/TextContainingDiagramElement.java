@@ -1,6 +1,8 @@
 package org.kite9.diagram.primitives;
 
-public interface TextContainingDiagramElement extends CompositionalDiagramElement {
+import org.kite9.diagram.style.StyledDiagramElement;
+
+public interface TextContainingDiagramElement extends CompositionalDiagramElement, StyledDiagramElement {
 
 	public void setText(String text);
 	

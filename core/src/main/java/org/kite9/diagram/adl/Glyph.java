@@ -2,8 +2,6 @@ package org.kite9.diagram.adl;
 
 import java.util.List;
 
-import org.kite9.diagram.position.RectangleRenderingInformation;
-import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnectedContained;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
 import org.kite9.diagram.primitives.Leaf;
@@ -59,6 +57,14 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 			setSymbols(new ContainerProperty<Symbol>("symbols", doc, symbols));
 		}		
 	}
+	
+	public Glyph(String stereotype, String label,  List<CompositionalDiagramElement> text, List<Symbol> symbols) {
+		this(label, stereotype, label, text, symbols, false, TESTING_DOCUMENT);
+	}
+
+	public Glyph(String id, String stereotype, String label,  List<CompositionalDiagramElement> text, List<Symbol> symbols) {
+		this(id, stereotype, label, text, symbols, false, TESTING_DOCUMENT);
+	}
 
 	public TextContainingDiagramElement getStereotype() {
 		return getProperty("stereotype", TextContainingDiagramElement.class);
@@ -95,18 +101,7 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 	public String toString() {
 		return "[G:"+getID()+"]";
 	}
-
-	public RenderingInformation getRenderingInformation() {
-		if (renderingInformation==null)
-			renderingInformation = new RectangleRenderingInformation();
-		
-		return renderingInformation;
-	}
-
-	public void setRenderingInformation(RenderingInformation ri) {
-		this.renderingInformation = ri;
-	}
-
+	
 	@Override
 	protected Node newNode() {
 		return new Glyph(null, (ADLDocument) ownerDocument);

@@ -2,6 +2,7 @@ package org.kite9.diagram.adl;
 
 import java.io.Serializable;
 
+import org.kite9.diagram.adl.Symbol.SymbolShape;
 import org.kite9.diagram.primitives.AbstractDiagramElement;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
 import org.kite9.diagram.primitives.DiagramElement;
@@ -39,6 +40,10 @@ public class Symbol extends AbstractDiagramElement implements Serializable, Comp
 		setTextContent(text);
 		setChar(preferredChar);
 		setShape(shape);
+	}
+
+	public Symbol(String string, char c, SymbolShape shape) {
+		this(string, c, shape, TESTING_DOCUMENT);
 	}
 
 	public char getChar() {
@@ -83,5 +88,8 @@ public class Symbol extends AbstractDiagramElement implements Serializable, Comp
 		return getTextData();
 	}
 
+	public String getXMLId() {
+		return getAttribute("id");
+	}
 	
 }

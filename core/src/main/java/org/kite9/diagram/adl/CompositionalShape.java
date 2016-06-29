@@ -1,6 +1,5 @@
 package org.kite9.diagram.adl;
 
-import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractIdentifiableDiagramElement;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
@@ -23,22 +22,14 @@ public class CompositionalShape extends AbstractIdentifiableDiagramElement imple
 		return 0;
 	}
 
-	public RenderingInformation getRenderingInformation() {
-		if (renderingInformation == null) {
-			renderingInformation = new RectangleRenderingInformation();
-		}
-		
-		return renderingInformation;
-	}
-	
-
-	public void setRenderingInformation(RenderingInformation ri) {
-		this.renderingInformation = ri;
-	}
-
 	@Override
 	protected Node newNode() {
 		return new CompositionalShape();
+	}
+
+	public RenderingInformation getRenderingInformation() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

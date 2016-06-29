@@ -1,5 +1,6 @@
 package org.kite9.diagram.primitives;
 
+import org.kite9.diagram.position.RectangleRenderingInformation;
 
 /**
  * A simple marker interface for diagram elements to say that they are 
@@ -10,5 +11,7 @@ public interface Contained extends IdentifiableDiagramElement {
 	public Container getContainer();
 	
 	public void setContainer(Container c);
+	
+	public RectangleRenderingInformation getRenderingInformation();
 
 }

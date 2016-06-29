@@ -1,7 +1,5 @@
 package org.kite9.diagram.adl;
 
-import org.kite9.diagram.position.RectangleRenderingInformation;
-import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractConnectedContained;
 import org.kite9.diagram.primitives.Leaf;
 import org.kite9.diagram.primitives.TextContainingDiagramElement;
@@ -42,6 +40,14 @@ public class Arrow extends AbstractConnectedContained implements VertexOnEdge, L
 		
 	}
 	
+	public Arrow(String id, String label) {
+		this(id, label, TESTING_DOCUMENT);
+	}
+
+	public Arrow(String label) {
+		this(label, label);
+	}
+
 	public boolean hasDimension() {
 		return true;
 	}
@@ -50,17 +56,6 @@ public class Arrow extends AbstractConnectedContained implements VertexOnEdge, L
 		return "[A:"+getID()+"]";
 	}
 	
-	public RenderingInformation getRenderingInformation() {
-		if (renderingInformation==null)
-			renderingInformation = new RectangleRenderingInformation();
-		
-		return renderingInformation;
-	}
-
-	public void setRenderingInformation(RenderingInformation ri) {
-		this.renderingInformation = ri;
-	}
-
 	@Override
 	protected Node newNode() {
 		return new Arrow();

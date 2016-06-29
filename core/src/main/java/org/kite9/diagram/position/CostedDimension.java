@@ -1,7 +1,6 @@
 package org.kite9.diagram.position;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
+import org.kite9.diagram.primitives.DiagramElement;
 
 /**
  * This extends the idea of dimension, but allows you to associate a cost with the dimension
@@ -10,8 +9,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  * @author robmoffat
  *
  */
-@XStreamAlias("costed")
-public class CostedDimension extends Dimension2D implements Comparable<CostedDimension> {
+public class CostedDimension extends Dimension2D {
 
 	private static final long serialVersionUID = 5835848361276316308L;
 
@@ -92,7 +90,11 @@ public class CostedDimension extends Dimension2D implements Comparable<CostedDim
 		}
 	}
 
-	public int compareTo(CostedDimension o) {
-		return ((Long)this.cost).compareTo(o.cost);
+	public int compareTo(DiagramElement o) {
+		if (o instanceof CostedDimension) {
+			return ((Long)this.cost).compareTo(((CostedDimension)o).cost);
+		} else {
+			return 0;
+		}
 	}
 }

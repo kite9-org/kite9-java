@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.kite9.diagram.adl.Symbol.SymbolShape;
+import org.kite9.diagram.primitives.AbstractDiagramElement;
 
 /**
  * Helps in the creation of keys by making sure that symbols don't reuse the
@@ -56,6 +57,10 @@ public class KeyHelper {
 	Set<UsedKey> used = new HashSet<UsedKey>();
 	Map<String, Symbol> declared = new HashMap<String, Symbol>();
 	private ADLDocument doc;
+	
+	public KeyHelper() {
+		this(AbstractDiagramElement.TESTING_DOCUMENT);
+	}
 
 	public KeyHelper(ADLDocument doc) {
 		this.doc = doc;

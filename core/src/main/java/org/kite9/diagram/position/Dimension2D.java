@@ -1,26 +1,27 @@
 package org.kite9.diagram.position;
 
-import java.io.Serializable;
-
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import org.kite9.diagram.adl.ADLDocument;
+import org.kite9.diagram.primitives.AbstractDiagramElement;
+import org.kite9.diagram.primitives.DiagramElement;
+import org.kite9.framework.common.Kite9ProcessingException;
+import org.w3c.dom.Node;
 
 /**
  * This is compatible with the awt dimension class, which is used for a
  * lot of rendering.  
+ * 
  * This has double precision though and has internal scaling operations, as well
  * as actions to allow you to apply operations to a specific direction.
  * 
- * Immutable
+ * <em>Immutable</em>
  * 
  * @author robmoffat
  *
  */
-@XStreamAlias("d")
-public class Dimension2D implements Serializable {
+public class Dimension2D extends AbstractDiagramElement {
 
-	private static final long serialVersionUID = -2042867297107289469L;
-
+	private double x, y;
+	
 	public double getHeight() {
 		return y;
 	}
@@ -32,11 +33,6 @@ public class Dimension2D implements Serializable {
 	public double getWidth() {
 		return x;
 	}
-
-	@XStreamAsAttribute
-	double x;
-	@XStreamAsAttribute
-	double y;
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -48,12 +44,17 @@ public class Dimension2D implements Serializable {
 	}
 
 	public Dimension2D() {
-		
 	}
 	
+	private boolean readonly = false;
+	
 	public Dimension2D(double x, double y) {
+		super("dim2d", AbstractDiagramElement.TESTING_DOCUMENT);
 		this.x = x;
 		this.y = y;
+		setAttribute("x", ""+x);
+		setAttribute("y", ""+y);
+		this.readonly = true;
 	}
 	
 	public Dimension2D(Dimension2D clone) {
@@ -122,5 +123,28 @@ public class Dimension2D implements Serializable {
 
 	public Dimension2D setY(double y) {
 		return new Dimension2D(this.x, y);
+	}
+
+	public boolean isReadonly() {
+		return readonly;
+	}
+
+	public void setReadonly(boolean v) {
+		throw new Kite9ProcessingException("Immutable");
+	}
+
+	@Override
+	protected Node newNode() {
+		throw new Kite9ProcessingException("Immutable");
+	}
+	
+	public Dimension2D copy(ADLDocument doc) {
+		Dimension2D out = new Dimension2D(this);
+		out.setOwnerDocument(doc);
+		return out;
+	}
+
+	public int compareTo(DiagramElement o) {
+		return 0;
 	}
 }

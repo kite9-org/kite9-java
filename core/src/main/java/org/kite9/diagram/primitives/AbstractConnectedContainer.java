@@ -6,26 +6,12 @@ import java.util.List;
 
 import org.kite9.diagram.adl.ADLDocument;
 import org.kite9.diagram.position.Layout;
-import org.kite9.diagram.position.RectangleRenderingInformation;
-import org.kite9.diagram.position.RenderingInformation;
 import org.w3c.dom.Node;
 
 public abstract class AbstractConnectedContainer extends AbstractConnectedContained implements Container {
 
 	public Label getLabel() {
 		return getProperty("label", Label.class);
-	}
-
-	public RectangleRenderingInformation getRenderingInformation() {
-		if (renderingInformation==null) {
-			renderingInformation = new RectangleRenderingInformation();
-		}
-		
-		return (RectangleRenderingInformation) renderingInformation;
-	}
-
-	public void setRenderingInformation(RenderingInformation ri) {
-		this.renderingInformation = ri;
 	}
 
 	private static final long serialVersionUID = 9108816802892206563L;
@@ -51,7 +37,7 @@ public abstract class AbstractConnectedContainer extends AbstractConnectedContai
 
 	public Layout getLayoutDirection() {
 		String layout = getAttribute("layout");
-		return layout == null ? null : Layout.valueOf(layout);
+		return layout.length() == 0 ? null : Layout.valueOf(layout);
 	}
 
 	public void setLayoutDirection(Layout layout) {

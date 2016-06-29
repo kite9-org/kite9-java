@@ -3,6 +3,7 @@ package org.kite9.diagram.primitives;
 import java.io.Serializable;
 
 import org.kite9.diagram.adl.ADLDocument;
+import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.style.StyledDiagramElement;
 
@@ -15,6 +16,11 @@ public abstract class AbstractIdentifiableDiagramElement extends AbstractDiagram
 	
 	public AbstractIdentifiableDiagramElement(String id, String tag, ADLDocument doc) {
 		super(tag, doc);
+		
+		if (id == null) {
+			id = createID();
+		}
+		
 		setID(id);
 	}
 
@@ -26,6 +32,21 @@ public abstract class AbstractIdentifiableDiagramElement extends AbstractDiagram
 		} else {
 			return -1;
 		}
+	}
+
+
+	public BasicRenderingInformation getBasicRenderingInformation() {
+		BasicRenderingInformation ri = getProperty("renderingInformation", BasicRenderingInformation.class);
+		if (ri == null) {
+			ri = (BasicRenderingInformation) ownerDocument.createElement("renderingInformation");
+			setRenderingInformation(ri);
+		}
+		
+		return ri;
+	}
+
+	public void setRenderingInformation(RenderingInformation ri) {
+		replaceProperty("renderingInformation", ri, RenderingInformation.class);
 	}
 
 
@@ -41,12 +62,6 @@ public abstract class AbstractIdentifiableDiagramElement extends AbstractDiagram
 	public void setID(String id) {
 		setAttribute("id", id);
 	}
-
-	/**
-	 * This is used by layout engines to set the position of the elements in the
-	 * diagram
-	 */
-	protected RenderingInformation renderingInformation = null;
 	
 	private static int counter = 0; 
 	

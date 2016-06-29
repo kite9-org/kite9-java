@@ -12,9 +12,16 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 
-public abstract class AbstractDiagramElement extends AbstractElement implements DiagramElement, CompositionalDiagramElement {
+public abstract class AbstractDiagramElement extends AbstractElement implements XMLDiagramElement, CompositionalDiagramElement {
+	
+	/**
+	 * Used only in test methods.
+	 */
+	public static ADLDocument TESTING_DOCUMENT = new ADLDocument();
 	
 	protected String tagName;
+	
+	protected Object parent;
 	
 	public AbstractDiagramElement() {
 	}
@@ -50,6 +57,11 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 		return getAttribute("class");
 	}
 
+	public String getShapeName() {
+		// TODO
+		return null;
+	}
+	
 	public ParsedURL getCSSBase() {
 		// TODO Auto-generated method stub
 		return null;
@@ -98,15 +110,22 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 		return found;
 	}
 	
-	public <E extends Element> void replaceProperty(String propertyName, E e, Class<E> propertyClass) {
+	public <E extends Element> E replaceProperty(String propertyName, E e, Class<E> propertyClass) {
+		E existing = getProperty(propertyName, propertyClass);
+		if (e == null) {
+			if (existing != null) {
+				this.removeChild(existing);
+			}
+		 	return null;
+		}
+
 		if (!propertyClass.isInstance(e)) {
 			throw new Kite9ProcessingException("Was expecting an element of "+propertyClass.getName()+" but it's: "+e);
 		}
-		
-		E existing = getProperty(propertyName, propertyClass);
-		if (e == null) {
-		 	this.removeChild(existing);
-		 	return;
+
+		if (e instanceof XMLDiagramElement) {
+			((XMLDiagramElement)e).setTagName(propertyName);
+			((XMLDiagramElement)e).setOwnerDocument((ADLDocument) this.ownerDocument); 
 		}
 		
 		if (!e.getNodeName().equals(propertyName)) {
@@ -114,10 +133,16 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 		}
 		
 		if (existing != null) {
-			this.replaceChild(e, existing);
-		} else {
-			this.appendChild(e);
+			this.removeChild(existing);
 		}
+		
+		this.appendChild(e);
+		
+		return e;
+	}
+	
+	public void setTagName(String name) {
+		this.tagName = name;
 	}
 
 	protected String getTextData() {
@@ -146,10 +171,6 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 		appendChild(ownerDocument.createTextNode(text));
 	}
 
-	public Object getParent() {
-		return parentNode;
-	}
-
 	@Override
 	public String getNamespaceURI() {
 		return XMLHelper.KITE9_NAMESPACE;
@@ -169,5 +190,15 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 		}
 	}
 	
+	public Object getParent() {
+		return parent;
+	}
 	
+	public void setParent(Object parent) {
+		this.parent = parent;
+	}
+
+	public void setOwnerDocument(ADLDocument doc) {
+		this.ownerDocument = doc;
+	}
 }

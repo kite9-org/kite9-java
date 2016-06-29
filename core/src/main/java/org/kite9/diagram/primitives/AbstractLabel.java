@@ -5,7 +5,6 @@ import java.io.Serializable;
 import org.kite9.diagram.adl.ADLDocument;
 import org.kite9.diagram.adl.ContainerProperty;
 import org.kite9.diagram.position.RectangleRenderingInformation;
-import org.kite9.diagram.position.RenderingInformation;
 
 /**
  * 
@@ -34,14 +33,6 @@ public abstract class AbstractLabel extends AbstractIdentifiableDiagramElement i
 			return -1;
 		}
 	}
-
-	public RenderingInformation getRenderingInformation() {
-		if (renderingInformation == null) {
-			renderingInformation = new RectangleRenderingInformation();
-		}
-		
-		return renderingInformation;
-	}
 	
 	public boolean hasContent(String s) {
 		if (s!=null) {
@@ -67,4 +58,7 @@ public abstract class AbstractLabel extends AbstractIdentifiableDiagramElement i
 		}
 	}
 
+	public RectangleRenderingInformation getRenderingInformation() {
+		return super.getBasicRenderingInformation();
+	}
 }

@@ -3,15 +3,11 @@ package org.kite9.diagram.adl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.primitives.AbstractLabel;
 import org.kite9.diagram.primitives.Label;
 import org.kite9.diagram.primitives.TextContainingDiagramElement;
 import org.w3c.dom.Node;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-@XStreamAlias("key")
 public class Key extends AbstractLabel implements Label {
 
 	private static final long serialVersionUID = 7705875104684442878L;
@@ -51,6 +47,12 @@ public class Key extends AbstractLabel implements Label {
 		this.tagName = "key";
 	}
 	
+
+	public Key(String boldText, String bodyText, List<Symbol> symbols) {
+		this(null, boldText, bodyText, symbols, TESTING_DOCUMENT);
+	}
+
+	
 	public Key(String id, String boldText, String bodyText, List<Symbol> symbols, ADLDocument doc) {
 		super(id, "key", doc);
 		
@@ -67,10 +69,6 @@ public class Key extends AbstractLabel implements Label {
 		}
 	}
 	
-	public void setRenderingInformation(RenderingInformation ri) {
-		this.renderingInformation = ri;
-	}
-
 	@SuppressWarnings("unchecked")
 	public ContainerProperty<TextLine> getSymbols() {
 		return getProperty("text-lines", ContainerProperty.class);

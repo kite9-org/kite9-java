@@ -88,5 +88,10 @@ public class Test4StyledDiagrams {
 		Assert.assertEquals('a', first.getSymbols().iterator().next().getChar());
 		Assert.assertEquals(SymbolShape.DIAMOND, first.getSymbols().iterator().next().getShape());
 		Assert.assertEquals("Some description\n		 taking multiple lines", first.getText());
+		
+		// ensure we can serialize.  Since it's held as a dom, it's not likely to be a problem
+		String outstring = new XMLHelper().toXML(d);
+		System.out.println(outstring);
+		XMLCompare.checkIdenticalXML(instring, outstring);
 	}
 }

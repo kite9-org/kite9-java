@@ -2,6 +2,7 @@ package org.kite9.diagram.adl;
 
 import org.apache.batik.dom.GenericDocument;
 import org.kite9.framework.serialization.ADLExtensibleDOMImplementation;
+import org.kite9.framework.serialization.XMLHelper;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Element;
 
@@ -20,6 +21,9 @@ public class ADLDocument extends GenericDocument {
 		return ((ADLExtensibleDOMImplementation)implementation).createElementNS(this, namespaceURI, qualifiedName);
 	}
 	
-	
+	@Override
+	public Element createElement(String name) throws DOMException {
+		return ((ADLExtensibleDOMImplementation)implementation).createElementNS(this, XMLHelper.KITE9_NAMESPACE, name);
+	}
 	
 }
