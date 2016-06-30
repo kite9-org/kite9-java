@@ -15,16 +15,22 @@ public abstract class AbstractConnectedContainer extends AbstractConnectedContai
 	}
 
 	private static final long serialVersionUID = 9108816802892206563L;
+	
+	private List<Contained> contents;
 
 	public List<Contained> getContents() {
-		List<Contained> contents = new ArrayList<Contained>();
+		if (contents != null) {
+			return contents;
+		}
+		
+		contents = new ArrayList<Contained>();
 		for (int i = 0; i < getChildNodes().getLength(); i++) {
 			Node n = getChildNodes().item(i);
 			if (n instanceof Contained) {
 				contents.add((Contained) n);
 			}
 		}
-		return Collections.unmodifiableList(contents);
+		return contents;
 	}
 	
 	public AbstractConnectedContainer() {

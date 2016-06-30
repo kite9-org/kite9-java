@@ -52,7 +52,8 @@ public abstract class AbstractIdentifiableDiagramElement extends AbstractDiagram
 
 	@Override
 	public int hashCode() {
-		return getId().hashCode();
+		String id = getId();
+		return id.hashCode();
 	}
 	
 	public final String getID() {

@@ -58,8 +58,11 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 	}
 
 	public String getShapeName() {
-		// TODO
-		return null;
+		return getAttribute("shape");
+	}
+	
+	public void setShapeName(String s) {
+		setAttribute("shape", s);
 	}
 	
 	public ParsedURL getCSSBase() {

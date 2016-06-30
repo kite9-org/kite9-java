@@ -12,4 +12,8 @@ public interface StyledDiagramElement extends CSSStylableElement, ShapedDiagramE
 	 * Temporary method, to keep things working for now.
 	 */
 	public String getStyle();
+	
+	public void setShapeName(String s);
+	
+	public String getShapeName();
 }
