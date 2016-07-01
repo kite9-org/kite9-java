@@ -59,7 +59,7 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 	}
 	
 	public Glyph(String stereotype, String label,  List<CompositionalDiagramElement> text, List<Symbol> symbols) {
-		this(label, stereotype, label, text, symbols, false, TESTING_DOCUMENT);
+		this(createID(), stereotype, label, text, symbols, false, TESTING_DOCUMENT);
 	}
 
 	public Glyph(String id, String stereotype, String label,  List<CompositionalDiagramElement> text, List<Symbol> symbols) {

@@ -25,7 +25,7 @@ public class Diagram extends AbstractConnectedContainer {
 	private static final long serialVersionUID = -7727042271665853389L;
 	
 	public Diagram() {
-		this.tagName = "diagram";
+		super(createID(), "diagram", TESTING_DOCUMENT);
 	}
 	
 	public Diagram(String id, ADLDocument doc) {

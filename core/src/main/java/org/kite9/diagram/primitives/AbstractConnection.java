@@ -124,10 +124,12 @@ public abstract class AbstractConnection extends AbstractIdentifiableDiagramElem
 	}
 	
 	public Connected otherEnd(Connected end) {
-		if (end == getFrom())
-			return getTo();
-		if (end == getTo())
-			return getFrom();
+		Connected from = getFrom();
+		Connected to = getTo();
+		if (end == from)
+			return to;
+		if (end == to)
+			return from;
 		throw new LogicException("This is not an end: " + end + " of " + this);
 	}
 
