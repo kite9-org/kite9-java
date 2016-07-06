@@ -23,6 +23,7 @@ public class Test1SerializeDiagram extends HelpMethods {
 	@Test
 	public void quickSerializeTest() throws IOException {
 		ADLDocument doc = new ADLDocument();
+		doc.setDocumentXmlEncoding("UTF-8");
 
 		Diagram d1 = createDiagram(doc);
 
@@ -59,8 +60,8 @@ public class Test1SerializeDiagram extends HelpMethods {
 		new Link("l2", a1, g2, doc);
 		new Link("l3", a1, g3, doc);
 
-		Diagram d1 = new Diagram("My Diagram", createList((Contained) inside, (Contained) a1), doc);
-		d1.setKey(new Key("key", "Here is my amazing diagram", null, kh.getUsedSymbols(), doc));
+		Key k = new Key("key", "Here is my amazing diagram", null, kh.getUsedSymbols(), doc);
+		Diagram d1 = new Diagram("My Diagram", createList((Contained) inside, (Contained) a1), k, doc);
 		return d1;
 	}
 }
