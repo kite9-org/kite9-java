@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <diagram xmlns="http://www.kite9.org/schema/adl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="My Diagram" class="bob">
-	
+	<stylesheet href="styles.css" />
 	<glyph class="james" id="spam">
-		<label id="auto:1">Some Load of Nonsense</label>
+		<label id="auto:1" style="font-size: 30px; color: red; ">Some Load of Nonsense</label>
 		<stereotype id="auto:2">The stereotype</stereotype>
 		<symbols>
 			<symbol shape="CIRCLE" theChar="c">Some text here</symbol>

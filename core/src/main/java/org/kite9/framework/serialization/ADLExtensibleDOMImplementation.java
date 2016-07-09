@@ -1,13 +1,18 @@
 package org.kite9.framework.serialization;
 
+import java.net.URL;
+
+import org.apache.batik.css.dom.CSSOMSVGViewCSS;
 import org.apache.batik.css.engine.CSSContext;
 import org.apache.batik.css.engine.CSSEngine;
+import org.apache.batik.css.engine.SVG12CSSEngine;
 import org.apache.batik.css.engine.value.ShorthandManager;
 import org.apache.batik.css.engine.value.ValueManager;
 import org.apache.batik.css.parser.ExtendedParser;
 import org.apache.batik.dom.AbstractStylableDocument;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.dom.util.HashTable;
+import org.apache.batik.util.ParsedURL;
 import org.kite9.diagram.adl.ADLDocument;
 import org.kite9.diagram.adl.Arrow;
 import org.kite9.diagram.adl.ContainerProperty;
@@ -20,6 +25,8 @@ import org.kite9.diagram.adl.Symbol;
 import org.kite9.diagram.adl.TextLine;
 import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.primitives.CompositionalDiagramElement;
+import org.kite9.diagram.primitives.StylesheetReference;
+import org.w3c.css.sac.InputSource;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
@@ -166,13 +173,20 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 				return out;
 			}
 		});
+		
+		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "stylesheet", new ElementFactory() {
+			
+			public Element create(String prefix, Document doc) {
+				StylesheetReference out = new StylesheetReference((ADLDocument) doc);
+				return out;
+			}
+		});
 	}
 	
 	
 
 	public CSSStyleSheet createCSSStyleSheet(String title, String media) throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
+        throw new UnsupportedOperationException("StyleSheetFactory.createCSSStyleSheet is not implemented"); // XXX
 	}
 
 	public Document createDocument(String namespaceURI, String qualifiedName, DocumentType doctype) throws DOMException {
@@ -183,19 +197,25 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 	}
 
 	public StyleSheet createStyleSheet(Node node, HashTable pseudoAttrs) {
-		// TODO Auto-generated method stub
-		return null;
+        throw new UnsupportedOperationException("StyleSheetFactory.createStyleSheet is not implemented"); // XXX
 	}
 
-	@Override
 	public CSSEngine createCSSEngine(AbstractStylableDocument doc, CSSContext ctx, ExtendedParser ep, ValueManager[] vms, ShorthandManager[] sms) {
-		// TODO Auto-generated method stub
-		return null;
+		ParsedURL durl = null; // ((ADLDocument)doc).getParsedURL();
+		CSSEngine result = new SVG12CSSEngine(doc, durl, ep, vms, sms, ctx);
+
+		URL url = getClass().getResource("resources/UserAgentStyleSheet.css");
+		if (url != null) {
+			ParsedURL purl = new ParsedURL(url);
+			InputSource is = new InputSource(purl.toString());
+			result.setUserAgentStyleSheet(result.parseStyleSheet(is, purl, "all"));
+		}
+
+		return result;
 	}
 
 	@Override
 	public ViewCSS createViewCSS(AbstractStylableDocument doc) {
-		// TODO Auto-generated method stub
-		return null;
+        return new CSSOMSVGViewCSS(doc.getCSSEngine());
 	}
 }

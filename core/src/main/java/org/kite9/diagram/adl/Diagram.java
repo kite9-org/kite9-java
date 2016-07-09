@@ -8,6 +8,7 @@ import org.kite9.diagram.primitives.Connection;
 import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.Label;
+import org.kite9.diagram.primitives.StylesheetReference;
 import org.w3c.dom.Node;
 
 
@@ -115,7 +116,12 @@ public class Diagram extends AbstractConnectedContainer {
 		// diagrams don't have containers.
 	}
 
+	public StylesheetReference getStylesheetReference() {
+		return getProperty("stylesheet", StylesheetReference.class);
+	}
 	
-	
+	public void setStylesheetReference(StylesheetReference ref) {
+		replaceProperty("stylesheet", ref, StylesheetReference.class);
+	}
 	
 }
