@@ -1,7 +1,7 @@
 package org.kite9.diagram.adl;
 
+import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.css.engine.CSSEngine;
-import org.apache.batik.dom.AbstractStylableDocument;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.dom.GenericAttr;
 import org.apache.batik.dom.GenericAttrNS;
@@ -31,7 +31,15 @@ import org.w3c.dom.stylesheets.StyleSheetList;
 import org.w3c.dom.views.AbstractView;
 import org.w3c.dom.views.DocumentView;
 
-public class ADLDocument extends AbstractStylableDocument {
+/**
+ * NOTE:  It would be better not to extend SVGOMDocument, and extend AbstractStyleableDocument,
+ * but CSSUtilities does lots of casting to SVGOMDocument, and we want to use that in the
+ * kite9-visualisation project.
+ * 
+ * @author robmoffat
+ *
+ */
+public class ADLDocument extends SVGOMDocument {
 	
 	/**
      * Is this document immutable?
@@ -164,6 +172,11 @@ public class ADLDocument extends AbstractStylableDocument {
      * Returns the CSS engine.
      */
     public CSSEngine getCSSEngine() {
+    	if (cssEngine == null) {
+    		ADLExtensibleDOMImplementation impl = (ADLExtensibleDOMImplementation) getImplementation();
+    		cssEngine = impl.createCSSEngine(this);
+    	}
+    	
         return cssEngine;
     }
 

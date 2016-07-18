@@ -31,7 +31,7 @@ public class Diagram extends AbstractConnectedContainer {
 	
 	public Diagram(String id, ADLDocument doc) {
 		super(id, "diagram", doc);
-		this.setParentNode(doc);
+		doc.appendChild(this);
 	}
 
 	public Diagram(String id, List<Contained> contents, Key k) {

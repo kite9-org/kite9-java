@@ -6,6 +6,8 @@ public interface StyledDiagramElement extends CSSStylableElement, ShapedDiagramE
 
 	public void setClasses(String c);
 	
+	public String getClasses();
+	
 	public void setStyle(String s);
 	
 	/**

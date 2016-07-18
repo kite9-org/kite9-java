@@ -7,7 +7,7 @@ import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.style.StyledDiagramElement;
 
-public abstract class AbstractIdentifiableDiagramElement extends AbstractDiagramElement implements IdentifiableDiagramElement, Serializable, StyledDiagramElement {
+public abstract class AbstractIdentifiableDiagramElement extends AbstractStyledDiagramElement implements IdentifiableDiagramElement, Serializable {
 
 	private static final long serialVersionUID = -3154895826494435557L;
 

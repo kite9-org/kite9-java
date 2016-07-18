@@ -1,7 +1,5 @@
 package org.kite9.diagram.primitives;
 
-import org.apache.batik.css.engine.StyleDeclarationProvider;
-import org.apache.batik.css.engine.StyleMap;
 import org.apache.batik.dom.AbstractElement;
 import org.apache.batik.util.ParsedURL;
 import org.kite9.diagram.adl.ADLDocument;
@@ -12,6 +10,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 
+/**
+ * Handles setting/getting properties of diagram elements.
+ * 
+ * @author robmoffat
+ *
+ */
 public abstract class AbstractDiagramElement extends AbstractElement implements XMLDiagramElement, CompositionalDiagramElement {
 	
 	/**
@@ -31,55 +35,13 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 		this.tagName = name;
 	}
 
-	public void setClasses(String s) {
-		setAttribute("class", s);
-	}
 
-	public String getStyle() {
-		return getAttribute("style");
-	}
-
-	public void setStyle(String s) {
-		setAttribute("style", s);
-	}
-
-	public StyleMap getComputedStyleMap(String pseudoElement) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setComputedStyleMap(String pseudoElement, StyleMap sm) {
-		return;
-	
-	}
-
-	public String getCSSClass() {
-		return getAttribute("class");
-	}
-
-	public String getShapeName() {
-		return getAttribute("shape");
-	}
-	
-	public void setShapeName(String s) {
-		setAttribute("shape", s);
-	}
 	
 	public ParsedURL getCSSBase() {
-		// TODO Auto-generated method stub
-		return null;
+        String bu = getBaseURI();
+        return bu == null ? null : new ParsedURL(bu);
 	}
 
-	public boolean isPseudoInstanceOf(String pseudoClass) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public StyleDeclarationProvider getOverrideStyleDeclarationProvider() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 
 	boolean readonly = false;
 
@@ -204,4 +166,10 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 	public void setOwnerDocument(ADLDocument doc) {
 		this.ownerDocument = doc;
 	}
+	
+	public ADLDocument getOwnerDocument() {
+		return (ADLDocument) super.getOwnerDocument();
+	}
+
+	
 }

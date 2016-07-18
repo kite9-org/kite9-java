@@ -5,9 +5,16 @@ import java.net.URL;
 import org.apache.batik.css.dom.CSSOMSVGViewCSS;
 import org.apache.batik.css.engine.CSSContext;
 import org.apache.batik.css.engine.CSSEngine;
+import org.apache.batik.css.engine.CSSEngineUserAgent;
 import org.apache.batik.css.engine.SVG12CSSEngine;
+import org.apache.batik.css.engine.value.FloatValue;
+import org.apache.batik.css.engine.value.RectValue;
 import org.apache.batik.css.engine.value.ShorthandManager;
+import org.apache.batik.css.engine.value.Value;
+import org.apache.batik.css.engine.value.ValueConstants;
 import org.apache.batik.css.engine.value.ValueManager;
+import org.apache.batik.css.engine.value.svg.ColorManager;
+import org.apache.batik.css.engine.value.svg12.MarginLengthManager;
 import org.apache.batik.css.parser.ExtendedParser;
 import org.apache.batik.dom.AbstractStylableDocument;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
@@ -32,11 +39,18 @@ import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.css.CSSPrimitiveValue;
 import org.w3c.dom.css.CSSStyleSheet;
 import org.w3c.dom.css.ViewCSS;
 import org.w3c.dom.stylesheets.StyleSheet;
 
 public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation {
+
+	private static final RectValue ZERO_SIZE_RECT_VALUE = new RectValue(
+			new FloatValue(CSSPrimitiveValue.CSS_PX, 0), 
+			new FloatValue(CSSPrimitiveValue.CSS_PX, 0), 
+			new FloatValue(CSSPrimitiveValue.CSS_PX, 0), 
+			new FloatValue(CSSPrimitiveValue.CSS_PX, 0));
 
 	public ADLExtensibleDOMImplementation() {
 		super();
@@ -181,7 +195,37 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 				return out;
 			}
 		});
+		
+		registerCustomCSSShorthandManager(new PaddingShorthandManager());
+		
+		registerCustomCSSValueManager(new MarginLengthManager("padding-left"));
+		registerCustomCSSValueManager(new MarginLengthManager("padding-right"));
+		registerCustomCSSValueManager(new MarginLengthManager("padding-top"));
+		registerCustomCSSValueManager(new MarginLengthManager("padding-bottom"));
+		
+		registerCustomCSSShorthandManager(new BoxShadowManager());
+		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-x-offset"));
+		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-y-offset"));
+		registerCustomCSSValueManager(new ColorManager() {
+			
+			@Override
+			public Value getDefaultValue() {
+				return ValueConstants.NONE_VALUE;
+			}
+
+			@Override
+			public String getPropertyName() {
+				return "box-shadow-color";
+			}
+			
+		}) ;
 	}
+
+
+
+
+
+
 	
 	
 
@@ -213,6 +257,24 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 
 		return result;
 	}
+	
+	public CSSEngine createCSSEngine(ADLDocument doc) {
+		CSSEngine e = super.createCSSEngine(doc, new ADLContext(doc));
+		e.setCSSEngineUserAgent(new CSSEngineUserAgent() {
+
+			public void displayMessage(String message) {
+				System.out.println("message");
+			}
+
+			public void displayError(Exception ex) {
+				throw new RuntimeException(ex);
+			}
+		});
+
+		doc.setCSSEngine(e);
+		return e;
+	}
+	
 
 	@Override
 	public ViewCSS createViewCSS(AbstractStylableDocument doc) {
