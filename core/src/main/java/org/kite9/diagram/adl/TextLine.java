@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.kite9.diagram.primitives.AbstractLabel;
+import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.diagram.primitives.IdentifiableDiagramElement;
 import org.kite9.diagram.primitives.SymbolTarget;
 import org.kite9.diagram.primitives.TextContainingDiagramElement;
@@ -76,6 +77,16 @@ public class TextLine extends AbstractLabel implements SymbolTarget, Identifiabl
 
 	public String getText() {
 		return getTextData();
+	}
+
+	public DiagramElement getOwner() {
+		Node parent = getParentNode();
+		if (parent instanceof ContainerProperty) {
+			return (DiagramElement) parent.getParentNode();
+		} else {
+			return (DiagramElement) parent;
+		}
+		
 	}
 
 }

@@ -5,7 +5,7 @@ import org.apache.batik.css.engine.value.ShorthandManager;
 import org.w3c.css.sac.LexicalUnit;
 import org.w3c.dom.DOMException;
 
-public class BoxShadowManager implements ShorthandManager {
+public class BoxShadowShorthandManager implements ShorthandManager {
 
 	public String getPropertyName() {
 		return "box-shadow";
@@ -19,8 +19,7 @@ public class BoxShadowManager implements ShorthandManager {
 		return false;
 	}
 
-	public void setValues(CSSEngine eng, PropertyHandler ph, LexicalUnit lu, boolean imp) throws DOMException {
-		LexicalUnit xo = lu.getNextLexicalUnit();
+	public void setValues(CSSEngine eng, PropertyHandler ph, LexicalUnit xo, boolean imp) throws DOMException {
 		LexicalUnit yo = xo.getNextLexicalUnit();
 		LexicalUnit blur = yo.getNextLexicalUnit();
 		LexicalUnit color = blur.getNextLexicalUnit();

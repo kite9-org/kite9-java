@@ -8,12 +8,14 @@ import org.apache.batik.css.engine.CSSEngine;
 import org.apache.batik.css.engine.CSSEngineUserAgent;
 import org.apache.batik.css.engine.SVG12CSSEngine;
 import org.apache.batik.css.engine.value.FloatValue;
+import org.apache.batik.css.engine.value.RGBColorValue;
 import org.apache.batik.css.engine.value.RectValue;
 import org.apache.batik.css.engine.value.ShorthandManager;
 import org.apache.batik.css.engine.value.Value;
 import org.apache.batik.css.engine.value.ValueConstants;
 import org.apache.batik.css.engine.value.ValueManager;
 import org.apache.batik.css.engine.value.svg.ColorManager;
+import org.apache.batik.css.engine.value.svg.OpacityManager;
 import org.apache.batik.css.engine.value.svg12.MarginLengthManager;
 import org.apache.batik.css.parser.ExtendedParser;
 import org.apache.batik.dom.AbstractStylableDocument;
@@ -41,6 +43,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.css.CSSPrimitiveValue;
 import org.w3c.dom.css.CSSStyleSheet;
+import org.w3c.dom.css.RGBColor;
 import org.w3c.dom.css.ViewCSS;
 import org.w3c.dom.stylesheets.StyleSheet;
 
@@ -203,14 +206,15 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 		registerCustomCSSValueManager(new MarginLengthManager("padding-top"));
 		registerCustomCSSValueManager(new MarginLengthManager("padding-bottom"));
 		
-		registerCustomCSSShorthandManager(new BoxShadowManager());
+		registerCustomCSSShorthandManager(new BoxShadowShorthandManager());
 		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-x-offset"));
 		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-y-offset"));
+		registerCustomCSSValueManager(new OpacityManager("box-shadow-opacity", false));
 		registerCustomCSSValueManager(new ColorManager() {
 			
 			@Override
 			public Value getDefaultValue() {
-				return ValueConstants.NONE_VALUE;
+				return NO_COLOR;
 			}
 
 			@Override
@@ -221,7 +225,10 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 		}) ;
 	}
 
-
+	public static final RGBColorValue NO_COLOR = new RGBColorValue(
+			new FloatValue(CSSPrimitiveValue.CSS_PERCENTAGE, -1),
+			new FloatValue(CSSPrimitiveValue.CSS_PERCENTAGE, -1),
+			new FloatValue(CSSPrimitiveValue.CSS_PERCENTAGE, -1));
 
 
 

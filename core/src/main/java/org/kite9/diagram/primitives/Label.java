@@ -12,4 +12,6 @@ public interface Label extends IdentifiableDiagramElement, CompositionalDiagramE
 	
 	public RectangleRenderingInformation getRenderingInformation();
 	
+	public DiagramElement getOwner();
+	
 }
