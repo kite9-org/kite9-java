@@ -90,5 +90,12 @@ public class Symbol extends AbstractStyledDiagramElement implements Serializable
 	public String getXMLId() {
 		return getAttribute("id");
 	}
+
+	@Override
+	public String getCSSClass() {
+		return super.getCSSClass() + " " + getShapeName().toLowerCase();
+	}
+	
+	
 	
 }
