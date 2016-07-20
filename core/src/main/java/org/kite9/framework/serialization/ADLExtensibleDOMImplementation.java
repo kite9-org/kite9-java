@@ -49,12 +49,6 @@ import org.w3c.dom.stylesheets.StyleSheet;
 
 public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation {
 
-	private static final RectValue ZERO_SIZE_RECT_VALUE = new RectValue(
-			new FloatValue(CSSPrimitiveValue.CSS_PX, 0), 
-			new FloatValue(CSSPrimitiveValue.CSS_PX, 0), 
-			new FloatValue(CSSPrimitiveValue.CSS_PX, 0), 
-			new FloatValue(CSSPrimitiveValue.CSS_PX, 0));
-
 	public ADLExtensibleDOMImplementation() {
 		super();
 		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "diagram", new ElementFactory() {
@@ -210,7 +204,7 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-x-offset"));
 		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-y-offset"));
 		registerCustomCSSValueManager(new OpacityManager("box-shadow-opacity", false));
-		registerCustomCSSValueManager(new ColorManager() {
+		ColorManager colourManager = new ColorManager() {
 			
 			@Override
 			public Value getDefaultValue() {
@@ -222,7 +216,16 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 				return "box-shadow-color";
 			}
 			
-		}) ;
+		};
+		
+		/**
+		 * This makes 'no colour' available to all the colour managers, since the 
+		 * colour list is static.
+		 */
+		colourManager.getIdentifiers().put("none", NO_COLOR);
+		
+		
+		registerCustomCSSValueManager(colourManager) ;
 	}
 
 	public static final RGBColorValue NO_COLOR = new RGBColorValue(
