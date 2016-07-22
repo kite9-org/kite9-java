@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.kite9.diagram.primitives.AbstractLabel;
+import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.diagram.primitives.Label;
 import org.kite9.diagram.primitives.TextContainingDiagramElement;
 import org.w3c.dom.Node;
@@ -89,6 +90,10 @@ public class Key extends AbstractLabel implements Label {
 	@Override
 	protected Node newNode() {
 		return new Key();
+	}
+
+	public DiagramElement getOwner() {
+		return (DiagramElement) getParent();
 	}
 	
 	

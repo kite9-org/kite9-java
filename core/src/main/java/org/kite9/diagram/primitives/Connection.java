@@ -1,5 +1,6 @@
 package org.kite9.diagram.primitives;
 
+import org.kite9.diagram.adl.LinkTerminator;
 import org.kite9.diagram.position.RouteRenderingInformation;
 
 /**
@@ -11,12 +12,12 @@ public interface Connection extends PositionableDiagramElement, BiDirectional<Co
 	/**
 	 * The shape of the end of the edge at the from end
 	 */
-	public Object getFromDecoration();
+	public LinkTerminator getFromDecoration();
 	
 	/**
 	 * The shape of the end of the edge at the to end
 	 */
-	public Object getToDecoration();
+	public LinkTerminator getToDecoration();
 	
 	/**
 	 * The text written on the from end

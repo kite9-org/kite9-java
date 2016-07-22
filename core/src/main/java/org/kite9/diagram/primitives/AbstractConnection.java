@@ -5,6 +5,7 @@ import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.RouteRenderingInformation;
 import org.kite9.framework.logging.LogicException;
 import org.w3c.dom.Element;
+import org.kite9.diagram.adl.LinkTerminator;
 
 /**
  * This is the base class for connections within the diagram.  i.e. Links.
@@ -25,18 +26,18 @@ public abstract class AbstractConnection extends AbstractIdentifiableDiagramElem
 	/**
 	 * Call this with modify verteConnected false to avoid adding the edge connection to the vertex
 	 */
-	public AbstractConnection(String id, String tag, Connected from, Connected to, Direction drawDirection, Object fromDecoration, Label fromLabel, Object toDecoration, Label tolabel, ADLDocument doc) {
+	public AbstractConnection(String id, String tag, Connected from, Connected to, Direction drawDirection, String fromDecoration, Label fromLabel, String toDecoration, Label tolabel, ADLDocument doc) {
 		super(id, tag, doc);
 		setFrom(from);
 		setTo(to);
 		setDrawDirection(drawDirection);
 		
 		if (fromDecoration != null) {
-			setFromDecoration(fromDecoration);
+			setFromDecoration(new LinkTerminator("fromDecoration", this.getOwnerDocument(), fromDecoration));
 		}
 
 		if (toDecoration != null) {
-			setToDecoration(toDecoration);
+			setToDecoration(new LinkTerminator("toDecoration", this.getOwnerDocument(), toDecoration));
 		}
 		
 		if (fromLabel!=null) {
@@ -51,9 +52,9 @@ public abstract class AbstractConnection extends AbstractIdentifiableDiagramElem
 		to.addLink(this);
 	}
 	
-	public abstract Object getFromDecoration();
+	public abstract LinkTerminator getFromDecoration();
 
-	public abstract Object getToDecoration();
+	public abstract LinkTerminator getToDecoration();
 
 	public Label getFromLabel() {
 		return getProperty("fromLabel", Label.class);
@@ -75,9 +76,9 @@ public abstract class AbstractConnection extends AbstractIdentifiableDiagramElem
 		return getBasicRenderingInformation();
 	}
 
-	public abstract void setFromDecoration(Object fromDecoration);
+	public abstract void setFromDecoration(LinkTerminator fromDecoration);
 
-	public abstract void setToDecoration(Object toDecoration);
+	public abstract void setToDecoration(LinkTerminator toDecoration);
 
 	public void setFromLabel(Label fromLabel) {
 	    replaceProperty("fromLabel", fromLabel, Label.class);

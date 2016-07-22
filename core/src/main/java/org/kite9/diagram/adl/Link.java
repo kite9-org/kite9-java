@@ -45,13 +45,13 @@ public class Link extends AbstractConnection {
 	}
 
 	@Override
-	public Object getFromDecoration() {
-		return getDecoration("fromDecoration");
+	public LinkTerminator getFromDecoration() {
+		return getProperty("fromDecoration", LinkTerminator.class);
 	}
 
 	@Override
-	public Object getToDecoration() {
-		return getDecoration("toDecoration");
+	public LinkTerminator getToDecoration() {
+		return getProperty("toDecoration", LinkTerminator.class);
 	}
 	
 	private void setDecoration(String name, Object d) {
@@ -59,24 +59,15 @@ public class Link extends AbstractConnection {
 		e.setTextContent((String) d);
 		replaceProperty(name, e, Element.class);
 	}
-	
-	private String getDecoration(String name) {
-		Element e = getProperty(name, Element.class);
-		if (e == null) {
-			return null;
-		} else {
-			return e.getTextContent();
-		}
+
+	@Override
+	public void setFromDecoration(LinkTerminator fromDecoration) {
+		replaceProperty("fromDecoration", fromDecoration, LinkTerminator.class);
 	}
 
 	@Override
-	public void setFromDecoration(Object fromDecoration) {
-		setDecoration("fromDecoration", fromDecoration);
-	}
-
-	@Override
-	public void setToDecoration(Object toDecoration) {
-		setDecoration("toDecoration", toDecoration);
+	public void setToDecoration(LinkTerminator toDecoration) {
+		replaceProperty("toDecoration", toDecoration, LinkTerminator.class);
 	}
 
 	/**

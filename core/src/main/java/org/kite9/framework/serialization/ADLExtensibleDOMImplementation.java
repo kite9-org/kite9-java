@@ -176,6 +176,24 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 			}
 		});
 		
+		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "fromDecoration", new ElementFactory() {
+			
+			public Element create(String prefix, Document doc) {
+				Key out = new Key();
+				out.setOwnerDocument(doc);
+				return out;
+			}
+		});
+
+		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "key", new ElementFactory() {
+	
+			public Element create(String prefix, Document doc) {
+				Key out = new Key();
+				out.setOwnerDocument(doc);
+				return out;
+			}
+		});
+		
 		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "renderingInformation", new ElementFactory() {
 			
 			public Element create(String prefix, Document doc) {
