@@ -40,6 +40,9 @@ public class LinkTerminator  extends AbstractStyledDiagramElement implements Ser
 		return super.getClasses() + " link-terminator " + getTextContent().toLowerCase();
 	}
 
-	
-	
+	@Override
+	public String getShapeName() {
+		return getTextContent();
+	}
+		
 }

@@ -47,6 +47,9 @@ public class Diagram extends AbstractConnectedContainer {
 				appendChild(contained);
 			}
 		}
+		if (k != null) {
+			replaceProperty("key", k, Key.class);
+		}
 	}
 	
 	public Diagram(String id, List<Contained> contents) {
