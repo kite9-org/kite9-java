@@ -52,7 +52,6 @@ public class ADLDocument extends SVGOMDocument {
      * for this document.
      */
     public boolean isId(Attr node) {
-        if (node.getNamespaceURI() != null) return false;
         return XMLConstants.XML_ID_ATTRIBUTE.equals(node.getNodeName());
     }
 
