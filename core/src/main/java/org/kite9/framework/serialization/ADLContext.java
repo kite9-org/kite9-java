@@ -8,7 +8,7 @@ import org.apache.batik.css.engine.value.Value;
 import org.apache.batik.util.ParsedURL;
 import org.apache.batik.util.SVGConstants;
 import org.kite9.diagram.adl.ADLDocument;
-import org.kite9.diagram.style.StyledDiagramElement;
+import org.kite9.diagram.primitives.StyledDiagramElement;
 import org.w3c.dom.Element;
 
 

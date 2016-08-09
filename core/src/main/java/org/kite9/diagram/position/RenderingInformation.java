@@ -1,7 +1,7 @@
 package org.kite9.diagram.position;
 
 import org.kite9.diagram.adl.ContainerProperty;
-import org.kite9.diagram.primitives.XMLDiagramElement;
+import org.kite9.diagram.adl.XMLElement;
 import org.w3c.dom.Element;
 
 
@@ -12,7 +12,7 @@ import org.w3c.dom.Element;
  * @author robmoffat
  *
  */
-public interface RenderingInformation extends XMLDiagramElement {
+public interface RenderingInformation extends XMLElement {
 	
 	/**
 	 * Returns true if this item should be drawn

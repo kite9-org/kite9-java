@@ -1,11 +1,11 @@
-package org.kite9.diagram.primitives;
+package org.kite9.diagram.adl;
 
 import org.apache.batik.css.engine.CSSEngine;
 import org.apache.batik.css.engine.CSSStyleSheetNode;
 import org.apache.batik.css.engine.StyleSheet;
 import org.apache.batik.util.ParsedURL;
 import org.apache.batik.util.SVGConstants;
-import org.kite9.diagram.adl.ADLDocument;
+import org.kite9.diagram.primitives.DiagramElement;
 import org.w3c.dom.Node;
 
 /**
@@ -14,7 +14,7 @@ import org.w3c.dom.Node;
  * @author robmoffat
  *
  */
-public class StylesheetReference extends AbstractDiagramElement implements CSSStyleSheetNode {
+public class StylesheetReference extends AbstractStyleableXMLElement implements CSSStyleSheetNode {
 
 	public static final String DEFAULT_STYLESHEET = "";
 	

@@ -23,12 +23,12 @@ import org.kite9.diagram.adl.Context;
 import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.Glyph;
 import org.kite9.diagram.adl.Key;
+import org.kite9.diagram.adl.StylesheetReference;
 import org.kite9.diagram.adl.Symbol;
 import org.kite9.diagram.adl.Symbol.SymbolShape;
 import org.kite9.diagram.adl.TextLine;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.primitives.Connection;
-import org.kite9.diagram.primitives.StylesheetReference;
 import org.kite9.diagram.primitives.TextContainingDiagramElement;
 import org.kite9.framework.common.RepositoryHelp;
 

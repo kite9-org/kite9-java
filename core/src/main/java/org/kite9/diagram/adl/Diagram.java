@@ -5,10 +5,8 @@ import java.util.List;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.primitives.AbstractConnectedContainer;
 import org.kite9.diagram.primitives.Connection;
-import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.Label;
-import org.kite9.diagram.primitives.StylesheetReference;
 import org.w3c.dom.Node;
 
 
@@ -34,16 +32,16 @@ public class Diagram extends AbstractConnectedContainer {
 		doc.appendChild(this);
 	}
 
-	public Diagram(String id, List<Contained> contents, Key k) {
+	public Diagram(String id, List<XMLElement> contents, Key k) {
 		this(id, contents, k, TESTING_DOCUMENT);
 	}
 
 	
-	public Diagram(String id, List<Contained> contents, Key k, ADLDocument doc) {
+	public Diagram(String id, List<XMLElement> contents, Key k, ADLDocument doc) {
 		this(id, doc);
 		this.setParentNode(doc);
 		if (contents != null) {
-			for (Contained contained : contents) {
+			for (XMLElement contained : contents) {
 				appendChild(contained);
 			}
 		}
@@ -52,16 +50,16 @@ public class Diagram extends AbstractConnectedContainer {
 		}
 	}
 	
-	public Diagram(String id, List<Contained> contents) {
+	public Diagram(String id, List<XMLElement> contents) {
 		this(id, contents, null, TESTING_DOCUMENT);
 	}
 
-	public Diagram(String id, List<Contained> contents, Layout l, Key k) {
+	public Diagram(String id, List<XMLElement> contents, Layout l, Key k) {
 		this(id, contents, k, TESTING_DOCUMENT);
 		this.setLayoutDirection(l);
 	}
 
-	public Diagram(List<Contained> contents, Key k) {
+	public Diagram(List<XMLElement> contents, Key k) {
 		this(createID(), contents, k);
 	}
 
@@ -127,4 +125,7 @@ public class Diagram extends AbstractConnectedContainer {
 		replaceProperty("stylesheet", ref, StylesheetReference.class);
 	}
 	
+//	public Container getDiagramElement() {
+//		
+//	}
 }

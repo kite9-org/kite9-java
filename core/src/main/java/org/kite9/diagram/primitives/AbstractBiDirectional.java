@@ -1,6 +1,7 @@
 package org.kite9.diagram.primitives;
 
 import org.kite9.diagram.adl.ADLDocument;
+import org.kite9.diagram.common.BiDirectional;
 import org.kite9.diagram.position.Direction;
 import org.kite9.framework.logging.LogicException;
 import org.w3c.dom.Element;

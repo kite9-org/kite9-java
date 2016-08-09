@@ -5,7 +5,6 @@ import java.io.Serializable;
 import org.kite9.diagram.adl.ADLDocument;
 import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
-import org.kite9.diagram.style.StyledDiagramElement;
 
 public abstract class AbstractIdentifiableDiagramElement extends AbstractStyledDiagramElement implements IdentifiableDiagramElement, Serializable {
 
@@ -64,15 +63,10 @@ public abstract class AbstractIdentifiableDiagramElement extends AbstractStyledD
 		setAttribute("id", id);
 	}
 	
-	private static int counter = 0; 
-	
 	protected static synchronized String createID() {
 		return AUTO_GENERATED_ID_PREFIX+counter++;
 	}
 	
-	public static final String AUTO_GENERATED_ID_PREFIX = "auto:";
-
-
 	public static void resetCounter() {
 		counter = 0;
 	}

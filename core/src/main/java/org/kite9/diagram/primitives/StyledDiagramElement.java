@@ -1,8 +1,6 @@
-package org.kite9.diagram.style;
+package org.kite9.diagram.primitives;
 
-import org.apache.batik.css.engine.CSSStylableElement;
-
-public interface StyledDiagramElement extends CSSStylableElement, ShapedDiagramElement {
+public interface StyledDiagramElement extends ShapedDiagramElement {
 
 	public void setClasses(String c);
 	

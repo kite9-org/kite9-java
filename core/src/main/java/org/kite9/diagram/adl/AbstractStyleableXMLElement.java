@@ -1,29 +1,42 @@
-package org.kite9.diagram.primitives;
+package org.kite9.diagram.adl;
 
 import org.apache.batik.css.engine.StyleDeclarationProvider;
 import org.apache.batik.css.engine.StyleMap;
-import org.kite9.diagram.adl.ADLDocument;
-import org.kite9.diagram.adl.AbstractStyleableXMLElement;
 
 /**
- * Base class for Styled diagram elements (i.e. all of them, now).
+ * Handles setting/getting properties of diagram elements.
  * 
  * @author robmoffat
  *
  */
-public abstract class AbstractStyledDiagramElement extends AbstractStyleableXMLElement implements StyledDiagramElement {
-
-	public AbstractStyledDiagramElement() {
-		super();
+public abstract class AbstractStyleableXMLElement extends AbstractXMLElement implements XMLElement, StyledXMLElement {
+	
+	public AbstractStyleableXMLElement() {
 	}
 
-	public AbstractStyledDiagramElement(String name, ADLDocument owner) {
+	public AbstractStyleableXMLElement(String name, ADLDocument owner) {
 		super(name, owner);
+		this.tagName = name;
+	}
+	
+	public AbstractStyleableXMLElement(String id, String tag, ADLDocument doc) {
+		this(tag, doc);
+		
+		if (id == null) {
+			id = createID();
+		}
+		
+		setID(id);
+	}
+	
+	public String getShapeName() {
+		return getAttribute("shape");
+	}
+	
+	public void setShapeName(String s) {
+		setAttribute("shape", s);
 	}
 
-	public StyleDeclarationProvider getOverrideStyleDeclarationProvider() {
-		return null;
-	}
 
 	public void setClasses(String s) {
 		setAttribute("class", s);
@@ -52,17 +65,16 @@ public abstract class AbstractStyledDiagramElement extends AbstractStyleableXMLE
 	public String getCSSClass() {
 		return getAttribute("class")+" "+getTagName();
 	}
-
-	public String getShapeName() {
-		return getAttribute("shape");
-	}
 	
-	public void setShapeName(String s) {
-		setAttribute("shape", s);
+
+	public StyleDeclarationProvider getOverrideStyleDeclarationProvider() {
+		return null;
 	}
+
 
 	public boolean isPseudoInstanceOf(String pseudoClass) {
 		return false;
 	}
+	
 	
 }

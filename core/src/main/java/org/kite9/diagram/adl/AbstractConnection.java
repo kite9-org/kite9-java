@@ -1,11 +1,13 @@
-package org.kite9.diagram.primitives;
+package org.kite9.diagram.adl;
 
-import org.kite9.diagram.adl.ADLDocument;
+import org.kite9.diagram.common.BiDirectional;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.RouteRenderingInformation;
+import org.kite9.diagram.primitives.Connected;
+import org.kite9.diagram.primitives.DiagramElement;
+import org.kite9.diagram.primitives.Label;
 import org.kite9.framework.logging.LogicException;
 import org.w3c.dom.Element;
-import org.kite9.diagram.adl.LinkTerminator;
 
 /**
  * This is the base class for connections within the diagram.  i.e. Links.
@@ -13,7 +15,7 @@ import org.kite9.diagram.adl.LinkTerminator;
  * @author robmoffat
  *
  */
-public abstract class AbstractConnection extends AbstractIdentifiableDiagramElement implements Connection {
+public abstract class AbstractConnection extends AbstractStyleableXMLElement {
 
 	private static final long serialVersionUID = -1941426216200603569L;
 	
@@ -26,7 +28,7 @@ public abstract class AbstractConnection extends AbstractIdentifiableDiagramElem
 	/**
 	 * Call this with modify verteConnected false to avoid adding the edge connection to the vertex
 	 */
-	public AbstractConnection(String id, String tag, Connected from, Connected to, Direction drawDirection, String fromDecoration, Label fromLabel, String toDecoration, Label tolabel, ADLDocument doc) {
+	public AbstractConnection(String id, String tag, XMLElement from, XMLElement to, Direction drawDirection, String fromDecoration, Label fromLabel, String toDecoration, Label tolabel, ADLDocument doc) {
 		super(id, tag, doc);
 		setFrom(from);
 		setTo(to);
@@ -47,9 +49,6 @@ public abstract class AbstractConnection extends AbstractIdentifiableDiagramElem
 		if (tolabel!=null) { 
 			setToLabel(tolabel);
 		}
-		
-		from.addLink(this);
-		to.addLink(this);
 	}
 	
 	public abstract LinkTerminator getFromDecoration();
@@ -110,14 +109,14 @@ public abstract class AbstractConnection extends AbstractIdentifiableDiagramElem
 		return to;
 	}
 
-	public void setFrom(Connected v) {
+	public void setFrom(XMLElement v) {
 		Element from = ownerDocument.createElement("from");
 		from.setAttribute("reference", v.getID());
 		replaceProperty("from", from, Element.class);
 		from = v;
 	}
 
-	public void setTo(Connected v) {
+	public void setTo(XMLElement v) {
 		Element to = ownerDocument.createElement("to");
 		to.setAttribute("reference", v.getID());
 		replaceProperty("to", to, Element.class);

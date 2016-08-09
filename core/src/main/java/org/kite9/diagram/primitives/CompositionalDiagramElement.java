@@ -10,7 +10,7 @@ package org.kite9.diagram.primitives;
  * @author robmoffat
  *
  */
-public interface CompositionalDiagramElement extends XMLDiagramElement {
+public interface CompositionalDiagramElement extends DiagramElement {
 
 	public Object getParent();
 	

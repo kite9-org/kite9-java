@@ -30,7 +30,6 @@ import org.kite9.diagram.primitives.Container;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.diagram.visitors.ContainerVisitor;
 import org.kite9.framework.common.Kite9ProcessingException;
-import org.kite9.framework.server.WorkItem;
 import org.w3c.dom.Document;
 
 /**
@@ -95,12 +94,12 @@ public class XMLHelper {
 		
 	}
 
-	public Object fromXML(String s)  {
+	public Diagram fromXML(String s)  {
 		return fromXML(new StringReader(s));
 	}
 	
 
-	public Object fromXML(Reader s) {
+	public Diagram fromXML(Reader s) {
 		try {
 			SAXDocumentFactory sdf = new SAXDocumentFactory(new ADLExtensibleDOMImplementation(), null);
 			Document d = sdf.createDocument(null, s);
@@ -113,7 +112,7 @@ public class XMLHelper {
 
 	}
 
-	public Object fromXML(InputStream s) {
+	public Diagram fromXML(InputStream s) {
 		return fromXML(new InputStreamReader(s));
 	}
 
@@ -150,24 +149,12 @@ public class XMLHelper {
 		}
 	}
 
-	protected void handlePreProcessing(Object in) {
-		if (in instanceof WorkItem) {
-			if (((WorkItem) in).getDesignItem() instanceof Diagram) {
-				preProcess((Diagram) ((WorkItem) in).getDesignItem());
-			}
-		} else if (in instanceof Diagram) {
-			preProcess((Diagram) in);
-		}
+	protected void handlePreProcessing(Diagram in) {
+		preProcess((Diagram) in);
 	}
 
-	protected void handlePostProcessing(Object out) {
-		if (out instanceof WorkItem) {
-			if (((WorkItem) out).getDesignItem() instanceof Diagram) {
-				postProcess((Diagram) ((WorkItem) out).getDesignItem(), null);
-			}
-		} else if (out instanceof Diagram) {
-			postProcess((Diagram) out, null);
-		}
+	protected void handlePostProcessing(Diagram out) {
+		postProcess((Diagram) out, null);
 	}
 
 	/**

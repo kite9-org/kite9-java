@@ -2,11 +2,6 @@ package org.kite9.diagram.adl;
 
 import java.util.List;
 
-import org.kite9.diagram.primitives.AbstractConnectedContained;
-import org.kite9.diagram.primitives.CompositionalDiagramElement;
-import org.kite9.diagram.primitives.Leaf;
-import org.kite9.diagram.primitives.SymbolTarget;
-import org.kite9.diagram.primitives.TextContainingDiagramElement;
 import org.w3c.dom.Node;
 
 
@@ -18,16 +13,16 @@ import org.w3c.dom.Node;
  * @author robmoffat
  *
  */
-public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTarget {
+public class Glyph extends AbstractStyleableXMLElement {
 
 	private static final long serialVersionUID = -6572545083931316651L;
 		
-	public TextContainingDiagramElement getLabel() {
-		return getProperty("label", TextContainingDiagramElement.class);
+	public XMLElement getLabel() {
+		return getProperty("label", XMLElement.class);
 	}
 
-	public void setLabel(TextContainingDiagramElement name) {
-		replaceProperty("label", name, TextContainingDiagramElement.class);
+	public void setLabel(XMLElement name) {
+		replaceProperty("label", name, XMLElement.class);
 	}
 	
 	public Glyph() {
@@ -38,7 +33,7 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 		super(id, "glyph", doc);
 	}
 	
-	public Glyph(String id, String stereotype, String label,  List<CompositionalDiagramElement> text, List<Symbol> symbols, boolean divider, ADLDocument doc) {
+	public Glyph(String id, String stereotype, String label,  List<XMLElement> text, List<Symbol> symbols, boolean divider, ADLDocument doc) {
 		super(id, "glyph", doc);
 		
 		if (stereotype != null) {
@@ -50,7 +45,7 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 		}
 		
 		if (text!=null) {
-			setText(new ContainerProperty<CompositionalDiagramElement>("text-lines", doc, text));
+			setText(new ContainerProperty<XMLElement>("text-lines", doc, text));
 		}
 		
 		if (symbols!=null) {
@@ -58,29 +53,29 @@ public class Glyph extends AbstractConnectedContained implements Leaf, SymbolTar
 		}		
 	}
 	
-	public Glyph(String stereotype, String label,  List<CompositionalDiagramElement> text, List<Symbol> symbols) {
+	public Glyph(String stereotype, String label,  List<XMLElement> text, List<Symbol> symbols) {
 		this(createID(), stereotype, label, text, symbols, false, TESTING_DOCUMENT);
 	}
 
-	public Glyph(String id, String stereotype, String label,  List<CompositionalDiagramElement> text, List<Symbol> symbols) {
+	public Glyph(String id, String stereotype, String label,  List<XMLElement> text, List<Symbol> symbols) {
 		this(id, stereotype, label, text, symbols, false, TESTING_DOCUMENT);
 	}
 
-	public TextContainingDiagramElement getStereotype() {
-		return getProperty("stereotype", TextContainingDiagramElement.class);
+	public XMLElement getStereotype() {
+		return getProperty("stereotype", XMLElement.class);
 	}
 
-	public void setStereotype(TextContainingDiagramElement sterotype) {
-		replaceProperty("stereotype", sterotype, TextContainingDiagramElement.class);
+	public void setStereotype(XMLElement sterotype) {
+		replaceProperty("stereotype", sterotype, XMLElement.class);
 	}
 
 	@SuppressWarnings("unchecked")
-	public ContainerProperty<CompositionalDiagramElement> getText() {
-		return getProperty("text-lines", ContainerProperty.class);
+	public XMLElement getText() {
+		return getProperty("text-lines", XMLElement.class);
 	}
 
-	public void setText(ContainerProperty<CompositionalDiagramElement> text) {
-		replaceProperty("text-lines", text, ContainerProperty.class);
+	public void setText(XMLElement text) {
+		replaceProperty("text-lines", text, XMLElement.class);
 	}
 
 

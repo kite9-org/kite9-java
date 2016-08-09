@@ -1,6 +1,7 @@
 package org.kite9.diagram.primitives;
 
 import org.kite9.diagram.adl.LinkTerminator;
+import org.kite9.diagram.common.BiDirectional;
 import org.kite9.diagram.position.RouteRenderingInformation;
 
 /**

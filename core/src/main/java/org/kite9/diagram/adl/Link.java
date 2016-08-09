@@ -1,8 +1,6 @@
 package org.kite9.diagram.adl;
 
 import org.kite9.diagram.position.Direction;
-import org.kite9.diagram.primitives.AbstractConnection;
-import org.kite9.diagram.primitives.Connected;
 import org.kite9.diagram.primitives.Label;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -24,23 +22,23 @@ public class Link extends AbstractConnection {
 		this.tagName = "link";
 	}
 	
-	public Link(Connected from, Connected to) {
+	public Link(XMLElement from, XMLElement to) {
 		this(from.getID()+"-"+to.getID(), from, to, TESTING_DOCUMENT);
 	}
 		
-	public Link(String id, Connected from, Connected to, ADLDocument doc) {
+	public Link(String id, XMLElement from, XMLElement to, ADLDocument doc) {
 		this(id, from, to, null, null, null, null, null, doc);
 	}
 	
-	public Link(Connected from, Connected to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel, Direction drawDirection) {
+	public Link(XMLElement from, XMLElement to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel, Direction drawDirection) {
 		this(from.getID()+"-"+to.getID(), from, to, fromStyle, fromLabel, toEndStyle, toLabel, drawDirection, TESTING_DOCUMENT);
 	}
 	
-	public Link(String id, Connected from, Connected to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel, Direction drawDirection, ADLDocument doc) {
+	public Link(String id, XMLElement from, XMLElement to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel, Direction drawDirection, ADLDocument doc) {
 		super(id, "link", from, to, drawDirection, fromStyle, fromLabel, toEndStyle, toLabel, doc);
 	}
 
-	public Link(Connected from, Connected to, String fromStyle, Label fromLabel, String toStyle, Label toLabel) {
+	public Link(XMLElement from, XMLElement to, String fromStyle, Label fromLabel, String toStyle, Label toLabel) {
 		super(from.getID()+"-"+to.getID(), "link",  from, to, null, null, fromLabel, null, toLabel, TESTING_DOCUMENT);
 	}
 

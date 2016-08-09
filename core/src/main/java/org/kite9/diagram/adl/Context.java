@@ -3,8 +3,6 @@ package org.kite9.diagram.adl;
 import java.util.List;
 
 import org.kite9.diagram.position.Layout;
-import org.kite9.diagram.primitives.AbstractConnectedContainer;
-import org.kite9.diagram.primitives.Contained;
 import org.kite9.diagram.primitives.Label;
 import org.w3c.dom.Node;
 
@@ -16,7 +14,7 @@ import org.w3c.dom.Node;
  * @author robmoffat
  *
  */
-public class Context extends AbstractConnectedContainer {
+public class Context extends AbstractXMLContainerElement {
 	
 	@Override
 	public String toString() {
@@ -29,11 +27,11 @@ public class Context extends AbstractConnectedContainer {
 		this.tagName = "context";
 	}
 	
-	public Context(String id, List<Contained> contents, boolean bordered, Label label, Layout layoutDirection, ADLDocument doc) {
+	public Context(String id, List<XMLElement> contents, boolean bordered, Label label, Layout layoutDirection, ADLDocument doc) {
 		super(id, "context", doc);
 		
 		if (contents != null) {
-			for (Contained contained : contents) {
+			for (XMLElement contained : contents) {
 				appendChild(contained);
 			}
 		}
@@ -43,11 +41,11 @@ public class Context extends AbstractConnectedContainer {
 		setBordered(bordered);
 	}
 
-	public Context(String id, List<Contained> contents, boolean bordered, Label label, Layout layoutDirection) {
+	public Context(String id, List<XMLElement> contents, boolean bordered, Label label, Layout layoutDirection) {
 		this(id, contents, bordered, label, layoutDirection, TESTING_DOCUMENT);
 	}
 
-	public Context(List<Contained> contents, boolean b, Label label, Layout l) {
+	public Context(List<XMLElement> contents, boolean b, Label label, Layout l) {
 		this(createID(), contents, b, label, l);
 	}
 
@@ -64,4 +62,21 @@ public class Context extends AbstractConnectedContainer {
 		return new Context();
 	}
 	
+
+	public Layout getLayoutDirection() {
+		String layout = getAttribute("layout");
+		return layout.length() == 0 ? null : Layout.valueOf(layout);
+	}
+
+	public void setLayoutDirection(Layout layout) {
+	    if (layout == null) {
+	    	removeAttribute("layout");
+	    } else {
+	    	setAttribute("layout", layout.name());
+	    }
+	}
+
+	public void setLabel(Label label) {
+	    replaceProperty("label", label, Label.class);
+	}
 }

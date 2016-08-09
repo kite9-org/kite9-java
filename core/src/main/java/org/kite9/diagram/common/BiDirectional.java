@@ -1,4 +1,4 @@
-package org.kite9.diagram.primitives;
+package org.kite9.diagram.common;
 
 import org.kite9.diagram.position.Direction;
 

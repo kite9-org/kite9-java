@@ -1,7 +1,8 @@
 package org.kite9.diagram.position;
 
 import org.kite9.diagram.adl.ADLDocument;
-import org.kite9.diagram.primitives.AbstractDiagramElement;
+import org.kite9.diagram.adl.AbstractStyleableXMLElement;
+import org.kite9.diagram.adl.AbstractXMLElement;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.w3c.dom.Node;
@@ -18,7 +19,7 @@ import org.w3c.dom.Node;
  * @author robmoffat
  *
  */
-public class Dimension2D extends AbstractDiagramElement {
+public class Dimension2D extends AbstractStyleableXMLElement {
 
 	private double x, y;
 	
@@ -46,10 +47,8 @@ public class Dimension2D extends AbstractDiagramElement {
 	public Dimension2D() {
 	}
 	
-	private boolean readonly = false;
-	
 	public Dimension2D(double x, double y) {
-		super("dim2d", AbstractDiagramElement.TESTING_DOCUMENT);
+		super("dim2d", AbstractXMLElement.TESTING_DOCUMENT);
 		this.x = x;
 		this.y = y;
 		setAttribute("x", ""+x);

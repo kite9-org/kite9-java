@@ -1,11 +1,11 @@
 package org.kite9.diagram.position;
 
+import org.kite9.diagram.adl.AbstractStyleableXMLElement;
 import org.kite9.diagram.adl.ContainerProperty;
-import org.kite9.diagram.primitives.AbstractDiagramElement;
 import org.kite9.diagram.primitives.DiagramElement;
 import org.w3c.dom.Element;
 
-public abstract class AbstractRenderingInformationImpl extends AbstractDiagramElement implements RenderingInformation {
+public abstract class AbstractRenderingInformationImpl extends AbstractStyleableXMLElement implements RenderingInformation {
 
 	public int compareTo(DiagramElement o) {
 		return 0;

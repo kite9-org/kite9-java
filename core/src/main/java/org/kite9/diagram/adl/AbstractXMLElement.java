@@ -1,8 +1,13 @@
-package org.kite9.diagram.primitives;
+package org.kite9.diagram.adl;
 
+import org.apache.batik.css.engine.StyleMap;
+import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.AbstractElement;
 import org.apache.batik.util.ParsedURL;
-import org.kite9.diagram.adl.ADLDocument;
+import org.kite9.diagram.position.BasicRenderingInformation;
+import org.kite9.diagram.position.RenderingInformation;
+import org.kite9.diagram.primitives.DiagramElement;
+import org.kite9.diagram.primitives.IdentifiableDiagramElement;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.kite9.framework.serialization.XMLHelper;
 import org.w3c.dom.DOMException;
@@ -10,41 +15,25 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 
-/**
- * Handles setting/getting properties of diagram elements.
- * 
- * @author robmoffat
- *
- */
-public abstract class AbstractDiagramElement extends AbstractElement implements XMLDiagramElement, CompositionalDiagramElement {
-	
+public abstract class AbstractXMLElement extends AbstractElement {
+
 	/**
 	 * Used only in test methods.
 	 */
 	public static ADLDocument TESTING_DOCUMENT = new ADLDocument();
-	
 	protected String tagName;
-	
 	protected Object parent;
-	
-	public AbstractDiagramElement() {
-	}
-
-	public AbstractDiagramElement(String name, ADLDocument owner) {
-		super(name, owner);
-		this.tagName = name;
-	}
-
-
-	
-	public ParsedURL getCSSBase() {
-        String bu = getBaseURI();
-        return bu == null ? null : new ParsedURL(bu);
-	}
-
-
 	boolean readonly = false;
+	private static int counter = 0;
 
+	public ParsedURL getCSSBase() {
+	    String bu = getBaseURI();
+	    return bu == null ? null : new ParsedURL(bu);
+	}
+
+	protected static synchronized String createID() {
+		return AUTO_GENERATED_ID_PREFIX+counter++;
+	}
 
 	public boolean isReadonly() {
 		return readonly;
@@ -53,7 +42,7 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 	public void setReadonly(boolean v) {
 		this.readonly = v;
 	}
-	
+
 	public String getNodeName() {
 		return tagName;
 	}
@@ -74,7 +63,7 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 	
 		return found;
 	}
-	
+
 	public <E extends Element> E replaceProperty(String propertyName, E e, Class<E> propertyClass) {
 		E existing = getProperty(propertyName, propertyClass);
 		if (e == null) {
@@ -83,14 +72,14 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 			}
 		 	return null;
 		}
-
+	
 		if (!propertyClass.isInstance(e)) {
 			throw new Kite9ProcessingException("Was expecting an element of "+propertyClass.getName()+" but it's: "+e);
 		}
-
-		if (e instanceof XMLDiagramElement) {
-			((XMLDiagramElement)e).setTagName(propertyName);
-			((XMLDiagramElement)e).setOwnerDocument((ADLDocument) this.ownerDocument); 
+	
+		if (e instanceof XMLElement) {
+			((XMLElement)e).setTagName(propertyName);
+			((XMLElement)e).setOwnerDocument((ADLDocument) this.ownerDocument); 
 		}
 		
 		if (!e.getNodeName().equals(propertyName)) {
@@ -105,7 +94,7 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 		
 		return e;
 	}
-	
+
 	public void setTagName(String name) {
 		this.tagName = name;
 	}
@@ -154,11 +143,11 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 			super.setAttribute(name, value);
 		}
 	}
-	
+
 	public Object getParent() {
 		return parent;
 	}
-	
+
 	public void setParent(Object parent) {
 		this.parent = parent;
 	}
@@ -166,10 +155,67 @@ public abstract class AbstractDiagramElement extends AbstractElement implements 
 	public void setOwnerDocument(ADLDocument doc) {
 		this.ownerDocument = doc;
 	}
-	
+
 	public ADLDocument getOwnerDocument() {
 		return (ADLDocument) super.getOwnerDocument();
 	}
 
-	
+	public int compareTo(DiagramElement o) {
+		if (o instanceof IdentifiableDiagramElement) {
+			return getId().compareTo(((IdentifiableDiagramElement)o).getID());
+		} else if (o!=null) {
+			return this.toString().compareTo(o.toString());
+		} else {
+			return -1;
+		}
+	}
+
+	public BasicRenderingInformation getBasicRenderingInformation() {
+		BasicRenderingInformation ri = getProperty("renderingInformation", BasicRenderingInformation.class);
+		if (ri == null) {
+			ri = (BasicRenderingInformation) ownerDocument.createElement("renderingInformation");
+			setRenderingInformation(ri);
+		}
+		
+		return ri;
+	}
+
+	public void setRenderingInformation(RenderingInformation ri) {
+		replaceProperty("renderingInformation", ri, RenderingInformation.class);
+	}
+
+	@Override
+	public int hashCode() {
+		String id = getId();
+		return id.hashCode();
+	}
+
+	public final String getID() {
+		return getAttribute("id");
+	}
+
+	public void setID(String id) {
+		setAttribute("id", id);
+	}
+
+	public static final String AUTO_GENERATED_ID_PREFIX = "auto:";
+
+	public static void resetCounter() {
+		counter = 0;
+	}
+
+	protected StyleMap sm;
+
+	public AbstractXMLElement() {
+		super();
+	}
+
+	public String getXMLId() {
+		return getId();
+	}
+
+	public AbstractXMLElement(String name, AbstractDocument owner) {
+		super(name, owner);
+	}
+
 }
