@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.kite9.diagram.adl.ADLDocument;
-import org.kite9.diagram.adl.ContainerProperty;
+import org.kite9.diagram.xml.ADLDocument;
+import org.kite9.diagram.xml.ContainerProperty;
 import org.w3c.dom.Node;
 
 public class RouteRenderingInformationImpl extends RectangleRenderingInformationImpl implements RouteRenderingInformation {

@@ -1,8 +1,8 @@
 package org.kite9.diagram.position;
 
-import org.kite9.diagram.adl.AbstractStyleableXMLElement;
-import org.kite9.diagram.adl.ContainerProperty;
-import org.kite9.diagram.primitives.DiagramElement;
+import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.xml.AbstractStyleableXMLElement;
+import org.kite9.diagram.xml.ContainerProperty;
 import org.w3c.dom.Element;
 
 public abstract class AbstractRenderingInformationImpl extends AbstractStyleableXMLElement implements RenderingInformation {

@@ -1,0 +1,221 @@
+package org.kite9.diagram.xml;
+
+import org.apache.batik.css.engine.StyleMap;
+import org.apache.batik.dom.AbstractDocument;
+import org.apache.batik.dom.AbstractElement;
+import org.apache.batik.util.ParsedURL;
+import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.adl.IdentifiableDiagramElement;
+import org.kite9.diagram.position.BasicRenderingInformation;
+import org.kite9.diagram.position.RenderingInformation;
+import org.kite9.framework.common.Kite9ProcessingException;
+import org.kite9.framework.serialization.XMLHelper;
+import org.w3c.dom.DOMException;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.Text;
+
+public abstract class AbstractXMLElement extends AbstractElement {
+
+	/**
+	 * Used only in test methods.
+	 */
+	public static ADLDocument TESTING_DOCUMENT = new ADLDocument();
+	protected String tagName;
+	protected Object parent;
+	boolean readonly = false;
+	private static int counter = 0;
+
+	public ParsedURL getCSSBase() {
+	    String bu = getBaseURI();
+	    return bu == null ? null : new ParsedURL(bu);
+	}
+
+	protected static synchronized String createID() {
+		return AUTO_GENERATED_ID_PREFIX+counter++;
+	}
+
+	public boolean isReadonly() {
+		return readonly;
+	}
+
+	public void setReadonly(boolean v) {
+		this.readonly = v;
+	}
+
+	public String getNodeName() {
+		return tagName;
+	}
+
+	@SuppressWarnings("unchecked")
+	public <E extends Element> E getProperty(String name, Class<E> expected) {
+		E found = null;
+		for (int i = 0; i < getChildNodes().getLength(); i++) {
+			Node n = getChildNodes().item(i);
+			if ((expected.isInstance(n)) && (((Element)n).getTagName().equals(name))) {
+				if (found == null) {
+					found = (E) n;
+				} else {
+					throw new Kite9ProcessingException("Not a unique node name: "+name);
+				}
+			}
+		}
+	
+		return found;
+	}
+
+	public <E extends Element> E replaceProperty(String propertyName, E e, Class<E> propertyClass) {
+		E existing = getProperty(propertyName, propertyClass);
+		if (e == null) {
+			if (existing != null) {
+				this.removeChild(existing);
+			}
+		 	return null;
+		}
+	
+		if (!propertyClass.isInstance(e)) {
+			throw new Kite9ProcessingException("Was expecting an element of "+propertyClass.getName()+" but it's: "+e);
+		}
+	
+		if (e instanceof XMLElement) {
+			((XMLElement)e).setTagName(propertyName);
+			((XMLElement)e).setOwnerDocument((ADLDocument) this.ownerDocument); 
+		}
+		
+		if (!e.getNodeName().equals(propertyName)) {
+			throw new Kite9ProcessingException("Incorrect name.  Expected "+propertyName+" but was "+e.getNodeName());
+		}
+		
+		if (existing != null) {
+			this.removeChild(existing);
+		}
+		
+		this.appendChild(e);
+		
+		return e;
+	}
+
+	public void setTagName(String name) {
+		this.tagName = name;
+	}
+
+	protected String getTextData() {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < getChildNodes().getLength(); i++) {
+			Node n = getChildNodes().item(i);
+			if (n instanceof Text) {
+				sb.append(((Text) n).getData());
+			} 
+		}
+		
+		return sb.toString().trim();
+	}
+
+	protected void setTextData(String text) {
+		int i = 0;
+		while (i < getChildNodes().getLength()) {
+			Node child = getChildNodes().item(i);
+			if (child instanceof Text) {
+				removeChild(child);
+			} else {
+				i++;
+			}
+		}
+		
+		appendChild(ownerDocument.createTextNode(text));
+	}
+
+	@Override
+	public String getNamespaceURI() {
+		return XMLHelper.KITE9_NAMESPACE;
+	}
+
+	@Override
+	public String getLocalName() {
+		return getNodeName();
+	}
+
+	@Override
+	public void setAttribute(String name, String value) throws DOMException {
+		if (value == null) {
+			removeAttribute(name);
+		} else {
+			super.setAttribute(name, value);
+		}
+	}
+
+	public Object getParent() {
+		return parent;
+	}
+
+	public void setParent(Object parent) {
+		this.parent = parent;
+	}
+
+	public void setOwnerDocument(ADLDocument doc) {
+		this.ownerDocument = doc;
+	}
+
+	public ADLDocument getOwnerDocument() {
+		return (ADLDocument) super.getOwnerDocument();
+	}
+
+	public int compareTo(DiagramElement o) {
+		if (o instanceof IdentifiableDiagramElement) {
+			return getId().compareTo(((IdentifiableDiagramElement)o).getID());
+		} else if (o!=null) {
+			return this.toString().compareTo(o.toString());
+		} else {
+			return -1;
+		}
+	}
+
+	public BasicRenderingInformation getBasicRenderingInformation() {
+		BasicRenderingInformation ri = getProperty("renderingInformation", BasicRenderingInformation.class);
+		if (ri == null) {
+			ri = (BasicRenderingInformation) ownerDocument.createElement("renderingInformation");
+			setRenderingInformation(ri);
+		}
+		
+		return ri;
+	}
+
+	public void setRenderingInformation(RenderingInformation ri) {
+		replaceProperty("renderingInformation", ri, RenderingInformation.class);
+	}
+
+	@Override
+	public int hashCode() {
+		String id = getId();
+		return id.hashCode();
+	}
+
+	public final String getID() {
+		return getAttribute("id");
+	}
+
+	public void setID(String id) {
+		setAttribute("id", id);
+	}
+
+	public static final String AUTO_GENERATED_ID_PREFIX = "auto:";
+
+	public static void resetCounter() {
+		counter = 0;
+	}
+
+	protected StyleMap sm;
+
+	public AbstractXMLElement() {
+		super();
+	}
+
+	public String getXMLId() {
+		return getId();
+	}
+
+	public AbstractXMLElement(String name, AbstractDocument owner) {
+		super(name, owner);
+	}
+
+}

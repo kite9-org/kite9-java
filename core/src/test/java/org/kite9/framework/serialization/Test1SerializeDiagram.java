@@ -3,19 +3,19 @@ package org.kite9.framework.serialization;
 import java.io.IOException;
 
 import org.junit.Test;
-import org.kite9.diagram.adl.ADLDocument;
-import org.kite9.diagram.adl.Arrow;
-import org.kite9.diagram.adl.Context;
-import org.kite9.diagram.adl.Diagram;
-import org.kite9.diagram.adl.Glyph;
-import org.kite9.diagram.adl.Key;
-import org.kite9.diagram.adl.KeyHelper;
-import org.kite9.diagram.adl.Link;
-import org.kite9.diagram.adl.LinkEndStyle;
-import org.kite9.diagram.adl.TextLine;
+import org.kite9.diagram.adl.CompositionalDiagramElement;
+import org.kite9.diagram.adl.Contained;
 import org.kite9.diagram.position.Direction;
-import org.kite9.diagram.primitives.CompositionalDiagramElement;
-import org.kite9.diagram.primitives.Contained;
+import org.kite9.diagram.xml.ADLDocument;
+import org.kite9.diagram.xml.Arrow;
+import org.kite9.diagram.xml.Context;
+import org.kite9.diagram.xml.Diagram;
+import org.kite9.diagram.xml.Glyph;
+import org.kite9.diagram.xml.Key;
+import org.kite9.diagram.xml.KeyHelper;
+import org.kite9.diagram.xml.Link;
+import org.kite9.diagram.xml.LinkEndStyle;
+import org.kite9.diagram.xml.TextLine;
 import org.kite9.framework.common.HelpMethods;
 
 public class Test1SerializeDiagram extends HelpMethods {

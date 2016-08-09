@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.kite9.diagram.adl.XMLElement;
-import org.kite9.diagram.primitives.Contained;
+import org.kite9.diagram.adl.Contained;
+import org.kite9.diagram.xml.XMLElement;
 
 public class HelpMethods {
 

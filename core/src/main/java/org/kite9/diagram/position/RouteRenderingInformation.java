@@ -2,7 +2,7 @@ package org.kite9.diagram.position;
 
 import java.util.List;
 
-import org.kite9.diagram.adl.ContainerProperty;
+import org.kite9.diagram.xml.ContainerProperty;
 
 /**
  * This is used to hold the route of an edge, or container border.

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.kite9.diagram.adl.Diagram;
-import org.kite9.diagram.primitives.Contained;
+import org.kite9.diagram.adl.Contained;
+import org.kite9.diagram.xml.Diagram;
 
 /**
  * This is based on the idea that we should be able to load any XML 

@@ -1,7 +1,7 @@
 package org.kite9.diagram.visitors;
 
-import org.kite9.diagram.primitives.Contained;
-import org.kite9.diagram.primitives.Container;
+import org.kite9.diagram.adl.Contained;
+import org.kite9.diagram.adl.Container;
 
 /**
  * This visits only the Contexts and Glyphs within a diagram, traversing the

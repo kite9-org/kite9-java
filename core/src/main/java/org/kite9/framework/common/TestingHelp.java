@@ -14,25 +14,25 @@ import java.util.TreeSet;
 
 import javax.imageio.ImageIO;
 
-import org.kite9.diagram.adl.Arrow;
-import org.kite9.diagram.adl.Context;
-import org.kite9.diagram.adl.Diagram;
-import org.kite9.diagram.adl.Glyph;
-import org.kite9.diagram.adl.Key;
-import org.kite9.diagram.adl.Link;
-import org.kite9.diagram.adl.TextLine;
+import org.kite9.diagram.adl.Connected;
+import org.kite9.diagram.adl.Connection;
+import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.adl.IdentifiableDiagramElement;
+import org.kite9.diagram.adl.PositionableDiagramElement;
 import org.kite9.diagram.position.Dimension2D;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.position.RouteRenderingInformation;
-import org.kite9.diagram.primitives.Connected;
-import org.kite9.diagram.primitives.Connection;
-import org.kite9.diagram.primitives.DiagramElement;
-import org.kite9.diagram.primitives.IdentifiableDiagramElement;
-import org.kite9.diagram.primitives.PositionableDiagramElement;
 import org.kite9.diagram.visitors.DiagramElementVisitor;
 import org.kite9.diagram.visitors.VisitorAction;
+import org.kite9.diagram.xml.Arrow;
+import org.kite9.diagram.xml.Context;
+import org.kite9.diagram.xml.Diagram;
+import org.kite9.diagram.xml.Glyph;
+import org.kite9.diagram.xml.Key;
+import org.kite9.diagram.xml.Link;
+import org.kite9.diagram.xml.TextLine;
 import org.kite9.framework.logging.LogicException;
 import org.kite9.framework.logging.Table;
 

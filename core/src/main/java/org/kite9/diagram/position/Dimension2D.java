@@ -1,9 +1,9 @@
 package org.kite9.diagram.position;
 
-import org.kite9.diagram.adl.ADLDocument;
-import org.kite9.diagram.adl.AbstractStyleableXMLElement;
-import org.kite9.diagram.adl.AbstractXMLElement;
-import org.kite9.diagram.primitives.DiagramElement;
+import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.xml.ADLDocument;
+import org.kite9.diagram.xml.AbstractStyleableXMLElement;
+import org.kite9.diagram.xml.AbstractXMLElement;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.w3c.dom.Node;
 

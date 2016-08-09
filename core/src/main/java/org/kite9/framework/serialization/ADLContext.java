@@ -7,8 +7,8 @@ import org.apache.batik.css.engine.SystemColorSupport;
 import org.apache.batik.css.engine.value.Value;
 import org.apache.batik.util.ParsedURL;
 import org.apache.batik.util.SVGConstants;
-import org.kite9.diagram.adl.ADLDocument;
-import org.kite9.diagram.primitives.StyledDiagramElement;
+import org.kite9.diagram.adl.StyledDiagramElement;
+import org.kite9.diagram.xml.ADLDocument;
 import org.w3c.dom.Element;
 
 

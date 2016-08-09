@@ -1,7 +1,7 @@
 package org.kite9.diagram.position;
 
-import org.kite9.diagram.adl.ContainerProperty;
-import org.kite9.diagram.adl.XMLElement;
+import org.kite9.diagram.xml.ContainerProperty;
+import org.kite9.diagram.xml.XMLElement;
 import org.w3c.dom.Element;
 
 

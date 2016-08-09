@@ -4,11 +4,11 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.kite9.diagram.primitives.Connected;
-import org.kite9.diagram.primitives.Connection;
-import org.kite9.diagram.primitives.Contained;
-import org.kite9.diagram.primitives.Container;
-import org.kite9.diagram.primitives.DiagramElement;
+import org.kite9.diagram.adl.Connected;
+import org.kite9.diagram.adl.Connection;
+import org.kite9.diagram.adl.Contained;
+import org.kite9.diagram.adl.Container;
+import org.kite9.diagram.adl.DiagramElement;
 
 
 /**

@@ -18,17 +18,17 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.apache.batik.dom.util.SAXDocumentFactory;
-import org.kite9.diagram.adl.ContainerProperty;
-import org.kite9.diagram.adl.Diagram;
-import org.kite9.diagram.adl.Glyph;
-import org.kite9.diagram.adl.Link;
-import org.kite9.diagram.primitives.CompositionalDiagramElement;
-import org.kite9.diagram.primitives.Connected;
-import org.kite9.diagram.primitives.Connection;
-import org.kite9.diagram.primitives.Contained;
-import org.kite9.diagram.primitives.Container;
-import org.kite9.diagram.primitives.DiagramElement;
+import org.kite9.diagram.adl.CompositionalDiagramElement;
+import org.kite9.diagram.adl.Connected;
+import org.kite9.diagram.adl.Connection;
+import org.kite9.diagram.adl.Contained;
+import org.kite9.diagram.adl.Container;
+import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.visitors.ContainerVisitor;
+import org.kite9.diagram.xml.ContainerProperty;
+import org.kite9.diagram.xml.Diagram;
+import org.kite9.diagram.xml.Glyph;
+import org.kite9.diagram.xml.Link;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.w3c.dom.Document;
 
