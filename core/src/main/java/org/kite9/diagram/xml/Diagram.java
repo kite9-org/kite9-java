@@ -2,10 +2,8 @@ package org.kite9.diagram.xml;
 
 import java.util.List;
 
-import org.kite9.diagram.adl.AbstractConnectedContainer;
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Container;
-import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.position.Layout;
 import org.w3c.dom.Node;
 
@@ -19,7 +17,7 @@ import org.w3c.dom.Node;
  * @author robmoffat
  *
  */
-public class Diagram extends AbstractConnectedContainer {
+public class Diagram extends AbstractXMLContainerElement {
 
 	private static final long serialVersionUID = -7727042271665853389L;
 	
@@ -103,18 +101,13 @@ public class Diagram extends AbstractConnectedContainer {
 	}
 
 	@Override
-	public Label getLabel() {
+	public XMLElement getLabel() {
 		return getKey();
 	}
 	
 
 	public Container getContainer() {
 		return null;
-	}
-
-	@Override
-	public void setContainer(Container c) {
-		// diagrams don't have containers.
 	}
 
 	public StylesheetReference getStylesheetReference() {

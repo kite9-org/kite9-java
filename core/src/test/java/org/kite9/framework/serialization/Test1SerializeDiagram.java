@@ -3,7 +3,6 @@ package org.kite9.framework.serialization;
 import java.io.IOException;
 
 import org.junit.Test;
-import org.kite9.diagram.adl.CompositionalDiagramElement;
 import org.kite9.diagram.adl.Contained;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.xml.ADLDocument;
@@ -45,7 +44,7 @@ public class Test1SerializeDiagram extends HelpMethods {
 	public static Diagram createDiagram(ADLDocument doc) {
 		KeyHelper kh = new KeyHelper(doc);
 		Glyph g1 = new Glyph("g1", "class", "Test Class", 
-			createList((CompositionalDiagramElement) new TextLine("tl1", "text-line", "Here is a line of text", createList(kh.createSymbol("Baphomet", "B")), doc)), 
+			createList(new TextLine("tl1", "text-line", "Here is a line of text", createList(kh.createSymbol("Baphomet", "B")), doc)), 
 			createList(kh.createSymbol("Public", "P")), false, doc);
 
 		Arrow a1 = new Arrow("a1", "leaver", doc);
@@ -53,7 +52,7 @@ public class Test1SerializeDiagram extends HelpMethods {
 		Glyph g2 = new Glyph("ref2", "", "Some Item A", null, null, true, doc);
 		Glyph g3 = new Glyph("ref3", "", "Some Item B", null, null, false, doc);
 
-		Context inside = new Context("inside", createList((Contained) g1, g2, g3), true,
+		Context inside = new Context("inside", createList(g1, g2, g3), true,
 				null, null, doc);
 
 		new Link("l1", a1, g1, null, null, LinkEndStyle.ARROW, new TextLine("label1", "toLabel", "Some Label", null, doc), Direction.RIGHT, doc);
@@ -61,7 +60,7 @@ public class Test1SerializeDiagram extends HelpMethods {
 		new Link("l3", a1, g3, doc);
 
 		Key k = new Key("key", "Here is my amazing diagram", null, kh.getUsedSymbols(), doc);
-		Diagram d1 = new Diagram("My Diagram", createList((Contained) inside, (Contained) a1), k, doc);
+		Diagram d1 = new Diagram("My Diagram", createList(inside, a1), k, doc);
 		return d1;
 	}
 }

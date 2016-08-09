@@ -2,7 +2,6 @@ package org.kite9.diagram.xml;
 
 import java.util.List;
 
-import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.position.Layout;
 import org.w3c.dom.Node;
 
@@ -27,7 +26,7 @@ public class Context extends AbstractXMLContainerElement {
 		this.tagName = "context";
 	}
 	
-	public Context(String id, List<XMLElement> contents, boolean bordered, Label label, Layout layoutDirection, ADLDocument doc) {
+	public Context(String id, List<XMLElement> contents, boolean bordered, XMLElement label, Layout layoutDirection, ADLDocument doc) {
 		super(id, "context", doc);
 		
 		if (contents != null) {
@@ -41,11 +40,11 @@ public class Context extends AbstractXMLContainerElement {
 		setBordered(bordered);
 	}
 
-	public Context(String id, List<XMLElement> contents, boolean bordered, Label label, Layout layoutDirection) {
+	public Context(String id, List<XMLElement> contents, boolean bordered, XMLElement label, Layout layoutDirection) {
 		this(id, contents, bordered, label, layoutDirection, TESTING_DOCUMENT);
 	}
 
-	public Context(List<XMLElement> contents, boolean b, Label label, Layout l) {
+	public Context(List<XMLElement> contents, boolean b, XMLElement label, Layout l) {
 		this(createID(), contents, b, label, l);
 	}
 
@@ -60,23 +59,5 @@ public class Context extends AbstractXMLContainerElement {
 	@Override
 	protected Node newNode() {
 		return new Context();
-	}
-	
-
-	public Layout getLayoutDirection() {
-		String layout = getAttribute("layout");
-		return layout.length() == 0 ? null : Layout.valueOf(layout);
-	}
-
-	public void setLayoutDirection(Layout layout) {
-	    if (layout == null) {
-	    	removeAttribute("layout");
-	    } else {
-	    	setAttribute("layout", layout.name());
-	    }
-	}
-
-	public void setLabel(Label label) {
-	    replaceProperty("label", label, Label.class);
 	}
 }

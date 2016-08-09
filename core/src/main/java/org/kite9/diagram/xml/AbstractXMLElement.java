@@ -217,5 +217,9 @@ public abstract class AbstractXMLElement extends AbstractElement {
 	public AbstractXMLElement(String name, AbstractDocument owner) {
 		super(name, owner);
 	}
+	
+	public boolean hasContent() {
+		return true;
+	}
 
 }

@@ -33,7 +33,7 @@ public class Glyph extends AbstractStyleableXMLElement {
 		super(id, "glyph", doc);
 	}
 	
-	public Glyph(String id, String stereotype, String label,  List<XMLElement> text, List<Symbol> symbols, boolean divider, ADLDocument doc) {
+	public Glyph(String id, String stereotype, String label,  List<XMLElement> text, List<XMLElement> symbols, boolean divider, ADLDocument doc) {
 		super(id, "glyph", doc);
 		
 		if (stereotype != null) {
@@ -49,15 +49,15 @@ public class Glyph extends AbstractStyleableXMLElement {
 		}
 		
 		if (symbols!=null) {
-			setSymbols(new ContainerProperty<Symbol>("symbols", doc, symbols));
+			setSymbols(new ContainerProperty<XMLElement>("symbols", doc, symbols));
 		}		
 	}
 	
-	public Glyph(String stereotype, String label,  List<XMLElement> text, List<Symbol> symbols) {
+	public Glyph(String stereotype, String label,  List<XMLElement> text, List<XMLElement> symbols) {
 		this(createID(), stereotype, label, text, symbols, false, TESTING_DOCUMENT);
 	}
 
-	public Glyph(String id, String stereotype, String label,  List<XMLElement> text, List<Symbol> symbols) {
+	public Glyph(String id, String stereotype, String label,  List<XMLElement> text, List<XMLElement> symbols) {
 		this(id, stereotype, label, text, symbols, false, TESTING_DOCUMENT);
 	}
 
@@ -80,11 +80,11 @@ public class Glyph extends AbstractStyleableXMLElement {
 
 
 	@SuppressWarnings("unchecked")
-	public ContainerProperty<Symbol> getSymbols() {
+	public ContainerProperty<XMLElement> getSymbols() {
 		return getProperty("symbols", ContainerProperty.class);
 	}
 	
-	public void setSymbols(ContainerProperty<Symbol> syms) {
+	public void setSymbols(ContainerProperty<XMLElement> syms) {
 		replaceProperty("symbols", syms, ContainerProperty.class);
 	}
 

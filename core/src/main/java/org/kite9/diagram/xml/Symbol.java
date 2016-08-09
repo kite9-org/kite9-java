@@ -1,14 +1,9 @@
 package org.kite9.diagram.xml;
 
-import java.io.Serializable;
-
-import org.kite9.diagram.adl.AbstractStyledDiagramElement;
-import org.kite9.diagram.adl.CompositionalDiagramElement;
 import org.kite9.diagram.adl.DiagramElement;
-import org.kite9.diagram.adl.TextContainingDiagramElement;
 import org.w3c.dom.Node;
 
-public class Symbol extends AbstractStyledDiagramElement implements Serializable, CompositionalDiagramElement, TextContainingDiagramElement {
+public class Symbol extends AbstractStyleableXMLElement {
 
 	private static final long serialVersionUID = 3578883565482903409L;
 	

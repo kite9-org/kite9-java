@@ -15,20 +15,20 @@ import org.w3c.dom.Element;
  * @author robmoffat
  *
  */
-public abstract class AbstractConnection extends AbstractStyleableXMLElement {
+public abstract class AbstractXMLConnectionElement extends AbstractStyleableXMLElement {
 
 	private static final long serialVersionUID = -1941426216200603569L;
 	
 	/**
 	 * For serialization
 	 */
-	public AbstractConnection() {
+	public AbstractXMLConnectionElement() {
 	}
 	
 	/**
 	 * Call this with modify verteConnected false to avoid adding the edge connection to the vertex
 	 */
-	public AbstractConnection(String id, String tag, XMLElement from, XMLElement to, Direction drawDirection, String fromDecoration, Label fromLabel, String toDecoration, Label tolabel, ADLDocument doc) {
+	public AbstractXMLConnectionElement(String id, String tag, XMLElement from, XMLElement to, Direction drawDirection, String fromDecoration, XMLElement fromLabel, String toDecoration, XMLElement tolabel, ADLDocument doc) {
 		super(id, tag, doc);
 		setFrom(from);
 		setTo(to);
@@ -79,12 +79,12 @@ public abstract class AbstractConnection extends AbstractStyleableXMLElement {
 
 	public abstract void setToDecoration(LinkTerminator toDecoration);
 
-	public void setFromLabel(Label fromLabel) {
-	    replaceProperty("fromLabel", fromLabel, Label.class);
+	public void setFromLabel(XMLElement fromLabel) {
+	    replaceProperty("fromLabel", fromLabel, XMLElement.class);
 	}
 
-	public void setToLabel(Label toLabel) {
-	    replaceProperty("toLabel", toLabel, Label.class);
+	public void setToLabel(XMLElement toLabel) {
+	    replaceProperty("toLabel", toLabel, XMLElement.class);
 	}
 	
 	public Direction getDrawDirection() {

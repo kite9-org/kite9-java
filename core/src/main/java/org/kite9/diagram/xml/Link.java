@@ -1,6 +1,5 @@
 package org.kite9.diagram.xml;
 
-import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.position.Direction;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -14,7 +13,7 @@ import org.w3c.dom.Node;
  * 
  * @author robmoffat
  */
-public class Link extends AbstractConnection {
+public class Link extends AbstractXMLConnectionElement {
 
 	private static final long serialVersionUID = -5950978530304852748L;
 
@@ -30,15 +29,15 @@ public class Link extends AbstractConnection {
 		this(id, from, to, null, null, null, null, null, doc);
 	}
 	
-	public Link(XMLElement from, XMLElement to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel, Direction drawDirection) {
+	public Link(XMLElement from, XMLElement to, String fromStyle, XMLElement fromLabel, String toEndStyle, XMLElement toLabel, Direction drawDirection) {
 		this(from.getID()+"-"+to.getID(), from, to, fromStyle, fromLabel, toEndStyle, toLabel, drawDirection, TESTING_DOCUMENT);
 	}
 	
-	public Link(String id, XMLElement from, XMLElement to, String fromStyle, Label fromLabel, String toEndStyle, Label toLabel, Direction drawDirection, ADLDocument doc) {
+	public Link(String id, XMLElement from, XMLElement to, String fromStyle, XMLElement fromLabel, String toEndStyle, XMLElement toLabel, Direction drawDirection, ADLDocument doc) {
 		super(id, "link", from, to, drawDirection, fromStyle, fromLabel, toEndStyle, toLabel, doc);
 	}
 
-	public Link(XMLElement from, XMLElement to, String fromStyle, Label fromLabel, String toStyle, Label toLabel) {
+	public Link(XMLElement from, XMLElement to, String fromStyle, XMLElement fromLabel, String toStyle, XMLElement toLabel) {
 		super(from.getID()+"-"+to.getID(), "link",  from, to, null, null, fromLabel, null, toLabel, TESTING_DOCUMENT);
 	}
 

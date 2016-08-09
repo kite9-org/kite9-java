@@ -49,7 +49,7 @@ public class KeyHelper {
 
 	public List<Symbol> getUsedSymbols() {
 		List<Symbol> out = new ArrayList<Symbol>(declared.values());
-		Collections.sort(out);
+	//	Collections.sort(out);
 		return out;
 	}
 

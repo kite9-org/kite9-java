@@ -1,6 +1,5 @@
 package org.kite9.diagram.xml;
 
-import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.position.Layout;
 
 public abstract class AbstractXMLContainerElement extends AbstractStyleableXMLElement {
@@ -30,7 +29,11 @@ public abstract class AbstractXMLContainerElement extends AbstractStyleableXMLEl
 	    }
 	}
 
-	public void setLabel(Label label) {
-	    replaceProperty("label", label, Label.class);
+	public void setLabel(XMLElement label) {
+	    replaceProperty("label", label, XMLElement.class);
+	}
+	
+	public XMLElement getLabel() {
+		return getProperty("label", XMLElement.class);
 	}
 }

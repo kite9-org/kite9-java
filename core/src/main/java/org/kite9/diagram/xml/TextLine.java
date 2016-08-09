@@ -3,11 +3,7 @@ package org.kite9.diagram.xml;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.kite9.diagram.adl.AbstractLabel;
 import org.kite9.diagram.adl.DiagramElement;
-import org.kite9.diagram.adl.IdentifiableDiagramElement;
-import org.kite9.diagram.adl.SymbolTarget;
-import org.kite9.diagram.adl.TextContainingDiagramElement;
 import org.w3c.dom.Node;
 
 /**
@@ -17,7 +13,7 @@ import org.w3c.dom.Node;
  * @author robmoffat
  *
  */
-public class TextLine extends AbstractLabel implements SymbolTarget, IdentifiableDiagramElement, TextContainingDiagramElement {
+public class TextLine extends AbstractStyleableXMLElement {
 
 	private static final long serialVersionUID = -1917135065467101779L;
 	
@@ -50,20 +46,16 @@ public class TextLine extends AbstractLabel implements SymbolTarget, Identifiabl
 	}
 
 	@SuppressWarnings("unchecked")
-	public ContainerProperty<Symbol> getSymbols() {
+	public ContainerProperty<XMLElement> getSymbols() {
 		return getProperty("symbols", ContainerProperty.class);
 	}
 	
-	public void setSymbols(ContainerProperty<Symbol> syms) {
+	public <X extends XMLElement> void setSymbols(ContainerProperty<X> syms) {
 		replaceProperty("symbols", syms, ContainerProperty.class);
 	}
 	
 	public String toString() {
 		return "[TL:"+getText()+"]";
-	}
-
-	public boolean hasContent() {
-		return hasContent(getText()) || hasContent(getSymbols());
 	}
 
 	@Override

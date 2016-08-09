@@ -3,13 +3,10 @@ package org.kite9.diagram.xml;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.kite9.diagram.adl.AbstractLabel;
 import org.kite9.diagram.adl.DiagramElement;
-import org.kite9.diagram.adl.Label;
-import org.kite9.diagram.adl.TextContainingDiagramElement;
 import org.w3c.dom.Node;
 
-public class Key extends AbstractLabel implements Label {
+public class Key extends AbstractStyleableXMLElement {
 
 	private static final long serialVersionUID = 7705875104684442878L;
 	
@@ -81,10 +78,6 @@ public class Key extends AbstractLabel implements Label {
 	
 	public String toString() {
 		return "KEY";
-	}
-
-	public boolean hasContent() {
-		return hasContent(getBoldText()) || hasContent(getBodyText()) || hasContent(getSymbols());
 	}
 
 	@Override
