@@ -3,6 +3,7 @@ package org.kite9.diagram.adl;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
+import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.xml.ADLDocument;
 

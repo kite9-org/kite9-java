@@ -1,5 +1,7 @@
 package org.kite9.diagram.adl;
 
+import org.kite9.diagram.common.DiagramElement;
+
 public interface ShapedDiagramElement extends DiagramElement {
 
 	/**

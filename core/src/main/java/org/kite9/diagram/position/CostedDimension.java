@@ -1,6 +1,6 @@
 package org.kite9.diagram.position;
 
-import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.common.DiagramElement;
 
 /**
  * This extends the idea of dimension, but allows you to associate a cost with the dimension

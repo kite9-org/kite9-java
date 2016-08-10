@@ -8,8 +8,8 @@ import org.apache.batik.css.engine.StyleMap;
 import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.AbstractElement;
 import org.apache.batik.util.ParsedURL;
-import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.IdentifiableDiagramElement;
+import org.kite9.diagram.common.DiagramElement;
 import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.framework.common.Kite9ProcessingException;
@@ -20,7 +20,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
-public abstract class AbstractXMLElement extends AbstractElement {
+public abstract class AbstractXMLElement extends AbstractElement implements XMLElement {
 
 	/**
 	 * Used only in test methods.
@@ -215,6 +215,7 @@ public abstract class AbstractXMLElement extends AbstractElement {
 
 	public AbstractXMLElement(String name, AbstractDocument owner) {
 		super(name, owner);
+		this.tagName = name;
 	}
 	
 	public boolean hasContent() {

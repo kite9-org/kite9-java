@@ -2,7 +2,7 @@ package org.kite9.diagram.xml;
 
 import org.kite9.diagram.adl.AbstractIdentifiableDiagramElement;
 import org.kite9.diagram.adl.CompositionalDiagramElement;
-import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.common.DiagramElement;
 import org.kite9.diagram.position.RenderingInformation;
 import org.w3c.dom.Node;
 

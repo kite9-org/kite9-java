@@ -1,6 +1,6 @@
 package org.kite9.diagram.position;
 
-import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.common.DiagramElement;
 import org.kite9.diagram.xml.AbstractStyleableXMLElement;
 import org.kite9.diagram.xml.ContainerProperty;
 import org.w3c.dom.Element;

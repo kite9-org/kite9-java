@@ -1,4 +1,4 @@
-package org.kite9.diagram.adl;
+package org.kite9.diagram.common;
 
 /**
  * Parent class for all elements of the diagram

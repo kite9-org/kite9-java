@@ -16,18 +16,18 @@ import org.apache.batik.css.engine.value.svg.ColorManager;
 import org.apache.batik.css.engine.value.svg.OpacityManager;
 import org.apache.batik.css.engine.value.svg12.MarginLengthManager;
 import org.apache.batik.css.parser.ExtendedParser;
+import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.AbstractStylableDocument;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
-import org.apache.batik.dom.GenericElement;
 import org.apache.batik.dom.util.HashTable;
 import org.apache.batik.util.ParsedURL;
-import org.kite9.diagram.adl.TextContainingDiagramElement;
 import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.Arrow;
 import org.kite9.diagram.xml.ContainerProperty;
 import org.kite9.diagram.xml.Context;
 import org.kite9.diagram.xml.Diagram;
+import org.kite9.diagram.xml.GenericXMLElement;
 import org.kite9.diagram.xml.Glyph;
 import org.kite9.diagram.xml.Key;
 import org.kite9.diagram.xml.Link;
@@ -46,6 +46,8 @@ import org.w3c.dom.css.ViewCSS;
 import org.w3c.dom.stylesheets.StyleSheet;
 
 public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation {
+	
+	public static final boolean USE_GENERIC_XML_ELEMENT = true;
 
 	public ADLExtensibleDOMImplementation() {
 		super();
@@ -250,10 +252,18 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 			new FloatValue(CSSPrimitiveValue.CSS_PERCENTAGE, -1));
 
 
-
-
-	
-	
+	@Override
+	public Element createElementNS(AbstractDocument document, String namespaceURI, String qualifiedName) {
+		if (USE_GENERIC_XML_ELEMENT) {
+			if (XMLHelper.KITE9_NAMESPACE.equals(namespaceURI)) {
+				if ((!"diagram".equals(qualifiedName)) && (!"stylesheet".equals(qualifiedName))) {
+					return new GenericXMLElement(qualifiedName, (ADLDocument) document);
+				}
+			} 
+		}
+		
+		return super.createElementNS(document, namespaceURI, qualifiedName);
+	}
 
 	public CSSStyleSheet createCSSStyleSheet(String title, String media) throws DOMException {
         throw new UnsupportedOperationException("StyleSheetFactory.createCSSStyleSheet is not implemented"); // XXX

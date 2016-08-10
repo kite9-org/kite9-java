@@ -1,6 +1,6 @@
 package org.kite9.diagram.xml;
 
-import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.common.DiagramElement;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.RouteRenderingInformation;
 import org.w3c.dom.Element;

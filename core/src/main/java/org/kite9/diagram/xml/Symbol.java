@@ -1,6 +1,6 @@
 package org.kite9.diagram.xml;
 
-import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.common.DiagramElement;
 import org.w3c.dom.Node;
 
 public class Symbol extends AbstractStyleableXMLElement {

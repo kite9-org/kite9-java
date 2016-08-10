@@ -1,6 +1,6 @@
 package org.kite9.diagram.visitors;
 
-import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.common.DiagramElement;
 
 public interface VisitorAction {
 

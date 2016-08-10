@@ -1,0 +1,27 @@
+package org.kite9.diagram.xml;
+
+import org.apache.batik.dom.AbstractDocument;
+import org.w3c.dom.Node;
+
+/**
+ * In future, this will be used for returning all diagram elements.
+ * 
+ * @author robmoffat
+ *
+ */
+public class GenericXMLElement extends AbstractXMLElement {
+	
+	public GenericXMLElement() {
+		super();
+	}
+
+	public GenericXMLElement(String name, AbstractDocument owner) {
+		super(name, owner);
+	}
+
+	@Override
+	protected Node newNode() {
+		return new GenericXMLElement();
+	}
+
+}

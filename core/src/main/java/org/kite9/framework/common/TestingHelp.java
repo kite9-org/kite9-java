@@ -14,11 +14,11 @@ import java.util.TreeSet;
 
 import javax.imageio.ImageIO;
 
-import org.kite9.diagram.adl.Connected;
 import org.kite9.diagram.adl.Connection;
-import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.IdentifiableDiagramElement;
 import org.kite9.diagram.adl.PositionableDiagramElement;
+import org.kite9.diagram.common.Connected;
+import org.kite9.diagram.common.DiagramElement;
 import org.kite9.diagram.position.Dimension2D;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.RectangleRenderingInformation;

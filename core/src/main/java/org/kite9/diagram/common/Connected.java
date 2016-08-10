@@ -1,6 +1,9 @@
-package org.kite9.diagram.adl;
+package org.kite9.diagram.common;
 
 import java.util.Collection;
+
+import org.kite9.diagram.adl.Connection;
+import org.kite9.diagram.adl.IdentifiableDiagramElement;
 
 /**
  * A diagram element which has connections that link to other Connected items within the diagram.

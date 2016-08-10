@@ -2,6 +2,7 @@ package org.kite9.diagram.adl;
 
 import java.io.Serializable;
 
+import org.kite9.diagram.common.DiagramElement;
 import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.xml.ADLDocument;

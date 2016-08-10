@@ -1,5 +1,7 @@
 package org.kite9.diagram.adl;
 
+import org.kite9.diagram.common.DiagramElement;
+
 /**
  * This type of diagram element is a composite part of another element.  
  * Compare with {@link IdentifiableDiagramElement}.  This means that only a single (compositional)

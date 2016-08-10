@@ -2,6 +2,7 @@ package org.kite9.diagram.adl;
 
 import java.util.List;
 
+import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 

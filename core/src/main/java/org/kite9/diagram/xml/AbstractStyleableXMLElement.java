@@ -16,7 +16,6 @@ public abstract class AbstractStyleableXMLElement extends AbstractXMLElement imp
 
 	public AbstractStyleableXMLElement(String name, ADLDocument owner) {
 		super(name, owner);
-		this.tagName = name;
 	}
 	
 	public AbstractStyleableXMLElement(String id, String tag, ADLDocument doc) {

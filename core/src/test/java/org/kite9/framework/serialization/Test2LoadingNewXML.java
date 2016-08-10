@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.kite9.diagram.adl.Contained;
 import org.kite9.diagram.xml.Diagram;
+import org.kite9.diagram.xml.XMLElement;
 
 /**
  * This is based on the idea that we should be able to load any XML 
@@ -24,8 +25,10 @@ public class Test2LoadingNewXML {
 		
 		Assert.assertEquals("My Diagram", d.getID());
 		Assert.assertEquals("styles.css", d.getStylesheetReference().getHref());
+		XMLElement e = d.iterator().next();
+		Assert.assertEquals("arrow2", e.getTagName());
 		
-		List<Contained> contents = d.getContents();
+		//List<Contained> contents = d.getContents();
 		
 		
 		
