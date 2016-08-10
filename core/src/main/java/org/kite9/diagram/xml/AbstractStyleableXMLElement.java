@@ -63,7 +63,7 @@ public abstract class AbstractStyleableXMLElement extends AbstractXMLElement imp
 	}
 
 	public String getCSSClass() {
-		return getAttribute("class")+" "+getTagName();
+		return getAttribute("class");
 	}
 	
 

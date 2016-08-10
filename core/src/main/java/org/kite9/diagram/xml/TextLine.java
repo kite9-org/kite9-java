@@ -41,17 +41,16 @@ public class TextLine extends AbstractStyleableXMLElement {
 		super(id, tag, doc);
 		setText(text);
 		if (symbols != null) {
-			setSymbols(new ContainerProperty<Symbol>("symbols", doc, symbols));
+			setSymbols(new ContainerProperty("symbols", doc, symbols));
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public ContainerProperty<XMLElement> getSymbols() {
-		return getProperty("symbols", ContainerProperty.class);
+	public XMLElement getSymbols() {
+		return getProperty("symbols");
 	}
 	
-	public <X extends XMLElement> void setSymbols(ContainerProperty<X> syms) {
-		replaceProperty("symbols", syms, ContainerProperty.class);
+	public void setSymbols(XMLElement syms) {
+		replaceProperty("symbols", syms);
 	}
 	
 	public String toString() {

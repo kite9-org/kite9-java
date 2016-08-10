@@ -18,11 +18,11 @@ public class Glyph extends AbstractStyleableXMLElement {
 	private static final long serialVersionUID = -6572545083931316651L;
 		
 	public XMLElement getLabel() {
-		return getProperty("label", XMLElement.class);
+		return getProperty("label");
 	}
 
 	public void setLabel(XMLElement name) {
-		replaceProperty("label", name, XMLElement.class);
+		replaceProperty("label", name);
 	}
 	
 	public Glyph() {
@@ -45,11 +45,11 @@ public class Glyph extends AbstractStyleableXMLElement {
 		}
 		
 		if (text!=null) {
-			setText(new ContainerProperty<XMLElement>("text-lines", doc, text));
+			setText(new ContainerProperty("text-lines", doc, text));
 		}
 		
 		if (symbols!=null) {
-			setSymbols(new ContainerProperty<XMLElement>("symbols", doc, symbols));
+			setSymbols(new ContainerProperty("symbols", doc, symbols));
 		}		
 	}
 	
@@ -62,30 +62,27 @@ public class Glyph extends AbstractStyleableXMLElement {
 	}
 
 	public XMLElement getStereotype() {
-		return getProperty("stereotype", XMLElement.class);
+		return getProperty("stereotype");
 	}
 
 	public void setStereotype(XMLElement sterotype) {
-		replaceProperty("stereotype", sterotype, XMLElement.class);
+		replaceProperty("stereotype", sterotype);
 	}
 
-	@SuppressWarnings("unchecked")
 	public XMLElement getText() {
-		return getProperty("text-lines", XMLElement.class);
+		return getProperty("text-lines");
 	}
 
 	public void setText(XMLElement text) {
-		replaceProperty("text-lines", text, XMLElement.class);
+		replaceProperty("text-lines", text);
 	}
 
-
-	@SuppressWarnings("unchecked")
-	public ContainerProperty<XMLElement> getSymbols() {
-		return getProperty("symbols", ContainerProperty.class);
+	public XMLElement getSymbols() {
+		return getProperty("symbols");
 	}
 	
-	public void setSymbols(ContainerProperty<XMLElement> syms) {
-		replaceProperty("symbols", syms, ContainerProperty.class);
+	public void setSymbols(XMLElement syms) {
+		replaceProperty("symbols", syms);
 	}
 
 	public boolean hasDimension() {

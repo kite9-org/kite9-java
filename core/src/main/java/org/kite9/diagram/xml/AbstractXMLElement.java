@@ -1,5 +1,9 @@
 package org.kite9.diagram.xml;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.apache.batik.css.engine.StyleMap;
 import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.AbstractElement;
@@ -13,6 +17,7 @@ import org.kite9.framework.serialization.XMLHelper;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
 public abstract class AbstractXMLElement extends AbstractElement {
@@ -48,11 +53,11 @@ public abstract class AbstractXMLElement extends AbstractElement {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <E extends Element> E getProperty(String name, Class<E> expected) {
+	public <E extends Element> E getProperty(String name) {
 		E found = null;
 		for (int i = 0; i < getChildNodes().getLength(); i++) {
 			Node n = getChildNodes().item(i);
-			if ((expected.isInstance(n)) && (((Element)n).getTagName().equals(name))) {
+			if ((n instanceof Element) && (((Element)n).getTagName().equals(name))) {
 				if (found == null) {
 					found = (E) n;
 				} else {
@@ -64,8 +69,8 @@ public abstract class AbstractXMLElement extends AbstractElement {
 		return found;
 	}
 
-	public <E extends Element> E replaceProperty(String propertyName, E e, Class<E> propertyClass) {
-		E existing = getProperty(propertyName, propertyClass);
+	public <E extends XMLElement> E replaceProperty(String propertyName, E e) {
+		E existing = getProperty(propertyName);
 		if (e == null) {
 			if (existing != null) {
 				this.removeChild(existing);
@@ -73,14 +78,8 @@ public abstract class AbstractXMLElement extends AbstractElement {
 		 	return null;
 		}
 	
-		if (!propertyClass.isInstance(e)) {
-			throw new Kite9ProcessingException("Was expecting an element of "+propertyClass.getName()+" but it's: "+e);
-		}
-	
-		if (e instanceof XMLElement) {
-			((XMLElement)e).setTagName(propertyName);
-			((XMLElement)e).setOwnerDocument((ADLDocument) this.ownerDocument); 
-		}
+		((XMLElement)e).setTagName(propertyName);
+		((XMLElement)e).setOwnerDocument((ADLDocument) this.ownerDocument); 
 		
 		if (!e.getNodeName().equals(propertyName)) {
 			throw new Kite9ProcessingException("Incorrect name.  Expected "+propertyName+" but was "+e.getNodeName());
@@ -171,7 +170,7 @@ public abstract class AbstractXMLElement extends AbstractElement {
 	}
 
 	public BasicRenderingInformation getBasicRenderingInformation() {
-		BasicRenderingInformation ri = getProperty("renderingInformation", BasicRenderingInformation.class);
+		BasicRenderingInformation ri = (BasicRenderingInformation) getProperty("renderingInformation");
 		if (ri == null) {
 			ri = (BasicRenderingInformation) ownerDocument.createElement("renderingInformation");
 			setRenderingInformation(ri);
@@ -181,7 +180,7 @@ public abstract class AbstractXMLElement extends AbstractElement {
 	}
 
 	public void setRenderingInformation(RenderingInformation ri) {
-		replaceProperty("renderingInformation", ri, RenderingInformation.class);
+		replaceProperty("renderingInformation", ri);
 	}
 
 	@Override
@@ -222,4 +221,29 @@ public abstract class AbstractXMLElement extends AbstractElement {
 		return true;
 	}
 
+	public Iterator<XMLElement> iterator() {
+		NodeList childNodes2 = getChildNodes();
+		List<XMLElement> elems = new ArrayList<XMLElement>(childNodes2.getLength());
+		for (int i = 0; i < childNodes2.getLength(); i++) {
+			Node n = childNodes2.item(i);
+			if (n instanceof XMLElement) {
+				elems.add((XMLElement) n);
+			}
+		}
+		
+		return elems.iterator();
+	}
+	
+	public int getChildXMLElementCount() {
+		int out = 0;
+		NodeList childNodes2 = getChildNodes();
+		for (int i = 0; i < childNodes2.getLength(); i++) {
+			Node n = childNodes2.item(i);
+			if (n instanceof XMLElement) {
+				out++;
+			}
+		}
+		
+		return out;
+	}
 }

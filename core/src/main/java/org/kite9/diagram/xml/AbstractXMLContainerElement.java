@@ -30,10 +30,10 @@ public abstract class AbstractXMLContainerElement extends AbstractStyleableXMLEl
 	}
 
 	public void setLabel(XMLElement label) {
-	    replaceProperty("label", label, XMLElement.class);
+	    replaceProperty("label", label);
 	}
 	
 	public XMLElement getLabel() {
-		return getProperty("label", XMLElement.class);
+		return getProperty("label");
 	}
 }

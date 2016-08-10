@@ -19,11 +19,11 @@ public class Arrow extends AbstractStyleableXMLElement {
 	}
 		
 	public XMLElement getLabel() {
-		return getProperty("label", XMLElement.class);
+		return getProperty("label");
 	}
 
 	public void setLabel(XMLElement name) {
-		replaceProperty("label", name, XMLElement.class);
+		replaceProperty("label", name);
 	}
 
 	

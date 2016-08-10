@@ -11,24 +11,23 @@ public class Key extends AbstractStyleableXMLElement {
 	private static final long serialVersionUID = 7705875104684442878L;
 	
 	public XMLElement getBodyText() {
-		return getProperty("bodyText", XMLElement.class);
+		return getProperty("bodyText");
 	}
 
 	public void setBodyText(XMLElement bodyText) {
-		replaceProperty("bodyText", bodyText, XMLElement.class);
+		replaceProperty("bodyText", bodyText);
 	}
 	
 	public XMLElement getBoldText() {
-		return getProperty("boldText", XMLElement.class);
+		return getProperty("boldText");
 	}
 
 	public void setBoldText(XMLElement boldText) {
-		replaceProperty("boldText", boldText, XMLElement.class);
+		replaceProperty("boldText", boldText);
 	}
 	
-	public ContainerProperty<TextLine> convert(List<Symbol> symbols) {
-		@SuppressWarnings("unchecked")
-		ContainerProperty<TextLine> out = (ContainerProperty<TextLine>) ownerDocument.createElement("text-lines");
+	public ContainerProperty convert(List<Symbol> symbols) {
+		ContainerProperty out = (ContainerProperty) ownerDocument.createElement("text-lines");
 		if (symbols == null) {
 			return out;
 		}
@@ -67,13 +66,12 @@ public class Key extends AbstractStyleableXMLElement {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	public ContainerProperty<TextLine> getSymbols() {
-		return getProperty("text-lines", ContainerProperty.class);
+	public XMLElement getSymbols() {
+		return getProperty("text-lines");
 	}
 
-	public void setSymbols(ContainerProperty<TextLine> symbols) {
-		replaceProperty("text-lines", symbols, ContainerProperty.class);
+	public void setSymbols(XMLElement symbols) {
+		replaceProperty("text-lines", symbols);
 	}
 	
 	public String toString() {

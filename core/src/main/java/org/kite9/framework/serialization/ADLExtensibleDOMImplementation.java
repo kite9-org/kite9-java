@@ -18,9 +18,10 @@ import org.apache.batik.css.engine.value.svg12.MarginLengthManager;
 import org.apache.batik.css.parser.ExtendedParser;
 import org.apache.batik.dom.AbstractStylableDocument;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
+import org.apache.batik.dom.GenericElement;
 import org.apache.batik.dom.util.HashTable;
 import org.apache.batik.util.ParsedURL;
-import org.kite9.diagram.adl.CompositionalDiagramElement;
+import org.kite9.diagram.adl.TextContainingDiagramElement;
 import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.Arrow;
@@ -101,21 +102,21 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "symbols", new ElementFactory() {
 			
 			public Element create(String prefix, Document doc) {
-				return new ContainerProperty<Symbol>("symbols", (ADLDocument) doc);
+				return new ContainerProperty("symbols", (ADLDocument) doc);
 			}
 		});
 		
 		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "text-lines", new ElementFactory() {
 			
 			public Element create(String prefix, Document doc) {
-				return new ContainerProperty<CompositionalDiagramElement>("text-lines", (ADLDocument) doc);
+				return new ContainerProperty("text-lines", (ADLDocument) doc);
 			}
 		});
 		
 		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "allLinks", new ElementFactory() {
 			
 			public Element create(String prefix, Document doc) {
-				return new ContainerProperty<CompositionalDiagramElement>("allLinks", (ADLDocument) doc);
+				return new ContainerProperty("allLinks", (ADLDocument) doc);
 			}
 		});
 		
@@ -173,14 +174,14 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 			}
 		});
 		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "fromDecoration", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				Key out = new Key();
-				out.setOwnerDocument(doc);
-				return out;
-			}
-		});
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "fromDecoration", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				GenericElement out = new Key();
+//				out.setOwnerDocument(doc);
+//				return out;
+//			}
+//		});
 
 		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "key", new ElementFactory() {
 	

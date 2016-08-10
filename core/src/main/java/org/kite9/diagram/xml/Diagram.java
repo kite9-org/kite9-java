@@ -2,7 +2,6 @@ package org.kite9.diagram.xml;
 
 import java.util.List;
 
-import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Container;
 import org.kite9.diagram.position.Layout;
 import org.w3c.dom.Node;
@@ -44,7 +43,7 @@ public class Diagram extends AbstractXMLContainerElement {
 			}
 		}
 		if (k != null) {
-			replaceProperty("key", k, Key.class);
+			replaceProperty("key", k);
 		}
 	}
 	
@@ -62,11 +61,11 @@ public class Diagram extends AbstractXMLContainerElement {
 	}
 
 	public Key getKey() {
-		return getProperty("key", Key.class);
+		return getProperty("key");
 	}
 
 	public void setKey(Key k) {
-	    replaceProperty("key", k, Key.class);
+	    replaceProperty("key", k);
 	}
 
 	public boolean isBordered() {
@@ -81,11 +80,10 @@ public class Diagram extends AbstractXMLContainerElement {
 		setAttribute("name", name);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public ContainerProperty<Connection> getAllLinks() {
-		ContainerProperty<Connection> out = getProperty("allLinks", ContainerProperty.class);
+	public ContainerProperty getAllLinks() {
+		ContainerProperty out = getProperty("allLinks");
 		if (out == null) {
-			out = replaceProperty("allLinks", (ContainerProperty<Connection>) ownerDocument.createElement("allLinks"), ContainerProperty.class);
+			out = replaceProperty("allLinks", (ContainerProperty) ownerDocument.createElement("allLinks"));
 		}
 		
 		return out;
@@ -111,11 +109,11 @@ public class Diagram extends AbstractXMLContainerElement {
 	}
 
 	public StylesheetReference getStylesheetReference() {
-		return getProperty("stylesheet", StylesheetReference.class);
+		return getProperty("stylesheet");
 	}
 	
 	public void setStylesheetReference(StylesheetReference ref) {
-		replaceProperty("stylesheet", ref, StylesheetReference.class);
+		replaceProperty("stylesheet", ref);
 	}
 	
 //	public Container getDiagramElement() {

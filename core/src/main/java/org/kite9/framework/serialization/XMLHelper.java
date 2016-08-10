@@ -6,9 +6,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
@@ -18,17 +15,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.apache.batik.dom.util.SAXDocumentFactory;
-import org.kite9.diagram.adl.CompositionalDiagramElement;
-import org.kite9.diagram.adl.Connected;
-import org.kite9.diagram.adl.Connection;
-import org.kite9.diagram.adl.Contained;
-import org.kite9.diagram.adl.Container;
-import org.kite9.diagram.adl.DiagramElement;
-import org.kite9.diagram.visitors.ContainerVisitor;
-import org.kite9.diagram.xml.ContainerProperty;
 import org.kite9.diagram.xml.Diagram;
-import org.kite9.diagram.xml.Glyph;
-import org.kite9.diagram.xml.Link;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.w3c.dom.Document;
 
@@ -77,7 +64,6 @@ public class XMLHelper {
 
 	public String toXML(Diagram d) {
 		try {
-			 preProcess(d);
 			 TransformerFactory transfac = TransformerFactory.newInstance();
 			 Transformer trans = transfac.newTransformer();
 			 trans.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -104,7 +90,6 @@ public class XMLHelper {
 			SAXDocumentFactory sdf = new SAXDocumentFactory(new ADLExtensibleDOMImplementation(), null);
 			Document d = sdf.createDocument(null, s);
 			Diagram d2 = (Diagram) d.getDocumentElement();
-			handlePostProcessing(d2);
 			return d2;		
 		} catch (IOException e) {
 			throw new Kite9ProcessingException("Couldn't parse xml: ", e);
@@ -116,119 +101,4 @@ public class XMLHelper {
 		return fromXML(new InputStreamReader(s));
 	}
 
-	private void preProcess(final Diagram d) {
-		d.getAllLinks().clear();
-		
-		final LinkedHashSet<Connection> allLinks = new LinkedHashSet<Connection>();
-
-		if (isSimplifyingXML()) {
-
-			new ContainerVisitor() {
-
-				@Override
-				protected void containerStart(Container c) {
-				}
-
-				@Override
-				protected void containerEnd(Container c) {
-				}
-
-				@Override
-				protected void contained(Contained c) {
-					if (c instanceof Connected) {
-						allLinks.addAll(((Connected) c).getLinks());
-					}
-				}
-
-			}.visit(d);
-
-		}
-		
-		for (Connection connection : allLinks) {
-			d.getAllLinks().appendChild(connection);
-		}
-	}
-
-	protected void handlePreProcessing(Diagram in) {
-		preProcess((Diagram) in);
-	}
-
-	protected void handlePostProcessing(Diagram out) {
-		postProcess((Diagram) out, null);
-	}
-
-	/**
-	 * This handles the case when an xml graph is entered sparsely, and values
-	 * must be implied from the structure.
-	 */
-	private void postProcess(DiagramElement diag, DiagramElement parent) {
-		if (diag instanceof Diagram) {
-			int rank = 0;
-			for (Iterator<Connection> iterator = ((Diagram) diag).getAllLinks().iterator(); iterator.hasNext();) {
-				Connection l = (Connection) iterator.next();
-				l.getFrom().getLinks().add(l);
-				l.getTo().getLinks().add(l);
-				if (l instanceof Link) {
-					((Link) l).setRank(rank++);
-				}
-			}
-		}
-
-		if (diag instanceof Contained) {
-			((Contained) diag).setContainer((Container) parent);
-		}
-
-		if (diag instanceof Link) {
-			Link il = (Link) diag;
-			if (il.getFrom() == null) {
-				il.setFrom((Connected) parent);
-			} else {
-				ensureLink(il.getFrom(), il);
-			}
-
-			if (il.getTo() == null) {
-				il.setTo((Connected) parent);
-			} else {
-				ensureLink(il.getTo(), il);
-			}
-
-			postProcess(il.getFromLabel(), il);
-			postProcess(il.getToLabel(), il);
-		}
-
-		if (diag instanceof Glyph) {
-			ContainerProperty<CompositionalDiagramElement> textLines = ((Glyph) diag).getText();
-			if (textLines != null) {
-				for (CompositionalDiagramElement c : textLines) {
-					postProcess(c, diag);
-				}
-			}
-		}
-
-		if (diag instanceof Container) {
-			Collection<Contained> content = ((Container) diag).getContents();
-			if (content != null) {
-				for (Contained c : content) {
-					postProcess(c, diag);
-				}
-			}
-			postProcess(((Container) diag).getLabel(), diag);
-		}
-		if (diag instanceof Connected) {
-			for (Iterator<Connection> lc = ((Connected) diag).getLinks().iterator(); lc.hasNext();) {
-				Connection c = (Connection) lc.next();
-				postProcess(c, diag);
-			}
-		}
-	}
-
-	private void ensureLink(Connected from, Link il) {
-		for (Connection i : from.getLinks()) {
-			if (i == il) {
-				return;
-			}
-		}
-
-		from.addLink(il);
-	}
 }

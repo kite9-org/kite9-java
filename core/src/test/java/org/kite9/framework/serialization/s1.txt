@@ -19,10 +19,10 @@
 		<label id="auto:3">this is in the arrow</label>
 	</arrow>
 	<context id="context1">
-		<label id="blah">This is the label</label>
 		<glyph class="jj" id="contained1">
 			<label id="auto:5">Some inner glyph</label>
 		</glyph>
+		<label id="blah">This is the label</label>
 	</context>
 	
 	<key id="auto:22">

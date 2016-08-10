@@ -2,12 +2,10 @@ package org.kite9.diagram.xml;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.framework.common.Kite9ProcessingException;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 /**
@@ -18,35 +16,22 @@ import org.w3c.dom.Node;
  * @author robmoffat
  *
  */
-public class ContainerProperty<E extends Element> extends AbstractStyleableXMLElement implements Iterable<E> {
+public class ContainerProperty extends AbstractStyleableXMLElement {
 
 	public ContainerProperty(String part, ADLDocument d) {
 		super(part, d);
 	}
 	
-	public ContainerProperty(String part, ADLDocument d, Collection<E> contents) {
+	public ContainerProperty(String part, ADLDocument d, Collection<? extends XMLElement> contents) {
 		this(part, d);
-		for (E e : contents) {
+		for (XMLElement e : contents) {
 			appendChild(e);
 		}
 	}
 
 	@Override
 	protected Node newNode() {
-		return new ContainerProperty<XMLElement>(tagName, (ADLDocument) ownerDocument);
-	}
-
-	@SuppressWarnings("unchecked")
-	public Iterator<E> iterator() {
-		List<E> elems = new ArrayList<E>(getChildNodes().getLength());
-		for (int i = 0; i < getChildNodes().getLength(); i++) {
-			Node n = getChildNodes().item(i);
-			if (n instanceof DiagramElement) {
-				elems.add((E) n);
-			}
-		}
-		
-		return elems.iterator();
+		return new ContainerProperty(tagName, (ADLDocument) ownerDocument);
 	}
 
 	public int size() {
@@ -63,9 +48,9 @@ public class ContainerProperty<E extends Element> extends AbstractStyleableXMLEl
 		}
 	}
 	
-	public List<E> asList() {
-		ArrayList<E> out = new ArrayList<E>(size());
-		for (E e : this) {
+	public List<XMLElement> asList() {
+		ArrayList<XMLElement> out = new ArrayList<XMLElement>(size());
+		for (XMLElement e : this) {
 			out.add(e);
 		}
 		return out;

@@ -1,7 +1,6 @@
 package org.kite9.diagram.xml;
 
 import org.kite9.diagram.position.Direction;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 /**
@@ -42,29 +41,29 @@ public class Link extends AbstractXMLConnectionElement {
 	}
 
 	@Override
-	public LinkTerminator getFromDecoration() {
-		return getProperty("fromDecoration", LinkTerminator.class);
+	public XMLElement getFromDecoration() {
+		return getProperty("fromDecoration");
 	}
 
 	@Override
-	public LinkTerminator getToDecoration() {
-		return getProperty("toDecoration", LinkTerminator.class);
+	public XMLElement getToDecoration() {
+		return getProperty("toDecoration");
 	}
 	
 	private void setDecoration(String name, Object d) {
-		Element e = ownerDocument.createElement(name);
+		XMLElement e = (XMLElement) ownerDocument.createElement(name);
 		e.setTextContent((String) d);
-		replaceProperty(name, e, Element.class);
+		replaceProperty(name, e);
 	}
 
 	@Override
-	public void setFromDecoration(LinkTerminator fromDecoration) {
-		replaceProperty("fromDecoration", fromDecoration, LinkTerminator.class);
+	public void setFromDecoration(XMLElement fromDecoration) {
+		replaceProperty("fromDecoration", fromDecoration);
 	}
 
 	@Override
-	public void setToDecoration(LinkTerminator toDecoration) {
-		replaceProperty("toDecoration", toDecoration, LinkTerminator.class);
+	public void setToDecoration(XMLElement toDecoration) {
+		replaceProperty("toDecoration", toDecoration);
 	}
 
 	/**
