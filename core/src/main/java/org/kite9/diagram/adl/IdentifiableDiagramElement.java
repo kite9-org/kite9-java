@@ -20,7 +20,4 @@ public interface IdentifiableDiagramElement extends PositionableDiagramElement {
 	 */
 	public String getID();
 	
-	public void setID(String s);
-
-	
 }

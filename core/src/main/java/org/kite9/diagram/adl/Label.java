@@ -1,7 +1,7 @@
 package org.kite9.diagram.adl;
 
-import org.kite9.diagram.common.DiagramElement;
 import org.kite9.diagram.position.RectangleRenderingInformation;
+import org.kite9.diagram.style.DiagramElement;
 
 /**
  * DiagramElement to contain a label an edge, container or diagram.

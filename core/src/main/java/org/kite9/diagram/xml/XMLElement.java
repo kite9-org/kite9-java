@@ -1,5 +1,6 @@
 package org.kite9.diagram.xml;
 
+import org.kite9.diagram.style.DiagramElement;
 import org.w3c.dom.Element;
 
 public interface XMLElement extends Element, Iterable<XMLElement> {
@@ -12,6 +13,6 @@ public interface XMLElement extends Element, Iterable<XMLElement> {
 	
 	public int getChildXMLElementCount();
 	
-	//public DiagramElement getDiagramElement();
+	public DiagramElement getDiagramElement();
 
 }

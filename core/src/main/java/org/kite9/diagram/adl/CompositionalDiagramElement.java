@@ -1,6 +1,6 @@
 package org.kite9.diagram.adl;
 
-import org.kite9.diagram.common.DiagramElement;
+import org.kite9.diagram.style.DiagramElement;
 
 /**
  * This type of diagram element is a composite part of another element.  

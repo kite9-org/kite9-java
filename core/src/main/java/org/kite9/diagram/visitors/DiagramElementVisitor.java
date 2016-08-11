@@ -8,7 +8,7 @@ import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Contained;
 import org.kite9.diagram.adl.Container;
 import org.kite9.diagram.common.Connected;
-import org.kite9.diagram.common.DiagramElement;
+import org.kite9.diagram.style.DiagramElement;
 
 
 /**

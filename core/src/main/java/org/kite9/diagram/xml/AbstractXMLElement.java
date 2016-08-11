@@ -9,9 +9,10 @@ import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.AbstractElement;
 import org.apache.batik.util.ParsedURL;
 import org.kite9.diagram.adl.IdentifiableDiagramElement;
-import org.kite9.diagram.common.DiagramElement;
 import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
+import org.kite9.diagram.style.DiagramElement;
+import org.kite9.diagram.style.DiagramElementFactory;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.kite9.framework.serialization.XMLHelper;
 import org.w3c.dom.DOMException;
@@ -247,4 +248,15 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 		
 		return out;
 	}
+	
+	private DiagramElement cachedDiagramElement;
+	
+	public DiagramElement getDiagramElement() {
+		if (cachedDiagramElement == null) {
+			cachedDiagramElement = DiagramElementFactory.createDiagramElement(this);
+		}
+		
+		return cachedDiagramElement;
+	}
+	
 }

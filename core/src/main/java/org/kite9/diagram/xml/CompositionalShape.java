@@ -1,12 +1,11 @@
 package org.kite9.diagram.xml;
 
-import org.kite9.diagram.adl.AbstractIdentifiableDiagramElement;
 import org.kite9.diagram.adl.CompositionalDiagramElement;
-import org.kite9.diagram.common.DiagramElement;
 import org.kite9.diagram.position.RenderingInformation;
+import org.kite9.diagram.style.DiagramElement;
 import org.w3c.dom.Node;
 
-public class CompositionalShape extends AbstractIdentifiableDiagramElement implements CompositionalDiagramElement {
+public class CompositionalShape extends AbstractStyleableXMLElement implements CompositionalDiagramElement {
 
 	private static final long serialVersionUID = 5343674853338333434L;
 	

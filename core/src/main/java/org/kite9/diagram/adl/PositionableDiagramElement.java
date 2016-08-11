@@ -1,10 +1,10 @@
 package org.kite9.diagram.adl;
 
 import org.kite9.diagram.position.RenderingInformation;
-import org.kite9.diagram.xml.XMLElement;
+import org.kite9.diagram.style.DiagramElement;
 
 
-public interface PositionableDiagramElement extends XMLElement {
+public interface PositionableDiagramElement extends DiagramElement {
 
 	public RenderingInformation getRenderingInformation();
 	

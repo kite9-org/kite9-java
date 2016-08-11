@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 
 import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.position.RectangleRenderingInformation;
+import org.kite9.diagram.style.AbstractXMLDiagramElement;
 import org.kite9.diagram.xml.ADLDocument;
 
 /**
@@ -14,7 +15,7 @@ import org.kite9.diagram.xml.ADLDocument;
  * @author robmoffat
  *
  */
-public abstract class AbstractConnectedContained extends AbstractIdentifiableDiagramElement implements Connected, Contained {
+public abstract class AbstractConnectedContained extends AbstractXMLDiagramElement implements Connected, Contained {
 
 	public AbstractConnectedContained() {
 	}

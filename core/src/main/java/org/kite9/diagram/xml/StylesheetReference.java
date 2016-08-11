@@ -5,7 +5,7 @@ import org.apache.batik.css.engine.CSSStyleSheetNode;
 import org.apache.batik.css.engine.StyleSheet;
 import org.apache.batik.util.ParsedURL;
 import org.apache.batik.util.SVGConstants;
-import org.kite9.diagram.common.DiagramElement;
+import org.kite9.diagram.style.DiagramElement;
 import org.w3c.dom.Node;
 
 /**

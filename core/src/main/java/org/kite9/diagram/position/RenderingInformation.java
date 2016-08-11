@@ -1,6 +1,7 @@
 package org.kite9.diagram.position;
 
-import org.kite9.diagram.xml.ContainerProperty;
+import java.util.List;
+
 import org.kite9.diagram.xml.XMLElement;
 import org.w3c.dom.Element;
 
@@ -24,9 +25,9 @@ public interface RenderingInformation extends XMLElement {
 	/**
 	 * For storing format-specific rendering details.
 	 */
-	public ContainerProperty<Element> getDisplayData();
+	public List<Element> getDisplayData();
 	
-	public void setDisplayData(ContainerProperty<Element> o);
+	public void setDisplayData(List<Element> o);
 	
 	public Dimension2D getPosition();
 

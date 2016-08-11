@@ -2,8 +2,9 @@ package org.kite9.diagram.adl;
 
 import java.io.Serializable;
 
-import org.kite9.diagram.common.DiagramElement;
 import org.kite9.diagram.position.RectangleRenderingInformation;
+import org.kite9.diagram.style.AbstractXMLDiagramElement;
+import org.kite9.diagram.style.DiagramElement;
 import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.ContainerProperty;
 
@@ -12,7 +13,7 @@ import org.kite9.diagram.xml.ContainerProperty;
  * @author robmoffat
  * 
  */
-public abstract class AbstractLabel extends AbstractIdentifiableDiagramElement implements Serializable, Label {
+public abstract class AbstractLabel extends AbstractXMLDiagramElement implements Serializable, Label {
 
 	private static final long serialVersionUID = -1012880238215021108L;	
 	
