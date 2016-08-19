@@ -19,7 +19,7 @@ import org.w3c.dom.Node;
  * @author robmoffat
  *
  */
-public class Dimension2D extends AbstractStyleableXMLElement {
+public class Dimension2D {
 
 	private double x, y;
 	
@@ -48,12 +48,8 @@ public class Dimension2D extends AbstractStyleableXMLElement {
 	}
 	
 	public Dimension2D(double x, double y) {
-		super("dim2d", AbstractXMLElement.TESTING_DOCUMENT);
 		this.x = x;
 		this.y = y;
-		setAttribute("x", ""+x);
-		setAttribute("y", ""+y);
-		this.readonly = true;
 	}
 	
 	public Dimension2D(Dimension2D clone) {
@@ -124,26 +120,4 @@ public class Dimension2D extends AbstractStyleableXMLElement {
 		return new Dimension2D(this.x, y);
 	}
 
-	public boolean isReadonly() {
-		return readonly;
-	}
-
-	public void setReadonly(boolean v) {
-		throw new Kite9ProcessingException("Immutable");
-	}
-
-	@Override
-	protected Node newNode() {
-		throw new Kite9ProcessingException("Immutable");
-	}
-	
-	public Dimension2D copy(ADLDocument doc) {
-		Dimension2D out = new Dimension2D(this);
-		out.setOwnerDocument(doc);
-		return out;
-	}
-
-	public int compareTo(DiagramElement o) {
-		return 0;
-	}
 }
