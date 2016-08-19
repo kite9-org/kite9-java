@@ -1,7 +1,9 @@
 package org.kite9.diagram.xml;
 
+import org.apache.batik.css.engine.CSSEngine;
 import org.apache.batik.css.engine.StyleDeclarationProvider;
 import org.apache.batik.css.engine.StyleMap;
+import org.apache.batik.css.engine.value.Value;
 
 /**
  * Handles setting/getting properties of diagram elements.
@@ -74,6 +76,10 @@ public abstract class AbstractStyleableXMLElement extends AbstractXMLElement imp
 	public boolean isPseudoInstanceOf(String pseudoClass) {
 		return false;
 	}
-	
+
+	public Value getCSSStyleProperty(String name) {
+		CSSEngine e = getOwnerDocument().getCSSEngine();
+		return e.getComputedStyle(this, null, e.getPropertyIndex(name));
+	}
 	
 }

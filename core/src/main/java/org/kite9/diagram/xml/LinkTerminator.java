@@ -2,12 +2,11 @@ package org.kite9.diagram.xml;
 
 import java.io.Serializable;
 
-import org.kite9.diagram.adl.AbstractStyledDiagramElement;
 import org.kite9.diagram.adl.CompositionalDiagramElement;
 import org.kite9.diagram.style.DiagramElement;
 import org.w3c.dom.Node;
 
-public class LinkTerminator  extends AbstractStyledDiagramElement implements Serializable, CompositionalDiagramElement {
+public class LinkTerminator  extends AbstractStyleableXMLElement implements Serializable, CompositionalDiagramElement {
 
 	public LinkTerminator() {
 		super();

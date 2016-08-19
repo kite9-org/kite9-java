@@ -1,9 +1,13 @@
 package org.kite9.diagram.xml;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Container;
 import org.kite9.diagram.position.Layout;
+import org.kite9.diagram.style.DiagramElement;
 import org.w3c.dom.Node;
 
 
@@ -79,15 +83,6 @@ public class Diagram extends AbstractXMLContainerElement {
 	public void setName(String name) {
 		setAttribute("name", name);
 	}
-	
-	public ContainerProperty getAllLinks() {
-		ContainerProperty out = getProperty("allLinks");
-		if (out == null) {
-			out = replaceProperty("allLinks", (ContainerProperty) ownerDocument.createElement("allLinks"));
-		}
-		
-		return out;
-	}
 
 	public String getNodeName() {
 		return "diagram";
@@ -116,7 +111,32 @@ public class Diagram extends AbstractXMLContainerElement {
 		replaceProperty("stylesheet", ref);
 	}
 	
-//	public Container getDiagramElement() {
-//		
-//	}
+	public Container getDiagramElement() {
+		return (Container) super.getDiagramElement();
+	}
+	
+	private transient Collection<Connection> allConnections;
+	
+	public Collection<Connection> getAllLinks() {
+		if (allConnections == null) {
+			allConnections = new ArrayList<>(150);
+			gatherConnections(this);
+		}
+		
+		return allConnections;
+	}
+	
+	private void gatherConnections(XMLElement e) {
+		DiagramElement de = e.getDiagramElement();
+		if (de instanceof Connection) {
+			allConnections.add((Connection) de);
+		}
+		
+		for (int i = 0; i < e.getChildNodes().getLength(); i++) {
+			Node n = e.getChildNodes().item(i);
+			if (n instanceof XMLElement) {
+				gatherConnections((XMLElement) n);
+			}
+		}
+	}
 }

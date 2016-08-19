@@ -1,0 +1,17 @@
+diagram {
+	type: container;
+}
+
+arrow2,
+arrow3 {
+	type: text;
+}
+
+link {
+	type: link;
+}
+
+/*from,
+to {
+	type: link-end;
+} */

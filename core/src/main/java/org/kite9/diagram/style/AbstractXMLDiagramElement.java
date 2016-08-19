@@ -6,24 +6,19 @@ import org.kite9.diagram.adl.HintMap;
 import org.kite9.diagram.adl.IdentifiableDiagramElement;
 import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
-import org.kite9.diagram.xml.XMLElement;
+import org.kite9.diagram.xml.StyledXMLElement;
 
 /**
- * Encapsulates an {@link XMLElement} as a {@link DiagramElement}.
+ * Encapsulates an {@link StyledXMLElement} as a {@link DiagramElement}.
  * 
  * @author robmoffat
  *
  */
 public abstract class AbstractXMLDiagramElement implements IdentifiableDiagramElement, Serializable {
-
-	private static final long serialVersionUID = -3154895826494435557L;
-
-	public AbstractXMLDiagramElement() {
-	}
 	
-	private XMLElement theElement;
+	protected StyledXMLElement theElement;
 	
-	public AbstractXMLDiagramElement(XMLElement el) {
+	public AbstractXMLDiagramElement(StyledXMLElement el) {
 		this.theElement = el;
 	}
 

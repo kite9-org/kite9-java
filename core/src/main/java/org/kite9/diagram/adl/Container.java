@@ -2,7 +2,6 @@ package org.kite9.diagram.adl;
 
 import java.util.List;
 
-import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 
@@ -14,7 +13,7 @@ import org.kite9.diagram.position.RectangleRenderingInformation;
  * @author robmoffat
  *
  */
-public interface Container extends IdentifiableDiagramElement, Connected {
+public interface Container extends IdentifiableDiagramElement {
 
 	public List<Contained> getContents();
 	
@@ -23,15 +22,12 @@ public interface Container extends IdentifiableDiagramElement, Connected {
 	 * laid out, or null if there is no canonical ordering.
 	 */
 	public Layout getLayoutDirection();
-
-	public void setLayoutDirection(Layout d);
 	
 	public Label getLabel();
 	
-	public void setLabel(Label l);
-	
+	/**
+	 * This method already exists, but this has a more specific return type.
+	 */
 	public RectangleRenderingInformation getRenderingInformation();
-	
-	public boolean isBordered();
 
 }

@@ -1,8 +1,9 @@
 package org.kite9.diagram.xml;
 
 import org.apache.batik.css.engine.CSSStylableElement;
+import org.apache.batik.css.engine.value.Value;
 
-public interface StyledXMLElement extends CSSStylableElement {
+public interface StyledXMLElement extends CSSStylableElement, XMLElement {
 
 	public void setClasses(String c);
 	
@@ -15,4 +16,8 @@ public interface StyledXMLElement extends CSSStylableElement {
 	public void setShapeName(String s);
 	
 	public String getShapeName();
+	
+	public Value getCSSStyleProperty(String prop);
 }
+
+

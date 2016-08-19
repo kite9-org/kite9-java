@@ -1,5 +1,11 @@
 package org.kite9.diagram.xml;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.css.engine.CSSEngine;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
@@ -145,6 +151,25 @@ public class ADLDocument extends SVGOMDocument {
 	@Override
 	protected Node newNode() {
 		return new ADLDocument();
+	}
+
+	private transient Map<String, Collection<XMLElement>> references = new HashMap<>();
+	
+	public Collection<XMLElement> getReferences(String id) {
+		Collection<XMLElement> collection = references.get(id);
+		return collection == null ? Collections.emptySet() : collection;
+	}
+
+	public void addReference(String fromId, XMLElement to) {
+		Collection<XMLElement> c = references.get(fromId);
+		if (c == null) {
+			c = new ArrayList<>(3);
+			references.put(fromId, c);
+		}
+		
+		if (!c.contains(fromId)) {
+			c.add(to);
+		}
 	}
 
 }

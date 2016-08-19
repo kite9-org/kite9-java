@@ -70,7 +70,7 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 		return found;
 	}
 
-	public <E extends XMLElement> E replaceProperty(String propertyName, E e) {
+	public <E extends Element> E replaceProperty(String propertyName, E e) {
 		E existing = getProperty(propertyName);
 		if (e == null) {
 			if (existing != null) {
@@ -141,6 +141,10 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 			removeAttribute(name);
 		} else {
 			super.setAttribute(name, value);
+		}
+		
+		if ("reference".equals(name)) {
+			getOwnerDocument().addReference(value, this);
 		}
 	}
 

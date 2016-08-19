@@ -1,6 +1,5 @@
 package org.kite9.diagram.xml;
 
-import org.apache.batik.dom.AbstractDocument;
 import org.w3c.dom.Node;
 
 /**
@@ -9,13 +8,13 @@ import org.w3c.dom.Node;
  * @author robmoffat
  *
  */
-public class GenericXMLElement extends AbstractXMLElement {
+public class GenericXMLElement extends AbstractStyleableXMLElement {
 	
 	public GenericXMLElement() {
 		super();
 	}
 
-	public GenericXMLElement(String name, AbstractDocument owner) {
+	public GenericXMLElement(String name, ADLDocument owner) {
 		super(name, owner);
 	}
 

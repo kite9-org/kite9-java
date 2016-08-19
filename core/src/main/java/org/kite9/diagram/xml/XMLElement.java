@@ -14,5 +14,11 @@ public interface XMLElement extends Element, Iterable<XMLElement> {
 	public int getChildXMLElementCount();
 	
 	public DiagramElement getDiagramElement();
+	
+	public ADLDocument getOwnerDocument();
 
+	public <E extends Element> E getProperty(String name);
+	
+	public <E extends Element> E replaceProperty(String propertyName, E e);
+	
 }
