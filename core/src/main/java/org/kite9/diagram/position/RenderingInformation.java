@@ -2,7 +2,6 @@ package org.kite9.diagram.position;
 
 import java.util.List;
 
-import org.kite9.diagram.xml.XMLElement;
 import org.w3c.dom.Element;
 
 
@@ -13,7 +12,7 @@ import org.w3c.dom.Element;
  * @author robmoffat
  *
  */
-public interface RenderingInformation extends XMLElement {
+public interface RenderingInformation {
 	
 	/**
 	 * Returns true if this item should be drawn

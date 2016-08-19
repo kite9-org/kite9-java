@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import org.kite9.diagram.adl.HintMap;
 import org.kite9.diagram.adl.IdentifiableDiagramElement;
-import org.kite9.diagram.position.BasicRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.xml.StyledXMLElement;
 
@@ -31,24 +30,7 @@ public abstract class AbstractXMLDiagramElement implements IdentifiableDiagramEl
 			return -1;
 		}
 	}
-
-	private RenderingInformation ri;
 	
-
-	@Override
-	public RenderingInformation getRenderingInformation() {
-		if (ri == null) {
-			ri = new BasicRenderingInformation();
-		}
-		
-		return ri;
-	}
-
-	public void setRenderingInformation(RenderingInformation ri) {
-		this.ri = ri;
-	}
-
-
 	@Override
 	public int hashCode() {
 		String id = getID();

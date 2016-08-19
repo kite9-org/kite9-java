@@ -5,7 +5,9 @@ import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.common.BiDirectional;
 import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.position.Direction;
+import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.position.RouteRenderingInformation;
+import org.kite9.diagram.position.RouteRenderingInformationImpl;
 import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.LinkTerminator;
 import org.kite9.diagram.xml.StyledXMLElement;
@@ -135,10 +137,20 @@ public class ConnectionDiagramElement extends AbstractStyledXMLDiagramElement im
 		return null;
 	}
 
+	private RouteRenderingInformation ri;
+	
 	@Override
 	public RouteRenderingInformation getRenderingInformation() {
-		// TODO Auto-generated method stub
-		return null;
+		if (ri == null) {
+			ri = new RouteRenderingInformationImpl();
+		}
+		
+		return ri;
 	}
+
+	public void setRenderingInformation(RenderingInformation ri) {
+		this.ri = (RouteRenderingInformation) ri;
+	}
+	
 
 }

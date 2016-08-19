@@ -2,8 +2,6 @@ package org.kite9.diagram.position;
 
 import java.util.List;
 
-import org.kite9.diagram.xml.ContainerProperty;
-
 /**
  * This is used to hold the route of an edge, or container border.
  * 
@@ -30,7 +28,7 @@ public interface RouteRenderingInformation extends RenderingInformation {
 		
 	}
 
-	public ContainerProperty<Dimension2D> getRoutePositions();
+	public List<Dimension2D> getRoutePositions();
 	
 	public List<Boolean> getHops();
 

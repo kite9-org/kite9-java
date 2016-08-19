@@ -7,6 +7,8 @@ import org.kite9.diagram.adl.Container;
 import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.position.RectangleRenderingInformation;
+import org.kite9.diagram.position.RectangleRenderingInformationImpl;
+import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.xml.StyledXMLElement;
 import org.kite9.diagram.xml.XMLElement;
 
@@ -41,10 +43,20 @@ public class ContainerDiagramElement extends AbstractXMLDiagramElement implement
 		return null;
 	}
 
+
+	private RectangleRenderingInformation ri;
+	
 	@Override
 	public RectangleRenderingInformation getRenderingInformation() {
-		return (RectangleRenderingInformation) super.getRenderingInformation();
+		if (ri == null) {
+			ri = new RectangleRenderingInformationImpl();
+		}
+		
+		return ri;
 	}
 
-	
+	public void setRenderingInformation(RenderingInformation ri) {
+		this.ri = (RectangleRenderingInformation) ri;
+	}
+
 }

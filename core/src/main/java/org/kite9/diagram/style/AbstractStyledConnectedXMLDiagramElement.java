@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.common.Connected;
+import org.kite9.diagram.position.RectangleRenderingInformationImpl;
+import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.StyledXMLElement;
 import org.kite9.diagram.xml.XMLElement;
@@ -56,5 +58,21 @@ public class AbstractStyledConnectedXMLDiagramElement extends AbstractStyledXMLD
 	public boolean isConnectedDirectlyTo(Connected c) {
 		return getConnectionTo(c) != null;
 	}
+	
+	private RenderingInformation ri;
+	
+	@Override
+	public RenderingInformation getRenderingInformation() {
+		if (ri == null) {
+			ri = new RectangleRenderingInformationImpl();
+		}
+		
+		return ri;
+	}
+
+	public void setRenderingInformation(RenderingInformation ri) {
+		this.ri = ri;
+	}
+
 
 }

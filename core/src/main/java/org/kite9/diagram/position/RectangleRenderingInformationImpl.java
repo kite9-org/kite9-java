@@ -1,7 +1,5 @@
 package org.kite9.diagram.position;
 
-import org.w3c.dom.Node;
-
 public class RectangleRenderingInformationImpl extends AbstractRenderingInformationImpl implements RectangleRenderingInformation {
 
 	boolean multipleHorizontalLinks;
@@ -23,36 +21,23 @@ public class RectangleRenderingInformationImpl extends AbstractRenderingInformat
 		this.multipleVerticalLinks = multipleVerticalLinks;
 	}
 	
+	private HPos hpos;
+	private VPos vpos;
+	
 	public HPos getHorizontalJustification() {
-		String hpos = getAttribute("x-just");
-		if (hpos.length() == 0) {
-			return null;
-		} else {
-			return HPos.valueOf(hpos);
-		}
+		return hpos;
 	}
 
 	public void setHorizontalJustification(HPos horizontalJustification) {
-		setAttribute("x-just", horizontalJustification == null ? "" : horizontalJustification.name());
+		this.hpos = horizontalJustification;
 	}
 
 	public VPos getVerticalJustification() {
-		String vpos = getAttribute("y-just");
-		if (vpos.length() == 0) {
-			return null;
-		} else {
-			return VPos.valueOf(vpos);
-		}
+		return vpos;
 	}
 
 	public void setVerticalJustification(VPos verticalJustification) {
-		setAttribute("y-just", verticalJustification == null ? "" :verticalJustification.name());
+		this.vpos = verticalJustification;
 	}
-
-	@Override
-	protected Node newNode() {
-		return new RectangleRenderingInformationImpl();
-	}
-
 
 }

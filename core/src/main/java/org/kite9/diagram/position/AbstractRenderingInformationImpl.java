@@ -1,8 +1,8 @@
 package org.kite9.diagram.position;
 
+import java.util.List;
+
 import org.kite9.diagram.style.DiagramElement;
-import org.kite9.diagram.xml.AbstractStyleableXMLElement;
-import org.kite9.diagram.xml.ContainerProperty;
 import org.w3c.dom.Element;
 
 public abstract class AbstractRenderingInformationImpl implements RenderingInformation {
@@ -11,58 +11,50 @@ public abstract class AbstractRenderingInformationImpl implements RenderingInfor
 		return 0;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public ContainerProperty<Element> getDisplayData() {
-		return getProperty("displayData", ContainerProperty.class);
+	private List<Element> displayData;
+	private boolean rendered;
+	private Dimension2D position;
+	private Dimension2D size;
+	private Dimension2D internalSize;
+	
+	public List<Element> getDisplayData() {
+		return displayData;
 	}
 
-	public void setDisplayData(ContainerProperty<Element> displayData) {
-		replaceProperty("displayData", displayData, ContainerProperty.class);
-	}
-
-	public AbstractRenderingInformationImpl() {
-		super("renderingInformation", TESTING_DOCUMENT);
+	public void setDisplayData(List<Element> displayData) {
+		this.displayData = displayData;
 	}
 
 	public boolean isRendered() {
-		return !"false".equals(getAttribute("rendered"));
+		return rendered;
 	}
 
 	public void setRendered(boolean r) {
-		if (r) {
-			removeAttribute("rendered");
-		} else {
-			setAttribute("rendered", "false");
-		}
+		this.rendered = r;
 	}
 	
-	
-	
 	public Dimension2D getPosition() {
-		Dimension2D pos = getProperty("position", Dimension2D.class);
-		return (pos == null) ?  CostedDimension.ZERO : pos;
+		return this.position;
 	}
 
 	public void setPosition(Dimension2D position) {
-		replaceProperty("position", position, Dimension2D.class);
+		this.position = position;
 	}
 
 	public Dimension2D getSize() {
-		Dimension2D size = getProperty("size", Dimension2D.class);
-		return (size == null) ?  CostedDimension.ZERO : size;
+		return this.size;
 	}
 
 	public void setSize(Dimension2D size) {
-		replaceProperty("size", size, Dimension2D.class);
+		this.size = size;
 	}
 	
 	public Dimension2D getInternalSize() {
-		Dimension2D size = getProperty("internal-size", Dimension2D.class);
-		return (size == null) ?  CostedDimension.ZERO : size;
+		return this.internalSize;
 	}
 
 	public void setInternalSize(Dimension2D size) {
-		replaceProperty("internal-size", size, Dimension2D.class);
+		this.internalSize = size;
 	}
 
 }
