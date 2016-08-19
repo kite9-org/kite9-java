@@ -7,8 +7,8 @@ import org.apache.batik.css.engine.SystemColorSupport;
 import org.apache.batik.css.engine.value.Value;
 import org.apache.batik.util.ParsedURL;
 import org.apache.batik.util.SVGConstants;
-import org.kite9.diagram.adl.StyledDiagramElement;
 import org.kite9.diagram.xml.ADLDocument;
+import org.kite9.diagram.xml.StyledXMLElement;
 import org.w3c.dom.Element;
 
 
@@ -65,7 +65,7 @@ public final class ADLContext extends BridgeContext implements CSSContext {
 	    // No cache needed since the default font family is asked only
 	    // one time on the root element (only if it does not have its
 	    // own font-family).
-		StyledDiagramElement root = (StyledDiagramElement)ownerDocument.getFirstChild();
+		StyledXMLElement root = (StyledXMLElement)ownerDocument.getFirstChild();
 	    String str = "Arial, Helvetica, sans-serif";
 	    return ownerDocument.getCSSEngine().parsePropertyValue
 	        (root,SVGConstants.CSS_FONT_FAMILY_PROPERTY, str);

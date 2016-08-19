@@ -66,10 +66,6 @@ public abstract class AbstractXMLConnectionElement extends AbstractStyleableXMLE
 			return -1;
 		}
 	}
-	
-	public RouteRenderingInformation getRenderingInformation() {
-		return getBasicRenderingInformation();
-	}
 
 	public abstract void setFromDecoration(XMLElement fromDecoration);
 

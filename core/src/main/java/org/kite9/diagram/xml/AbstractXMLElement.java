@@ -8,9 +8,6 @@ import org.apache.batik.css.engine.StyleMap;
 import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.AbstractElement;
 import org.apache.batik.util.ParsedURL;
-import org.kite9.diagram.adl.IdentifiableDiagramElement;
-import org.kite9.diagram.position.BasicRenderingInformation;
-import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.style.DiagramElement;
 import org.kite9.diagram.style.DiagramElementFactory;
 import org.kite9.framework.common.Kite9ProcessingException;
@@ -162,36 +159,6 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 
 	public ADLDocument getOwnerDocument() {
 		return (ADLDocument) super.getOwnerDocument();
-	}
-
-	public int compareTo(DiagramElement o) {
-		if (o instanceof IdentifiableDiagramElement) {
-			return getId().compareTo(((IdentifiableDiagramElement)o).getID());
-		} else if (o!=null) {
-			return this.toString().compareTo(o.toString());
-		} else {
-			return -1;
-		}
-	}
-
-	public BasicRenderingInformation getBasicRenderingInformation() {
-		BasicRenderingInformation ri = (BasicRenderingInformation) getProperty("renderingInformation");
-		if (ri == null) {
-			ri = (BasicRenderingInformation) ownerDocument.createElement("renderingInformation");
-			setRenderingInformation(ri);
-		}
-		
-		return ri;
-	}
-
-	public void setRenderingInformation(RenderingInformation ri) {
-		replaceProperty("renderingInformation", ri);
-	}
-
-	@Override
-	public int hashCode() {
-		String id = getId();
-		return id.hashCode();
 	}
 
 	public final String getID() {
