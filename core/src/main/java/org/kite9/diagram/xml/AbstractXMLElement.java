@@ -8,7 +8,7 @@ import org.apache.batik.css.engine.StyleMap;
 import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.AbstractElement;
 import org.apache.batik.util.ParsedURL;
-import org.kite9.diagram.style.DiagramElement;
+import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.style.DiagramElementFactory;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.kite9.framework.serialization.XMLHelper;
@@ -224,10 +224,15 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 	
 	public DiagramElement getDiagramElement() {
 		if (cachedDiagramElement == null) {
-			cachedDiagramElement = DiagramElementFactory.createDiagramElement(this);
+			cachedDiagramElement = DiagramElementFactory.createDiagramElement(this, getParentElement());
 		}
 		
 		return cachedDiagramElement;
+	}
+	
+	protected DiagramElement getParentElement() {
+		XMLElement p = (XMLElement) getParent();
+		return (p == null) ? null : p.getDiagramElement();
 	}
 	
 }

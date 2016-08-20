@@ -23,17 +23,9 @@ import org.apache.batik.dom.util.HashTable;
 import org.apache.batik.util.ParsedURL;
 import org.kite9.diagram.style.LayoutType;
 import org.kite9.diagram.xml.ADLDocument;
-import org.kite9.diagram.xml.Arrow;
-import org.kite9.diagram.xml.ContainerProperty;
-import org.kite9.diagram.xml.Context;
-import org.kite9.diagram.xml.Diagram;
+import org.kite9.diagram.xml.DiagramXMLElement;
 import org.kite9.diagram.xml.GenericXMLElement;
-import org.kite9.diagram.xml.Glyph;
-import org.kite9.diagram.xml.Key;
-import org.kite9.diagram.xml.Link;
 import org.kite9.diagram.xml.StylesheetReference;
-import org.kite9.diagram.xml.Symbol;
-import org.kite9.diagram.xml.TextLine;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -52,130 +44,130 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 	public ADLExtensibleDOMImplementation() {
 		super();
 		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "diagram", new ElementFactory() {
-			
+			 
 			public Element create(String prefix, Document doc) {
-				Diagram out = new Diagram();
+				DiagramXMLElement out = new DiagramXMLElement();
 				out.setOwnerDocument(doc);
 				return out;
 			}
 		});
 		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "glyph", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				Glyph g = new Glyph();
-				g.setOwnerDocument(doc);
-				return g;
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "label", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				TextLine g = new TextLine(null, "label", null, null, (ADLDocument) doc);
-				return g;
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "stereotype", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				TextLine g = new TextLine(null, "stereotype", null, null, (ADLDocument) doc);
-				return g;
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "boldText", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				TextLine g = new TextLine(null, "boldText", null, null, (ADLDocument) doc);
-				return g;
-			}
-		});
-
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "bodyText", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				TextLine g = new TextLine(null, "bodyText", null, null, (ADLDocument) doc);
-				return g;
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "symbols", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				return new ContainerProperty("symbols", (ADLDocument) doc);
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "text-lines", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				return new ContainerProperty("text-lines", (ADLDocument) doc);
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "allLinks", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				return new ContainerProperty("allLinks", (ADLDocument) doc);
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "text-line", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				TextLine out = new TextLine();
-				out.setOwnerDocument(doc);
-				return out;
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "symbol", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				Symbol out = new Symbol();
-				out.setOwnerDocument(doc);
-				return out;
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "arrow", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				Arrow out = new Arrow();
-				out.setOwnerDocument(doc);
-				return out;
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "context", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				Context out = new Context();
-				out.setOwnerDocument(doc);
-				return out;
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "link", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				Link out = new Link();
-				out.setOwnerDocument(doc);
-				return out;
-			}
-		});
-		
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "key", new ElementFactory() {
-			
-			public Element create(String prefix, Document doc) {
-				Key out = new Key();
-				out.setOwnerDocument(doc);
-				return out;
-			}
-		});
-		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "glyph", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				Glyph g = new Glyph();
+//				g.setOwnerDocument(doc);
+//				return g;
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "label", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				TextLine g = new TextLine(null, "label", null, null, (ADLDocument) doc);
+//				return g;
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "stereotype", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				TextLine g = new TextLine(null, "stereotype", null, null, (ADLDocument) doc);
+//				return g;
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "boldText", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				TextLine g = new TextLine(null, "boldText", null, null, (ADLDocument) doc);
+//				return g;
+//			}
+//		});
+//
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "bodyText", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				TextLine g = new TextLine(null, "bodyText", null, null, (ADLDocument) doc);
+//				return g;
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "symbols", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				return new ContainerProperty("symbols", (ADLDocument) doc);
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "text-lines", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				return new ContainerProperty("text-lines", (ADLDocument) doc);
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "allLinks", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				return new ContainerProperty("allLinks", (ADLDocument) doc);
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "text-line", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				TextLine out = new TextLine();
+//				out.setOwnerDocument(doc);
+//				return out;
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "symbol", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				Symbol out = new Symbol();
+//				out.setOwnerDocument(doc);
+//				return out;
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "arrow", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				Arrow out = new Arrow();
+//				out.setOwnerDocument(doc);
+//				return out;
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "context", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				Context out = new Context();
+//				out.setOwnerDocument(doc);
+//				return out;
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "link", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				Link out = new Link();
+//				out.setOwnerDocument(doc);
+//				return out;
+//			}
+//		});
+//		
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "key", new ElementFactory() {
+//			
+//			public Element create(String prefix, Document doc) {
+//				Key out = new Key();
+//				out.setOwnerDocument(doc);
+//				return out;
+//			}
+//		});
+//		
 //		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "fromDecoration", new ElementFactory() {
 //			
 //			public Element create(String prefix, Document doc) {
@@ -185,14 +177,14 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 //			}
 //		});
 
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "key", new ElementFactory() {
-	
-			public Element create(String prefix, Document doc) {
-				Key out = new Key();
-				out.setOwnerDocument(doc);
-				return out;
-			}
-		});
+//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "key", new ElementFactory() {
+//	
+//			public Element create(String prefix, Document doc) {
+//				Key out = new Key();
+//				out.setOwnerDocument(doc);
+//				return out;
+//			}
+//		});
 		
 		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "stylesheet", new ElementFactory() {
 			

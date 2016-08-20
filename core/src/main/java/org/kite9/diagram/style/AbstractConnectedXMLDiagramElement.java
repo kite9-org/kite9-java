@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.kite9.diagram.adl.Connection;
+import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.common.Connected;
+import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RectangleRenderingInformationImpl;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.xml.ADLDocument;
@@ -19,12 +21,12 @@ import org.kite9.diagram.xml.XMLElement;
  * @author robmoffat
  *
  */
-public class AbstractStyledConnectedXMLDiagramElement extends AbstractStyledXMLDiagramElement implements Connected {
-
-	public AbstractStyledConnectedXMLDiagramElement(StyledXMLElement el) {
-		super(el);
-	}
+public abstract class AbstractConnectedXMLDiagramElement extends AbstractXMLDiagramElement implements Connected {
 	
+	public AbstractConnectedXMLDiagramElement(StyledXMLElement el, DiagramElement parent) {
+		super(el, parent);
+	}
+
 	private transient Collection<Connection> links;
 
 	@Override
@@ -59,10 +61,10 @@ public class AbstractStyledConnectedXMLDiagramElement extends AbstractStyledXMLD
 		return getConnectionTo(c) != null;
 	}
 	
-	private RenderingInformation ri;
+	private RectangleRenderingInformation ri;
 	
 	@Override
-	public RenderingInformation getRenderingInformation() {
+	public RectangleRenderingInformation getRenderingInformation() {
 		if (ri == null) {
 			ri = new RectangleRenderingInformationImpl();
 		}
@@ -71,7 +73,7 @@ public class AbstractStyledConnectedXMLDiagramElement extends AbstractStyledXMLD
 	}
 
 	public void setRenderingInformation(RenderingInformation ri) {
-		this.ri = ri;
+		this.ri = (RectangleRenderingInformation) ri;
 	}
 
 

@@ -16,22 +16,22 @@ import org.apache.batik.util.CSSConstants;
 import org.apache.batik.util.SVGTypes;
 import org.junit.Assert;
 import org.junit.Test;
+import org.kite9.diagram.adl.Arrow;
 import org.kite9.diagram.adl.Connection;
-import org.kite9.diagram.adl.TextContainingDiagramElement;
+import org.kite9.diagram.adl.ContainerProperty;
+import org.kite9.diagram.adl.Context;
+import org.kite9.diagram.adl.Glyph;
+import org.kite9.diagram.adl.Key;
+import org.kite9.diagram.adl.Link;
+import org.kite9.diagram.adl.Symbol;
+import org.kite9.diagram.adl.Text;
+import org.kite9.diagram.adl.TextLine;
+import org.kite9.diagram.adl.Symbol.SymbolShape;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.xml.ADLDocument;
-import org.kite9.diagram.xml.Arrow;
-import org.kite9.diagram.xml.ContainerProperty;
-import org.kite9.diagram.xml.Context;
-import org.kite9.diagram.xml.Diagram;
-import org.kite9.diagram.xml.Glyph;
-import org.kite9.diagram.xml.Key;
-import org.kite9.diagram.xml.Link;
+import org.kite9.diagram.xml.DiagramXMLElement;
 import org.kite9.diagram.xml.StylesheetReference;
-import org.kite9.diagram.xml.Symbol;
-import org.kite9.diagram.xml.TextLine;
 import org.kite9.diagram.xml.XMLElement;
-import org.kite9.diagram.xml.Symbol.SymbolShape;
 import org.kite9.framework.common.RepositoryHelp;
 
 
@@ -46,7 +46,7 @@ public class Test4StyledDiagrams {
 		String instring = sw.toString();
 		
 		Object o = new XMLHelper().fromXML(instring);
-		Diagram d = (Diagram) o;
+		DiagramXMLElement d = (DiagramXMLElement) o;
 		String outstring = new XMLHelper().toXML(d);
 
 		Assert.assertEquals("bob", d.getCSSClass());

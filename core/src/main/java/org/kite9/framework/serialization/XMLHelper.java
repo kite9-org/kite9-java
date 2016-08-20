@@ -15,7 +15,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.apache.batik.dom.util.SAXDocumentFactory;
-import org.kite9.diagram.xml.Diagram;
+import org.kite9.diagram.xml.DiagramXMLElement;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.w3c.dom.Document;
 
@@ -62,7 +62,7 @@ public class XMLHelper {
 	public XMLHelper() {
 	}
 
-	public String toXML(Diagram d) {
+	public String toXML(DiagramXMLElement d) {
 		try {
 			 TransformerFactory transfac = TransformerFactory.newInstance();
 			 Transformer trans = transfac.newTransformer();
@@ -80,16 +80,16 @@ public class XMLHelper {
 		
 	}
 
-	public Diagram fromXML(String s)  {
+	public DiagramXMLElement fromXML(String s)  {
 		return fromXML(new StringReader(s));
 	}
 	
 
-	public Diagram fromXML(Reader s) {
+	public DiagramXMLElement fromXML(Reader s) {
 		try {
 			SAXDocumentFactory sdf = new SAXDocumentFactory(new ADLExtensibleDOMImplementation(), null);
 			Document d = sdf.createDocument(null, s);
-			Diagram d2 = (Diagram) d.getDocumentElement();
+			DiagramXMLElement d2 = (DiagramXMLElement) d.getDocumentElement();
 			return d2;		
 		} catch (IOException e) {
 			throw new Kite9ProcessingException("Couldn't parse xml: ", e);
@@ -97,7 +97,7 @@ public class XMLHelper {
 
 	}
 
-	public Diagram fromXML(InputStream s) {
+	public DiagramXMLElement fromXML(InputStream s) {
 		return fromXML(new InputStreamReader(s));
 	}
 

@@ -2,7 +2,7 @@ package org.kite9.diagram.position;
 
 import java.util.List;
 
-import org.kite9.diagram.style.DiagramElement;
+import org.kite9.diagram.adl.DiagramElement;
 import org.w3c.dom.Element;
 
 public abstract class AbstractRenderingInformationImpl implements RenderingInformation {

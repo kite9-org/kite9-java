@@ -6,8 +6,9 @@ import java.util.Iterator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.kite9.diagram.adl.Connection;
+import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.common.Connected;
-import org.kite9.diagram.xml.Diagram;
+import org.kite9.diagram.xml.DiagramXMLElement;
 import org.kite9.diagram.xml.XMLElement;
 
 /**
@@ -30,7 +31,7 @@ public class Test2LoadingNewXML {
 				"<link id='link'><from reference='one' /><to reference='two' /></link>"+
 				"<stylesheet href='"+u.toString()+"' /></diagram>";
 		
-		Diagram d = (Diagram) new XMLHelper().fromXML(theXML);
+		DiagramXMLElement d = (DiagramXMLElement) new XMLHelper().fromXML(theXML);
 		
 		Assert.assertEquals("My Diagram", d.getID());
 		Assert.assertTrue(d.getStylesheetReference().getHref().endsWith("styles2.css"));
@@ -44,12 +45,14 @@ public class Test2LoadingNewXML {
 		oneDe = (Connected) one.getDiagramElement();
 		twoDe = (Connected) two.getDiagramElement();
 		
-		Connection l = d.getAllLinks().iterator().next();
+		Diagram de = d.getDiagramElement();
+		
+		Connection l = de.getConnectionList().iterator().next();
 		Assert.assertEquals(oneDe, l.getFrom());
 		Assert.assertEquals(twoDe, l.getTo());
 		
 		Assert.assertEquals(l, oneDe.getLinks().iterator().next());
 		Assert.assertEquals(l, twoDe.getLinks().iterator().next());
-		
+	
 	}
 }

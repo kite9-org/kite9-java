@@ -1,6 +1,7 @@
 package org.kite9.diagram.style;
 
 import org.kite9.diagram.adl.Connection;
+import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.common.BiDirectional;
 import org.kite9.diagram.common.Connected;
@@ -9,15 +10,15 @@ import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.position.RouteRenderingInformation;
 import org.kite9.diagram.position.RouteRenderingInformationImpl;
 import org.kite9.diagram.xml.ADLDocument;
-import org.kite9.diagram.xml.LinkTerminator;
+import org.kite9.diagram.xml.LinkLineStyle;
 import org.kite9.diagram.xml.StyledXMLElement;
 import org.kite9.diagram.xml.XMLElement;
 import org.w3c.dom.Element;
 
-public class ConnectionDiagramElement extends AbstractStyledXMLDiagramElement implements Connection {
+public class ConnectionImpl extends AbstractXMLDiagramElement implements Connection {
 
-	public ConnectionDiagramElement(StyledXMLElement el) {
-		super(el);
+	public ConnectionImpl(StyledXMLElement el) {
+		super(el, null);
 		
 		XMLElement fromElement = getFromElement();
 		XMLElement toElement = getToElement();
@@ -114,13 +115,13 @@ public class ConnectionDiagramElement extends AbstractStyledXMLDiagramElement im
 	}
 
 	@Override
-	public LinkTerminator getFromDecoration() {
+	public DiagramElement getFromDecoration() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public LinkTerminator getToDecoration() {
+	public DiagramElement getToDecoration() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -150,6 +151,11 @@ public class ConnectionDiagramElement extends AbstractStyledXMLDiagramElement im
 
 	public void setRenderingInformation(RenderingInformation ri) {
 		this.ri = (RouteRenderingInformation) ri;
+	}
+
+	@Override
+	public String getStyle() {
+		return LinkLineStyle.NORMAL;
 	}
 	
 

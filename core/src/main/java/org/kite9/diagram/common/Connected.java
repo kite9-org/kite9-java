@@ -3,7 +3,8 @@ package org.kite9.diagram.common;
 import java.util.Collection;
 
 import org.kite9.diagram.adl.Connection;
-import org.kite9.diagram.adl.IdentifiableDiagramElement;
+import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.position.RectangleRenderingInformation;
 
 /**
  * A diagram element which has connections that link to other Connected items within the diagram.
@@ -11,7 +12,7 @@ import org.kite9.diagram.adl.IdentifiableDiagramElement;
  * @author robmoffat
  *
  */
-public interface Connected extends IdentifiableDiagramElement {
+public interface Connected extends DiagramElement {
 
 	/**
 	 * Returns an unmodifiable collection of links
@@ -38,4 +39,10 @@ public interface Connected extends IdentifiableDiagramElement {
 	 * Returns the connection between this object and c.
 	 */
 	Connection getConnectionTo(Connected c);
+	
+	/**
+	 * Overrides the main one, since all Connecteds are areas on the diagram rather than links.
+	 */
+	RectangleRenderingInformation getRenderingInformation();
 }
+

@@ -7,6 +7,6 @@ package org.kite9.diagram.adl;
  * @author robmoffat
  *
  */
-public interface Leaf extends IdentifiableDiagramElement {
+public interface Leaf extends DiagramElement {
 
 }

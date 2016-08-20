@@ -1,12 +1,13 @@
-package org.kite9.diagram.adl;
+package org.kite9.diagram.style;
 
 import java.io.Serializable;
 
+import org.kite9.diagram.adl.ContainerProperty;
+import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.adl.Label;
+import org.kite9.diagram.adl.Text;
 import org.kite9.diagram.position.RectangleRenderingInformation;
-import org.kite9.diagram.style.AbstractXMLDiagramElement;
-import org.kite9.diagram.style.DiagramElement;
 import org.kite9.diagram.xml.ADLDocument;
-import org.kite9.diagram.xml.ContainerProperty;
 
 /**
  * 
@@ -44,7 +45,7 @@ public abstract class AbstractLabel extends AbstractXMLDiagramElement implements
 		}
 	}
 	
-	public boolean hasContent(TextContainingDiagramElement s) {
+	public boolean hasContent(Text s) {
 		if (s!=null) {
 			return hasContent(s.getText());
 		} else {

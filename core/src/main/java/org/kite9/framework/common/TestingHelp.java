@@ -15,24 +15,21 @@ import java.util.TreeSet;
 import javax.imageio.ImageIO;
 
 import org.kite9.diagram.adl.Connection;
-import org.kite9.diagram.adl.IdentifiableDiagramElement;
-import org.kite9.diagram.adl.PositionableDiagramElement;
+import org.kite9.diagram.adl.Container;
+import org.kite9.diagram.adl.Diagram;
+import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.adl.Label;
+import org.kite9.diagram.adl.Leaf;
+import org.kite9.diagram.adl.Text;
 import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.position.Dimension2D;
 import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RenderingInformation;
 import org.kite9.diagram.position.RouteRenderingInformation;
-import org.kite9.diagram.style.DiagramElement;
 import org.kite9.diagram.visitors.DiagramElementVisitor;
 import org.kite9.diagram.visitors.VisitorAction;
-import org.kite9.diagram.xml.Arrow;
-import org.kite9.diagram.xml.Context;
-import org.kite9.diagram.xml.Diagram;
-import org.kite9.diagram.xml.Glyph;
-import org.kite9.diagram.xml.Key;
-import org.kite9.diagram.xml.Link;
-import org.kite9.diagram.xml.TextLine;
+import org.kite9.diagram.xml.DiagramXMLElement;
 import org.kite9.framework.logging.LogicException;
 import org.kite9.framework.logging.Table;
 
@@ -131,18 +128,18 @@ public class TestingHelp {
 	/**
 	 * Produces a report containing all the elements of the diagram
 	 */
-	public String getPositionalInformationADL(Diagram d) {
+	public String getPositionalInformationADL(DiagramXMLElement d) {
 		StringBuffer details = new StringBuffer();
 		Rowify cr = getIdentifiableRowify();
 		Rowify lr = getLinkRowify();
 
-		getPositions(d, details, Arrow.class, cr);
-		getPositions(d, details, Context.class, cr);
-		getPositions(d, details, Glyph.class, cr);
+		getPositions(d, details, Text.class, cr);
+		getPositions(d, details, Container.class, cr);
+		getPositions(d, details, Connected.class, cr);
 		getPositions(d, details, Diagram.class, cr);
-		getPositions(d, details, Link.class, lr);
-		getPositions(d, details, TextLine.class, cr);
-		getPositions(d, details, Key.class, cr);
+		getPositions(d, details, Label.class, lr);
+		getPositions(d, details, Leaf.class, cr);
+		getPositions(d, details, Connection.class, cr);
 		return details.toString();
 	}
 
@@ -233,8 +230,8 @@ public class TestingHelp {
 			    if (o instanceof DiagramElement ) {
 			    	int connections = (o instanceof Connected) ? ((Connected)o).getLinks().size() : 0;
 			    
-			    	String id = (o instanceof IdentifiableDiagramElement) ? ((IdentifiableDiagramElement)o).getID() : o.toString().replace("\n", "");
-			    	RenderingInformation ri = ((PositionableDiagramElement)o).getRenderingInformation();
+			    	String id = ((DiagramElement) o).getID();
+			    	RenderingInformation ri = ((DiagramElement)o).getRenderingInformation();
 			    	if (ri instanceof RectangleRenderingInformation) {
 			    		RectangleRenderingInformation rri = (RectangleRenderingInformation) ri;
 			    		double width = rri.getSize().getWidth();
@@ -262,10 +259,10 @@ public class TestingHelp {
 		};
 	}
 	
-	private <X extends DiagramElement> void getPositions(Diagram d, StringBuffer details, final Class<X> class1,
+	private <X extends DiagramElement> void getPositions(DiagramXMLElement d, StringBuffer details, final Class<X> class1,
 			Rowify r) {
 		final SortedSet<X> items = new TreeSet<X>();
-		new DiagramElementVisitor().visit(d, new VisitorAction() {
+		new DiagramElementVisitor().visit(d.getDiagramElement(), new VisitorAction() {
 
 			@SuppressWarnings("unchecked")
 			public void visit(DiagramElement de) {

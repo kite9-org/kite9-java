@@ -1,6 +1,6 @@
 package org.kite9.diagram.xml;
 
-import org.kite9.diagram.style.DiagramElement;
+import org.kite9.diagram.adl.DiagramElement;
 import org.w3c.dom.Element;
 
 public interface XMLElement extends Element, Iterable<XMLElement> {
