@@ -1,6 +1,20 @@
 package org.kite9.diagram.position;
 
 public class RectangleRenderingInformationImpl extends AbstractRenderingInformationImpl implements RectangleRenderingInformation {
+	
+	public RectangleRenderingInformationImpl() {
+		super();
+	}
+	
+	public RectangleRenderingInformationImpl(Dimension2D pos, Dimension2D size, HPos hj, VPos vj, boolean rendered) {
+		setPosition(pos);
+		setSize(size);
+		setHorizontalJustification(hj);
+		setVerticalJustification(vj);
+		setRendered(rendered);
+	}
+
+	public
 
 	boolean multipleHorizontalLinks;
 	boolean multipleVerticalLinks;

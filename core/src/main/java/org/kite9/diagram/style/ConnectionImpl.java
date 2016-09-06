@@ -3,6 +3,7 @@ package org.kite9.diagram.style;
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Label;
+import org.kite9.diagram.adl.LinkTerminator;
 import org.kite9.diagram.common.BiDirectional;
 import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.position.Direction;
@@ -115,13 +116,13 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	}
 
 	@Override
-	public DiagramElement getFromDecoration() {
+	public LinkTerminator getFromDecoration() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public DiagramElement getToDecoration() {
+	public LinkTerminator getToDecoration() {
 		// TODO Auto-generated method stub
 		return null;
 	}

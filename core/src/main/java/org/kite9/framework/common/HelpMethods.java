@@ -5,12 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.kite9.diagram.style.DiagramElementFactory;
 import org.kite9.diagram.xml.XMLElement;
 
 public class HelpMethods {
 
-    public static <X extends XMLElement> List<X> createList(X... d1) {
+    public static <X> List<X> createList(X... d1) {
     	ArrayList<X> out = new ArrayList<X>();
     	for (X x : d1) {
     		out.add(x);

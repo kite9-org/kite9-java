@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import org.apache.batik.css.engine.value.Value;
 import org.kite9.diagram.adl.DiagramElement;
-import org.kite9.diagram.adl.HintMap;
 import org.kite9.diagram.xml.StyledXMLElement;
 
 /**
@@ -13,54 +12,33 @@ import org.kite9.diagram.xml.StyledXMLElement;
  * @author robmoffat
  *
  */
-public abstract class AbstractXMLDiagramElement implements DiagramElement, Serializable {
+public abstract class AbstractXMLDiagramElement extends AbstractDiagramElement implements DiagramElement, Serializable {
 	
 	protected StyledXMLElement theElement;
-	private DiagramElement parent;
 	
+	@Deprecated
+	public StyledXMLElement getTheElement() {
+		return theElement;
+	}
+
 	public AbstractXMLDiagramElement(StyledXMLElement el, DiagramElement parent) {
+		super(parent);
 		this.theElement = el;
-		this.parent = parent;
-	}
-
-	public int compareTo(DiagramElement o) {
-		return getID().compareTo(o.getID());
-	}
-	
-	@Override
-	public int hashCode() {
-		String id = getID();
-		return id.hashCode();
-	}
-
-	protected HintMap hints;
-
-
-	public HintMap getPositioningHints() {
-		return hints;
-	}
-
-	public void setPositioningHints(HintMap hints) {
-		this.hints = hints;
-	}
-	
-	@Override
-	public String getID() {
-		return theElement.getID();
-	}
-	
-	public String getShapeName() {
-		return theElement.getAttribute("shape");
 	}
 
 	@Override
 	public Value getCSSStyleProperty(String prop) {
 		return theElement.getCSSStyleProperty(prop);
 	}
-
+	
 	@Override
-	public DiagramElement getParent() {
-		return parent;
+	public String getID() {
+		return theElement.getID();
 	}
+
+	public String getShapeName() {
+		return theElement.getAttribute("shape");
+	}
+
 	
 }

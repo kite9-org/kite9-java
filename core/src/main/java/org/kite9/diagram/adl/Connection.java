@@ -13,12 +13,12 @@ public interface Connection extends DiagramElement, BiDirectional<Connected> {
 	/**
 	 * The shape of the end of the edge at the from end
 	 */
-	public DiagramElement getFromDecoration();
+	public LinkTerminator getFromDecoration();
 	
 	/**
 	 * The shape of the end of the edge at the to end
 	 */
-	public DiagramElement getToDecoration();
+	public LinkTerminator getToDecoration();
 	
 	/**
 	 * The text written on the from end

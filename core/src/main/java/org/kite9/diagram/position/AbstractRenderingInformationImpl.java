@@ -2,14 +2,9 @@ package org.kite9.diagram.position;
 
 import java.util.List;
 
-import org.kite9.diagram.adl.DiagramElement;
 import org.w3c.dom.Element;
 
 public abstract class AbstractRenderingInformationImpl implements RenderingInformation {
-
-	public int compareTo(DiagramElement o) {
-		return 0;
-	}
 	
 	private List<Element> displayData;
 	private boolean rendered;

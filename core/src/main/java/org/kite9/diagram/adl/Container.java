@@ -3,6 +3,7 @@ package org.kite9.diagram.adl;
 import java.util.List;
 
 import org.kite9.diagram.position.Layout;
+import org.kite9.diagram.position.RectangleRenderingInformation;
 
 
 /**
@@ -31,4 +32,6 @@ public interface Container extends DiagramElement {
 
 	@Deprecated
 	public boolean isBordered();
+	
+	public RectangleRenderingInformation getRenderingInformation();
 }
