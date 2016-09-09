@@ -19,22 +19,31 @@ public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements
 	
 	@Override
 	public List<DiagramElement> getContents() {
+		ensureInitialized();
 		return contents;
 	}
 	
-	public ContainerImpl(StyledXMLElement el, DiagramElement parent) {
-		super(el, parent);
-
-		for (XMLElement xmlElement : el) {
+	@Override
+	protected void initialize() {
+		for (XMLElement xmlElement : theElement) {
 			DiagramElement de = xmlElement.getDiagramElement();			
 			if (de instanceof Label) {
 				label = (Label) de;
 			} else if (de instanceof Connection) {
 				handleConnection((Connection) de);
-			} else {
+			} else if (de != null) { 
 				contents.add(de);
 			} 
 		}
+
+		super.initialize();
+	}
+
+
+
+
+	public ContainerImpl(StyledXMLElement el, DiagramElement parent) {
+		super(el, parent);
 	}
 
 	protected void handleConnection(Connection c) {
@@ -48,6 +57,7 @@ public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements
 
 	@Override
 	public Label getLabel() {
+		ensureInitialized();
 		return label;
 	}
 

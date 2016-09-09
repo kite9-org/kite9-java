@@ -41,5 +41,13 @@ public interface DiagramElement extends Comparable<DiagramElement> {
 	
 	@Deprecated
 	public String getShapeName();
+	
+	/**
+	 * This method returns the container.  Since in the future, not all `Connected` objects will be immediately 
+	 * in containers, we should have this deprecated.
+	 * @return
+	 */
+	@Deprecated
+	Container getContainer();
 
 }

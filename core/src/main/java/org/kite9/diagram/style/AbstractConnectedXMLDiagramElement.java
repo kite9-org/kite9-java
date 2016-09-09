@@ -13,7 +13,6 @@ import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.StyledXMLElement;
 import org.kite9.diagram.xml.XMLElement;
 
-
 /**
  * Handles DiagramElements which are also Connnected.
  * 
@@ -26,29 +25,41 @@ public abstract class AbstractConnectedXMLDiagramElement extends AbstractXMLDiag
 	public AbstractConnectedXMLDiagramElement(StyledXMLElement el, DiagramElement parent) {
 		super(el, parent);
 	}
+	
+	protected void ensureInitialized() {
+		if (!initialized) {
+			initialize();
+			this.initialized = true;
+		}
+	}
 
+	/**
+	 * Call this method prior to using the functionality, so that we can ensure 
+	 * all the members are set up correctly.
+	 */
+	protected void initialize() {
+		ADLDocument doc = theElement.getOwnerDocument();
+		Collection<XMLElement> references = doc.getReferences(theElement.getID());
+		links = new ArrayList<>(references.size());
+		for (XMLElement xmlElement : references) {
+			DiagramElement de = xmlElement.getDiagramElement();
+			if (de instanceof Connection) {
+				links.add((Connection) de);
+			}
+		}
+	}
+
+	private boolean initialized = false;
 	private transient Collection<Connection> links;
 
 	@Override
 	public Collection<Connection> getLinks() {
-		if (links == null) {
-			ADLDocument doc = theElement.getOwnerDocument();
-			Collection<XMLElement> references = doc.getReferences(theElement.getID());
-			links = new ArrayList<>(references.size());
-			for (XMLElement xmlElement : references) {
-				DiagramElement de = xmlElement.getDiagramElement();
-				if (de instanceof Connection) {
-					links.add((Connection) de);
-				}
-			}
-		} 
-		
+		ensureInitialized();
 		return links;
 	}
-	
 
 	public Connection getConnectionTo(Connected c) {
-		for (Connection link : links) {
+		for (Connection link : getLinks()) {
 			if (link.meets(c)) {
 				return link;
 			}
@@ -75,6 +86,5 @@ public abstract class AbstractConnectedXMLDiagramElement extends AbstractXMLDiag
 	public void setRenderingInformation(RenderingInformation ri) {
 		this.ri = (RectangleRenderingInformation) ri;
 	}
-
 
 }

@@ -35,4 +35,9 @@ public interface Connection extends DiagramElement, BiDirectional<Connected> {
 	
 	@Deprecated
 	public String getStyle();
+	
+	/**
+	 * Returns the rank of the connection from the ordering of all the connections on the diagram.
+	 */
+	public int getRank();
 }

@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.kite9.diagram.adl.Connection;
-import org.kite9.diagram.adl.Contained;
 import org.kite9.diagram.adl.Container;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.common.Connected;
@@ -47,7 +46,7 @@ public class DiagramElementVisitor {
 		if (c==null)
 			return;
 		
-		for (Contained d : c.getContents()) {
+		for (DiagramElement d : c.getContents()) {
 			push(d, visited, va);
 		}
 		
@@ -57,7 +56,7 @@ public class DiagramElementVisitor {
 		
 		if (c instanceof Connected) {
 		    for (Connection con : ((Connected)c).getLinks()) {
-			push(con, visited, va);
+		    	push(con, visited, va);
 		    }    
 		}
 		

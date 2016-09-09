@@ -25,7 +25,6 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 	 */
 	public static ADLDocument TESTING_DOCUMENT = new ADLDocument();
 	protected String tagName;
-	protected Object parent;
 	boolean readonly = false;
 	private static int counter = 0;
 
@@ -144,14 +143,14 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 			getOwnerDocument().addReference(value, this);
 		}
 	}
-
-	public Object getParent() {
-		return parent;
-	}
-
-	public void setParent(Object parent) {
-		this.parent = parent;
-	}
+//
+//	public Object getParent() {
+//		return parent;
+//	}
+//
+//	public void setParent(Object parent) {
+//		this.parent = parent;
+//	}
 
 	public void setOwnerDocument(ADLDocument doc) {
 		this.ownerDocument = doc;
@@ -220,7 +219,7 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 		return out;
 	}
 	
-	private DiagramElement cachedDiagramElement;
+	protected DiagramElement cachedDiagramElement;
 	
 	public DiagramElement getDiagramElement() {
 		if (cachedDiagramElement == null) {
@@ -231,8 +230,13 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 	}
 	
 	protected DiagramElement getParentElement() {
-		XMLElement p = (XMLElement) getParent();
-		return (p == null) ? null : p.getDiagramElement();
+		Node n = getParentNode();
+		if (n instanceof XMLElement) {
+			XMLElement p = (XMLElement) n;
+			return (p == null) ? null : p.getDiagramElement();
+		} else {
+			return null;
+		}
 	}
 	
 }

@@ -1,12 +1,5 @@
 package org.kite9.diagram.position;
 
-import org.kite9.diagram.adl.DiagramElement;
-import org.kite9.diagram.xml.ADLDocument;
-import org.kite9.diagram.xml.AbstractStyleableXMLElement;
-import org.kite9.diagram.xml.AbstractXMLElement;
-import org.kite9.framework.common.Kite9ProcessingException;
-import org.w3c.dom.Node;
-
 /**
  * This is compatible with the awt dimension class, which is used for a
  * lot of rendering.  
@@ -111,13 +104,12 @@ public class Dimension2D {
 	public double y() { 
 		return y;
 	}
+
+	public static Dimension2D setX(Dimension2D in, double x) {
+		return new Dimension2D(x, in == null ? 0 : in.y);
+	}
 	
-	public Dimension2D setX(double x) {
-		return new Dimension2D(x, this.y);
+	public static Dimension2D setY(Dimension2D in, double y) {
+		return new Dimension2D(in == null ? 0 : in.x, y);
 	}
-
-	public Dimension2D setY(double y) {
-		return new Dimension2D(this.x, y);
-	}
-
 }

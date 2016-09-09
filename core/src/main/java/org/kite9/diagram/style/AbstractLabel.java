@@ -2,7 +2,6 @@ package org.kite9.diagram.style;
 
 import java.io.Serializable;
 
-import org.kite9.diagram.adl.ContainerProperty;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.adl.Text;
