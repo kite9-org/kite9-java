@@ -26,13 +26,6 @@ public abstract class AbstractConnectedXMLDiagramElement extends AbstractXMLDiag
 		super(el, parent);
 	}
 	
-	protected void ensureInitialized() {
-		if (!initialized) {
-			initialize();
-			this.initialized = true;
-		}
-	}
-
 	/**
 	 * Call this method prior to using the functionality, so that we can ensure 
 	 * all the members are set up correctly.
@@ -49,7 +42,6 @@ public abstract class AbstractConnectedXMLDiagramElement extends AbstractXMLDiag
 		}
 	}
 
-	private boolean initialized = false;
 	private transient Collection<Connection> links;
 
 	@Override

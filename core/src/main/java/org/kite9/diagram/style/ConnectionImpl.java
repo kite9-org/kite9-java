@@ -20,6 +20,7 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 
 	public ConnectionImpl(StyledXMLElement el) {
 		super(el, null);
+		System.out.println("Creating for "+el.getID());
 		
 		XMLElement fromElement = getFromElement();
 		XMLElement toElement = getToElement();
@@ -27,7 +28,13 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 		ADLDocument owner = theElement.getOwnerDocument();
 		owner.addReference(fromElement.getID(), el);
 		owner.addReference(toElement.getID(), el);
-		
+	}
+	
+
+	@Override
+	protected void initialize() {
+		XMLElement fromElement = getFromElement();
+		XMLElement toElement = getToElement();
 		from = (Connected) fromElement.getDiagramElement();
 		to = (Connected) toElement.getDiagramElement();
 	}
@@ -53,11 +60,13 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 
 	@Override
 	public Connected getFrom() {
+		ensureInitialized();
 		return from;
 	}
 
 	@Override
 	public Connected getTo() {
+		ensureInitialized();
 		return to;
 	}
 
@@ -158,6 +167,11 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	public String getStyle() {
 		return LinkLineStyle.NORMAL;
 	}
-	
+
+	@Override
+	public int getRank() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

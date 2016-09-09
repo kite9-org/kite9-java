@@ -1,9 +1,9 @@
 package org.kite9.diagram.xml;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 import org.apache.batik.anim.dom.SVGOMDocument;
@@ -163,7 +163,7 @@ public class ADLDocument extends SVGOMDocument {
 	public void addReference(String fromId, XMLElement to) {
 		Collection<XMLElement> c = references.get(fromId);
 		if (c == null) {
-			c = new ArrayList<>(3);
+			c = new LinkedHashSet<>();
 			references.put(fromId, c);
 		}
 		

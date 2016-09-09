@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 public abstract class AbstractRenderingInformationImpl implements RenderingInformation {
 	
 	private List<Element> displayData;
-	private boolean rendered;
+	private boolean rendered = true;
 	private Dimension2D position;
 	private Dimension2D size;
 	private Dimension2D internalSize;

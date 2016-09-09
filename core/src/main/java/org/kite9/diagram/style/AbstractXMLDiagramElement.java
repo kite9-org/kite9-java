@@ -16,6 +16,18 @@ public abstract class AbstractXMLDiagramElement extends AbstractDiagramElement i
 	
 	protected StyledXMLElement theElement;
 	
+	private boolean initialized = false;
+
+	protected abstract void initialize();
+	
+	protected void ensureInitialized() {
+		if (!initialized) {
+			initialize();
+			this.initialized = true;
+		}
+	}
+
+	
 	@Deprecated
 	public StyledXMLElement getTheElement() {
 		return theElement;
