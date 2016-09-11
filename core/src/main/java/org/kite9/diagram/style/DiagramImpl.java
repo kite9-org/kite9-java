@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Diagram;
+import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.StyledXMLElement;
+import org.kite9.diagram.xml.XMLElement;
 
 public class DiagramImpl extends ContainerImpl implements Diagram {
 
@@ -18,14 +20,14 @@ public class DiagramImpl extends ContainerImpl implements Diagram {
 
 	@Override
 	public List<Connection> getConnectionList() {
-		return connections;
-	}
-
-	protected void handleConnection(Connection c) {
 		if (connections == null) {
-			connections = new ArrayList<>(100);
+			ADLDocument doc = theElement.getOwnerDocument();
+			connections = new ArrayList<>(doc.getConnectionElements().size());
+			for (XMLElement xmlElement : theElement) {
+				connections.add((Connection) xmlElement.getDiagramElement());
+			}
 		}
-		connections.add(c);
+		return connections;
 	}
 
 }

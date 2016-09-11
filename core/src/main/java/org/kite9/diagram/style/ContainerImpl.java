@@ -30,7 +30,6 @@ public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements
 			if (de instanceof Label) {
 				label = (Label) de;
 			} else if (de instanceof Connection) {
-				handleConnection((Connection) de);
 			} else if (de != null) { 
 				contents.add(de);
 			} 
@@ -44,10 +43,6 @@ public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements
 
 	public ContainerImpl(StyledXMLElement el, DiagramElement parent) {
 		super(el, parent);
-	}
-
-	protected void handleConnection(Connection c) {
-		throw new Kite9ProcessingException("Containers shouldn't have embedded connections");
 	}
 
 	@Override

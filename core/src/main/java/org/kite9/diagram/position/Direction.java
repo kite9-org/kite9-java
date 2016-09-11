@@ -30,4 +30,12 @@ public enum Direction {
 		ord = (ord) % 4;
 		return Direction.values()[ord];
 	}
+	
+	public static Direction getDirection(String s) {
+		if ((s==null) || (s.trim().length() == 0)) {
+			return null;
+		} else {
+			return Direction.valueOf(s);
+		}
+	}
 }

@@ -1,7 +1,6 @@
 package org.kite9.diagram.style;
 
 import org.kite9.diagram.adl.Connection;
-import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.adl.LinkTerminator;
 import org.kite9.diagram.common.BiDirectional;
@@ -14,31 +13,33 @@ import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.LinkLineStyle;
 import org.kite9.diagram.xml.StyledXMLElement;
 import org.kite9.diagram.xml.XMLElement;
+import org.kite9.framework.common.Kite9ProcessingException;
 import org.w3c.dom.Element;
 
 public class ConnectionImpl extends AbstractXMLDiagramElement implements Connection {
 
 	public ConnectionImpl(StyledXMLElement el) {
 		super(el, null);
-		System.out.println("Creating for "+el.getID());
+	}
+	
+	
+	@Override
+	protected void initialize() {
+		System.out.println("Creating for "+theElement.getID());
 		
 		XMLElement fromElement = getFromElement();
 		XMLElement toElement = getToElement();
 
 		ADLDocument owner = theElement.getOwnerDocument();
-		owner.addReference(fromElement.getID(), el);
-		owner.addReference(toElement.getID(), el);
-	}
-	
-
-	@Override
-	protected void initialize() {
-		XMLElement fromElement = getFromElement();
-		XMLElement toElement = getToElement();
+		owner.addConnectionReference(fromElement.getID(), theElement);
+		owner.addConnectionReference(toElement.getID(), theElement);
+		
 		from = (Connected) fromElement.getDiagramElement();
 		to = (Connected) toElement.getDiagramElement();
+		drawDirection = Direction.getDirection(theElement.getAttribute("direction"));
 	}
-	
+
+
 	private XMLElement getFromElement() {
 		Element fromEl = theElement.getProperty("from");
 		String reference = fromEl.getAttribute("reference");
@@ -57,6 +58,7 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	
 	private Connected from;
 	private Connected to;
+	private Direction drawDirection;
 
 	@Override
 	public Connected getFrom() {
@@ -84,44 +86,47 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 
 	@Override
 	public Connected otherEnd(Connected end) {
-		// TODO Auto-generated method stub
-		return null;
+		if (end == getFrom()) {
+			return getTo();
+		} else if (end == getTo()) {
+			return getFrom();
+		} else {
+			throw new Kite9ProcessingException("otherEnd of neither from or to "+this+" "+end);
+		}
 	}
 
 	@Override
 	public boolean meets(BiDirectional<Connected> e) {
-		// TODO Auto-generated method stub
-		return false;
+		return meets(e.getFrom()) || meets(e.getTo());
 	}
 
 	@Override
 	public boolean meets(Connected v) {
-		// TODO Auto-generated method stub
-		return false;
+		return (getFrom()==v) || (getTo()==v);
 	}
 
 	@Override
 	public Direction getDrawDirection() {
-		// TODO Auto-generated method stub
-		return null;
+		return drawDirection;
 	}
 
 	@Override
 	public Direction getDrawDirectionFrom(Connected from) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setDrawDirection(Direction d) {
-		// TODO Auto-generated method stub
-		
+		if (getFrom() == from) {
+			return getDrawDirection();
+		} else {
+			return Direction.reverse(getDrawDirection());
+		}
 	}
 
 	@Override
 	public void setDrawDirectionFrom(Direction d, Connected from) {
-		// TODO Auto-generated method stub
-		
+		throw new Kite9ProcessingException("Should be immutable");
+	}
+	
+	@Override
+	public void setDrawDirection(Direction d) {
+		throw new Kite9ProcessingException("Should be immutable");
 	}
 
 	@Override

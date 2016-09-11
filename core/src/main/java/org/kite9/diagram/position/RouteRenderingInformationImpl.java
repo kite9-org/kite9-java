@@ -1,12 +1,13 @@
 package org.kite9.diagram.position;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class RouteRenderingInformationImpl extends AbstractRenderingInformationImpl implements RouteRenderingInformation {
 
-	private List<Dimension2D> routePositions;
-	private List<Boolean> hops;
+	private List<Dimension2D> routePositions = new ArrayList<Dimension2D>();
+	private List<Boolean> hops = new ArrayList<>();
 	private boolean contradicting;
 	
 	public List<Dimension2D> getRoutePositions() {
@@ -19,7 +20,7 @@ public class RouteRenderingInformationImpl extends AbstractRenderingInformationI
 	
 
 	public boolean isHop(int pos) {
-		return hops.get(pos);
+		return pos >= hops.size() ? false : hops.get(pos);
 	}
 
 	public void setHop(int pos) {
@@ -70,5 +71,32 @@ public class RouteRenderingInformationImpl extends AbstractRenderingInformationI
 	public void setContradicting(boolean b) {
 		this.contradicting = b;
 	}
+	
+	private void ensureSizeAndPosition() {
+		double minx = Double.MAX_VALUE, maxx= 0 , miny = Double.MAX_VALUE, maxy =0;;
+		for (Dimension2D d : routePositions) {
+			minx = Math.min(d.x(), minx);
+			miny = Math.min(d.y(), miny);
+			maxx = Math.max(d.x(), maxx);
+			maxy = Math.max(d.y(), maxy);
+		}
+		
+		this.setPosition(new Dimension2D(minx, miny));
+		this.setSize(new Dimension2D(maxx - minx, maxy -miny));
+	}
+
+	@Override
+	public Dimension2D getPosition() {
+		ensureSizeAndPosition();
+		return super.getPosition();
+	}
+
+	@Override
+	public Dimension2D getSize() {
+		ensureSizeAndPosition();
+		return super.getSize();
+	}
+	
+	
 
 }

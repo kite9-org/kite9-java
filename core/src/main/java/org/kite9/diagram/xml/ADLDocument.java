@@ -4,12 +4,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.css.engine.CSSEngine;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.util.XMLConstants;
+import org.kite9.diagram.adl.Connection;
 import org.kite9.framework.serialization.ADLExtensibleDOMImplementation;
 import org.kite9.framework.serialization.XMLHelper;
 import org.w3c.dom.Attr;
@@ -154,13 +157,14 @@ public class ADLDocument extends SVGOMDocument {
 	}
 
 	private transient Map<String, Collection<XMLElement>> references = new HashMap<>();
+	private transient Set<XMLElement> allConnections = new LinkedHashSet<>();
 	
 	public Collection<XMLElement> getReferences(String id) {
 		Collection<XMLElement> collection = references.get(id);
 		return collection == null ? Collections.emptySet() : collection;
 	}
 
-	public void addReference(String fromId, XMLElement to) {
+	public void addConnectionReference(String fromId, XMLElement to) {
 		Collection<XMLElement> c = references.get(fromId);
 		if (c == null) {
 			c = new LinkedHashSet<>();
@@ -170,6 +174,12 @@ public class ADLDocument extends SVGOMDocument {
 		if (!c.contains(fromId)) {
 			c.add(to);
 		}
+		
+		allConnections.add(to);
+	}
+
+	public Set<XMLElement> getConnectionElements() {
+		return allConnections;
 	}
 
 }
