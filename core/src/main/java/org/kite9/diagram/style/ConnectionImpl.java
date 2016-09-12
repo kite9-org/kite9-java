@@ -2,7 +2,7 @@ package org.kite9.diagram.style;
 
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Label;
-import org.kite9.diagram.adl.LinkTerminator;
+import org.kite9.diagram.adl.Terminator;
 import org.kite9.diagram.common.BiDirectional;
 import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.position.Direction;
@@ -37,6 +37,21 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 		from = (Connected) fromElement.getDiagramElement();
 		to = (Connected) toElement.getDiagramElement();
 		drawDirection = Direction.getDirection(theElement.getAttribute("direction"));
+		
+		XMLElement fromDecorationEl = theElement.getProperty("fromDecoration");
+		this.fromDecoration = getTerminator(fromDecorationEl);
+		
+		XMLElement toDecorationEl = theElement.getProperty("toDecoration");
+		this.toDecoration = getTerminator(toDecorationEl);
+	}
+
+
+	private Terminator getTerminator(XMLElement el) {
+		if (el == null) {
+			el = (XMLElement) theElement.getOwnerDocument().createElement("terminator");
+			theElement.appendChild(el);
+		}
+		return (Terminator) el.getDiagramElement();
 	}
 
 
@@ -59,6 +74,9 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	private Connected from;
 	private Connected to;
 	private Direction drawDirection;
+	private Terminator fromDecoration;
+	private Terminator toDecoration;
+	
 
 	@Override
 	public Connected getFrom() {
@@ -130,15 +148,15 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	}
 
 	@Override
-	public LinkTerminator getFromDecoration() {
-		// TODO Auto-generated method stub
-		return null;
+	public Terminator getFromDecoration() {
+		ensureInitialized();
+		return fromDecoration;
 	}
 
 	@Override
-	public LinkTerminator getToDecoration() {
-		// TODO Auto-generated method stub
-		return null;
+	public Terminator getToDecoration() {
+		ensureInitialized();
+		return toDecoration;
 	}
 
 	@Override

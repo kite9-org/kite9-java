@@ -10,7 +10,6 @@ import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.xml.StyledXMLElement;
 import org.kite9.diagram.xml.XMLElement;
-import org.kite9.framework.common.Kite9ProcessingException;
 
 public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements Container {
 	

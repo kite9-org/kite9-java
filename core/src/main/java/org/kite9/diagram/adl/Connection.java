@@ -13,12 +13,12 @@ public interface Connection extends DiagramElement, BiDirectional<Connected> {
 	/**
 	 * The shape of the end of the edge at the from end
 	 */
-	public LinkTerminator getFromDecoration();
+	public org.kite9.diagram.adl.Terminator getFromDecoration();
 	
 	/**
 	 * The shape of the end of the edge at the to end
 	 */
-	public LinkTerminator getToDecoration();
+	public org.kite9.diagram.adl.Terminator getToDecoration();
 	
 	/**
 	 * The text written on the from end

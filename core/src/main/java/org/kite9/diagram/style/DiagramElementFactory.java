@@ -29,6 +29,8 @@ public class DiagramElementFactory {
 				return new ConnectionImpl(in2);
 			case LINK_END:
 				return ((XMLElement) in.getParentNode()).getDiagramElement();
+			case TERMINATOR:
+				return new TerminatorImpl(in2, parent);
 			case COMPOSED:
 			case UNSPECIFIED:
 			case NONE:
