@@ -14,7 +14,11 @@ public class TextImpl extends AbstractConnectedXMLDiagramElement implements Leaf
 
 	@Override
 	public String getText() {
-		return theElement.getTextContent();
+		// to support old xml format.
+		String label = theElement.getAttribute("label");
+		String stereotype = theElement.getAttribute("stereotype");
+		
+		return label+stereotype+theElement.getTextContent();
 	}
 
 }
