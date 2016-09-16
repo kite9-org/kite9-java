@@ -1,33 +1,46 @@
 package org.kite9.diagram.style;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
 
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Diagram;
-import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.StyledXMLElement;
-import org.kite9.diagram.xml.XMLElement;
 
+/**
+ * This contains extra code relating to the Diagram itself, specifically, managing 
+ * the two-way referencing of links between diagram element.
+ * 
+ * @author robmoffat
+ *
+ */
 public class DiagramImpl extends ContainerImpl implements Diagram {
-
-	private List<Connection> connections;
 
 	public DiagramImpl(StyledXMLElement el) {
 		super(el, null);
 	}
 	
+	private transient Map<String, Collection<Connection>> references = new HashMap<>();
+	
+
+	protected void addConnectionReference(Connection c) {
+		String fromId = c.getFrom().getID();
+		String toId = c.getTo().getID();
+		getConnectionsFor(fromId).add(c);
+		getConnectionsFor(toId).add(c);
+	}
 
 	@Override
-	public List<Connection> getConnectionList() {
-		if (connections == null) {
-			ADLDocument doc = theElement.getOwnerDocument();
-			connections = new ArrayList<>(doc.getConnectionElements().size());
-			for (XMLElement xmlElement : theElement) {
-				connections.add((Connection) xmlElement.getDiagramElement());
-			}
+	public Collection<Connection> getConnectionsFor(String id) {
+		Collection<Connection> c = references.get(id);
+		if (c == null) {
+			c = new LinkedHashSet<>();
+			references.put(id, c);
 		}
-		return connections;
+		
+		return c;
 	}
 
 }

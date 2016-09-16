@@ -1,14 +1,12 @@
 package org.kite9.diagram.style;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.kite9.diagram.adl.Connection;
+import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.common.Connected;
-import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.StyledXMLElement;
-import org.kite9.diagram.xml.XMLElement;
 
 /**
  * Handles DiagramElements which are also Connnected.
@@ -28,18 +26,11 @@ public abstract class AbstractConnectedXMLDiagramElement extends AbstractRectang
 	 * all the members are set up correctly.
 	 */
 	protected void initialize() {
-		ADLDocument doc = theElement.getOwnerDocument();
-		Collection<XMLElement> references = doc.getReferences(theElement.getID());
-		links = new ArrayList<>(references.size());
-		for (XMLElement xmlElement : references) {
-			DiagramElement de = xmlElement.getDiagramElement();
-			if (de instanceof Connection) {
-				links.add((Connection) de);
-			}
-		}
+		Diagram d = getDiagram();
+		links = d.getConnectionsFor(this.getID());
 	}
 
-	private transient Collection<Connection> links;
+	private Collection<Connection> links;
 
 	@Override
 	public Collection<Connection> getLinks() {

@@ -137,11 +137,7 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 			removeAttribute(name);
 		} else {
 			super.setAttribute(name, value);
-		}
-		
-		if ("reference".equals(name)) {
-			getOwnerDocument().addConnectionReference(value, this);
-		}
+		}		
 	}
 //
 //	public Object getParent() {

@@ -23,4 +23,11 @@ public class GenericXMLElement extends AbstractStyleableXMLElement {
 		return new GenericXMLElement();
 	}
 
+	@Override
+	public String toString() {
+		return tagName;
+	}
+	
+	
+
 }

@@ -24,21 +24,28 @@ public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements
 	
 	@Override
 	protected void initialize() {
+		initElement(theElement);
+		super.initialize();
+	}
+
+	private void initElement(XMLElement theElement) {
 		for (XMLElement xmlElement : theElement) {
 			DiagramElement de = xmlElement.getDiagramElement();			
 			if (de instanceof Label) {
 				label = (Label) de;
 			} else if (de instanceof Connection) {
+				addConnectionReference((Connection) de);
 			} else if (de != null) { 
 				contents.add(de);
-			} 
+			} else {
+				initElement(xmlElement);
+			}
 		}
-
-		super.initialize();
 	}
 
-
-
+	protected void addConnectionReference(Connection de) {
+		((ContainerImpl) getDiagram()).addConnectionReference(de);
+	}
 
 	public ContainerImpl(StyledXMLElement el, DiagramElement parent) {
 		super(el, parent);
@@ -46,7 +53,12 @@ public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements
 
 	@Override
 	public Layout getLayoutDirection() {
-		return null;
+		String attribute = theElement.getAttribute("layout");
+		if ((attribute != null) && (attribute.trim().length() != 0)) {
+			return Layout.valueOf(attribute);
+		} else {
+			return null;
+		}
 	}
 
 	@Override

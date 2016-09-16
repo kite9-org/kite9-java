@@ -45,6 +45,13 @@ public class DiagramXMLElement extends AbstractXMLContainerElement {
 		if (k != null) {
 			replaceProperty("key", k);
 		}
+		
+		// home all temporary connections (due to Link)
+		for (XMLElement xmlElement : doc.getConnectionElements()) {
+			appendChild(xmlElement);
+		}
+		
+		doc.getConnectionElements().clear();
 	}
 	
 	public DiagramXMLElement(String id, List<XMLElement> contents) {

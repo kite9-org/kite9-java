@@ -3,6 +3,7 @@ package org.kite9.diagram.style;
 import java.io.Serializable;
 
 import org.apache.batik.css.engine.value.Value;
+import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.xml.StyledXMLElement;
 
@@ -52,5 +53,17 @@ public abstract class AbstractXMLDiagramElement extends AbstractDiagramElement i
 		return theElement.getAttribute("shape");
 	}
 
+	public Diagram getDiagram() {
+		return theElement.getOwnerDocument().getDocumentElement().getDiagramElement();
+	}
+
+	@Override
+	public String toString() {
+		String className = this.getClass().getName();
+		className = className.substring(className.lastIndexOf(".")+1);
+		return "["+theElement.getTagName()+":'"+getID()+"':"+className+"]";
+	}
+	
+	
 	
 }

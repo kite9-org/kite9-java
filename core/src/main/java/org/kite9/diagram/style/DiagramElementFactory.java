@@ -15,8 +15,7 @@ public class DiagramElementFactory {
 	public static DiagramElement createDiagramElement(XMLElement in, DiagramElement parent) {
 		if (in instanceof StyledXMLElement) {
 			StyledXMLElement in2 = (StyledXMLElement) in;
-			EnumValue v = (EnumValue) in2.getCSSStyleProperty(CSSConstants.LAYOUT_TYPE_PROPERTY);
-			LayoutType lt = (LayoutType) v.getTheValue();
+			LayoutType lt = getElementType(in2);
 			switch (lt) {
 			case DIAGRAM:
 				return new DiagramImpl(in2);
@@ -42,5 +41,11 @@ public class DiagramElementFactory {
 		} else {
 			throw new Kite9ProcessingException("Don't know how to create diagram element from "+in);
 		}
+	}
+
+	public static LayoutType getElementType(StyledXMLElement in2) {
+		EnumValue v = (EnumValue) in2.getCSSStyleProperty(CSSConstants.LAYOUT_TYPE_PROPERTY);
+		LayoutType lt = (LayoutType) v.getTheValue();
+		return lt;
 	}
 }

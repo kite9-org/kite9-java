@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -12,7 +11,9 @@ import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.css.engine.CSSEngine;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.util.XMLConstants;
-import org.kite9.diagram.adl.Connection;
+import org.kite9.diagram.style.ConnectionImpl;
+import org.kite9.diagram.style.DiagramElementFactory;
+import org.kite9.diagram.style.LayoutType;
 import org.kite9.framework.serialization.ADLExtensibleDOMImplementation;
 import org.kite9.framework.serialization.XMLHelper;
 import org.w3c.dom.Attr;
@@ -156,30 +157,20 @@ public class ADLDocument extends SVGOMDocument {
 		return new ADLDocument();
 	}
 
-	private transient Map<String, Collection<XMLElement>> references = new HashMap<>();
-	private transient Set<XMLElement> allConnections = new LinkedHashSet<>();
-	
-	public Collection<XMLElement> getReferences(String id) {
-		Collection<XMLElement> collection = references.get(id);
-		return collection == null ? Collections.emptySet() : collection;
-	}
+	/**
+	 * Maybe move this all into the testing package?
+	 */
+	private transient Set<XMLElement> tempConnections = new LinkedHashSet<>();
 
-	public void addConnectionReference(String fromId, XMLElement to) {
-		Collection<XMLElement> c = references.get(fromId);
-		if (c == null) {
-			c = new LinkedHashSet<>();
-			references.put(fromId, c);
-		}
-		
-		if (!c.contains(fromId)) {
-			c.add(to);
-		}
-		
-		allConnections.add(to);
+	public void addConnection(StyledXMLElement xmlElement) {	
+		tempConnections.add(xmlElement);
 	}
 
 	public Set<XMLElement> getConnectionElements() {
-		return allConnections;
+		return tempConnections;
 	}
 
+	public DiagramXMLElement getDocumentElement() {
+		return (DiagramXMLElement) super.getDocumentElement();
+	}
 }

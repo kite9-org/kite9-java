@@ -25,18 +25,12 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	
 	@Override
 	protected void initialize() {
-		System.out.println("Creating for "+theElement.getID());
-		
-		XMLElement fromElement = getFromElement();
-		XMLElement toElement = getToElement();
-
-		ADLDocument owner = theElement.getOwnerDocument();
-		owner.addConnectionReference(fromElement.getID(), theElement);
-		owner.addConnectionReference(toElement.getID(), theElement);
+		XMLElement fromElement = getFromElement(theElement);
+		XMLElement toElement = getToElement(theElement);
 		
 		from = (Connected) fromElement.getDiagramElement();
 		to = (Connected) toElement.getDiagramElement();
-		drawDirection = Direction.getDirection(theElement.getAttribute("direction"));
+		drawDirection = Direction.getDirection(theElement.getAttribute("drawDirection"));
 		
 		XMLElement fromDecorationEl = theElement.getProperty("fromDecoration");
 		this.fromDecoration = getTerminator(fromDecorationEl);
@@ -55,20 +49,32 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	}
 
 
-	private XMLElement getFromElement() {
-		Element fromEl = theElement.getProperty("from");
-		String reference = fromEl.getAttribute("reference");
+	public static XMLElement getFromElement(XMLElement theElement) {
+		String reference = getFromReference(theElement);
 		ADLDocument owner = theElement.getOwnerDocument();
 		XMLElement from = (XMLElement) owner.getChildElementById(owner, reference);
 		return from;
 	}
 
-	private XMLElement getToElement() {
-		Element toEl = theElement.getProperty("to");
-		String reference = toEl.getAttribute("reference");
+
+	public static String getFromReference(XMLElement theElement) {
+		Element fromEl = theElement.getProperty("from");
+		String reference = fromEl.getAttribute("reference");
+		return reference;
+	}
+
+	public static XMLElement getToElement(XMLElement theElement) {
+		String reference = getToReference(theElement);
 		ADLDocument owner = theElement.getOwnerDocument();
 		XMLElement to = (XMLElement) owner.getChildElementById(owner, reference);
 		return to;
+	}
+
+
+	public static String getToReference(XMLElement theElement) {
+		Element toEl = theElement.getProperty("to");
+		String reference = toEl.getAttribute("reference");
+		return reference;
 	}
 	
 	private Connected from;

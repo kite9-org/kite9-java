@@ -24,7 +24,9 @@ public class RouteRenderingInformationImpl extends AbstractRenderingInformationI
 	}
 
 	public void setHop(int pos) {
-		List<Boolean> hops = getHops();
+		while (hops.size() <= pos) {
+			hops.add(false);
+		}
 		hops.set(pos, true);
 	}
 

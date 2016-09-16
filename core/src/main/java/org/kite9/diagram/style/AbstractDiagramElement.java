@@ -48,4 +48,5 @@ public abstract class AbstractDiagramElement implements DiagramElement {
 	public Container getContainer() {
 		return (Container) getParent();
 	}
+	
 }

@@ -140,6 +140,7 @@ public class TestingHelp {
 		getPositions(d, details, Label.class, lr);
 		getPositions(d, details, Leaf.class, cr);
 		getPositions(d, details, Connection.class, cr);
+		
 		return details.toString();
 	}
 
