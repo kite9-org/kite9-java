@@ -13,7 +13,7 @@ import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.util.XMLConstants;
 import org.kite9.diagram.style.ConnectionImpl;
 import org.kite9.diagram.style.DiagramElementFactory;
-import org.kite9.diagram.style.LayoutType;
+import org.kite9.diagram.style.DiagramElementType;
 import org.kite9.framework.serialization.ADLExtensibleDOMImplementation;
 import org.kite9.framework.serialization.XMLHelper;
 import org.w3c.dom.Attr;

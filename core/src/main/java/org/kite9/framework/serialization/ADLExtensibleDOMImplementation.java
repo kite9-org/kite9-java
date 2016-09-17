@@ -21,7 +21,8 @@ import org.apache.batik.dom.AbstractStylableDocument;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.dom.util.HashTable;
 import org.apache.batik.util.ParsedURL;
-import org.kite9.diagram.style.LayoutType;
+import org.kite9.diagram.style.DiagramElementSizing;
+import org.kite9.diagram.style.DiagramElementType;
 import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.DiagramXMLElement;
 import org.kite9.diagram.xml.GenericXMLElement;
@@ -219,7 +220,8 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 			
 		};
 		
-		registerCustomCSSValueManager(new EnumManager(CSSConstants.LAYOUT_TYPE_PROPERTY, LayoutType.class, LayoutType.UNSPECIFIED));
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.ELEMENT_TYPE_PROPERTY, DiagramElementType.class, DiagramElementType.UNSPECIFIED));
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.ELEMENT_SIZING_PROPERTY, DiagramElementSizing.class, DiagramElementSizing.UNSPECIFIED));
 		
 		/**
 		 * This makes 'no colour' available to all the colour managers, since the 

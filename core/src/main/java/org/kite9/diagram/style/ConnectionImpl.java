@@ -37,6 +37,12 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 		
 		XMLElement toDecorationEl = theElement.getProperty("toDecoration");
 		this.toDecoration = getTerminator(toDecorationEl);
+		
+		XMLElement fromLabelEl = theElement.getProperty("fromLabel");
+		this.fromLabel = getLabel(fromLabelEl);
+		
+		XMLElement toLabelEl = theElement.getProperty("toLabel");
+		this.toLabel = getLabel(toLabelEl);
 	}
 
 
@@ -46,6 +52,13 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 			theElement.appendChild(el);
 		}
 		return (Terminator) el.getDiagramElement();
+	}
+	
+	private Label getLabel(XMLElement el) {
+		if (el == null) {
+			return null;
+		}
+		return (Label) el.getDiagramElement();
 	}
 
 
@@ -82,6 +95,8 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	private Direction drawDirection;
 	private Terminator fromDecoration;
 	private Terminator toDecoration;
+	private Label fromLabel;
+	private Label toLabel;
 	
 
 	@Override
@@ -167,14 +182,14 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 
 	@Override
 	public Label getFromLabel() {
-		// TODO Auto-generated method stub
-		return null;
+		ensureInitialized();
+		return fromLabel;
 	}
 
 	@Override
 	public Label getToLabel() {
-		// TODO Auto-generated method stub
-		return null;
+		ensureInitialized();
+		return toLabel;
 	}
 
 	private RouteRenderingInformation ri;
