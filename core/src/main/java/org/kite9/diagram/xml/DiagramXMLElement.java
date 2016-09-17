@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.position.Layout;
+import org.kite9.framework.common.Kite9ProcessingException;
 import org.w3c.dom.Node;
 
 
@@ -21,22 +22,29 @@ public class DiagramXMLElement extends AbstractXMLContainerElement {
 	private static final long serialVersionUID = -7727042271665853389L;
 	
 	public DiagramXMLElement() {
-		super(createID(), "diagram", TESTING_DOCUMENT);
+		this(TESTING_DOCUMENT);
+	}
+	
+	public DiagramXMLElement(ADLDocument doc) {
+		this(createID(), doc);
 	}
 	
 	public DiagramXMLElement(String id, ADLDocument doc) {
-		super(id, "diagram", doc);
-		doc.appendChild(this);
+		this(id, null, null, doc);
 	}
 
 	public DiagramXMLElement(String id, List<XMLElement> contents, XMLElement k) {
 		this(id, contents, k, TESTING_DOCUMENT);
 	}
-
 	
 	public DiagramXMLElement(String id, List<XMLElement> contents, XMLElement k, ADLDocument doc) {
-		this(id, doc);
-		this.setParentNode(doc);
+		super(id, "diagram", doc);
+		if (doc.getDocumentElement() == null) {
+			doc.appendChild(this);
+		} else if (doc.getDocumentElement() != this) {
+			throw new Kite9ProcessingException();
+		}
+		
 		if (contents != null) {
 			for (XMLElement contained : contents) {
 				appendChild(contained);

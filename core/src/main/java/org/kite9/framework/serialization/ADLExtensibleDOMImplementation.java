@@ -47,7 +47,7 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "diagram", new ElementFactory() {
 			 
 			public Element create(String prefix, Document doc) {
-				DiagramXMLElement out = new DiagramXMLElement();
+				DiagramXMLElement out = new DiagramXMLElement((ADLDocument) doc);
 				out.setOwnerDocument(doc);
 				return out;
 			}
@@ -259,7 +259,6 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 	public Document createDocument(String namespaceURI, String qualifiedName, DocumentType doctype) throws DOMException {
 		ADLDocument out = new ADLDocument(this);
 		Element root = createElementNS(out, XMLHelper.KITE9_NAMESPACE, "diagram");
-		out.appendChild(root);
 		return out;
 	}
 

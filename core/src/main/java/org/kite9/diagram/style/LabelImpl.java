@@ -1,5 +1,6 @@
 package org.kite9.diagram.style;
 
+import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.xml.StyledXMLElement;
@@ -19,24 +20,21 @@ public class LabelImpl extends AbstractRectangularXMLDiagramElement implements L
 
 	@Override
 	public boolean hasContent() {
-		return !theElement.getTextContent().trim().isEmpty();
-	}
-
-	private Object tempParent;
-	
-	
-	@Deprecated
-	@Override
-	public void setParent(Object o) {
-		this.tempParent = 0;
+		return !getText().isEmpty();
 	}
 	
-	@Override
-	public DiagramElement getParent() {
-		return tempParent == null ? super.getParent() : (DiagramElement) tempParent;
+	public String getText() {
+		return theElement.getTextContent().trim();
 	}
-
+	
 	@Override
 	protected void initialize() {
 	}
+
+	@Override
+	public boolean isConnectionLabel() {
+		return getParent() instanceof Connection;
+	}
+	
+	
 }

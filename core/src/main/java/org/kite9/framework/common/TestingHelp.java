@@ -137,7 +137,7 @@ public class TestingHelp {
 		getPositions(d, details, Container.class, cr);
 		getPositions(d, details, Connected.class, cr);
 		getPositions(d, details, Diagram.class, cr);
-		getPositions(d, details, Label.class, lr);
+		getPositions(d, details, Label.class, cr);
 		getPositions(d, details, Leaf.class, cr);
 		getPositions(d, details, Connection.class, cr);
 		
@@ -235,6 +235,9 @@ public class TestingHelp {
 			    	RenderingInformation ri = ((DiagramElement)o).getRenderingInformation();
 			    	if (ri instanceof RectangleRenderingInformation) {
 			    		RectangleRenderingInformation rri = (RectangleRenderingInformation) ri;
+			    		if (rri.getSize() == null) {
+			    			return new String[] { id, "na", "na", ""+connections };
+			    		}
 			    		double width = rri.getSize().getWidth();
 			    		double height = rri.getSize().getHeight();
 					    return new String[] { id, ""+width, ""+height, ""+connections };

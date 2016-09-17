@@ -1,19 +1,12 @@
 package org.kite9.diagram.xml;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.css.engine.CSSEngine;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.util.XMLConstants;
-import org.kite9.diagram.style.ConnectionImpl;
-import org.kite9.diagram.style.DiagramElementFactory;
-import org.kite9.diagram.style.DiagramElementType;
 import org.kite9.framework.serialization.ADLExtensibleDOMImplementation;
 import org.kite9.framework.serialization.XMLHelper;
 import org.w3c.dom.Attr;
