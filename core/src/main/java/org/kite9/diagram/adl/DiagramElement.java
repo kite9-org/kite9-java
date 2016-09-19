@@ -33,12 +33,8 @@ public interface DiagramElement extends Comparable<DiagramElement> {
 	@Deprecated
 	public void setRenderingInformation(RenderingInformation ri);
 	
-	@Deprecated
 	public HintMap getPositioningHints();
-	
-	@Deprecated
-	public void setPositioningHints(HintMap hints);
-	
+		
 	@Deprecated
 	public String getShapeName();
 	

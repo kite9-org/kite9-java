@@ -5,6 +5,7 @@ import java.io.Serializable;
 import org.apache.batik.css.engine.value.Value;
 import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.adl.HintMap;
 import org.kite9.diagram.xml.StyledXMLElement;
 
 /**
@@ -63,7 +64,10 @@ public abstract class AbstractXMLDiagramElement extends AbstractDiagramElement i
 		className = className.substring(className.lastIndexOf(".")+1);
 		return "["+theElement.getTagName()+":'"+getID()+"':"+className+"]";
 	}
-	
-	
+
+	@Override
+	public HintMap getPositioningHints() {
+		return null;
+	}
 	
 }

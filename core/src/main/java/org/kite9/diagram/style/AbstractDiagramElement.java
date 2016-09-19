@@ -28,14 +28,6 @@ public abstract class AbstractDiagramElement implements DiagramElement {
 		super();
 	}
 
-	public HintMap getPositioningHints() {
-		return hints;
-	}
-
-	public void setPositioningHints(HintMap hints) {
-		this.hints = hints;
-	}
-
 	@Override
 	public DiagramElement getParent() {
 		return parent;
