@@ -24,6 +24,9 @@ public abstract class AbstractXMLDiagramElement extends AbstractDiagramElement i
 	
 	protected void ensureInitialized() {
 		if (!initialized) {
+			if (parent instanceof AbstractXMLDiagramElement) {
+				((AbstractXMLDiagramElement)parent).ensureInitialized();
+			}
 			initialize();
 			this.initialized = true;
 		}

@@ -4,7 +4,8 @@ diagram {
 
 arrow2,
 arrow3 {
-	type: text;
+	type: connected;
+	sizing: text;
 }
 
 link {

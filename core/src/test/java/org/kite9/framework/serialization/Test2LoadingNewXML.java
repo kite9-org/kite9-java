@@ -47,7 +47,7 @@ public class Test2LoadingNewXML {
 		
 		Diagram de = d.getDiagramElement();
 		
-		Connection l = de.getConnectionList().iterator().next();
+		Connection l = oneDe.getLinks().iterator().next();
 		Assert.assertEquals(oneDe, l.getFrom());
 		Assert.assertEquals(twoDe, l.getTo());
 		
