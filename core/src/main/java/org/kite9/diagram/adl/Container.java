@@ -19,14 +19,7 @@ public interface Container extends DiagramElement {
 
 	public List<DiagramElement> getContents();
 	
-	/**
-	 * Returns the order in which contents of the container should be
-	 * laid out, or null if there is no canonical ordering.
-	 * 
-	 * In future, should use stylesheet to figure out layout direction.
-	 */
-	@Deprecated
-	public Layout getLayoutDirection();
+	public Layout getLayout();
 	
 	public Label getLabel();
 

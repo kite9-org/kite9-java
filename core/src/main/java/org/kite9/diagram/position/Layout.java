@@ -8,7 +8,7 @@ package org.kite9.diagram.position;
  */
 public enum Layout {
 	
-	HORIZONTAL, VERTICAL, LEFT, RIGHT, UP, DOWN;
+	HORIZONTAL, VERTICAL, LEFT, RIGHT, UP, DOWN, GRID;
 
 	public static Layout reverse(Layout d) {
 		if (d==null)

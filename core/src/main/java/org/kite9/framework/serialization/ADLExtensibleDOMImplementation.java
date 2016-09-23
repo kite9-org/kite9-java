@@ -21,6 +21,7 @@ import org.apache.batik.dom.AbstractStylableDocument;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.dom.util.HashTable;
 import org.apache.batik.util.ParsedURL;
+import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.style.DiagramElementSizing;
 import org.kite9.diagram.style.DiagramElementType;
 import org.kite9.diagram.xml.ADLDocument;
@@ -53,140 +54,6 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 			}
 		});
 		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "glyph", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				Glyph g = new Glyph();
-//				g.setOwnerDocument(doc);
-//				return g;
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "label", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				TextLine g = new TextLine(null, "label", null, null, (ADLDocument) doc);
-//				return g;
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "stereotype", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				TextLine g = new TextLine(null, "stereotype", null, null, (ADLDocument) doc);
-//				return g;
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "boldText", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				TextLine g = new TextLine(null, "boldText", null, null, (ADLDocument) doc);
-//				return g;
-//			}
-//		});
-//
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "bodyText", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				TextLine g = new TextLine(null, "bodyText", null, null, (ADLDocument) doc);
-//				return g;
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "symbols", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				return new ContainerProperty("symbols", (ADLDocument) doc);
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "text-lines", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				return new ContainerProperty("text-lines", (ADLDocument) doc);
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "allLinks", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				return new ContainerProperty("allLinks", (ADLDocument) doc);
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "text-line", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				TextLine out = new TextLine();
-//				out.setOwnerDocument(doc);
-//				return out;
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "symbol", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				Symbol out = new Symbol();
-//				out.setOwnerDocument(doc);
-//				return out;
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "arrow", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				Arrow out = new Arrow();
-//				out.setOwnerDocument(doc);
-//				return out;
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "context", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				Context out = new Context();
-//				out.setOwnerDocument(doc);
-//				return out;
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "link", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				Link out = new Link();
-//				out.setOwnerDocument(doc);
-//				return out;
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "key", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				Key out = new Key();
-//				out.setOwnerDocument(doc);
-//				return out;
-//			}
-//		});
-//		
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "fromDecoration", new ElementFactory() {
-//			
-//			public Element create(String prefix, Document doc) {
-//				GenericElement out = new Key();
-//				out.setOwnerDocument(doc);
-//				return out;
-//			}
-//		});
-
-//		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "key", new ElementFactory() {
-//	
-//			public Element create(String prefix, Document doc) {
-//				Key out = new Key();
-//				out.setOwnerDocument(doc);
-//				return out;
-//			}
-//		});
-		
 		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "stylesheet", new ElementFactory() {
 			
 			public Element create(String prefix, Document doc) {
@@ -195,13 +62,15 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 			}
 		});
 		
+		// PADDING CSS
 		registerCustomCSSShorthandManager(new PaddingShorthandManager());
-		
 		registerCustomCSSValueManager(new MarginLengthManager("padding-left"));
 		registerCustomCSSValueManager(new MarginLengthManager("padding-right"));
 		registerCustomCSSValueManager(new MarginLengthManager("padding-top"));
 		registerCustomCSSValueManager(new MarginLengthManager("padding-bottom"));
 		
+		
+		// SHADOW CSS
 		registerCustomCSSShorthandManager(new BoxShadowShorthandManager());
 		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-x-offset"));
 		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-y-offset"));
@@ -220,17 +89,27 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 			
 		};
 		
-		registerCustomCSSValueManager(new EnumManager(CSSConstants.ELEMENT_TYPE_PROPERTY, DiagramElementType.class, DiagramElementType.UNSPECIFIED));
-		registerCustomCSSValueManager(new EnumManager(CSSConstants.ELEMENT_SIZING_PROPERTY, DiagramElementSizing.class, DiagramElementSizing.UNSPECIFIED));
-		
 		/**
 		 * This makes 'no colour' available to all the colour managers, since the 
 		 * colour list is static.
 		 */
 		colourManager.getIdentifiers().put("none", NO_COLOR);
-		
-		
 		registerCustomCSSValueManager(colourManager) ;
+		
+		
+		// ELEMENT TYPE / SIZING / LAYOUT CONTROL
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.ELEMENT_TYPE_PROPERTY, DiagramElementType.class, DiagramElementType.UNSPECIFIED));
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.ELEMENT_SIZING_PROPERTY, DiagramElementSizing.class, DiagramElementSizing.UNSPECIFIED));
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.LAYOUT_PROPERTY, Layout.class, null));
+		registerCustomCSSValueManager(new IntegerRangeManager(CSSConstants.GRID_OCCUPIES_X_PROPERTY));
+		registerCustomCSSValueManager(new IntegerRangeManager(CSSConstants.GRID_OCCUPIES_Y_PROPERTY));
+		registerCustomCSSValueManager(new GridSizeManager(CSSConstants.GRID_ROWS_PROPERTY));
+		registerCustomCSSValueManager(new GridSizeManager(CSSConstants.GRID_COLUMNS_PROPERTY));
+		registerCustomCSSShorthandManager(new GridSizeShorthandManager());
+		registerCustomCSSShorthandManager(new OccupiesShorthandManager());
+		
+		
+		
 	}
 
 	public static final RGBColorValue NO_COLOR = new RGBColorValue(
@@ -258,7 +137,7 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 
 	public Document createDocument(String namespaceURI, String qualifiedName, DocumentType doctype) throws DOMException {
 		ADLDocument out = new ADLDocument(this);
-		Element root = createElementNS(out, XMLHelper.KITE9_NAMESPACE, "diagram");
+		createElementNS(out, XMLHelper.KITE9_NAMESPACE, "diagram");
 		return out;
 	}
 

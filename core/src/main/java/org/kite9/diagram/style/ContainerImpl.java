@@ -10,6 +10,8 @@ import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.xml.StyledXMLElement;
 import org.kite9.diagram.xml.XMLElement;
+import org.kite9.framework.serialization.CSSConstants;
+import org.kite9.framework.serialization.EnumValue;
 
 public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements Container {
 	
@@ -52,13 +54,18 @@ public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements
 	}
 
 	@Override
-	public Layout getLayoutDirection() {
+	public Layout getLayout() {
 		String attribute = theElement.getAttribute("layout");
 		if ((attribute != null) && (attribute.trim().length() != 0)) {
 			return Layout.valueOf(attribute);
-		} else {
-			return null;
+		} 
+		
+		EnumValue ev = (EnumValue) getCSSStyleProperty(CSSConstants.LAYOUT_PROPERTY);
+		if (ev != null) {
+			return (Layout) ev.getTheValue();
 		}
+		
+		return null;
 	}
 
 	@Override
