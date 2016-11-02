@@ -52,6 +52,20 @@ public class Kite9Log {
 		if (logFor.isLoggingEnabled() && logging)
 			System.out.println(logFor.getPrefix() + " " + string);
 	}
+	
+	public static String indent(int i) {
+		StringBuilder sb = new StringBuilder(i);
+		for (int j = 0; j < i; j++) {
+			sb.append(" ");
+		}
+		
+		return sb.toString();
+	}
+	
+	public void send(int indent, String string) {
+		if (logFor.isLoggingEnabled() && logging)
+			System.out.println(logFor.getPrefix() + indent(indent) + " " + string);
+	}
 
 	public void send(String prefix, Collection<?> items) {
 		if (logFor.isLoggingEnabled() && logging) {
