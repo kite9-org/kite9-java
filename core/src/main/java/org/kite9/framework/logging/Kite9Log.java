@@ -1,10 +1,13 @@
 package org.kite9.framework.logging;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -21,6 +24,23 @@ public class Kite9Log {
 	
 	static boolean logging = isLoggingOn();
 
+	static PrintStream logFile;
+	
+	public static final boolean OUTPUT_TO_LOG = false;
+	
+	static {
+		if (OUTPUT_TO_LOG) {
+			try {
+				logFile = new PrintStream(new FileOutputStream(new File("kite9.log")));
+			} catch (FileNotFoundException e) {
+				logFile = System.out;
+			}
+		} else {
+			logFile = System.out;
+		}
+
+	}
+	
 	private static boolean isLoggingOn() {
 		String propVal = System.getProperty("kite9.logging");
 		if (propVal==null) {
@@ -50,36 +70,21 @@ public class Kite9Log {
 
 	public void send(String string) {
 		if (logFor.isLoggingEnabled() && logging)
-			System.out.println(logFor.getPrefix() + " " + string);
-	}
-	
-	public static String indent(int i) {
-		StringBuilder sb = new StringBuilder(i);
-		for (int j = 0; j < i; j++) {
-			sb.append(" ");
-		}
-		
-		return sb.toString();
-	}
-	
-	public void send(int indent, String string) {
-		if (logFor.isLoggingEnabled() && logging)
-			System.out.println(logFor.getPrefix() + indent(indent) + " " + string);
+			logFile.println(logFor.getPrefix() + " " + string);
 	}
 
 	public void send(String prefix, Collection<?> items) {
 		if (logFor.isLoggingEnabled() && logging) {
-			System.out.println(logFor.getPrefix() + " " + prefix);
+			logFile.println(logFor.getPrefix() + " " + prefix);
 
 			StringBuffer sb = new StringBuffer();
-			Object[] array = items.toArray();
-			for (Object o : array) {
+			for (Object o : items) {
 				sb.append("\t");
-				sb.append(o != null ? o.toString() : null);
+				sb.append(o.toString());
 				sb.append("\n");
 			}
 
-			System.out.println(sb.toString());
+			logFile.println(sb.toString());
 
 		}
 	}
@@ -94,7 +99,7 @@ public class Kite9Log {
 
 	public void send(String prefix, Map<?, ?> items) {
 		if (logFor.isLoggingEnabled() && logging) {
-			System.out.println(logFor.getPrefix() + " " + prefix);
+			logFile.println(logFor.getPrefix() + " " + prefix);
 			Table t = new Table();
 			Set<?> keys = items.keySet();
 			List<Object> keyList = new ArrayList<Object>(keys);
@@ -120,7 +125,7 @@ public class Kite9Log {
 
 			StringBuffer sb = new StringBuffer();
 			t.display(sb);
-			System.out.println(sb.toString());
+			logFile.println(sb.toString());
 		}
 	}
 

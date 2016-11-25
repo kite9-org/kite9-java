@@ -43,6 +43,11 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 		
 		XMLElement toLabelEl = theElement.getProperty("toLabel");
 		this.toLabel = getLabel(toLabelEl);
+		
+		String rank = theElement.getAttribute("rank");
+		if (!"".equals(rank)) {
+			this.rank = Integer.parseInt(rank);
+		}
 	}
 
 
@@ -97,6 +102,7 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	private Terminator toDecoration;
 	private Label fromLabel;
 	private Label toLabel;
+	private int rank;
 	
 
 	@Override
@@ -214,8 +220,7 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 
 	@Override
 	public int getRank() {
-		// TODO Auto-generated method stub
-		return 0;
+		return rank;
 	}
 
 }

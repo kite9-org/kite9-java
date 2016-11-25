@@ -59,6 +59,18 @@ public class DiagramXMLElement extends AbstractXMLContainerElement {
 			appendChild(xmlElement);
 		}
 		
+		// set ranks for all children that don't have them
+		int rank = 0;
+		for (Node childElement : this) {
+			if (childElement instanceof XMLElement) {
+				XMLElement xmlElement = (XMLElement) childElement;
+				String rankString = xmlElement.getAttribute("rank");
+				if ("".equals(rankString)) {
+					xmlElement.setAttribute("rank", ""+(rank++));
+				}
+			}
+		}
+		
 		doc.getConnectionElements().clear();
 	}
 	
