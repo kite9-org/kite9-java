@@ -1,4 +1,4 @@
-package org.kite9.diagram.style;
+package org.kite9.diagram.style.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,17 +13,20 @@ import org.kite9.diagram.xml.XMLElement;
 import org.kite9.framework.serialization.CSSConstants;
 import org.kite9.framework.serialization.EnumValue;
 
-public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements Container {
-	
+public abstract class AbstractContainerXMLDiagramElement extends AbstractConnectedXMLDiagramElement implements Container {
+
 	private List<DiagramElement> contents = new ArrayList<>();
-	private Label label;
-	
+
+	public AbstractContainerXMLDiagramElement(StyledXMLElement el, DiagramElement parent) {
+		super(el, parent);
+	}
+
 	@Override
 	public List<DiagramElement> getContents() {
 		ensureInitialized();
 		return contents;
 	}
-	
+
 	@Override
 	protected void initialize() {
 		initElement(theElement);
@@ -34,7 +37,7 @@ public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements
 		for (XMLElement xmlElement : theElement) {
 			DiagramElement de = xmlElement.getDiagramElement();			
 			if (de instanceof Label) {
-				label = (Label) de;
+				addLabelReference((Label) de);
 			} else if (de instanceof Connection) {
 				addConnectionReference((Connection) de);
 			} else if (de != null) { 
@@ -45,12 +48,11 @@ public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements
 		}
 	}
 
-	protected void addConnectionReference(Connection de) {
-		((ContainerImpl) getDiagram()).addConnectionReference(de);
+	protected void addLabelReference(Label de) {
 	}
-
-	public ContainerImpl(StyledXMLElement el, DiagramElement parent) {
-		super(el, parent);
+	
+	protected void addConnectionReference(Connection de) {
+		((ConnectedContainerImpl) getDiagram()).addConnectionReference(de);
 	}
 
 	@Override
@@ -68,15 +70,4 @@ public class ContainerImpl extends AbstractConnectedXMLDiagramElement implements
 		return null;
 	}
 
-	@Override
-	public Label getLabel() {
-		ensureInitialized();
-		return label;
-	}
-
-	@Override
-	public boolean isBordered() {
-		return !"false".equals(theElement.getAttribute("border"));
-	}
-	
 }

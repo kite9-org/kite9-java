@@ -1,4 +1,4 @@
-package org.kite9.diagram.style;
+package org.kite9.diagram.style.impl;
 
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Label;

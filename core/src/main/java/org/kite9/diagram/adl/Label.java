@@ -7,9 +7,6 @@ package org.kite9.diagram.adl;
 public interface Label extends DiagramElement {
 	
 	public boolean hasContent();
-		
-	@Deprecated
-	public String getText();		// this won't be here later
 	
 	public boolean isConnectionLabel();
 }

@@ -1,4 +1,4 @@
-package org.kite9.diagram.style;
+package org.kite9.diagram.style.impl;
 
 import org.kite9.diagram.adl.Container;
 import org.kite9.diagram.adl.DiagramElement;
