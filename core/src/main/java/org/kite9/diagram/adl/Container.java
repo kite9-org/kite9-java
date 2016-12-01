@@ -15,7 +15,7 @@ import org.kite9.diagram.position.RectangleRenderingInformation;
  * @author robmoffat
  *
  */
-public interface Container extends DiagramElement {
+public interface Container extends DiagramElement, Rectangular {
 
 	public List<DiagramElement> getContents();
 	
@@ -26,5 +26,4 @@ public interface Container extends DiagramElement {
 	@Deprecated
 	public boolean isBordered();
 	
-	public RectangleRenderingInformation getRenderingInformation();
 }
