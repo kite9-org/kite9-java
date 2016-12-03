@@ -1,14 +1,12 @@
-package org.kite9.diagram.common;
+package org.kite9.diagram.adl;
 
 import java.util.Collection;
 
-import org.kite9.diagram.adl.Connection;
-import org.kite9.diagram.adl.Container;
-import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 
 /**
- * A diagram element which has connections that link to other Connected items within the diagram.
+ * A diagram element which is consumes a rectangular area of space, and 
+ * potentially has {@link Connection}s that link to other {@link Connected} items within the diagram.
  * 
  * @author robmoffat
  *
@@ -36,5 +34,6 @@ public interface Connected extends DiagramElement {
 	 */
 	RectangleRenderingInformation getRenderingInformation();
 	
+	Container getContainer();
 }
 

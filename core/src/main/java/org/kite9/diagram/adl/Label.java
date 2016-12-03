@@ -1,8 +1,7 @@
 package org.kite9.diagram.adl;
 
 /**
- * DiagramElement to contain a label an edge, container or diagram.
- * 
+ * DiagramElement to contain a label for an edge, container or diagram.
  */
 public interface Label extends DiagramElement {
 	

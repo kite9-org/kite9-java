@@ -1,8 +1,8 @@
 package org.kite9.diagram.style.impl;
 
+import org.kite9.diagram.adl.Connected;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Text;
-import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.xml.StyledXMLElement;
 
 public class ConnectedTextImpl extends AbstractConnectedXMLDiagramElement implements Text, Connected {

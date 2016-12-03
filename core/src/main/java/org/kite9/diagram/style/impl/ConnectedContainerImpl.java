@@ -5,7 +5,7 @@ import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.xml.StyledXMLElement;
 
-public class ConnectedContainerImpl extends AbstractContainerXMLDiagramElement implements Container {
+public class ConnectedContainerImpl extends AbstractConnectedXMLDiagramElement implements Container {
 	
 	Label label;
 	

@@ -2,7 +2,7 @@ package org.kite9.diagram.style.impl;
 
 import org.kite9.diagram.adl.Container;
 import org.kite9.diagram.adl.DiagramElement;
-import org.kite9.diagram.adl.HintMap;
+import org.kite9.diagram.common.HintMap;
 
 public abstract class AbstractDiagramElement implements DiagramElement {
 

@@ -2,10 +2,10 @@ package org.kite9.diagram.style.impl;
 
 import java.util.Collection;
 
+import org.kite9.diagram.adl.Connected;
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.DiagramElement;
-import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.xml.StyledXMLElement;
 
 /**
@@ -26,6 +26,7 @@ public abstract class AbstractConnectedXMLDiagramElement extends AbstractRectang
 	 * all the members are set up correctly.
 	 */
 	protected void initialize() {
+		super.initialize();
 		Diagram d = getDiagram();
 		links = d.getConnectionsFor(this.getID());
 	}
