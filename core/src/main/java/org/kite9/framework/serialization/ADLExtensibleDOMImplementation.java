@@ -1,6 +1,7 @@
 package org.kite9.framework.serialization;
 
 import java.net.URL;
+import static org.kite9.framework.serialization.CSSConstants.*;
 
 import org.apache.batik.css.dom.CSSOMSVGViewCSS;
 import org.apache.batik.css.engine.CSSContext;
@@ -64,17 +65,17 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 		
 		// PADDING CSS
 		registerCustomCSSShorthandManager(new PaddingShorthandManager());
-		registerCustomCSSValueManager(new MarginLengthManager("padding-left"));
-		registerCustomCSSValueManager(new MarginLengthManager("padding-right"));
-		registerCustomCSSValueManager(new MarginLengthManager("padding-top"));
-		registerCustomCSSValueManager(new MarginLengthManager("padding-bottom"));
+		registerCustomCSSValueManager(new MarginLengthManager(PADDING_LEFT_PROPERTY));
+		registerCustomCSSValueManager(new MarginLengthManager(PADDING_RIGHT_PROPERTY));
+		registerCustomCSSValueManager(new MarginLengthManager(PADDING_TOP_PROPERTY));
+		registerCustomCSSValueManager(new MarginLengthManager(CSSConstants.PADDING_BOTTOM_PROPERTY));
 		
 		
 		// SHADOW CSS
 		registerCustomCSSShorthandManager(new BoxShadowShorthandManager());
-		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-x-offset"));
-		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-y-offset"));
-		registerCustomCSSValueManager(new OpacityManager("box-shadow-opacity", false));
+		registerCustomCSSValueManager(new MarginLengthManager(BOX_SHADOW_X_OFFSET_PROPERTY));
+		registerCustomCSSValueManager(new MarginLengthManager(BOX_SHADOW_Y_OFFSET_PROPERTY));
+		registerCustomCSSValueManager(new OpacityManager(BOX_SHADOW_OPACITY_PROPERTY, false));
 		ColorManager colourManager = new ColorManager() {
 			
 			@Override
@@ -84,7 +85,7 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 
 			@Override
 			public String getPropertyName() {
-				return "box-shadow-color";
+				return BOX_SHADOW_COLOR_PROPERTY;
 			}
 			
 		};
@@ -107,6 +108,7 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 		registerCustomCSSValueManager(new GridSizeManager(CSSConstants.GRID_COLUMNS_PROPERTY));
 		registerCustomCSSShorthandManager(new GridSizeShorthandManager());
 		registerCustomCSSShorthandManager(new OccupiesShorthandManager());
+		
 		
 		
 		

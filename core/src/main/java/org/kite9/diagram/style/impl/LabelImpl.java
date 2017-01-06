@@ -11,7 +11,7 @@ import org.kite9.diagram.xml.StyledXMLElement;
  * @author robmoffat
  * 
  */
-public class LabelImpl extends AbstractRectangularXMLDiagramElement implements Label {
+public class LabelImpl extends AbstractRectangularDiagramElement implements Label {
 	
 	
 	public LabelImpl(StyledXMLElement el, DiagramElement parent) {

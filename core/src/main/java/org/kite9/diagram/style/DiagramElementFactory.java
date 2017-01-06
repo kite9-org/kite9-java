@@ -34,7 +34,8 @@ public class DiagramElementFactory {
 			case CONNECTED:
 				DiagramElementSizing sizing = getElementSizing(in2);
 				switch (sizing) {
-				case CONTAINER:
+				case MAXIMIZE:
+				case MINIMIZE:
 					return new ConnectedContainerImpl(in2, parent);
 				case DECAL:
 					throw new UnsupportedOperationException();

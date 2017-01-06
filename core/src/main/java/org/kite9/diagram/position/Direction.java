@@ -38,4 +38,5 @@ public enum Direction {
 			return Direction.valueOf(s);
 		}
 	}
+
 }

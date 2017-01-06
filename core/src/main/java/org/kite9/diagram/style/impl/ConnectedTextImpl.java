@@ -5,7 +5,7 @@ import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Text;
 import org.kite9.diagram.xml.StyledXMLElement;
 
-public class ConnectedTextImpl extends AbstractConnectedXMLDiagramElement implements Text, Connected {
+public class ConnectedTextImpl extends AbstractConnectedDiagramElement implements Text, Connected {
 
 	public ConnectedTextImpl(StyledXMLElement el, DiagramElement parent) {
 		super(el, parent);

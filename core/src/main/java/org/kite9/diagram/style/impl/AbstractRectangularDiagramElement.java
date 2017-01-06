@@ -15,11 +15,11 @@ import org.kite9.diagram.xml.XMLElement;
 import org.kite9.framework.serialization.CSSConstants;
 import org.kite9.framework.serialization.EnumValue;
 
-public abstract class AbstractRectangularXMLDiagramElement extends AbstractXMLDiagramElement {
+public abstract class AbstractRectangularDiagramElement extends AbstractXMLDiagramElement {
 
 	private RectangleRenderingInformation ri;
 
-	public AbstractRectangularXMLDiagramElement(StyledXMLElement el, DiagramElement parent) {
+	public AbstractRectangularDiagramElement(StyledXMLElement el, DiagramElement parent) {
 		super(el, parent);
 	}
 

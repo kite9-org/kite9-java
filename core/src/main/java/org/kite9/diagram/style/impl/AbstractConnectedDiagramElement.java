@@ -15,9 +15,9 @@ import org.kite9.diagram.xml.StyledXMLElement;
  * @author robmoffat
  *
  */
-public abstract class AbstractConnectedXMLDiagramElement extends AbstractRectangularXMLDiagramElement implements Connected {
+public abstract class AbstractConnectedDiagramElement extends AbstractRectangularDiagramElement implements Connected {
 	
-	public AbstractConnectedXMLDiagramElement(StyledXMLElement el, DiagramElement parent) {
+	public AbstractConnectedDiagramElement(StyledXMLElement el, DiagramElement parent) {
 		super(el, parent);
 	}
 	

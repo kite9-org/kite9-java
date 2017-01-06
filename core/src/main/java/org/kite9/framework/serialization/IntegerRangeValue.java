@@ -32,7 +32,7 @@ public class IntegerRangeValue extends AbstractValue {
 		return null;
 	}
 
-	public boolean notSet() {
-		return from == -1;
+	public static boolean notSet(IntegerRangeValue in) {
+		return (in == null) || (in.from == -1);
 	}
 }

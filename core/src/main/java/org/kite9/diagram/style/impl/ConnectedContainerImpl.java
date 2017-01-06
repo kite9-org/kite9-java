@@ -5,7 +5,7 @@ import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Label;
 import org.kite9.diagram.xml.StyledXMLElement;
 
-public class ConnectedContainerImpl extends AbstractConnectedXMLDiagramElement implements Container {
+public class ConnectedContainerImpl extends AbstractConnectedDiagramElement implements Container {
 	
 	Label label;
 	
@@ -23,5 +23,11 @@ public class ConnectedContainerImpl extends AbstractConnectedXMLDiagramElement i
 	public boolean isBordered() {
 		return !"false".equals(theElement.getAttribute("border"));
 	}
+
+	@Override
+	protected void addLabelReference(Label de) {
+		this.label = de;
+	}
+	
 	
 }
