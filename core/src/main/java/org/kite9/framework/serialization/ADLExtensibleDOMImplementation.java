@@ -23,6 +23,7 @@ import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.dom.util.HashTable;
 import org.apache.batik.util.ParsedURL;
 import org.kite9.diagram.position.Layout;
+import org.kite9.diagram.style.BorderTraversal;
 import org.kite9.diagram.style.DiagramElementSizing;
 import org.kite9.diagram.style.DiagramElementType;
 import org.kite9.diagram.xml.ADLDocument;
@@ -109,7 +110,12 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 		registerCustomCSSShorthandManager(new GridSizeShorthandManager());
 		registerCustomCSSShorthandManager(new OccupiesShorthandManager());
 		
-		
+		// CONNECTION TRAVERSAL
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.TRAVERSAL_BOTTOM_PROPERTY, BorderTraversal.class, BorderTraversal.LEAVE_ONLY));
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.TRAVERSAL_RIGHT_PROPERTY, BorderTraversal.class, BorderTraversal.LEAVE_ONLY));
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.TRAVERSAL_LEFT_PROPERTY, BorderTraversal.class, BorderTraversal.LEAVE_ONLY));
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.TRAVERSAL_TOP_PROPERTY, BorderTraversal.class, BorderTraversal.LEAVE_ONLY));
+		registerCustomCSSShorthandManager(new TraversalShorthandManager());
 		
 		
 	}
