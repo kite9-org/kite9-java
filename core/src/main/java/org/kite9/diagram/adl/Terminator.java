@@ -1,6 +1,6 @@
 package org.kite9.diagram.adl;
 
-import org.kite9.diagram.style.TerminatorImpl;
+import org.kite9.diagram.style.impl.TerminatorImpl;
 
 /**
  * Describes what's at the end of a {@link Connection}.

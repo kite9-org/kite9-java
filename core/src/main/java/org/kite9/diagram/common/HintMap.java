@@ -1,4 +1,4 @@
-package org.kite9.diagram.adl;
+package org.kite9.diagram.common;
 
 import java.util.HashMap;
 import java.util.Map;

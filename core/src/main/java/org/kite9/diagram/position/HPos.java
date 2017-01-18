@@ -13,4 +13,15 @@ public enum HPos {
 			return Direction.RIGHT;
 		}
 	}
+	
+	public static HPos getFromDirection(Direction d) {
+		switch (d) {
+		case LEFT:
+			return LEFT;
+		case RIGHT:
+			return RIGHT;
+		default:
+			return null;
+		}
+	}
 }

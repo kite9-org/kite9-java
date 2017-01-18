@@ -1,4 +1,4 @@
-package org.kite9.diagram.style;
+package org.kite9.diagram.style.impl;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import org.kite9.diagram.xml.StyledXMLElement;
  * @author robmoffat
  *
  */
-public class DiagramImpl extends ContainerImpl implements Diagram {
+public class DiagramImpl extends ConnectedContainerImpl implements Diagram {
 
 	public DiagramImpl(StyledXMLElement el) {
 		super(el, null);

@@ -2,6 +2,12 @@ package org.kite9.diagram.style;
 
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Label;
+import org.kite9.diagram.style.impl.ConnectedContainerImpl;
+import org.kite9.diagram.style.impl.ConnectedTextImpl;
+import org.kite9.diagram.style.impl.ConnectionImpl;
+import org.kite9.diagram.style.impl.DiagramImpl;
+import org.kite9.diagram.style.impl.LabelImpl;
+import org.kite9.diagram.style.impl.TerminatorImpl;
 import org.kite9.diagram.xml.StyledXMLElement;
 import org.kite9.diagram.xml.XMLElement;
 import org.kite9.framework.common.Kite9ProcessingException;
@@ -26,24 +32,19 @@ public class DiagramElementFactory {
 			case LABEL:
 				return new LabelImpl(in2, parent);
 			case CONNECTED:
-				if (parent instanceof Label) {
-					// labels can only contain labels
-					return new LabelImpl(in2, parent);
-				} else {
-					DiagramElementSizing sizing = getElementSizing(in2);
-					switch(sizing) {
-					case CONTAINER:
-						return new ContainerImpl(in2, parent);
-					case DECAL:
-						throw new UnsupportedOperationException();
-					case FIXED_SIZE:
-						throw new UnsupportedOperationException();
-					case TEXT:
-					case UNSPECIFIED:
-					default:
-						return new TextImpl(in2, parent);	
-					}
-					
+				DiagramElementSizing sizing = getElementSizing(in2);
+				switch (sizing) {
+				case MAXIMIZE:
+				case MINIMIZE:
+					return new ConnectedContainerImpl(in2, parent);
+				case DECAL:
+					throw new UnsupportedOperationException();
+				case FIXED_SIZE:
+					throw new UnsupportedOperationException();
+				case TEXT:
+				case UNSPECIFIED:
+				default:
+					return new ConnectedTextImpl(in2, parent);
 				}
 			case LINK:
 				return new ConnectionImpl(in2);

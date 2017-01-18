@@ -1,4 +1,4 @@
-package org.kite9.diagram.style;
+package org.kite9.diagram.style.impl;
 
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.DiagramElement;
@@ -11,7 +11,7 @@ import org.kite9.diagram.xml.StyledXMLElement;
  * @author robmoffat
  * 
  */
-public class LabelImpl extends AbstractRectangularXMLDiagramElement implements Label {
+public class LabelImpl extends AbstractRectangularDiagramElement implements Label {
 	
 	
 	public LabelImpl(StyledXMLElement el, DiagramElement parent) {

@@ -1,6 +1,7 @@
 package org.kite9.framework.serialization;
 
 import java.net.URL;
+import static org.kite9.framework.serialization.CSSConstants.*;
 
 import org.apache.batik.css.dom.CSSOMSVGViewCSS;
 import org.apache.batik.css.engine.CSSContext;
@@ -22,6 +23,7 @@ import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.dom.util.HashTable;
 import org.apache.batik.util.ParsedURL;
 import org.kite9.diagram.position.Layout;
+import org.kite9.diagram.style.BorderTraversal;
 import org.kite9.diagram.style.DiagramElementSizing;
 import org.kite9.diagram.style.DiagramElementType;
 import org.kite9.diagram.xml.ADLDocument;
@@ -64,17 +66,17 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 		
 		// PADDING CSS
 		registerCustomCSSShorthandManager(new PaddingShorthandManager());
-		registerCustomCSSValueManager(new MarginLengthManager("padding-left"));
-		registerCustomCSSValueManager(new MarginLengthManager("padding-right"));
-		registerCustomCSSValueManager(new MarginLengthManager("padding-top"));
-		registerCustomCSSValueManager(new MarginLengthManager("padding-bottom"));
+		registerCustomCSSValueManager(new MarginLengthManager(PADDING_LEFT_PROPERTY));
+		registerCustomCSSValueManager(new MarginLengthManager(PADDING_RIGHT_PROPERTY));
+		registerCustomCSSValueManager(new MarginLengthManager(PADDING_TOP_PROPERTY));
+		registerCustomCSSValueManager(new MarginLengthManager(CSSConstants.PADDING_BOTTOM_PROPERTY));
 		
 		
 		// SHADOW CSS
 		registerCustomCSSShorthandManager(new BoxShadowShorthandManager());
-		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-x-offset"));
-		registerCustomCSSValueManager(new MarginLengthManager("box-shadow-y-offset"));
-		registerCustomCSSValueManager(new OpacityManager("box-shadow-opacity", false));
+		registerCustomCSSValueManager(new MarginLengthManager(BOX_SHADOW_X_OFFSET_PROPERTY));
+		registerCustomCSSValueManager(new MarginLengthManager(BOX_SHADOW_Y_OFFSET_PROPERTY));
+		registerCustomCSSValueManager(new OpacityManager(BOX_SHADOW_OPACITY_PROPERTY, false));
 		ColorManager colourManager = new ColorManager() {
 			
 			@Override
@@ -84,7 +86,7 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 
 			@Override
 			public String getPropertyName() {
-				return "box-shadow-color";
+				return BOX_SHADOW_COLOR_PROPERTY;
 			}
 			
 		};
@@ -108,6 +110,12 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 		registerCustomCSSShorthandManager(new GridSizeShorthandManager());
 		registerCustomCSSShorthandManager(new OccupiesShorthandManager());
 		
+		// CONNECTION TRAVERSAL
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.TRAVERSAL_BOTTOM_PROPERTY, BorderTraversal.class, BorderTraversal.LEAVING));
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.TRAVERSAL_RIGHT_PROPERTY, BorderTraversal.class, BorderTraversal.LEAVING));
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.TRAVERSAL_LEFT_PROPERTY, BorderTraversal.class, BorderTraversal.LEAVING));
+		registerCustomCSSValueManager(new EnumManager(CSSConstants.TRAVERSAL_TOP_PROPERTY, BorderTraversal.class, BorderTraversal.LEAVING));
+		registerCustomCSSShorthandManager(new TraversalShorthandManager());
 		
 		
 	}

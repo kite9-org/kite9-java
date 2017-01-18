@@ -1,12 +1,13 @@
-package org.kite9.diagram.style;
+package org.kite9.diagram.style.impl;
 
 import java.io.Serializable;
 
 import org.apache.batik.css.engine.value.Value;
 import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.DiagramElement;
-import org.kite9.diagram.adl.HintMap;
+import org.kite9.diagram.common.HintMap;
 import org.kite9.diagram.xml.StyledXMLElement;
+import org.kite9.framework.serialization.CSSConstants;
 
 /**
  * Encapsulates an {@link StyledXMLElement} as a {@link DiagramElement}.
@@ -54,7 +55,12 @@ public abstract class AbstractXMLDiagramElement extends AbstractDiagramElement i
 	}
 
 	public String getShapeName() {
-		return theElement.getAttribute("shape");
+		String out = theElement.getAttribute("shape");
+//		if (out.length() == 0) {
+//			out = getCSSStyleProperty(CSSConstants.SHAPE_PROPERTY).getStringValue();
+//		}
+		
+		return out;
 	}
 
 	public Diagram getDiagram() {

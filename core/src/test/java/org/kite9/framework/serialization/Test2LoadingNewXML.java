@@ -5,9 +5,9 @@ import java.util.Iterator;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.kite9.diagram.adl.Connected;
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Diagram;
-import org.kite9.diagram.common.Connected;
 import org.kite9.diagram.xml.DiagramXMLElement;
 import org.kite9.diagram.xml.XMLElement;
 

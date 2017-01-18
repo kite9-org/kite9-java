@@ -18,4 +18,14 @@ public enum VPos {
 		}
 	}
 	
+	public static VPos getFromDirection(Direction d) {
+		switch (d) {
+		case UP:
+			return UP;
+		case DOWN:
+			return DOWN;
+		default:
+			return null;
+		}
+	}
 }

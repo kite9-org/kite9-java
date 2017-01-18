@@ -1,6 +1,7 @@
 package org.kite9.diagram.adl;
 
 import org.apache.batik.css.engine.value.Value;
+import org.kite9.diagram.common.HintMap;
 import org.kite9.diagram.position.RenderingInformation;
 
 /**
