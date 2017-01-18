@@ -38,5 +38,13 @@ public enum Direction {
 			return Direction.valueOf(s);
 		}
 	}
+	
+	public static boolean isHorizontal(Direction d) {
+		return d==LEFT || d== Direction.RIGHT;
+	}
+	
+	public static boolean isVertical(Direction d) {
+		return d==UP || d== Direction.DOWN;
+	}
 
 }
