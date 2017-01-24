@@ -1,8 +1,16 @@
 package org.kite9.framework.serialization;
 
-import java.net.URL;
-import static org.kite9.framework.serialization.CSSConstants.*;
+import static org.kite9.framework.serialization.CSSConstants.BOX_SHADOW_COLOR_PROPERTY;
+import static org.kite9.framework.serialization.CSSConstants.BOX_SHADOW_OPACITY_PROPERTY;
+import static org.kite9.framework.serialization.CSSConstants.BOX_SHADOW_X_OFFSET_PROPERTY;
+import static org.kite9.framework.serialization.CSSConstants.BOX_SHADOW_Y_OFFSET_PROPERTY;
+import static org.kite9.framework.serialization.CSSConstants.PADDING_LEFT_PROPERTY;
+import static org.kite9.framework.serialization.CSSConstants.PADDING_RIGHT_PROPERTY;
+import static org.kite9.framework.serialization.CSSConstants.PADDING_TOP_PROPERTY;
 
+import java.net.URL;
+
+import org.apache.batik.anim.dom.SVG12DOMImplementation;
 import org.apache.batik.css.dom.CSSOMSVGViewCSS;
 import org.apache.batik.css.engine.CSSContext;
 import org.apache.batik.css.engine.CSSEngine;
@@ -19,7 +27,6 @@ import org.apache.batik.css.engine.value.svg12.MarginLengthManager;
 import org.apache.batik.css.parser.ExtendedParser;
 import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.AbstractStylableDocument;
-import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.dom.util.HashTable;
 import org.apache.batik.util.ParsedURL;
 import org.kite9.diagram.position.Layout;
@@ -32,6 +39,7 @@ import org.kite9.diagram.xml.GenericXMLElement;
 import org.kite9.diagram.xml.StylesheetReference;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.DOMException;
+import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
@@ -41,7 +49,7 @@ import org.w3c.dom.css.CSSStyleSheet;
 import org.w3c.dom.css.ViewCSS;
 import org.w3c.dom.stylesheets.StyleSheet;
 
-public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation {
+public class ADLExtensibleDOMImplementation extends SVG12DOMImplementation {
 	
 	public static final boolean USE_GENERIC_XML_ELEMENT = true;
 
@@ -189,4 +197,13 @@ public class ADLExtensibleDOMImplementation extends ExtensibleDOMImplementation 
 	public ViewCSS createViewCSS(AbstractStylableDocument doc) {
         return new CSSOMSVGViewCSS(doc.getCSSEngine());
 	}
+	
+	public static final DOMImplementation DOM_IMPLEMENTATION = new ADLExtensibleDOMImplementation();
+	
+	/**
+     * Returns the default instance of this class.
+     */
+    public static DOMImplementation getDOMImplementation() {
+        return DOM_IMPLEMENTATION;
+    }
 }

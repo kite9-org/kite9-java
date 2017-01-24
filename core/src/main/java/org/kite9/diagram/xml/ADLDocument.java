@@ -16,6 +16,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.css.CSSStyleDeclaration;
 import org.w3c.dom.css.DocumentCSS;
 import org.w3c.dom.stylesheets.StyleSheetList;
+import org.w3c.dom.svg.SVGDocument;
+import org.w3c.dom.svg.SVGSVGElement;
 import org.w3c.dom.views.AbstractView;
 import org.w3c.dom.views.DocumentView;
 
@@ -23,6 +25,8 @@ import org.w3c.dom.views.DocumentView;
  * NOTE:  It would be better not to extend SVGOMDocument, and extend AbstractStyleableDocument,
  * but CSSUtilities does lots of casting to SVGOMDocument, and we want to use that in the
  * kite9-visualisation project.
+ * 
+ * Now, Kite9 elements seem to be first-class members of SVG?  eh...
  * 
  * @author robmoffat
  *
@@ -166,4 +170,5 @@ public class ADLDocument extends SVGOMDocument {
 	public DiagramXMLElement getDocumentElement() {
 		return (DiagramXMLElement) super.getDocumentElement();
 	}
+	
 }
