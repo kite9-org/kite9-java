@@ -12,9 +12,11 @@ import org.w3c.dom.Node;
  * Holds the address (href) of a CSS Stylesheet for a Diagram.
  * 
  * @author robmoffat
+ * 
+ * @TODO: replace with SVGOMStyleElement
  *
  */
-public class StylesheetReference extends AbstractStyleableXMLElement implements CSSStyleSheetNode {
+public class StylesheetReference extends AbstractStyledKite9SVGElement implements CSSStyleSheetNode {
 
 	public static final String DEFAULT_STYLESHEET = "";
 	

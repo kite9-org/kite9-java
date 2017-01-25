@@ -11,37 +11,37 @@ import org.kite9.diagram.position.RouteRenderingInformation;
 import org.kite9.diagram.position.RouteRenderingInformationImpl;
 import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.LinkLineStyle;
-import org.kite9.diagram.xml.StyledXMLElement;
-import org.kite9.diagram.xml.XMLElement;
+import org.kite9.diagram.xml.StyledKite9SVGElement;
+import org.kite9.diagram.xml.Kite9SVGElement;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.w3c.dom.Element;
 
 public class ConnectionImpl extends AbstractXMLDiagramElement implements Connection {
 
-	public ConnectionImpl(StyledXMLElement el) {
+	public ConnectionImpl(StyledKite9SVGElement el) {
 		super(el, null);
 	}
 	
 	
 	@Override
 	protected void initialize() {
-		XMLElement fromElement = getFromElement(theElement);
-		XMLElement toElement = getToElement(theElement);
+		Kite9SVGElement fromElement = getFromElement(theElement);
+		Kite9SVGElement toElement = getToElement(theElement);
 		
 		from = (Connected) fromElement.getDiagramElement();
 		to = (Connected) toElement.getDiagramElement();
 		drawDirection = Direction.getDirection(theElement.getAttribute("drawDirection"));
 		
-		XMLElement fromDecorationEl = theElement.getProperty("fromDecoration");
+		Kite9SVGElement fromDecorationEl = theElement.getProperty("fromDecoration");
 		this.fromDecoration = getTerminator(fromDecorationEl);
 		
-		XMLElement toDecorationEl = theElement.getProperty("toDecoration");
+		Kite9SVGElement toDecorationEl = theElement.getProperty("toDecoration");
 		this.toDecoration = getTerminator(toDecorationEl);
 		
-		XMLElement fromLabelEl = theElement.getProperty("fromLabel");
+		Kite9SVGElement fromLabelEl = theElement.getProperty("fromLabel");
 		this.fromLabel = getLabel(fromLabelEl);
 		
-		XMLElement toLabelEl = theElement.getProperty("toLabel");
+		Kite9SVGElement toLabelEl = theElement.getProperty("toLabel");
 		this.toLabel = getLabel(toLabelEl);
 		
 		String rank = theElement.getAttribute("rank");
@@ -51,15 +51,15 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	}
 
 
-	private Terminator getTerminator(XMLElement el) {
+	private Terminator getTerminator(Kite9SVGElement el) {
 		if (el == null) {
-			el = (XMLElement) theElement.getOwnerDocument().createElement("terminator");
+			el = (Kite9SVGElement) theElement.getOwnerDocument().createElement("terminator");
 			theElement.appendChild(el);
 		}
 		return (Terminator) el.getDiagramElement();
 	}
 	
-	private Label getLabel(XMLElement el) {
+	private Label getLabel(Kite9SVGElement el) {
 		if (el == null) {
 			return null;
 		}
@@ -67,29 +67,29 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	}
 
 
-	public static XMLElement getFromElement(XMLElement theElement) {
+	public static Kite9SVGElement getFromElement(Kite9SVGElement theElement) {
 		String reference = getFromReference(theElement);
 		ADLDocument owner = theElement.getOwnerDocument();
-		XMLElement from = (XMLElement) owner.getChildElementById(owner, reference);
+		Kite9SVGElement from = (Kite9SVGElement) owner.getChildElementById(owner, reference);
 		return from;
 	}
 
 
-	public static String getFromReference(XMLElement theElement) {
+	public static String getFromReference(Kite9SVGElement theElement) {
 		Element fromEl = theElement.getProperty("from");
 		String reference = fromEl.getAttribute("reference");
 		return reference;
 	}
 
-	public static XMLElement getToElement(XMLElement theElement) {
+	public static Kite9SVGElement getToElement(Kite9SVGElement theElement) {
 		String reference = getToReference(theElement);
 		ADLDocument owner = theElement.getOwnerDocument();
-		XMLElement to = (XMLElement) owner.getChildElementById(owner, reference);
+		Kite9SVGElement to = (Kite9SVGElement) owner.getChildElementById(owner, reference);
 		return to;
 	}
 
 
-	public static String getToReference(XMLElement theElement) {
+	public static String getToReference(Kite9SVGElement theElement) {
 		Element toEl = theElement.getProperty("to");
 		String reference = toEl.getAttribute("reference");
 		return reference;

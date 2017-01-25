@@ -8,8 +8,8 @@ import org.kite9.diagram.style.impl.ConnectionImpl;
 import org.kite9.diagram.style.impl.DiagramImpl;
 import org.kite9.diagram.style.impl.LabelImpl;
 import org.kite9.diagram.style.impl.TerminatorImpl;
-import org.kite9.diagram.xml.StyledXMLElement;
-import org.kite9.diagram.xml.XMLElement;
+import org.kite9.diagram.xml.StyledKite9SVGElement;
+import org.kite9.diagram.xml.Kite9SVGElement;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.kite9.framework.serialization.CSSConstants;
 import org.kite9.framework.serialization.EnumValue;
@@ -19,9 +19,9 @@ public class DiagramElementFactory {
 	/**
 	 * Produces the diagram element for the underlying XML.
 	 */
-	public static DiagramElement createDiagramElement(XMLElement in, DiagramElement parent) {
-		if (in instanceof StyledXMLElement) {
-			StyledXMLElement in2 = (StyledXMLElement) in;
+	public static DiagramElement createDiagramElement(Kite9SVGElement in, DiagramElement parent) {
+		if (in instanceof StyledKite9SVGElement) {
+			StyledKite9SVGElement in2 = (StyledKite9SVGElement) in;
 			DiagramElementType lt = getElementType(in2);
 			switch (lt) {
 			case DIAGRAM:
@@ -49,7 +49,7 @@ public class DiagramElementFactory {
 			case LINK:
 				return new ConnectionImpl(in2);
 			case LINK_END:
-				return ((XMLElement) in.getParentNode()).getDiagramElement();
+				return ((Kite9SVGElement) in.getParentNode()).getDiagramElement();
 			case TERMINATOR:
 				return new TerminatorImpl(in2, parent);
 			case UNSPECIFIED:
@@ -64,13 +64,13 @@ public class DiagramElementFactory {
 		}
 	}
 
-	private static DiagramElementType getElementType(StyledXMLElement in2) {
+	private static DiagramElementType getElementType(StyledKite9SVGElement in2) {
 		EnumValue v = (EnumValue) in2.getCSSStyleProperty(CSSConstants.ELEMENT_TYPE_PROPERTY);
 		DiagramElementType lt = (DiagramElementType) v.getTheValue();
 		return lt;
 	}
 	
-	private static DiagramElementSizing getElementSizing(StyledXMLElement in2) {
+	private static DiagramElementSizing getElementSizing(StyledKite9SVGElement in2) {
 		EnumValue v = (EnumValue) in2.getCSSStyleProperty(CSSConstants.ELEMENT_SIZING_PROPERTY);
 		DiagramElementSizing lt = (DiagramElementSizing) v.getTheValue();
 		return lt;

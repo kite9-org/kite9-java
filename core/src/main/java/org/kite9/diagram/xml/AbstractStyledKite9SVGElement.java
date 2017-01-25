@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.batik.anim.dom.SVGGraphicsElement;
+import org.apache.batik.css.engine.CSSEngine;
+import org.apache.batik.css.engine.StyleDeclarationProvider;
 import org.apache.batik.css.engine.StyleMap;
+import org.apache.batik.css.engine.value.Value;
 import org.apache.batik.dom.AbstractDocument;
-import org.apache.batik.dom.AbstractElement;
 import org.apache.batik.util.ParsedURL;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.style.DiagramElementFactory;
@@ -18,7 +21,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
-public abstract class AbstractXMLElement extends AbstractElement implements XMLElement {
+public abstract class AbstractStyledKite9SVGElement extends SVGGraphicsElement implements StyledKite9SVGElement {
 
 	/**
 	 * Used only in test methods.
@@ -28,6 +31,20 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 	boolean readonly = false;
 	private static int counter = 0;
 
+	public AbstractStyledKite9SVGElement(String name, ADLDocument owner) {
+		super(name, owner);
+	}
+	
+	public AbstractStyledKite9SVGElement(String id, String tag, ADLDocument doc) {
+		this(tag, doc);
+		
+		if (id == null) {
+			id = createID();
+		}
+		
+		setID(id);
+	}
+	
 	public ParsedURL getCSSBase() {
 	    String bu = getBaseURI();
 	    return bu == null ? null : new ParsedURL(bu);
@@ -75,8 +92,8 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 		 	return null;
 		}
 	
-		((XMLElement)e).setTagName(propertyName);
-		((XMLElement)e).setOwnerDocument((ADLDocument) this.ownerDocument); 
+		((Kite9SVGElement)e).setTagName(propertyName);
+		((Kite9SVGElement)e).setOwnerDocument((ADLDocument) this.ownerDocument); 
 		
 		if (!e.getNodeName().equals(propertyName)) {
 			throw new Kite9ProcessingException("Incorrect name.  Expected "+propertyName+" but was "+e.getNodeName());
@@ -172,7 +189,7 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 
 	protected StyleMap sm;
 
-	public AbstractXMLElement() {
+	public AbstractStyledKite9SVGElement() {
 		super();
 	}
 
@@ -180,7 +197,7 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 		return getId();
 	}
 
-	public AbstractXMLElement(String name, AbstractDocument owner) {
+	public AbstractStyledKite9SVGElement(String name, AbstractDocument owner) {
 		super(name, owner);
 		this.tagName = name;
 	}
@@ -189,13 +206,13 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 		return true;
 	}
 
-	public Iterator<XMLElement> iterator() {
+	public Iterator<Kite9SVGElement> iterator() {
 		NodeList childNodes2 = getChildNodes();
-		List<XMLElement> elems = new ArrayList<XMLElement>(childNodes2.getLength());
+		List<Kite9SVGElement> elems = new ArrayList<Kite9SVGElement>(childNodes2.getLength());
 		for (int i = 0; i < childNodes2.getLength(); i++) {
 			Node n = childNodes2.item(i);
-			if (n instanceof XMLElement) {
-				elems.add((XMLElement) n);
+			if (n instanceof Kite9SVGElement) {
+				elems.add((Kite9SVGElement) n);
 			}
 		}
 		
@@ -207,7 +224,7 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 		NodeList childNodes2 = getChildNodes();
 		for (int i = 0; i < childNodes2.getLength(); i++) {
 			Node n = childNodes2.item(i);
-			if (n instanceof XMLElement) {
+			if (n instanceof Kite9SVGElement) {
 				out++;
 			}
 		}
@@ -227,12 +244,61 @@ public abstract class AbstractXMLElement extends AbstractElement implements XMLE
 	
 	protected DiagramElement getParentElement() {
 		Node n = getParentNode();
-		if (n instanceof XMLElement) {
-			XMLElement p = (XMLElement) n;
+		if (n instanceof Kite9SVGElement) {
+			Kite9SVGElement p = (Kite9SVGElement) n;
 			return (p == null) ? null : p.getDiagramElement();
 		} else {
 			return null;
 		}
 	}
 	
+	
+	public String getShapeName() {
+		return getAttribute("shape");
+	}
+	
+	public void setShapeName(String s) {
+		setAttribute("shape", s);
+	}
+
+
+	public void setClasses(String s) {
+		setAttribute("class", s);
+	}
+	
+	public String getClasses() {
+		return getAttribute("class");
+	}
+
+	public void setStyle(String s) {
+		setAttribute("style", s);
+	}
+	
+	public StyleMap getComputedStyleMap(String pseudoElement) {
+		return sm;
+	}
+
+	public void setComputedStyleMap(String pseudoElement, StyleMap sm) {
+		this.sm = sm;
+	}
+
+	public String getCSSClass() {
+		return getAttribute("class");
+	}
+	
+
+	public StyleDeclarationProvider getOverrideStyleDeclarationProvider() {
+		return null;
+	}
+
+
+	public boolean isPseudoInstanceOf(String pseudoClass) {
+		return false;
+	}
+
+	public Value getCSSStyleProperty(String name) {
+		CSSEngine e = getOwnerDocument().getCSSEngine();
+		return e.getComputedStyle(this, null, e.getPropertyIndex(name));
+	}
+
 }

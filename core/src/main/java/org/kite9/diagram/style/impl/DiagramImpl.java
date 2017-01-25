@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Diagram;
-import org.kite9.diagram.xml.StyledXMLElement;
+import org.kite9.diagram.xml.StyledKite9SVGElement;
 
 /**
  * This contains extra code relating to the Diagram itself, specifically, managing 
@@ -18,7 +18,7 @@ import org.kite9.diagram.xml.StyledXMLElement;
  */
 public class DiagramImpl extends ConnectedContainerImpl implements Diagram {
 
-	public DiagramImpl(StyledXMLElement el) {
+	public DiagramImpl(StyledKite9SVGElement el) {
 		super(el, null);
 	}
 	

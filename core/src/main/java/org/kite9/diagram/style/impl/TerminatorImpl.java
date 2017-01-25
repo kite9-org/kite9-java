@@ -2,11 +2,11 @@ package org.kite9.diagram.style.impl;
 
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Terminator;
-import org.kite9.diagram.xml.StyledXMLElement;
+import org.kite9.diagram.xml.StyledKite9SVGElement;
 
 public class TerminatorImpl extends AbstractRectangularDiagramElement implements Terminator {
 
-	public TerminatorImpl(StyledXMLElement el, DiagramElement parent) {
+	public TerminatorImpl(StyledKite9SVGElement el, DiagramElement parent) {
 		super(el, parent);
 	}
 

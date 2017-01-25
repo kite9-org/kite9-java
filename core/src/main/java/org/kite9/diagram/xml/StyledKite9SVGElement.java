@@ -2,16 +2,15 @@ package org.kite9.diagram.xml;
 
 import org.apache.batik.css.engine.CSSStylableElement;
 import org.apache.batik.css.engine.value.Value;
+import org.w3c.dom.svg.SVGTransformable;
 
-public interface StyledXMLElement extends CSSStylableElement, XMLElement {
+public interface StyledKite9SVGElement extends CSSStylableElement, Kite9SVGElement, SVGTransformable {
 
 	public void setClasses(String c);
 	
 	public String getClasses();
 	
 	public void setStyle(String s);
-	
-	public String getStyle();
 	
 	public void setShapeName(String s);
 	

@@ -3,7 +3,7 @@ package org.kite9.diagram.style.impl;
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Label;
-import org.kite9.diagram.xml.StyledXMLElement;
+import org.kite9.diagram.xml.StyledKite9SVGElement;
 
 /**
  * Container and link-end labels. (TEMPORARY)
@@ -14,7 +14,7 @@ import org.kite9.diagram.xml.StyledXMLElement;
 public class LabelImpl extends AbstractRectangularDiagramElement implements Label {
 	
 	
-	public LabelImpl(StyledXMLElement el, DiagramElement parent) {
+	public LabelImpl(StyledKite9SVGElement el, DiagramElement parent) {
 		super(el, parent);
 	}
 

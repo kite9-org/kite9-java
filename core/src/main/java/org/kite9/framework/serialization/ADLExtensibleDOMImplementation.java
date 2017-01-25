@@ -14,7 +14,6 @@ import org.apache.batik.anim.dom.SVG12DOMImplementation;
 import org.apache.batik.css.dom.CSSOMSVGViewCSS;
 import org.apache.batik.css.engine.CSSContext;
 import org.apache.batik.css.engine.CSSEngine;
-import org.apache.batik.css.engine.CSSEngineUserAgent;
 import org.apache.batik.css.engine.SVG12CSSEngine;
 import org.apache.batik.css.engine.value.FloatValue;
 import org.apache.batik.css.engine.value.RGBColorValue;
@@ -39,7 +38,6 @@ import org.kite9.diagram.xml.GenericXMLElement;
 import org.kite9.diagram.xml.StylesheetReference;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.DOMException;
-import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
@@ -175,22 +173,22 @@ public class ADLExtensibleDOMImplementation extends SVG12DOMImplementation {
 		return result;
 	}
 	
-	public CSSEngine createCSSEngine(ADLDocument doc) {
-		CSSEngine e = super.createCSSEngine(doc, new ADLContext(doc));
-		e.setCSSEngineUserAgent(new CSSEngineUserAgent() {
-
-			public void displayMessage(String message) {
-				System.out.println("message");
-			}
-
-			public void displayError(Exception ex) {
-				throw new RuntimeException(ex);
-			}
-		});
-
-		doc.setCSSEngine(e);
-		return e;
-	}
+//	public CSSEngine createCSSEngine(ADLDocument doc) {
+//		CSSEngine e = super.createCSSEngine(doc, new ADLBridgeContext(doc));
+//		e.setCSSEngineUserAgent(new CSSEngineUserAgent() {
+//
+//			public void displayMessage(String message) {
+//				System.out.println("message");
+//			}
+//
+//			public void displayError(Exception ex) {
+//				throw new RuntimeException(ex);
+//			}
+//		});
+//
+//		doc.setCSSEngine(e);
+//		return e;
+//	}
 	
 
 	@Override
@@ -198,12 +196,12 @@ public class ADLExtensibleDOMImplementation extends SVG12DOMImplementation {
         return new CSSOMSVGViewCSS(doc.getCSSEngine());
 	}
 	
-	public static final DOMImplementation DOM_IMPLEMENTATION = new ADLExtensibleDOMImplementation();
+	private static final ADLExtensibleDOMImplementation DOM_IMPLEMENTATION = new ADLExtensibleDOMImplementation();
 	
 	/**
      * Returns the default instance of this class.
      */
-    public static DOMImplementation getDOMImplementation() {
+    public static ADLExtensibleDOMImplementation getDOMImplementation() {
         return DOM_IMPLEMENTATION;
     }
 }

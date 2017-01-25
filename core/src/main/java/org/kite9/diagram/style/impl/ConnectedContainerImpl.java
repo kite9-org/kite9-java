@@ -3,13 +3,13 @@ package org.kite9.diagram.style.impl;
 import org.kite9.diagram.adl.Container;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.adl.Label;
-import org.kite9.diagram.xml.StyledXMLElement;
+import org.kite9.diagram.xml.StyledKite9SVGElement;
 
 public class ConnectedContainerImpl extends AbstractConnectedDiagramElement implements Container {
 	
 	Label label;
 	
-	public ConnectedContainerImpl(StyledXMLElement el, DiagramElement parent) {
+	public ConnectedContainerImpl(StyledKite9SVGElement el, DiagramElement parent) {
 		super(el, parent);
 	}
 

@@ -3,8 +3,7 @@ package org.kite9.diagram.xml;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.apache.batik.anim.dom.SVGOMDocument;
-import org.apache.batik.css.engine.CSSEngine;
+import org.apache.batik.anim.dom.SVG12OMDocument;
 import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.util.XMLConstants;
 import org.kite9.framework.serialization.ADLExtensibleDOMImplementation;
@@ -16,13 +15,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.css.CSSStyleDeclaration;
 import org.w3c.dom.css.DocumentCSS;
 import org.w3c.dom.stylesheets.StyleSheetList;
-import org.w3c.dom.svg.SVGDocument;
-import org.w3c.dom.svg.SVGSVGElement;
 import org.w3c.dom.views.AbstractView;
 import org.w3c.dom.views.DocumentView;
 
 /**
- * NOTE:  It would be better not to extend SVGOMDocument, and extend AbstractStyleableDocument,
+ * NOTE:  It would be better not to extend SVG12OMDocument, and extend AbstractStyleableDocument,
  * but CSSUtilities does lots of casting to SVGOMDocument, and we want to use that in the
  * kite9-visualisation project.
  * 
@@ -31,7 +28,7 @@ import org.w3c.dom.views.DocumentView;
  * @author robmoffat
  *
  */
-public class ADLDocument extends SVGOMDocument {
+public class ADLDocument extends SVG12OMDocument {
 	
 	/**
      * Is this document immutable?
@@ -66,31 +63,31 @@ public class ADLDocument extends SVGOMDocument {
      * The default view.
      */
     protected transient AbstractView defaultView;
+//
+//    /**
+//     * The CSS engine.
+//     */
+//    protected transient CSSEngine cssEngine;
 
-    /**
-     * The CSS engine.
-     */
-    protected transient CSSEngine cssEngine;
+//
+//    /**
+//     * Sets the CSS engine.
+//     */
+//    public void setCSSEngine(CSSEngine ctx) {
+//        cssEngine = ctx;
+//    }
 
-
-    /**
-     * Sets the CSS engine.
-     */
-    public void setCSSEngine(CSSEngine ctx) {
-        cssEngine = ctx;
-    }
-
-    /**
-     * Returns the CSS engine.
-     */
-    public CSSEngine getCSSEngine() {
-    	if (cssEngine == null) {
-    		ADLExtensibleDOMImplementation impl = (ADLExtensibleDOMImplementation) getImplementation();
-    		cssEngine = impl.createCSSEngine(this);
-    	}
-    	
-        return cssEngine;
-    }
+//    /**
+//     * Returns the CSS engine.
+//     */
+//    public CSSEngine getCSSEngine() {
+//    	if (cssEngine == null) {
+//    		ADLExtensibleDOMImplementation impl = ADLExtensibleDOMImplementation.getDOMImplementation();
+//    		cssEngine = impl.createCSSEngine(this);
+//    	}
+//    	
+//        return cssEngine;
+//    }
 
     // DocumentStyle /////////////////////////////////////////////////////////
 
@@ -157,13 +154,13 @@ public class ADLDocument extends SVGOMDocument {
 	/**
 	 * Maybe move this all into the testing package?
 	 */
-	private transient Set<XMLElement> tempConnections = new LinkedHashSet<>();
+	private transient Set<Kite9SVGElement> tempConnections = new LinkedHashSet<>();
 
-	public void addConnection(StyledXMLElement xmlElement) {	
+	public void addConnection(StyledKite9SVGElement xmlElement) {	
 		tempConnections.add(xmlElement);
 	}
 
-	public Set<XMLElement> getConnectionElements() {
+	public Set<Kite9SVGElement> getConnectionElements() {
 		return tempConnections;
 	}
 

@@ -3,7 +3,13 @@ package org.kite9.diagram.xml;
 import org.kite9.diagram.adl.DiagramElement;
 import org.w3c.dom.Element;
 
-public interface XMLElement extends Element, Iterable<XMLElement> {
+/**
+ * Useful helper methods for creating and inspecting Kite9 SVG documents, mainly used in testing.
+ * 
+ * @author robmoffat
+ *
+ */
+public interface Kite9SVGElement extends Element, Iterable<Kite9SVGElement> {
 	
 	public String getID();
 

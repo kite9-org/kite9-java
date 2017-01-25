@@ -6,18 +6,18 @@ import org.apache.batik.css.engine.value.Value;
 import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.common.HintMap;
-import org.kite9.diagram.xml.StyledXMLElement;
+import org.kite9.diagram.xml.StyledKite9SVGElement;
 import org.kite9.framework.serialization.CSSConstants;
 
 /**
- * Encapsulates an {@link StyledXMLElement} as a {@link DiagramElement}.
+ * Encapsulates an {@link StyledKite9SVGElement} as a {@link DiagramElement}.
  * 
  * @author robmoffat
  *
  */
 public abstract class AbstractXMLDiagramElement extends AbstractDiagramElement implements DiagramElement, Serializable {
 	
-	protected StyledXMLElement theElement;
+	protected StyledKite9SVGElement theElement;
 	
 	private boolean initialized = false;
 
@@ -35,11 +35,11 @@ public abstract class AbstractXMLDiagramElement extends AbstractDiagramElement i
 
 	
 	@Deprecated
-	public StyledXMLElement getTheElement() {
+	public StyledKite9SVGElement getTheElement() {
 		return theElement;
 	}
 
-	public AbstractXMLDiagramElement(StyledXMLElement el, DiagramElement parent) {
+	public AbstractXMLDiagramElement(StyledKite9SVGElement el, DiagramElement parent) {
 		super(parent);
 		this.theElement = el;
 	}

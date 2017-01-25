@@ -9,7 +9,7 @@ import org.kite9.diagram.adl.Connected;
 import org.kite9.diagram.adl.Connection;
 import org.kite9.diagram.adl.Diagram;
 import org.kite9.diagram.xml.DiagramXMLElement;
-import org.kite9.diagram.xml.XMLElement;
+import org.kite9.diagram.xml.Kite9SVGElement;
 
 /**
  * This is based on the idea that we should be able to load any XML 
@@ -35,10 +35,10 @@ public class Test2LoadingNewXML {
 		
 		Assert.assertEquals("My Diagram", d.getID());
 		Assert.assertTrue(d.getStylesheetReference().getHref().endsWith("styles2.css"));
-		Iterator<XMLElement> iterator = d.iterator();
-		XMLElement one = iterator.next();
+		Iterator<Kite9SVGElement> iterator = d.iterator();
+		Kite9SVGElement one = iterator.next();
 		Assert.assertEquals("arrow2", one.getTagName());
-		XMLElement two = iterator.next();
+		Kite9SVGElement two = iterator.next();
 		Assert.assertEquals("arrow3", two.getTagName());
 		
 		Connected oneDe, twoDe;

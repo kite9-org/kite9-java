@@ -10,8 +10,8 @@ import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.position.RectangleRenderingInformation;
 import org.kite9.diagram.position.RectangleRenderingInformationImpl;
 import org.kite9.diagram.position.RenderingInformation;
-import org.kite9.diagram.xml.StyledXMLElement;
-import org.kite9.diagram.xml.XMLElement;
+import org.kite9.diagram.xml.StyledKite9SVGElement;
+import org.kite9.diagram.xml.Kite9SVGElement;
 import org.kite9.framework.serialization.CSSConstants;
 import org.kite9.framework.serialization.EnumValue;
 
@@ -19,7 +19,7 @@ public abstract class AbstractRectangularDiagramElement extends AbstractXMLDiagr
 
 	private RectangleRenderingInformation ri;
 
-	public AbstractRectangularDiagramElement(StyledXMLElement el, DiagramElement parent) {
+	public AbstractRectangularDiagramElement(StyledKite9SVGElement el, DiagramElement parent) {
 		super(el, parent);
 	}
 
@@ -49,8 +49,8 @@ public abstract class AbstractRectangularDiagramElement extends AbstractXMLDiagr
 		initElement(theElement);
 	}
 
-	private void initElement(XMLElement theElement) {
-		for (XMLElement xmlElement : theElement) {
+	private void initElement(Kite9SVGElement theElement) {
+		for (Kite9SVGElement xmlElement : theElement) {
 			DiagramElement de = xmlElement.getDiagramElement();			
 			if (de instanceof Label) {
 				addLabelReference((Label) de);
