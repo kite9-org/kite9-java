@@ -9,7 +9,7 @@ import org.w3c.dom.Element;
  * @author robmoffat
  *
  */
-public interface Kite9SVGElement extends Element, Iterable<Kite9SVGElement> {
+public interface XMLElement extends Element, Iterable<XMLElement> {
 	
 	public String getID();
 

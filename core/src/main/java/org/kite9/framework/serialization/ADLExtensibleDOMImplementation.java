@@ -11,6 +11,8 @@ import static org.kite9.framework.serialization.CSSConstants.PADDING_TOP_PROPERT
 import java.net.URL;
 
 import org.apache.batik.anim.dom.SVG12DOMImplementation;
+import org.apache.batik.anim.dom.SVG12OMDocument;
+import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.css.dom.CSSOMSVGViewCSS;
 import org.apache.batik.css.engine.CSSContext;
 import org.apache.batik.css.engine.CSSEngine;
@@ -38,6 +40,7 @@ import org.kite9.diagram.xml.GenericXMLElement;
 import org.kite9.diagram.xml.StylesheetReference;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.DOMException;
+import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
@@ -150,11 +153,14 @@ public class ADLExtensibleDOMImplementation extends SVG12DOMImplementation {
 	}
 
 	public Document createDocument(String namespaceURI, String qualifiedName, DocumentType doctype) throws DOMException {
-		ADLDocument out = new ADLDocument(this);
-		createElementNS(out, XMLHelper.KITE9_NAMESPACE, "diagram");
-		return out;
+		ADLDocument result = new ADLDocument(this);
+		result.setIsSVG12(true);
+        if (qualifiedName != null)
+            result.appendChild(result.createElementNS(namespaceURI,
+                                                      qualifiedName));
+        return result;
 	}
-
+	
 	public StyleSheet createStyleSheet(Node node, HashTable pseudoAttrs) {
         throw new UnsupportedOperationException("StyleSheetFactory.createStyleSheet is not implemented"); // XXX
 	}

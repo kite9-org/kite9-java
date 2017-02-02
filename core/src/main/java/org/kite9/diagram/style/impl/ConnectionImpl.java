@@ -12,7 +12,7 @@ import org.kite9.diagram.position.RouteRenderingInformationImpl;
 import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.diagram.xml.LinkLineStyle;
 import org.kite9.diagram.xml.StyledKite9SVGElement;
-import org.kite9.diagram.xml.Kite9SVGElement;
+import org.kite9.diagram.xml.XMLElement;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.w3c.dom.Element;
 
@@ -25,23 +25,23 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	
 	@Override
 	protected void initialize() {
-		Kite9SVGElement fromElement = getFromElement(theElement);
-		Kite9SVGElement toElement = getToElement(theElement);
+		XMLElement fromElement = getFromElement(theElement);
+		XMLElement toElement = getToElement(theElement);
 		
 		from = (Connected) fromElement.getDiagramElement();
 		to = (Connected) toElement.getDiagramElement();
 		drawDirection = Direction.getDirection(theElement.getAttribute("drawDirection"));
 		
-		Kite9SVGElement fromDecorationEl = theElement.getProperty("fromDecoration");
+		XMLElement fromDecorationEl = theElement.getProperty("fromDecoration");
 		this.fromDecoration = getTerminator(fromDecorationEl);
 		
-		Kite9SVGElement toDecorationEl = theElement.getProperty("toDecoration");
+		XMLElement toDecorationEl = theElement.getProperty("toDecoration");
 		this.toDecoration = getTerminator(toDecorationEl);
 		
-		Kite9SVGElement fromLabelEl = theElement.getProperty("fromLabel");
+		XMLElement fromLabelEl = theElement.getProperty("fromLabel");
 		this.fromLabel = getLabel(fromLabelEl);
 		
-		Kite9SVGElement toLabelEl = theElement.getProperty("toLabel");
+		XMLElement toLabelEl = theElement.getProperty("toLabel");
 		this.toLabel = getLabel(toLabelEl);
 		
 		String rank = theElement.getAttribute("rank");
@@ -51,15 +51,15 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	}
 
 
-	private Terminator getTerminator(Kite9SVGElement el) {
+	private Terminator getTerminator(XMLElement el) {
 		if (el == null) {
-			el = (Kite9SVGElement) theElement.getOwnerDocument().createElement("terminator");
+			el = (XMLElement) theElement.getOwnerDocument().createElement("terminator");
 			theElement.appendChild(el);
 		}
 		return (Terminator) el.getDiagramElement();
 	}
 	
-	private Label getLabel(Kite9SVGElement el) {
+	private Label getLabel(XMLElement el) {
 		if (el == null) {
 			return null;
 		}
@@ -67,29 +67,29 @@ public class ConnectionImpl extends AbstractXMLDiagramElement implements Connect
 	}
 
 
-	public static Kite9SVGElement getFromElement(Kite9SVGElement theElement) {
+	public static XMLElement getFromElement(XMLElement theElement) {
 		String reference = getFromReference(theElement);
 		ADLDocument owner = theElement.getOwnerDocument();
-		Kite9SVGElement from = (Kite9SVGElement) owner.getChildElementById(owner, reference);
+		XMLElement from = (XMLElement) owner.getChildElementById(owner, reference);
 		return from;
 	}
 
 
-	public static String getFromReference(Kite9SVGElement theElement) {
+	public static String getFromReference(XMLElement theElement) {
 		Element fromEl = theElement.getProperty("from");
 		String reference = fromEl.getAttribute("reference");
 		return reference;
 	}
 
-	public static Kite9SVGElement getToElement(Kite9SVGElement theElement) {
+	public static XMLElement getToElement(XMLElement theElement) {
 		String reference = getToReference(theElement);
 		ADLDocument owner = theElement.getOwnerDocument();
-		Kite9SVGElement to = (Kite9SVGElement) owner.getChildElementById(owner, reference);
+		XMLElement to = (XMLElement) owner.getChildElementById(owner, reference);
 		return to;
 	}
 
 
-	public static String getToReference(Kite9SVGElement theElement) {
+	public static String getToReference(XMLElement theElement) {
 		Element toEl = theElement.getProperty("to");
 		String reference = toEl.getAttribute("reference");
 		return reference;

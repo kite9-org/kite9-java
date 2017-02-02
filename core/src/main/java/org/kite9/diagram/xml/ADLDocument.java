@@ -154,18 +154,14 @@ public class ADLDocument extends SVG12OMDocument {
 	/**
 	 * Maybe move this all into the testing package?
 	 */
-	private transient Set<Kite9SVGElement> tempConnections = new LinkedHashSet<>();
+	private transient Set<XMLElement> tempConnections = new LinkedHashSet<>();
 
 	public void addConnection(StyledKite9SVGElement xmlElement) {	
 		tempConnections.add(xmlElement);
 	}
 
-	public Set<Kite9SVGElement> getConnectionElements() {
+	public Set<XMLElement> getConnectionElements() {
 		return tempConnections;
-	}
-
-	public DiagramXMLElement getDocumentElement() {
-		return (DiagramXMLElement) super.getDocumentElement();
 	}
 	
 }

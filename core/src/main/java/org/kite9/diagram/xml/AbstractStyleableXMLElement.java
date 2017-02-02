@@ -21,7 +21,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
-public abstract class AbstractStyledKite9SVGElement extends SVGGraphicsElement implements StyledKite9SVGElement {
+public abstract class AbstractStyleableXMLElement extends SVGGraphicsElement implements StyledKite9SVGElement {
 
 	/**
 	 * Used only in test methods.
@@ -31,11 +31,12 @@ public abstract class AbstractStyledKite9SVGElement extends SVGGraphicsElement i
 	boolean readonly = false;
 	private static int counter = 0;
 
-	public AbstractStyledKite9SVGElement(String name, ADLDocument owner) {
+	public AbstractStyleableXMLElement(String name, ADLDocument owner) {
 		super(name, owner);
+		this.tagName = name;
 	}
 	
-	public AbstractStyledKite9SVGElement(String id, String tag, ADLDocument doc) {
+	public AbstractStyleableXMLElement(String id, String tag, ADLDocument doc) {
 		this(tag, doc);
 		
 		if (id == null) {
@@ -92,8 +93,8 @@ public abstract class AbstractStyledKite9SVGElement extends SVGGraphicsElement i
 		 	return null;
 		}
 	
-		((Kite9SVGElement)e).setTagName(propertyName);
-		((Kite9SVGElement)e).setOwnerDocument((ADLDocument) this.ownerDocument); 
+		((XMLElement)e).setTagName(propertyName);
+		((XMLElement)e).setOwnerDocument((ADLDocument) this.ownerDocument); 
 		
 		if (!e.getNodeName().equals(propertyName)) {
 			throw new Kite9ProcessingException("Incorrect name.  Expected "+propertyName+" but was "+e.getNodeName());
@@ -189,30 +190,25 @@ public abstract class AbstractStyledKite9SVGElement extends SVGGraphicsElement i
 
 	protected StyleMap sm;
 
-	public AbstractStyledKite9SVGElement() {
+	public AbstractStyleableXMLElement() {
 		super();
 	}
 
 	public String getXMLId() {
 		return getId();
 	}
-
-	public AbstractStyledKite9SVGElement(String name, AbstractDocument owner) {
-		super(name, owner);
-		this.tagName = name;
-	}
 	
 	public boolean hasContent() {
 		return true;
 	}
 
-	public Iterator<Kite9SVGElement> iterator() {
+	public Iterator<XMLElement> iterator() {
 		NodeList childNodes2 = getChildNodes();
-		List<Kite9SVGElement> elems = new ArrayList<Kite9SVGElement>(childNodes2.getLength());
+		List<XMLElement> elems = new ArrayList<XMLElement>(childNodes2.getLength());
 		for (int i = 0; i < childNodes2.getLength(); i++) {
 			Node n = childNodes2.item(i);
-			if (n instanceof Kite9SVGElement) {
-				elems.add((Kite9SVGElement) n);
+			if (n instanceof XMLElement) {
+				elems.add((XMLElement) n);
 			}
 		}
 		
@@ -224,7 +220,7 @@ public abstract class AbstractStyledKite9SVGElement extends SVGGraphicsElement i
 		NodeList childNodes2 = getChildNodes();
 		for (int i = 0; i < childNodes2.getLength(); i++) {
 			Node n = childNodes2.item(i);
-			if (n instanceof Kite9SVGElement) {
+			if (n instanceof XMLElement) {
 				out++;
 			}
 		}
@@ -244,8 +240,8 @@ public abstract class AbstractStyledKite9SVGElement extends SVGGraphicsElement i
 	
 	protected DiagramElement getParentElement() {
 		Node n = getParentNode();
-		if (n instanceof Kite9SVGElement) {
-			Kite9SVGElement p = (Kite9SVGElement) n;
+		if (n instanceof XMLElement) {
+			XMLElement p = (XMLElement) n;
 			return (p == null) ? null : p.getDiagramElement();
 		} else {
 			return null;

@@ -33,20 +33,18 @@ public class DiagramXMLElement extends AbstractXMLContainerElement {
 		this(id, null, null, doc);
 	}
 
-	public DiagramXMLElement(String id, List<Kite9SVGElement> contents, Kite9SVGElement k) {
+	public DiagramXMLElement(String id, List<XMLElement> contents, XMLElement k) {
 		this(id, contents, k, TESTING_DOCUMENT);
 	}
 	
-	public DiagramXMLElement(String id, List<Kite9SVGElement> contents, Kite9SVGElement k, ADLDocument doc) {
+	public DiagramXMLElement(String id, List<XMLElement> contents, XMLElement k, ADLDocument doc) {
 		super(id, "diagram", doc);
 		if (doc.getDocumentElement() == null) {
 			doc.appendChild(this);
-		} else if (doc.getDocumentElement() != this) {
-			throw new Kite9ProcessingException();
-		}
+		} 
 		
 		if (contents != null) {
-			for (Kite9SVGElement contained : contents) {
+			for (XMLElement contained : contents) {
 				appendChild(contained);
 			}
 		}
@@ -55,15 +53,15 @@ public class DiagramXMLElement extends AbstractXMLContainerElement {
 		}
 		
 		// home all temporary connections (due to Link)
-		for (Kite9SVGElement xmlElement : doc.getConnectionElements()) {
+		for (XMLElement xmlElement : doc.getConnectionElements()) {
 			appendChild(xmlElement);
 		}
 		
 		// set ranks for all children that don't have them
 		int rank = 0;
 		for (Node childElement : this) {
-			if (childElement instanceof Kite9SVGElement) {
-				Kite9SVGElement xmlElement = (Kite9SVGElement) childElement;
+			if (childElement instanceof XMLElement) {
+				XMLElement xmlElement = (XMLElement) childElement;
 				String rankString = xmlElement.getAttribute("rank");
 				if ("".equals(rankString)) {
 					xmlElement.setAttribute("rank", ""+(rank++));
@@ -74,24 +72,24 @@ public class DiagramXMLElement extends AbstractXMLContainerElement {
 		doc.getConnectionElements().clear();
 	}
 	
-	public DiagramXMLElement(String id, List<Kite9SVGElement> contents) {
+	public DiagramXMLElement(String id, List<XMLElement> contents) {
 		this(id, contents, null, TESTING_DOCUMENT);
 	}
 
-	public DiagramXMLElement(String id, List<Kite9SVGElement> contents, Layout l, Kite9SVGElement k) {
+	public DiagramXMLElement(String id, List<XMLElement> contents, Layout l, XMLElement k) {
 		this(id, contents, k, TESTING_DOCUMENT);
 		this.setLayoutDirection(l);
 	}
 
-	public DiagramXMLElement(List<Kite9SVGElement> contents, Kite9SVGElement k) {
+	public DiagramXMLElement(List<XMLElement> contents, XMLElement k) {
 		this(createID(), contents, k);
 	}
 
-	public Kite9SVGElement getKey() {
+	public XMLElement getKey() {
 		return getProperty("key");
 	}
 
-	public void setKey(Kite9SVGElement k) {
+	public void setKey(XMLElement k) {
 	    replaceProperty("key", k);
 	}
 
@@ -117,16 +115,16 @@ public class DiagramXMLElement extends AbstractXMLContainerElement {
 	}
 
 	@Override
-	public Kite9SVGElement getLabel() {
+	public XMLElement getLabel() {
 		return getKey();
 	}
 
 	public StylesheetReference getStylesheetReference() {
-		return getProperty("stylesheet");
+		return getProperty("style");
 	}
 	
 	public void setStylesheetReference(StylesheetReference ref) {
-		replaceProperty("stylesheet", ref);
+		replaceProperty("style", ref);
 	}
 	
 	public Diagram getDiagramElement() {

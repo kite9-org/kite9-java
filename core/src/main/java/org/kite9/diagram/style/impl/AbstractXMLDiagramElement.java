@@ -64,7 +64,11 @@ public abstract class AbstractXMLDiagramElement extends AbstractDiagramElement i
 	}
 
 	public Diagram getDiagram() {
-		return theElement.getOwnerDocument().getDocumentElement().getDiagramElement();
+		if (this instanceof Diagram) {
+			return (Diagram) this;
+		} else {
+			return ((AbstractXMLDiagramElement)getParent()).getDiagram();
+		}
 	}
 
 	@Override

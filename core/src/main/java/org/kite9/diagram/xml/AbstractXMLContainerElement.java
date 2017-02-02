@@ -2,7 +2,7 @@ package org.kite9.diagram.xml;
 
 import org.kite9.diagram.position.Layout;
 
-public abstract class AbstractXMLContainerElement extends AbstractStyledKite9SVGElement {
+public abstract class AbstractXMLContainerElement extends AbstractStyleableXMLElement {
 
 	public AbstractXMLContainerElement() {
 		super();
@@ -29,11 +29,11 @@ public abstract class AbstractXMLContainerElement extends AbstractStyledKite9SVG
 	    }
 	}
 
-	public void setLabel(Kite9SVGElement label) {
+	public void setLabel(XMLElement label) {
 	    replaceProperty("label", label);
 	}
 	
-	public Kite9SVGElement getLabel() {
+	public XMLElement getLabel() {
 		return getProperty("label");
 	}
 }

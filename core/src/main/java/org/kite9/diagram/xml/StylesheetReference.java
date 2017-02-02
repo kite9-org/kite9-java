@@ -1,11 +1,16 @@
 package org.kite9.diagram.xml;
 
+import java.util.Collections;
+import java.util.Iterator;
+
+import org.apache.batik.anim.dom.SVGOMStyleElement;
 import org.apache.batik.css.engine.CSSEngine;
 import org.apache.batik.css.engine.CSSStyleSheetNode;
 import org.apache.batik.css.engine.StyleSheet;
 import org.apache.batik.util.ParsedURL;
 import org.apache.batik.util.SVGConstants;
 import org.kite9.diagram.adl.DiagramElement;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 /**
@@ -16,16 +21,19 @@ import org.w3c.dom.Node;
  * @TODO: replace with SVGOMStyleElement
  *
  */
-public class StylesheetReference extends AbstractStyledKite9SVGElement implements CSSStyleSheetNode {
+public class StylesheetReference extends SVGOMStyleElement implements CSSStyleSheetNode, XMLElement {
 
 	public static final String DEFAULT_STYLESHEET = "";
 	
 	public StylesheetReference() {
-		this(TESTING_DOCUMENT, DEFAULT_STYLESHEET);
+		this(AbstractStyleableXMLElement.TESTING_DOCUMENT, DEFAULT_STYLESHEET);
 	}
 	
+	private String tagName;
+	
 	public StylesheetReference(ADLDocument owner) {
-		super("stylesheet", owner);
+		super(null, owner);
+		this.tagName = "stylesheet";
 	}
 
 	public StylesheetReference(ADLDocument owner, String href) {
@@ -83,4 +91,53 @@ public class StylesheetReference extends AbstractStyledKite9SVGElement implement
 		return new StylesheetReference();
 	}
 
+	@Override
+	public Iterator<XMLElement> iterator() {
+		return Collections.emptyIterator();
+	}
+
+	@Override
+	public String getID() {
+		return getHref();
+	}
+
+	@Override
+	public void setTagName(String tag) {
+		this.tagName = tag;
+	}
+
+	@Override
+	public void setOwnerDocument(ADLDocument doc) {
+		super.setOwnerDocument(doc);
+	}
+
+	@Override
+	public int getChildXMLElementCount() {
+		return 0;
+	}
+
+	@Override
+	public DiagramElement getDiagramElement() {
+		throw new UnsupportedOperationException();
+
+	}
+
+	@Override
+	public ADLDocument getOwnerDocument() {
+		return (ADLDocument) super.getOwnerDocument();
+	}
+
+	@Override
+	public <E extends Element> E getProperty(String name) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public <E extends Element> E replaceProperty(String propertyName, E e) {
+		throw new UnsupportedOperationException();
+	}
+
+	public String getTagName() {
+		return tagName;
+	}
 }
