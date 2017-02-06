@@ -6,6 +6,7 @@ import org.kite9.diagram.style.impl.ConnectedContainerImpl;
 import org.kite9.diagram.style.impl.ConnectedTextImpl;
 import org.kite9.diagram.style.impl.ConnectionImpl;
 import org.kite9.diagram.style.impl.DiagramImpl;
+import org.kite9.diagram.style.impl.FixedSizeGraphicsImpl;
 import org.kite9.diagram.style.impl.LabelImpl;
 import org.kite9.diagram.style.impl.TerminatorImpl;
 import org.kite9.diagram.xml.StyledKite9SVGElement;
@@ -40,7 +41,7 @@ public class DiagramElementFactory {
 				case DECAL:
 					throw new UnsupportedOperationException();
 				case FIXED_SIZE:
-					throw new UnsupportedOperationException();
+					return new FixedSizeGraphicsImpl(in2, parent);
 				case TEXT:
 				case UNSPECIFIED:
 				default:

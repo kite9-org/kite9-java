@@ -8,7 +8,8 @@ import org.kite9.diagram.position.RectangleRenderingInformation;
 
 /**
  * Interface to say that this diagram element contains a 
- * variable number of others rendered within it.
+ * variable number of others rendered within it.  The size of the element is in large part dependent
+ * therefore on the elements within it.
  * 
  * Opposite of {@link Leaf}
  * 
