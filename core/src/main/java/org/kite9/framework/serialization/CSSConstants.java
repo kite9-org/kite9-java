@@ -22,6 +22,7 @@ public class CSSConstants {
 	public static final String TRAVERSAL_BOTTOM_PROPERTY = "traversal-bottom";
 	public static final String TRAVERSAL_TOP_PROPERTY = "traversal-top";
 	public static final String TRAVERSAL_RIGHT_PROPERTY = "traversal-right";
-	public static final String TRAVERSAL_LEFT_PROPERTY = "traversal-left";	
+	public static final String TRAVERSAL_LEFT_PROPERTY = "traversal-left";
+	public static final String PATH = "path";	
 	
 }
