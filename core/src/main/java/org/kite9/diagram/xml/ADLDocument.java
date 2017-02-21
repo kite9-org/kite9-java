@@ -4,7 +4,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.apache.batik.anim.dom.SVG12OMDocument;
-import org.apache.batik.dom.ExtensibleDOMImplementation;
 import org.apache.batik.util.XMLConstants;
 import org.kite9.framework.serialization.ADLExtensibleDOMImplementation;
 import org.kite9.framework.serialization.XMLHelper;
@@ -15,25 +14,18 @@ import org.w3c.dom.Node;
 import org.w3c.dom.css.CSSStyleDeclaration;
 import org.w3c.dom.css.DocumentCSS;
 import org.w3c.dom.stylesheets.StyleSheetList;
-import org.w3c.dom.views.AbstractView;
-import org.w3c.dom.views.DocumentView;
 
 /**
  * NOTE:  It would be better not to extend SVG12OMDocument, and extend AbstractStyleableDocument,
  * but CSSUtilities does lots of casting to SVGOMDocument, and we want to use that in the
  * kite9-visualisation project.
  * 
- * Now, Kite9 elements seem to be first-class members of SVG?  eh...
+ * Now, Kite9 elements are first-class members of SVG.
  * 
  * @author robmoffat
  *
  */
 public class ADLDocument extends SVG12OMDocument {
-	
-	/**
-     * Is this document immutable?
-     */
-    protected boolean readonly;
 
 	public ADLDocument() {
 		this(new ADLExtensibleDOMImplementation());
@@ -59,69 +51,10 @@ public class ADLDocument extends SVG12OMDocument {
         return XMLConstants.XML_ID_ATTRIBUTE.equals(node.getNodeName());
     }
 
-    /**
-     * The default view.
-     */
-    protected transient AbstractView defaultView;
-//
-//    /**
-//     * The CSS engine.
-//     */
-//    protected transient CSSEngine cssEngine;
-
-//
-//    /**
-//     * Sets the CSS engine.
-//     */
-//    public void setCSSEngine(CSSEngine ctx) {
-//        cssEngine = ctx;
-//    }
-
-//    /**
-//     * Returns the CSS engine.
-//     */
-//    public CSSEngine getCSSEngine() {
-//    	if (cssEngine == null) {
-//    		ADLExtensibleDOMImplementation impl = ADLExtensibleDOMImplementation.getDOMImplementation();
-//    		cssEngine = impl.createCSSEngine(this);
-//    	}
-//    	
-//        return cssEngine;
-//    }
-
-    // DocumentStyle /////////////////////////////////////////////////////////
-
     public StyleSheetList getStyleSheets() {
         throw new RuntimeException(" !!! Not implemented");
     }
 
-    // DocumentView ///////////////////////////////////////////////////////////
-
-    /**
-     * <b>DOM</b>: Implements {@link DocumentView#getDefaultView()}.
-     * @return a ViewCSS object.
-     */
-    public AbstractView getDefaultView() {
-        if (defaultView == null) {
-            ExtensibleDOMImplementation impl;
-            impl = (ExtensibleDOMImplementation)implementation;
-            defaultView = impl.createViewCSS(this);
-        }
-        return defaultView;
-    }
-
-    /**
-     * Clears the view CSS.
-     */
-    public void clearViewCSS() {
-        defaultView = null;
-        if (cssEngine != null) {
-            cssEngine.dispose();
-        }
-        cssEngine = null;
-    }
-
-    // DocumentCSS ////////////////////////////////////////////////////////////
 
     /**
      * <b>DOM</b>: Implements
@@ -132,19 +65,7 @@ public class ADLDocument extends SVG12OMDocument {
         throw new RuntimeException(" !!! Not implemented");
     }
     
-    /**
-     * Tests whether this node is readonly.
-     */
-    public boolean isReadonly() {
-        return readonly;
-    }
-
-    /**
-     * Sets this node readonly attribute.
-     */
-    public void setReadonly(boolean v) {
-        readonly = v;
-    }
+   
 
 	@Override
 	protected Node newNode() {
@@ -162,6 +83,11 @@ public class ADLDocument extends SVG12OMDocument {
 
 	public Set<XMLElement> getConnectionElements() {
 		return tempConnections;
+	}
+
+	@Override
+	public ADLExtensibleDOMImplementation getImplementation() {
+		return (ADLExtensibleDOMImplementation) super.getImplementation();
 	}
 	
 }

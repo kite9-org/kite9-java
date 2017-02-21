@@ -1,7 +1,5 @@
 package org.kite9.diagram.adl;
 
-import org.kite9.diagram.style.impl.TerminatorImpl;
-
 /**
  * Describes what's at the end of a {@link Connection}.
  * 
@@ -10,13 +8,5 @@ import org.kite9.diagram.style.impl.TerminatorImpl;
  */
 public interface Terminator extends DiagramElement {
 
-	public static final Terminator NONE = new TerminatorImpl(null, null) {
-
-		@Override
-		public String getShapeName() {
-			return "NONE";
-		}
-	};
-	
 
 }

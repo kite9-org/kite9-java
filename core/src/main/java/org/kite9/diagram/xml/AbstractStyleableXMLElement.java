@@ -14,6 +14,7 @@ import org.apache.batik.util.ParsedURL;
 import org.kite9.diagram.adl.DiagramElement;
 import org.kite9.diagram.style.DiagramElementFactory;
 import org.kite9.framework.common.Kite9ProcessingException;
+import org.kite9.framework.serialization.ADLExtensibleDOMImplementation;
 import org.kite9.framework.serialization.XMLHelper;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Element;
@@ -231,8 +232,15 @@ public abstract class AbstractStyleableXMLElement extends SVGGraphicsElement imp
 	protected DiagramElement cachedDiagramElement;
 	
 	public DiagramElement getDiagramElement() {
+		
 		if (cachedDiagramElement == null) {
-			cachedDiagramElement = DiagramElementFactory.createDiagramElement(this, getParentElement());
+			DiagramElementFactory f = ((ADLExtensibleDOMImplementation) getOwnerDocument().getImplementation()).getDiagramElementFactory();
+			
+			if (f == null) {
+				throw new Kite9ProcessingException("No configured DiagramElementFactory on DOMImplementation");
+			}
+			
+			cachedDiagramElement = f.createDiagramElement(this, getParentElement());
 		}
 		
 		return cachedDiagramElement;

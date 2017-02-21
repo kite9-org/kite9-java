@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.util.MissingResourceException;
 import java.util.Properties;
 
+import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.svg.SVGDocumentFactory;
 import org.apache.batik.dom.util.SAXDocumentFactory;
@@ -89,8 +90,8 @@ public class Kite9DocumentFactory
      * Creates a new SVGDocumentFactory object.
      * @param parser The SAX2 parser classname.
      */
-    public Kite9DocumentFactory(String parser) {
-        super(ADLExtensibleDOMImplementation.getDOMImplementation(), parser);
+    public Kite9DocumentFactory(ADLExtensibleDOMImplementation domImpl, String parser) {
+        super(domImpl, parser);
     }
 
     /**
@@ -98,8 +99,8 @@ public class Kite9DocumentFactory
      * @param parser The SAX2 parser classname.
      * @param dd Whether a document descriptor must be generated.
      */
-    public Kite9DocumentFactory(String parser, boolean dd) {
-        super(ADLExtensibleDOMImplementation.getDOMImplementation(), parser, dd);
+    public Kite9DocumentFactory(ADLExtensibleDOMImplementation domImpl, String parser, boolean dd) {
+        super(domImpl, parser, dd);
     }
 
     public SVGDocument createSVGDocument(String uri) throws IOException {
@@ -182,7 +183,7 @@ public class Kite9DocumentFactory
         isrc.setSystemId(uri);
 
         ADLDocument doc = (ADLDocument) super.createDocument
-            (XMLHelper.KITE9_NAMESPACE, "diagram", uri, isrc);
+            (SVGDOMImplementation.SVG_NAMESPACE_URI, "svg", uri, isrc);
         doc.setParsedURL(new ParsedURL(uri));
         doc.setDocumentInputEncoding(charset);
         doc.setXmlStandalone(isStandalone);
@@ -249,58 +250,8 @@ public class Kite9DocumentFactory
         return doc;
     }
 
-    /**
-     * Creates a Document instance.
-     * @param ns The namespace URI of the root element of the document.
-     * @param root The name of the root element of the document.
-     * @param uri The document URI.
-     * @exception IOException if an error occured while reading the document.
-     */
-    public Document createDocument(String ns, String root, String uri)
-        throws IOException {
-        if (!XMLHelper.KITE9_NAMESPACE.equals(ns) ||
-            !"diagram".equals(root)) {
-            throw new RuntimeException("Bad root element");
-        }
-        return createDocument(uri);
-    }
-
-    /**
-     * Creates a Document instance.
-     * @param ns The namespace URI of the root element of the document.
-     * @param root The name of the root element of the document.
-     * @param uri The document URI.
-     * @param is The document input stream.
-     * @exception IOException if an error occured while reading the document.
-     */
-    public Document createDocument(String ns, String root, String uri,
-                                   InputStream is) throws IOException {
-        if (!XMLHelper.KITE9_NAMESPACE.equals(ns) ||
-            !"svg".equals(root)) {
-            throw new RuntimeException("Bad root element");
-        }
-        return createDocument(uri, is);
-    }
-
-    /**
-     * Creates a Document instance.
-     * @param ns The namespace URI of the root element of the document.
-     * @param root The name of the root element of the document.
-     * @param uri The document URI.
-     * @param r The document reader.
-     * @exception IOException if an error occured while reading the document.
-     */
-    public Document createDocument(String ns, String root, String uri,
-                                   Reader r) throws IOException {
-        if (!XMLHelper.KITE9_NAMESPACE.equals(ns) ||
-            !"diagram".equals(root)) {
-            throw new RuntimeException("Bad root element");
-        }
-        return createDocument(uri, r);
-    }
-
     public DOMImplementation getDOMImplementation(String ver) {
-        return ADLExtensibleDOMImplementation.getDOMImplementation();
+        return implementation;
     }
 
     /**

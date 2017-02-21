@@ -11,8 +11,6 @@ import static org.kite9.framework.serialization.CSSConstants.PADDING_TOP_PROPERT
 import java.net.URL;
 
 import org.apache.batik.anim.dom.SVG12DOMImplementation;
-import org.apache.batik.anim.dom.SVG12OMDocument;
-import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.css.dom.CSSOMSVGViewCSS;
 import org.apache.batik.css.engine.CSSContext;
 import org.apache.batik.css.engine.CSSEngine;
@@ -32,6 +30,7 @@ import org.apache.batik.dom.util.HashTable;
 import org.apache.batik.util.ParsedURL;
 import org.kite9.diagram.position.Layout;
 import org.kite9.diagram.style.BorderTraversal;
+import org.kite9.diagram.style.DiagramElementFactory;
 import org.kite9.diagram.style.DiagramElementSizing;
 import org.kite9.diagram.style.DiagramElementType;
 import org.kite9.diagram.xml.ADLDocument;
@@ -40,7 +39,6 @@ import org.kite9.diagram.xml.GenericXMLElement;
 import org.kite9.diagram.xml.StylesheetReference;
 import org.w3c.css.sac.InputSource;
 import org.w3c.dom.DOMException;
-import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
@@ -50,13 +48,20 @@ import org.w3c.dom.css.CSSStyleSheet;
 import org.w3c.dom.css.ViewCSS;
 import org.w3c.dom.stylesheets.StyleSheet;
 
+/**
+ * Extends the SVG DOM Implementation by adding Kite9 Namespace support, and
+ * handing for Kite9 CSS definitions.
+ * 
+ * @author robmoffat
+ *
+ */
 public class ADLExtensibleDOMImplementation extends SVG12DOMImplementation {
 	
 	public static final boolean USE_GENERIC_XML_ELEMENT = true;
 
 	public ADLExtensibleDOMImplementation() {
 		super();
-		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, "diagram", new ElementFactory() {
+		registerCustomElementFactory(XMLHelper.KITE9_NAMESPACE, XMLHelper.DIAGRAM_ELEMENT, new ElementFactory() {
 			 
 			public Element create(String prefix, Document doc) {
 				DiagramXMLElement out = new DiagramXMLElement((ADLDocument) doc);
@@ -139,7 +144,7 @@ public class ADLExtensibleDOMImplementation extends SVG12DOMImplementation {
 	public Element createElementNS(AbstractDocument document, String namespaceURI, String qualifiedName) {
 		if (USE_GENERIC_XML_ELEMENT) {
 			if (XMLHelper.KITE9_NAMESPACE.equals(namespaceURI)) {
-				if ((!"diagram".equals(qualifiedName)) && (!"stylesheet".equals(qualifiedName))) {
+				if ((!XMLHelper.DIAGRAM_ELEMENT.equals(qualifiedName)) && (!"stylesheet".equals(qualifiedName))) {
 					return new GenericXMLElement(qualifiedName, (ADLDocument) document);
 				}
 			} 
@@ -179,35 +184,20 @@ public class ADLExtensibleDOMImplementation extends SVG12DOMImplementation {
 		return result;
 	}
 	
-//	public CSSEngine createCSSEngine(ADLDocument doc) {
-//		CSSEngine e = super.createCSSEngine(doc, new ADLBridgeContext(doc));
-//		e.setCSSEngineUserAgent(new CSSEngineUserAgent() {
-//
-//			public void displayMessage(String message) {
-//				System.out.println("message");
-//			}
-//
-//			public void displayError(Exception ex) {
-//				throw new RuntimeException(ex);
-//			}
-//		});
-//
-//		doc.setCSSEngine(e);
-//		return e;
-//	}
-	
 
 	@Override
 	public ViewCSS createViewCSS(AbstractStylableDocument doc) {
         return new CSSOMSVGViewCSS(doc.getCSSEngine());
 	}
 	
-	private static final ADLExtensibleDOMImplementation DOM_IMPLEMENTATION = new ADLExtensibleDOMImplementation();
-	
-	/**
-     * Returns the default instance of this class.
-     */
-    public static ADLExtensibleDOMImplementation getDOMImplementation() {
-        return DOM_IMPLEMENTATION;
-    }
+    private DiagramElementFactory diagramElementFactory;
+
+	public DiagramElementFactory getDiagramElementFactory() {
+		return diagramElementFactory;
+	}
+
+	public void setDiagramElementFactory(DiagramElementFactory diagramElementFactory) {
+		this.diagramElementFactory = diagramElementFactory;
+	}
+    
 }
