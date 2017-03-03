@@ -80,10 +80,10 @@ public class ADLExtensibleDOMImplementation extends SVG12DOMImplementation {
 		
 		// PADDING CSS
 		registerCustomCSSShorthandManager(new PaddingShorthandManager());
-		registerCustomCSSValueManager(new MarginLengthManager(PADDING_LEFT_PROPERTY));
-		registerCustomCSSValueManager(new MarginLengthManager(PADDING_RIGHT_PROPERTY));
-		registerCustomCSSValueManager(new MarginLengthManager(PADDING_TOP_PROPERTY));
-		registerCustomCSSValueManager(new MarginLengthManager(CSSConstants.PADDING_BOTTOM_PROPERTY));
+		registerCustomCSSValueManager(new PaddingLengthManager(PADDING_LEFT_PROPERTY));
+		registerCustomCSSValueManager(new PaddingLengthManager(PADDING_RIGHT_PROPERTY));
+		registerCustomCSSValueManager(new PaddingLengthManager(PADDING_TOP_PROPERTY));
+		registerCustomCSSValueManager(new PaddingLengthManager(CSSConstants.PADDING_BOTTOM_PROPERTY));
 		
 		
 		// SHADOW CSS
