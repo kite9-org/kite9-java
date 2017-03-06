@@ -79,13 +79,16 @@ public class ADLExtensibleDOMImplementation extends SVG12DOMImplementation {
 		});
 		
 		// PADDING CSS
-		registerCustomCSSShorthandManager(new PaddingShorthandManager());
+		registerCustomCSSShorthandManager(new PaddingAndMarginShorthandManager("padding"));
 		registerCustomCSSValueManager(new PaddingLengthManager(PADDING_LEFT_PROPERTY));
 		registerCustomCSSValueManager(new PaddingLengthManager(PADDING_RIGHT_PROPERTY));
 		registerCustomCSSValueManager(new PaddingLengthManager(PADDING_TOP_PROPERTY));
 		registerCustomCSSValueManager(new PaddingLengthManager(CSSConstants.PADDING_BOTTOM_PROPERTY));
-		
-		
+
+		// MARGIN CSS
+		// Margin is already handled, but there is no shorthand manager.
+		registerCustomCSSShorthandManager(new PaddingAndMarginShorthandManager("margin"));
+
 		// SHADOW CSS
 		registerCustomCSSShorthandManager(new BoxShadowShorthandManager());
 		registerCustomCSSValueManager(new MarginLengthManager(BOX_SHADOW_X_OFFSET_PROPERTY));
@@ -131,7 +134,8 @@ public class ADLExtensibleDOMImplementation extends SVG12DOMImplementation {
 		registerCustomCSSValueManager(new EnumManager(CSSConstants.TRAVERSAL_TOP_PROPERTY, BorderTraversal.class, BorderTraversal.LEAVING));
 		registerCustomCSSShorthandManager(new TraversalShorthandManager());
 		
-		
+		// TEMPLATES
+		registerCustomCSSValueManager(new TemplateManager());
 	}
 
 	public static final RGBColorValue NO_COLOR = new RGBColorValue(

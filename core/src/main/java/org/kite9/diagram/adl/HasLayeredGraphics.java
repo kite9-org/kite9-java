@@ -1,10 +1,10 @@
-package org.kite9.diagram.adl.sizing;
+package org.kite9.diagram.adl;
 
 import java.awt.geom.Rectangle2D;
 import java.util.function.Consumer;
 
 import org.apache.batik.gvt.GraphicsNode;
-import org.kite9.diagram.adl.DiagramElement;
+import org.kite9.diagram.style.DiagramElementSizing;
 
 /**
  * Means this {@link DiagramElement} can produce a {@link GraphicsNode} 
@@ -23,4 +23,6 @@ public interface HasLayeredGraphics extends DiagramElement {
 	 * Returns just the bounds of the SVG elements.
 	 */
 	public Rectangle2D getSVGBounds();
+	
+	public DiagramElementSizing getSizing();
 }

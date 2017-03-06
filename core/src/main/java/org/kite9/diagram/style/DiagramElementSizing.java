@@ -8,6 +8,6 @@ package org.kite9.diagram.style;
  */
 public enum DiagramElementSizing {
 
-	MINIMIZE, MAXIMIZE, TEXT, FIXED, SCALED, ADAPTIVE, UNSPECIFIED
+	MINIMIZE, MAXIMIZE, FIXED, SCALED, ADAPTIVE, UNSPECIFIED
 	
 }

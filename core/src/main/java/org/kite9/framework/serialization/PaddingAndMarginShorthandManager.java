@@ -15,17 +15,21 @@ import org.w3c.dom.DOMException;
  * @author <a href="mailto:stephane@hillion.org">Stephane Hillion</a>
  * @version $Id: MarginShorthandManager.java 475685 2006-11-16 11:16:05Z cam $
  */
-public class PaddingShorthandManager
+public class PaddingAndMarginShorthandManager
     extends AbstractValueFactory
     implements ShorthandManager {
 
-    public PaddingShorthandManager() { }
+	private final String propertyPrefix;
+	
+    public PaddingAndMarginShorthandManager(String pp) {
+    	this.propertyPrefix = pp;
+    }
     
     /**
      * Implements {@link ValueManager#getPropertyName()}.
      */
     public String getPropertyName() {
-        return "padding";
+        return propertyPrefix;
     }
     
     /**
@@ -69,9 +73,9 @@ public class PaddingShorthandManager
         default:
         }
 
-        ph.property("padding-top",    lus[0], imp);
-        ph.property("padding-right",  lus[1], imp);
-        ph.property("padding-bottom", lus[2], imp);
-        ph.property("padding-left",   lus[3], imp);
+        ph.property(propertyPrefix+"-top",    lus[0], imp);
+        ph.property(propertyPrefix+"-right",  lus[1], imp);
+        ph.property(propertyPrefix+"-bottom", lus[2], imp);
+        ph.property(propertyPrefix+"-left",   lus[3], imp);
     }
 }
