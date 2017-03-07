@@ -118,14 +118,6 @@ public class DiagramXMLElement extends AbstractXMLContainerElement {
 	public XMLElement getLabel() {
 		return getKey();
 	}
-
-	public StylesheetReference getStylesheetReference() {
-		return getProperty("style");
-	}
-	
-	public void setStylesheetReference(StylesheetReference ref) {
-		replaceProperty("style", ref);
-	}
 	
 	public Diagram getDiagramElement() {
 		return (Diagram) super.getDiagramElement();

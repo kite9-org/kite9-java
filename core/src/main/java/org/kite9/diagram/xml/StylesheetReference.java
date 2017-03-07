@@ -14,7 +14,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 /**
- * Holds the address (href) of a CSS Stylesheet for a Diagram.
+ * Holds the address (href) of a CSS Stylesheet for a Diagram.  This is needed because by default, 
+ * SVG doesn't have an element for referencing an external stylesheet.  For inline styles, use 
+ * 'svg:style' element.
+ * 
  * 
  * @author robmoffat
  * 
@@ -49,24 +52,21 @@ public class StylesheetReference extends SVGOMStyleElement implements CSSStyleSh
 		}
 	}
 
-    /**
-     * The DOM CSS style-sheet.
-     */
-    protected transient StyleSheet styleSheet;
-	
 	/**
-     * Returns the associated style-sheet.
-     * TODO: Also need to handle in-line style sheets.
+     * Handles the 'href' referenced styles.
      */
     public StyleSheet getCSSStyleSheet() {
         if (styleSheet == null) {
             ADLDocument doc = (ADLDocument)getOwnerDocument();
             CSSEngine e = doc.getCSSEngine();
             String bu = getHref();
-            ParsedURL burl = new ParsedURL(getBaseURI(), bu);
-            String media = getMedia();
-            styleSheet = e.parseStyleSheet(burl, media);
+            if (bu.length() != 0) {
+	            ParsedURL burl = new ParsedURL(getBaseURI(), bu);
+	            String media = getMedia();
+	            styleSheet = e.parseStyleSheet(burl, media);
+            } 
         }
+        
         return styleSheet;
     }
 	

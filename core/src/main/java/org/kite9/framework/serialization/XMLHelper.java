@@ -71,6 +71,7 @@ public class XMLHelper {
 			 trans.setOutputProperty(OutputKeys.INDENT, "yes");
 			 trans.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 			 trans.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+			 trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
 			 StringWriter sw= new StringWriter();
 			 Result result = new StreamResult(sw);
 			 trans.transform(new DOMSource(d), result);
