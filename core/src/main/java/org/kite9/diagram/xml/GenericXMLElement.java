@@ -9,10 +9,6 @@ import org.w3c.dom.Node;
  *
  */
 public class GenericXMLElement extends AbstractStyleableXMLElement {
-	
-	public GenericXMLElement() {
-		super();
-	}
 
 	public GenericXMLElement(String name, ADLDocument owner) {
 		super(name, owner);
@@ -20,11 +16,15 @@ public class GenericXMLElement extends AbstractStyleableXMLElement {
 
 	@Override
 	protected Node newNode() {
-		return new GenericXMLElement();
+		return new GenericXMLElement(getNodeName(), getOwnerDocument());
 	}
 
 	@Override
 	public String toString() {
+		return tagName;
+	}
+	
+	public String getNodeName() {
 		return tagName;
 	}
 	
