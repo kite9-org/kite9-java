@@ -1,6 +1,7 @@
 package org.kite9.framework.serialization;
 
 import org.apache.batik.css.engine.value.AbstractValue;
+import org.kite9.diagram.style.IntegerRange;
 
 /**
  * An integer range, from and to.  
@@ -9,14 +10,16 @@ import org.apache.batik.css.engine.value.AbstractValue;
  * @author robmoffat
  *
  */
-public class IntegerRangeValue extends AbstractValue {
+class IntegerRangeValue extends AbstractValue implements IntegerRange {
 
 	private int from, to;
 	
+	@Override
 	public int getFrom() {
 		return from;
 	}
 
+	@Override
 	public int getTo() {
 		return to;
 	}
@@ -28,7 +31,6 @@ public class IntegerRangeValue extends AbstractValue {
 
 	@Override
 	public String getCssText() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

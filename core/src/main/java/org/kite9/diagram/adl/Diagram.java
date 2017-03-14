@@ -9,7 +9,7 @@ import java.util.Collection;
  * @author robmoffat
  *
  */
-public interface Diagram extends Container, HasLayeredGraphics {
+public interface Diagram extends Container {
 
 	public Collection<Connection> getConnectionsFor(String id);
 }

@@ -3,6 +3,7 @@ package org.kite9.diagram.adl;
 import java.util.Collection;
 
 import org.kite9.diagram.position.RectangleRenderingInformation;
+import org.kite9.diagram.style.ContainerPosition;
 
 /**
  * A diagram element which is consumes a rectangular area of space, and 
@@ -34,6 +35,14 @@ public interface Connected extends DiagramElement {
 	 */
 	RectangleRenderingInformation getRenderingInformation();
 	
+	/**
+	 * Returns the container that this Connected is in.
+	 */
 	Container getContainer();
+	
+	/**
+	 * Any other details about how this Connected is to be positioned in the container.
+	 */
+	ContainerPosition getContainerPosition();
 }
 

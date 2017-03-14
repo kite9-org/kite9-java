@@ -1,7 +1,7 @@
 package org.kite9.diagram.adl;
 
-import org.apache.batik.css.engine.value.Value;
 import org.kite9.diagram.common.HintMap;
+import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.RenderingInformation;
 
 /**
@@ -25,12 +25,6 @@ public interface DiagramElement extends Comparable<DiagramElement> {
 
 	public RenderingInformation getRenderingInformation();
 	
-	/**
-	 * Returns some CSS style information for the diagram element.
-	 */
-	public Value getCSSStyleProperty(String prop);
-
-	
 	@Deprecated
 	public void setRenderingInformation(RenderingInformation ri);
 	
@@ -46,5 +40,7 @@ public interface DiagramElement extends Comparable<DiagramElement> {
 	 */
 	@Deprecated
 	Container getContainer();
-
+	
+	public double getMargin(Direction d);
+		
 }

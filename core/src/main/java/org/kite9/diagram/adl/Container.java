@@ -2,8 +2,9 @@ package org.kite9.diagram.adl;
 
 import java.util.List;
 
+import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.Layout;
-import org.kite9.diagram.position.RectangleRenderingInformation;
+import org.kite9.diagram.style.BorderTraversal;
 
 
 /**
@@ -28,8 +29,10 @@ public interface Container extends DiagramElement, Rectangular {
 	 */
 	@Deprecated
 	public Label getLabel();
-
-	@Deprecated
-	public boolean isBordered();
 	
+	public BorderTraversal getTraversalRule(Direction d);
+	
+	public int getGridColumns();
+	
+	public int getGridRows();
 }

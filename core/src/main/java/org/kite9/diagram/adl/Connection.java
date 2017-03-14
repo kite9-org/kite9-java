@@ -1,6 +1,7 @@
 package org.kite9.diagram.adl;
 
 import org.kite9.diagram.common.BiDirectional;
+import org.kite9.diagram.position.Direction;
 import org.kite9.diagram.position.RouteRenderingInformation;
 
 /**
@@ -39,4 +40,15 @@ public interface Connection extends DiagramElement, BiDirectional<Connected> {
 	 * Returns the rank of the connection from the ordering of all the connections on the diagram.
 	 */
 	public int getRank();
+	
+	/**
+	 * Margin is the minimum distance from this connection to an element it is not connected with.
+	 */
+	public double getMargin(Direction d);
+	
+	/**
+	 * Padding is the space above or below the end of the connection such that it doesn't join
+	 * the corner of the element it connects to.
+	 */
+	public double getPadding(Direction d);
 }
