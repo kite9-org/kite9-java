@@ -26,6 +26,7 @@ import org.w3c.dom.Node;
  */
 public class StylesheetReference extends SVGOMStyleElement implements CSSStyleSheetNode, XMLElement {
 
+	public static final String STYLESHEET_TAG = "stylesheet";
 	public static final String DEFAULT_STYLESHEET = "";
 	
 	public StylesheetReference() {
@@ -36,7 +37,7 @@ public class StylesheetReference extends SVGOMStyleElement implements CSSStyleSh
 	
 	public StylesheetReference(ADLDocument owner) {
 		super(null, owner);
-		this.tagName = "stylesheet";
+		this.tagName = STYLESHEET_TAG;
 	}
 
 	public StylesheetReference(ADLDocument owner, String href) {
@@ -140,4 +141,8 @@ public class StylesheetReference extends SVGOMStyleElement implements CSSStyleSh
 	public String getTagName() {
 		return tagName;
 	}
+
+	public String getLocalName() {
+        return STYLESHEET_TAG;
+    }
 }

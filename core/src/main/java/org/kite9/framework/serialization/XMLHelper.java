@@ -15,7 +15,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.apache.batik.dom.util.SAXDocumentFactory;
-import org.kite9.diagram.xml.DiagramXMLElement;
+import org.kite9.diagram.xml.ADLDocument;
 import org.kite9.framework.common.Kite9ProcessingException;
 import org.w3c.dom.Document;
 
@@ -43,28 +43,10 @@ public class XMLHelper {
 	public static final String KITE9_NAMESPACE = "http://www.kite9.org/schema/adl";
 	public static final String DIAGRAM_ELEMENT = "diagram";
 
-
-	private boolean simplifyingXML = true;
-
-	/**
-	 * When this is set, we serialize all of the link elements as part of the
-	 * Diagram element. This makes the containment structure of the ADL elements
-	 * much easier to see.
-	 * 
-	 * @return
-	 */
-	public boolean isSimplifyingXML() {
-		return simplifyingXML;
-	}
-
-	public void setSimplifyingXML(boolean simplifyingXML) {
-		this.simplifyingXML = simplifyingXML;
-	}
-
 	public XMLHelper() {
 	}
 
-	public String toXML(DiagramXMLElement d) {
+	public String toXML(ADLDocument dxe) {
 		try {
 			 TransformerFactory transfac = TransformerFactory.newInstance();
 			 Transformer trans = transfac.newTransformer();
@@ -74,7 +56,7 @@ public class XMLHelper {
 			 trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
 			 StringWriter sw= new StringWriter();
 			 Result result = new StreamResult(sw);
-			 trans.transform(new DOMSource(d), result);
+			 trans.transform(new DOMSource(dxe), result);
 			 sw.close();
 			 return sw.toString();
 		} catch (Exception e) {
@@ -83,24 +65,23 @@ public class XMLHelper {
 		
 	}
 
-	public DiagramXMLElement fromXML(String s)  {
+	public ADLDocument fromXML(String s)  {
 		return fromXML(new StringReader(s));
 	}
 	
 
-	public DiagramXMLElement fromXML(Reader s) {
+	public ADLDocument fromXML(Reader s) {
 		try {
 			SAXDocumentFactory sdf = new SAXDocumentFactory(new ADLExtensibleDOMImplementation(), null);
 			Document d = sdf.createDocument(null, s);
-			DiagramXMLElement d2 = (DiagramXMLElement) d.getDocumentElement();
-			return d2;		
+			return (ADLDocument) d;		
 		} catch (IOException e) {
 			throw new Kite9ProcessingException("Couldn't parse xml: ", e);
 		}
 
 	}
 
-	public DiagramXMLElement fromXML(InputStream s) {
+	public ADLDocument fromXML(InputStream s) {
 		return fromXML(new InputStreamReader(s));
 	}
 

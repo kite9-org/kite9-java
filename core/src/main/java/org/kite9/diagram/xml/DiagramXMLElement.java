@@ -68,8 +68,9 @@ public class DiagramXMLElement extends AbstractXMLContainerElement {
 				}
 			}
 		}
-		
+		doc.setDiagramCreated(true);
 		doc.getConnectionElements().clear();
+		
 	}
 	
 	public DiagramXMLElement(String id, List<XMLElement> contents) {

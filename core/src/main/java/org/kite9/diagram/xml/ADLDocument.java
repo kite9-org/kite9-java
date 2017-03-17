@@ -76,8 +76,16 @@ public class ADLDocument extends SVG12OMDocument {
 	 * Maybe move this all into the testing package?
 	 */
 	private transient Set<XMLElement> tempConnections = new LinkedHashSet<>();
+	private boolean diagramCreated = false;
 
-	public void addConnection(StyledKite9SVGElement xmlElement) {	
+	public void setDiagramCreated(boolean diagramCreated) {
+		this.diagramCreated = diagramCreated;
+	}
+
+	public void addConnection(StyledKite9SVGElement xmlElement) {
+		if (diagramCreated) {
+			throw new IllegalStateException("Diagram created already");
+		}
 		tempConnections.add(xmlElement);
 	}
 
